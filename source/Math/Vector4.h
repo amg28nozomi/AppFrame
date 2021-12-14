@@ -56,49 +56,49 @@ namespace AppFrame {
        * @brief  2次元ベクトルの取得
        * @return xy成分を返す
        */
-      const auto GetVector2() {
+      inline const auto GetVector2() const {
         return std::make_pair(_x, _y);
       }
       /**
        * @brief  3次元ベクトルの取得
        * @return xyz成分を返す
        */
-      const auto GetVector3() {
+      inline const auto GetVector3() const {
         return std::make_tuple(_x, _y, _z);
       }
       /**
        * @brief  4次元ベクトルの取得
-       * @return 
+       * @return xyzw成分
        */
-      const auto GetVector4() {
+      inline const auto GetVector4() const {
         return std::make_tuple(_x, _y, _z, _w);
       }
       /**
        * @brief  x成分の取得
        * @return x成分
        */
-      const float GetX() {
+      inline const float GetX() const {
         return _x;
       }
       /**
        * @brief  y成分の取得
        * @return y成分
        */
-      const float GetY() {
+      inline const float GetY() const {
         return _y;
       }
       /**
        * @brief  z成分の取得
        * @return z成分
        */
-      const float GetZ() {
+      inline const float GetZ() const {
         return _z;
       }
       /**
        * @brief  w成分の取得
        * @return w成分
        */
-      const float GetW() {
+      inline const float GetW() const {
         return _w;
       }
       /**
@@ -143,23 +143,13 @@ namespace AppFrame {
        * @param  vector ベクトル(減数)
        * @return 減算した4次元ベクトル
        */
-      Vector4 operator - (const Vector4 vector) {
-        auto x = _x - vector._x;
-        auto y = _y - vector._y;
-        auto z = _z - vector._z;
-        return Vector4(x, y, z);
-      }
+      Vector4 operator - (const Vector4 vector);
       /**
        * @brief  ベクトルのスカラー倍
        * @param  scalar スカラー値
        * @return スカラー倍した4次元ベクトル
        */
-      Vector4 operator * (const float scalar) {
-        auto x = _x * scalar;
-        auto y = _y * scalar;
-        auto z = _z * scalar;
-        return Vector4(x, y, z);
-      }
+      Vector4 operator * (const float scalar);
       /**
        * @brief  ベクトルのスカラー割り
        * @param  scalar スカラー値

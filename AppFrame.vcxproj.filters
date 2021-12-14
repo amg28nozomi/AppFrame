@@ -51,7 +51,13 @@
     <ClInclude Include="source\Application\Operation.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="Vector4.h">
+    <ClInclude Include="source\Application\JoypadState.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Math\Vector4.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Math\Math.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,7 +71,13 @@
     <ClCompile Include="source\Application\Operation.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="Vector4.cpp">
+    <ClCompile Include="source\Math\Vector4.cpp">
+      <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\JoypadState.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\Math.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
