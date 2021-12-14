@@ -167,11 +167,13 @@
     <ClInclude Include="source\Application\ApplicationBase.h" />
     <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
+    <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
     <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />
+    <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

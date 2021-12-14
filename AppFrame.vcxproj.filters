@@ -31,6 +31,12 @@
     <Filter Include="ヘッダー ファイル\Sound">
       <UniqueIdentifier>{36e7afe7-1199-4d51-8a0b-c21718a43ac9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Math">
+      <UniqueIdentifier>{fa0b4001-a197-4ecc-b519-bdddf576369b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Math">
+      <UniqueIdentifier>{55a32628-8a64-4f93-8326-0c34157588cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -45,6 +51,9 @@
     <ClInclude Include="source\Application\Operation.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -55,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="source\Application\Operation.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
