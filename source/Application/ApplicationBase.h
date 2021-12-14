@@ -10,12 +10,16 @@
 #include <tuple>
 #include <memory>
 
+namespace FileWorker {
+  class FileServer;
+}
+
 /** フレームワーク用名前空間 */
 namespace AppFrame {
   constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度
   constexpr auto WindowHeight = 1080; //!< デフォルトの解像度
-  constexpr auto ColorBit32 = 32;     //!< デフォルトのカラービット数
-  constexpr auto ColorBit16 = 16;     //!<
+  constexpr auto BitColor32 = 32;     //!< 32ビットカラー
+  constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   /** Application用名前空間 */
   namespace App {
     /**
@@ -58,14 +62,15 @@ namespace AppFrame {
        * @param  width  解像度
        * @param  height 解像度
        * @param  bit    カラービット数を変更するかのフラグ
-       *                true()
+       *                true:32ビットカラー(デフォルト)  false:16ビットカラー
        */
       static void SetWindowSize(int width, int height, bool bit = true);
     protected:
       static inline std::tuple<int, int, int> _window; //!< ウィンドウ情報
       static inline bool _isAdd = false; //!< 生成フラグ
       static inline bool _windowMode;    //!< ウィンドウモード
-      static inline std::shared_ptr<ApplicationBase> _instance; //!< 実態
+      static inline std::shared_ptr<ApplicationBase> _instance = nullptr; //!< 実態
+      std::unique_ptr<FileWorker::FileServer> _fileServer;  //!
     };
   }
 } // namespace AppFrame

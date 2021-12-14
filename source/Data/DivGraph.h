@@ -1,12 +1,14 @@
 /*****************************************************************//**
  * @file   DivGraph.h
- * @brief  画像ファイル情報用クラス（）
+ * @brief  画像ファイルの情報クラス
  * 
  * @author 鈴木希海
  * @date   December 2021
  *********************************************************************/
 #pragma once
-#include "FileWorker.h"
+#include "FileWorker/FileBase.h"
+
+namespace fs = std::filesystem;
 
 namespace AppFrame {
   /**
@@ -35,7 +37,7 @@ namespace AppFrame {
     void Clear();
     /**
      * @brief  分割情報の取得
-     * @return 縦横の分割数を返す
+     * @return 画像の分割数を返す
      */
     auto GetNum() {
       return std::make_tuple(_xNum, _yNum, _allNum);

@@ -25,6 +25,12 @@
     <Filter Include="ヘッダー ファイル\Data">
       <UniqueIdentifier>{c33aea4d-e624-4614-acd4-f844c6c019fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Sound">
+      <UniqueIdentifier>{bda4e027-6cf6-48d0-b26c-0c7f061810ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Sound">
+      <UniqueIdentifier>{36e7afe7-1199-4d51-8a0b-c21718a43ac9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -36,6 +42,9 @@
     <ClInclude Include="source\Data\DivGraph.h">
       <Filter>ヘッダー ファイル\Data</Filter>
     </ClInclude>
+    <ClInclude Include="source\Application\Operation.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -43,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="source\Data\DivGraph.cpp">
       <Filter>ソース ファイル\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\Operation.cpp">
+      <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

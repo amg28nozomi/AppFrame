@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <DxLib.h>
+#include "FileWorker/FileServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -28,6 +29,7 @@ namespace AppFrame {
 #ifndef _DEBUG
       _windowMode = true;
 #endif
+      _fileServer = nullptr;
     }
 
     ApplicationBase::~ApplicationBase() {
@@ -40,28 +42,34 @@ namespace AppFrame {
 #ifdef _DEBUG
         throw std::logic_error("ApplicationBase:DXライブラリの初期化に失敗しました\n");
 #endif
-        return false;
+        return false; // 初期化失敗
       }
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
       // Zバッファの設定
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
-      return true;
+      // ファイルサーバの生成
+      _fileServer = std::make_unique<FileWorker::FileServer>();
+
+      if (!_fileServer->Init()) {
+        return false; // 初期化失敗
+      }
+      return true;    // 初期化成功
     }
 
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
-      // 解像度情報の設定
-      auto&& [sizeX, sizeY, colorBit] = _window;
+      // 画面解像度の設定
+      auto&& [sizeX, sizeY, bitColor] = _window;
       sizeX = std::clamp(width, WidthMin, WindowWidth);
       sizeY = std::clamp(width, HeightMin, WindowHeight);
       if (bit) {
-        colorBit = ColorBit32;
+        bitColor = BitColor32;
       }
       else {
-        colorBit = ColorBit16;
+        bitColor = BitColor16;
       }
-      SetGraphMode(sizeX, sizeY, colorBit);
+      SetGraphMode(sizeX, sizeY, bitColor);
     }
   } // namespace App
 } // namespace AppFrame

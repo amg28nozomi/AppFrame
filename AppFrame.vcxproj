@@ -165,10 +165,12 @@
   <ItemGroup>
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
+    <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
+    <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
