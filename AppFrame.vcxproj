@@ -73,22 +73,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)..\DxLib;$(SolutionDIr)..\FileWorker\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\DxLib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\DxLib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)..\DxLib;$(SolutionDIr)..\FileWorker\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\DxLib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\DxLib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)..\DxLib;$(SolutionDIr)..\FileWorker\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\DxLib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\DxLib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)..\DxLib;$(SolutionDIr)..\FileWorker\source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\DxLib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\DxLib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,9 +165,11 @@
   <ItemGroup>
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
+    <ClInclude Include="source\Data\DivGraph.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
+    <ClCompile Include="source\Data\DivGraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

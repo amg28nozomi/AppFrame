@@ -19,6 +19,12 @@
     <Filter Include="ヘッダー ファイル\Application">
       <UniqueIdentifier>{aa8cb68b-eec4-4187-a636-c832c7763563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Data">
+      <UniqueIdentifier>{1753b040-7d77-4243-9644-28a7eb8ee641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Data">
+      <UniqueIdentifier>{c33aea4d-e624-4614-acd4-f844c6c019fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -27,10 +33,16 @@
     <ClInclude Include="source\Application\ApplicationBase.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
+    <ClInclude Include="source\Data\DivGraph.h">
+      <Filter>ヘッダー ファイル\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Data\DivGraph.cpp">
+      <Filter>ソース ファイル\Data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

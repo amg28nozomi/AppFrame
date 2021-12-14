@@ -12,10 +12,10 @@
 #include <DxLib.h>
 
 namespace {
-  constexpr auto WIDTH_MIN = 640;
-  constexpr auto HEIGHT_MIN = 480;
+  constexpr auto WidthMin = 640;
+  constexpr auto HeightMin = 480;
 
-  constexpr auto INIT_ERROR = -1; // èâä˙âªé∏îs
+  constexpr auto InitError = -1; // èâä˙âªé∏îs
 }
 
 namespace AppFrame {
@@ -34,9 +34,9 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Init() {
-      SetWindowSize(WINDOW_W, WINDOW_H);
+      SetWindowSize(WindowWidth, WindowHeight);
       ChangeWindowMode(true);
-      if (DxLib::DxLib_Init() == INIT_ERROR) {
+      if (DxLib::DxLib_Init() == InitError) {
 #ifdef _DEBUG
         throw std::logic_error("ApplicationBase:DXÉâÉCÉuÉâÉäÇÃèâä˙âªÇ…é∏îsÇµÇ‹ÇµÇΩ\n");
 #endif
@@ -53,13 +53,13 @@ namespace AppFrame {
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
       // âëúìxèÓïÒÇÃê›íË
       auto&& [sizeX, sizeY, colorBit] = _window;
-      sizeX = std::clamp(width, WIDTH_MIN, WINDOW_W);
-      sizeY = std::clamp(width, HEIGHT_MIN, WINDOW_H);
+      sizeX = std::clamp(width, WidthMin, WindowWidth);
+      sizeY = std::clamp(width, HeightMin, WindowHeight);
       if (bit) {
-        colorBit = COLOR_BIT_32;
+        colorBit = ColorBit32;
       }
       else {
-        colorBit = COLOR_BIT_16;
+        colorBit = ColorBit16;
       }
       SetGraphMode(sizeX, sizeY, colorBit);
     }

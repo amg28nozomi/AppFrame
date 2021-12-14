@@ -12,10 +12,10 @@
 
 /** フレームワーク用名前空間 */
 namespace AppFrame {
-  constexpr auto WINDOW_W = 1920; //!< デフォルトの解像度
-  constexpr auto WINDOW_H = 1080; //!< デフォルトの解像度
-  constexpr auto COLOR_BIT_32 = 32;  //!< デフォルトのカラービット数
-  constexpr auto COLOR_BIT_16 = 16;  //!<
+  constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度
+  constexpr auto WindowHeight = 1080; //!< デフォルトの解像度
+  constexpr auto ColorBit32 = 32;     //!< デフォルトのカラービット数
+  constexpr auto ColorBit16 = 16;     //!<
   /** Application用名前空間 */
   namespace App {
     /**
@@ -69,4 +69,3 @@ namespace AppFrame {
     };
   }
 } // namespace AppFrame
-
