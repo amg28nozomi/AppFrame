@@ -60,6 +60,13 @@ namespace AppFrame {
         return _trigger;
       }
       /**
+       * @brief  入力情報の取得
+       * @return 押下情報とトリガ情報
+       */
+      inline const auto GetInput() const {
+        return std::make_pair(_press, _trigger);
+      }
+      /**
        * @brief  アナログスティックの入力状態の取得
        * @return アナログスティックの押下情報
        */

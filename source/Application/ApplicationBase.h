@@ -13,11 +13,10 @@
 namespace FileWorker {
   class FileServer;
 }
-
 /** フレームワーク用名前空間 */
 namespace AppFrame {
-  constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度
-  constexpr auto WindowHeight = 1080; //!< デフォルトの解像度
+  constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度情報
+  constexpr auto WindowHeight = 1080; //!< デフォルトの解像度情報
   constexpr auto BitColor32 = 32;     //!< 32ビットカラー
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   /** Application用名前空間 */
@@ -47,14 +46,14 @@ namespace AppFrame {
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
        */
-      inline auto GetWindowSize() {
+      inline const auto GetWindowSize() {
         return std::make_pair(std::get<0>(_window), std::get<1>(_window));
       }
       /**
        * @brief  ウィンドウ情報の取得
        * @return ウィンドウサイズ・カラービット数を返す
        */
-      inline auto GetWidnowData() {
+      inline const auto GetWidnowData() {
         return _window;
       }
       /**

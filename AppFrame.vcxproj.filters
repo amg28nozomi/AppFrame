@@ -37,6 +37,12 @@
     <Filter Include="ヘッダー ファイル\Math">
       <UniqueIdentifier>{55a32628-8a64-4f93-8326-0c34157588cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\FileServer">
+      <UniqueIdentifier>{e23ac2ba-155f-4738-9daa-2b3a6119d6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\FileServer">
+      <UniqueIdentifier>{cd15684c-3c10-404b-af1e-6bda9722e3b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">

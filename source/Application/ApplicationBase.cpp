@@ -52,7 +52,20 @@ namespace AppFrame {
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileWorker::FileServer>();
 
-      if (!_fileServer->Init()) {
+      auto flag = false; // 初期化フラグ
+#ifndef _DEBUG
+      // ファイルサーバの初期化
+      // 初期化に失敗した場合は対応したエラーを発射
+      flag = _fileServer->Init();
+#else
+      try {
+        flag = _fileServer->Init();
+      }
+      catch (std::logic_error error) {
+        OutputDebugString(error.what());
+      }
+#endif
+      if (!flag) {
         return false; // 初期化失敗
       }
       return true;    // 初期化成功
