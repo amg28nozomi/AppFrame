@@ -78,6 +78,9 @@
     <ClInclude Include="source\Mode\ModeServer.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
+    <ClInclude Include="source\Data\Color.h">
+      <Filter>ヘッダー ファイル\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="source\Mode\ModeServer.cpp">
       <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Data\Color.cpp">
+      <Filter>ソース ファイル\Data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
