@@ -9,6 +9,7 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <stdexcept>
 #include <Windows.h>
 
 namespace AppFrame {
@@ -20,15 +21,10 @@ namespace AppFrame {
 #ifdef _DEBUG
       // 値は範囲内に収まっているか
       if (value < low) {
-        message = "値が下限を下回りました value:" + std::to_string(value) +  " low:" + std::to_string(low);
+        throw std::logic_error("値が下限を下回りました value:" + std::to_string(value) + " low:" + std::to_string(low));
       }
       else if (height < value) {
-        message = "値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height);
-      }
-      if (!message.empty()) {
-        // ログへの出力
-        message.append("\n");
-        OutputDebugString(message.data());
+        throw std::logic_error("値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height));
       }
 #endif
       return std::clamp(value, low, height);

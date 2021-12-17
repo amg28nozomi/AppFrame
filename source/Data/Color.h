@@ -30,7 +30,29 @@ namespace AppFrame {
        * @param blue  愛
        * @param alpha 透過度
        */
-      Color(const int red, const int green, const int blue, const int alpha);
+      Color(const int red, const int green, const int blue, const int alpha = MaxColor);
+      /**
+       * @brief カラー情報の設定
+       * @param red   輝度(赤)
+       * @param green 輝度(緑)
+       * @param blue  輝度(青)
+       * @param alpha 透明度
+       */
+      void SetColor(const int red, const int green, const int blue, const int alpha = MaxColor);
+      /**
+       * @brief 輝度の加算処理
+       * @param red   赤
+       * @param green 緑
+       * @param blue  青
+       */
+      void Add(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
+      /**
+       * @brief 輝度の減算処理
+       * @param red   赤
+       * @param green 緑
+       * @param blue  青
+       */
+      void Sub(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
        * @brief  各輝度の取得
        * @return RGB値
@@ -38,10 +60,9 @@ namespace AppFrame {
       inline const auto GetLuminace() const {
         return std::make_tuple(_red, _green, _blue);
       }
-      
       /**
        * @brief  RGBA値の取得
-       * @return 
+       * @return 各輝度と透明度
        */
       inline const auto GetRgba() const {
         return std::make_tuple(_red, _green, _blue, _alpha);
@@ -55,14 +76,14 @@ namespace AppFrame {
       }
       /**
        * @brief  輝度値(緑)の取得
-       * @return 赤の輝度値
+       * @return 緑の輝度値
        */
       inline const int GetGreen() const {
         return _green;
       }
       /**
        * @brief  輝度値(青)の取得
-       * @return 赤の輝度値
+       * @return 青の輝度値
        */
       inline const int GetBlue() const {
         return _blue;
@@ -81,12 +102,32 @@ namespace AppFrame {
       inline const int GetColorCode() const {
         return _code;
       }
+      /**
+       * @brief  カラー情報同士の加算処理
+       * @param  color カラー情報(加数)
+       * @return 加算したカラー情報
+       */
+      Color operator +(const Color color) const;
+      /**
+       * @brief  カラー情報同士の減算処理
+       * @param  color カラー情報(減数)
+       * @return 減算したカラー情報
+       */
+      Color operator -(const Color color) const;
     private:
       int _red;   //!< 輝度値(赤)
       int _green; //!< 輝度値(緑)
       int _blue;  //!< 輝度値(青)
       int _alpha; //!< 透明度
       int _code;  //!< カラーコード
+      /**
+       * @brief RGBA値のクランプ処理
+       * @param red   輝度(赤)
+       * @param green 輝度(緑)
+       * @param blue  輝度(青)
+       * @param alpha 透明度(デフォルトでは255)
+       */
+      void Clamp(const int red, const int green, const int blue, const int alpha = MaxColor);
     };
   }
 }
