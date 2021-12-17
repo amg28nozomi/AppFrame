@@ -11,10 +11,6 @@
 #include <stdexcept>
 #include <typeinfo>
 #include <vector>
-#include <Windows.h>
-
-namespace {
-}
 
 namespace AppFrame {
   namespace Math {
@@ -23,19 +19,19 @@ namespace AppFrame {
 
     template <typename T>
     T Math::Clamp(const T value, const T low, const T height) {
-      const auto id = typeid(value); // ˆø”‚ÌŒ^
+      auto id = typeid(value).name(); // ˆø”‚ÌŒ^
       auto flag = false; // ”»’èƒtƒ‰ƒO
-      // ˆø”‚ÌŒ^‚Í‘S‚Äˆê’v‚µ‚Ä‚¢‚é‚©H
-      bool accord = (id == typeid(low) == typeid(height));
-      if (!accord) {
-#ifdef _DEBUG
-        throw std::invalid_argument("Math::Clamp:ˆø”‚ÌŒ^‚ª•s³‚Å‚·BŒ^‚Í‘S‚Ä“ˆê‚µ‚Ä‚­‚¾‚³‚¢");
-#endif
-        return value; // Œ^‚ª•s³
-      }
+//      // ˆø”‚ÌŒ^‚Í‘S‚Äˆê’v‚µ‚Ä‚¢‚é‚©H
+//      bool accord = (id == typeid(low) == typeid(height));
+//      if (!accord) {
+//#ifdef _DEBUG
+//        throw std::invalid_argument("Math::Clamp:ˆø”‚ÌŒ^‚ª•s³‚Å‚·BŒ^‚Í‘S‚Ä“ˆê‚µ‚Ä‚­‚¾‚³‚¢");
+//#endif
+//        return value; // Œ^‚ª•s³
+//      }
       for (auto type : _clampType) {
         // ‘ÎÛ‚ÌŒ^‚Í‘Î‰‚µ‚Ä‚¢‚é‚©H
-        if (id == type) {
+        if (id == type.data()) {
           flag = true; // Œ^‚ªˆê’v
           break;
         }

@@ -75,13 +75,11 @@ namespace AppFrame {
       try {
         // デバッグビルド時は引数が不正ではないかの判定を行う
         _red = Math::Math::Clamp(red, MinColor, MaxColor);
-        _green = Math::Math::Clamp(blue, MinColor, MaxColor);
+        /* _green = Math::Math::Clamp(blue, MinColor, MaxColor);
         _blue = Math::Math::Clamp(green, MinColor, MaxColor);
-        _alpha = Math::Math::Clamp(alpha, MinColor, MaxColor);
+        _alpha = Math::Math::Clamp(alpha, MinColor, MaxColor);*/
       } catch (std::logic_error error) {
         OutputDebugString(error.what()); // ロジカルに問題有り
-      } catch (std::invalid_argument error) {
-        OutputDebugString(error.what()); // 引数が不正
       }
 #endif
       // カラーコードの取得
