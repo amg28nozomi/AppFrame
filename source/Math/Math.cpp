@@ -6,19 +6,49 @@
  * @date   December 2021
  *********************************************************************/
 #include "Math.h"
-#include <string>
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <typeinfo>
+#include <vector>
 #include <Windows.h>
+
+namespace {
+}
 
 namespace AppFrame {
   namespace Math {
+    // ƒfƒtƒHƒ‹ƒg‚Å‚ÍintŒ^AfloatŒ^AdoubleŒ^‚Ì‚İ‘Î‰
+    std::vector<std::string> Math::_clampType = { "int", "float", "double" };
 
     template <typename T>
     T Math::Clamp(const T value, const T low, const T height) {
-      std::string message;
+      const auto id = typeid(value); // ˆø”‚ÌŒ^
+      auto flag = false; // ”»’èƒtƒ‰ƒO
+      // ˆø”‚ÌŒ^‚Í‘S‚Äˆê’v‚µ‚Ä‚¢‚é‚©H
+      bool accord = (id == typeid(low) == typeid(height));
+      if (!accord) {
 #ifdef _DEBUG
+        throw std::invalid_argument("Math::Clamp:ˆø”‚ÌŒ^‚ª•s³‚Å‚·BŒ^‚Í‘S‚Ä“ˆê‚µ‚Ä‚­‚¾‚³‚¢");
+#endif
+        return value; // Œ^‚ª•s³
+      }
+      for (auto type : _clampType) {
+        // ‘ÎÛ‚ÌŒ^‚Í‘Î‰‚µ‚Ä‚¢‚é‚©H
+        if (id == type) {
+          flag = true; // Œ^‚ªˆê’v
+          break;
+        }
+      }
+#ifndef _DEBUG
+      if (!flag) {
+        return value; // Œ^‚ª‘Î‰‚µ‚Ä‚¢‚È‚¢
+      }
+#else
+      if (!flag) {
+        throw std::invalid_argument("Math::Clamp:ˆø”‚ÌŒ^‚ª•s³‚Å‚·B" + std::to_string(id) + "Œ^‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñ");
+        return value;
+      }
       // ’l‚Í”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©
       if (value < low) {
         throw std::logic_error("’l‚ª‰ºŒÀ‚ğ‰º‰ñ‚è‚Ü‚µ‚½ value:" + std::to_string(value) + " low:" + std::to_string(low));
@@ -29,5 +59,5 @@ namespace AppFrame {
 #endif
       return std::clamp(value, low, height);
     }
-  } // namespace AppFrame
-} // namespace Math
+  } // namespace Math
+} // namespace AppFrame

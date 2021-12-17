@@ -6,16 +6,14 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
-#include "FileWorker/FileBase.h"
-
-namespace fs = std::filesystem;
+#include "../FileServer/FileBase.h"
 
 namespace AppFrame {
   /**
    * @class DivGraph
    * @brief 画像ファイル情報
    */
-  class DivGraph : public FileWorker::FileBase {
+  class DivGraph : public FileServer::FileBase {
   public:
     /**
      * @brief 空の画像情報生成
@@ -30,7 +28,7 @@ namespace AppFrame {
      * @param xSize    分割後の画像サイズ(横)
      * @param ySize    分割後の画像サイズ(縦)
      */
-    DivGraph(fs::path filePath, int xNum, int yNum, int allNum, int xSize, int ySize);
+    DivGraph(std::filesystem::path filePath, int xNum, int yNum, int allNum, int xSize, int ySize);
     /**
      * @brief  画像情報の解放
      */
@@ -56,4 +54,4 @@ namespace AppFrame {
     int _xSize;  //!< 分割後の画像サイズ(幅)
     int _ySize;  //!< 分割後の画像サイズ(高さ)
   };
-}
+} // namespace AppFrame

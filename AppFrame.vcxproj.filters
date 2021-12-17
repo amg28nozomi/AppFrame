@@ -81,6 +81,18 @@
     <ClInclude Include="source\Data\Color.h">
       <Filter>ヘッダー ファイル\Data</Filter>
     </ClInclude>
+    <ClInclude Include="source\FileServer\FileBase.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileServer\FileOutput.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileServer\FileServer.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileServer\LoadJson.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -110,5 +122,20 @@
     <ClCompile Include="source\Data\Color.cpp">
       <Filter>ソース ファイル\Data</Filter>
     </ClCompile>
+    <ClCompile Include="source\FileServer\FileBase.cpp">
+      <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileServer\FileOutput.cpp">
+      <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileServer\FileServer.cpp">
+      <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileServer\LoadJson.cpp">
+      <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

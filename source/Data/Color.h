@@ -10,7 +10,6 @@
 
 namespace AppFrame {
   namespace Data {
-
     constexpr auto MaxColor = 255; //!< F‚ÌãŒÀ
     constexpr auto MinColor = 0;   //!< F‚Ì‰ºŒÀ
     /**
@@ -40,6 +39,11 @@ namespace AppFrame {
        */
       void SetColor(const int red, const int green, const int blue, const int alpha = MaxColor);
       /**
+       * @brief “§–¾“x‚ÌÝ’è
+       * @param alpha Ý’è‚·‚é“§–¾“x
+       */
+      void SetAlpha(const int alpha);
+      /**
        * @brief ‹P“x‚Ì‰ÁŽZˆ—
        * @param red   Ô
        * @param green —Î
@@ -47,12 +51,22 @@ namespace AppFrame {
        */
       void Add(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
+       * @brief ƒ¿’l‚Ì‰ÁŽZ
+       * @param add ‰Á”
+       */
+      void AddAlpha(const int add);
+      /**
        * @brief ‹P“x‚ÌŒ¸ŽZˆ—
        * @param red   Ô
        * @param green —Î
        * @param blue  Â
        */
       void Sub(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
+      /**
+       * @brief “§–¾“x‚ÌŒ¸ŽZˆ—
+       * @param sub Œ¸”
+       */
+      void SubAlpha(const int sub);
       /**
        * @brief  Še‹P“x‚ÌŽæ“¾
        * @return RGB’l
@@ -103,13 +117,13 @@ namespace AppFrame {
         return _code;
       }
       /**
-       * @brief  ƒJƒ‰[î•ñ“¯Žm‚Ì‰ÁŽZˆ—
+       * @brief  +‰‰ŽZŽq‚Å‚ÌƒJƒ‰[î•ñ“¯Žm‚Ì‰ÁŽZˆ—
        * @param  color ƒJƒ‰[î•ñ(‰Á”)
        * @return ‰ÁŽZ‚µ‚½ƒJƒ‰[î•ñ
        */
       Color operator +(const Color color) const;
       /**
-       * @brief  ƒJƒ‰[î•ñ“¯Žm‚ÌŒ¸ŽZˆ—
+       * @brief  -‰‰ŽZŽq‚Å‚ÌƒJƒ‰[î•ñ“¯Žm‚ÌŒ¸ŽZˆ—
        * @param  color ƒJƒ‰[î•ñ(Œ¸”)
        * @return Œ¸ŽZ‚µ‚½ƒJƒ‰[î•ñ
        */
@@ -129,6 +143,5 @@ namespace AppFrame {
        */
       void Clamp(const int red, const int green, const int blue, const int alpha = MaxColor);
     };
-  }
-}
-
+  } // namespace Data
+} // namespace AppFrame

@@ -11,11 +11,6 @@
 #include <DxLib.h>
 #include "../Math/Math.h"
 
-namespace {
-  constexpr auto MinLuminace = 0;
-  constexpr auto MaxLuminace = 255;
-}
-
 namespace AppFrame {
   namespace Data {
 
@@ -32,15 +27,27 @@ namespace AppFrame {
     }
 
     void Color::SetColor(const int red, const int green, const int blue, const int alpha) {
-      Clamp(red, green, blue);
+      Clamp(red, green, blue, alpha);
+    }
+
+    void Color::SetAlpha(const int alpha) {
+      _alpha = std::clamp(alpha, MinColor, MaxColor);
     }
 
     void Color::Add(const int red, const int green, const int blue) {
       Clamp(_red + red, _green + green, blue + blue, _alpha);
     }
 
+    void Color::AddAlpha(const int add) {
+      _alpha = std::clamp(_alpha + add, MinColor, MaxColor);
+    }
+
     void Color::Sub(const int red, const int green, const int blue) {
       Clamp(_red - red, _green - green, blue - blue, _alpha);
+    }
+
+    void Color::SubAlpha(const int sub) {
+      _alpha = std::clamp(_alpha - sub, MinColor, MaxColor);
     }
 
     Color Color::operator+(const Color color) const {
@@ -65,7 +72,6 @@ namespace AppFrame {
       _blue = std::clamp(blue, MinColor, MaxColor);
       _alpha = std::clamp(alpha, MinColor, MaxColor);
 #else
-#endif
       try {
         // デバッグビルド時は引数が不正ではないかの判定を行う
         _red = Math::Math::Clamp(red, MinColor, MaxColor);
@@ -73,11 +79,13 @@ namespace AppFrame {
         _blue = Math::Math::Clamp(green, MinColor, MaxColor);
         _alpha = Math::Math::Clamp(alpha, MinColor, MaxColor);
       } catch (std::logic_error error) {
-        OutputDebugString(error.what());
-      } catch (...) {
-        OutputDebugString("不明なエラーが発生しました\n");
+        OutputDebugString(error.what()); // ロジカルに問題有り
+      } catch (std::invalid_argument error) {
+        OutputDebugString(error.what()); // 引数が不正
       }
+#endif
+      // カラーコードの取得
       _code = GetColor(_red, _green, _blue);
     }
-  }
-}
+  } // namespace Data
+} // namespace AppFrame

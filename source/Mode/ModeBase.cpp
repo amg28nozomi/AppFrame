@@ -36,5 +36,5 @@ namespace AppFrame {
     bool ModeBase::Draw() {
       return true;
     }
-  }
-}
+  } // namespace Mode
+} // namespace AppFrame

@@ -13,7 +13,7 @@ namespace AppFrame {
     Clear();
   }
 
-  DivGraph::DivGraph(fs::path filePath, int xNum, int yNum, int allNum, int xSize, int ySize) : FileBase(filePath) {
+  DivGraph::DivGraph(std::filesystem::path filePath, int xNum, int yNum, int allNum, int xSize, int ySize) : FileBase(filePath) {
     _xNum = xNum;
     _yNum = yNum;
     _allNum = allNum;
@@ -29,4 +29,4 @@ namespace AppFrame {
     _xSize = 0;
     _ySize = 0;
   }
-}
+} // namespace AppFrame

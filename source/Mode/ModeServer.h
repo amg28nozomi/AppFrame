@@ -56,5 +56,5 @@ namespace AppFrame {
       ModeMap _registry; //!< レジストリ―
       ModeList _modes;   //!< スタック
     };
-  }
-}
+  } // namespace Mode
+} // namespace AppFrame

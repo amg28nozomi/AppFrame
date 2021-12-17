@@ -80,5 +80,5 @@ namespace AppFrame {
       int _trigger;               //!< トリガ情報
       std::pair<int, int> _lever; //!< アナログスティック
     };
-  }
-}
+  } // namespace App
+} // namespace AppFrame

@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <DxLib.h>
-#include "FileWorker/FileServer.h"
+#include "../FileServer/FileServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -50,7 +50,7 @@ namespace AppFrame {
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
-      _fileServer = std::make_unique<FileWorker::FileServer>();
+      _fileServer = std::make_unique<FileServer::FileServer>();
 
       auto flag = false; // 初期化フラグ
 #ifndef _DEBUG
