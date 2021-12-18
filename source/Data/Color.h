@@ -142,6 +142,11 @@ namespace AppFrame {
        * @param alpha 透明度(デフォルトでは255)
        */
       void Clamp(const int red, const int green, const int blue, const int alpha = MaxColor);
+      /**
+       * @brief  カラーコードの設定
+       * @return カラーコード
+       */
+      int SetColor() const;
     };
   } // namespace Data
 } // namespace AppFrame

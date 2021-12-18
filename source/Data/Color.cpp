@@ -85,5 +85,15 @@ namespace AppFrame {
       // カラーコードの取得
       _code = GetColor(_red, _green, _blue);
     }
+
+    int Color::SetColor() const {
+      // それぞれの輝度を16進数に変換
+      auto red = Math::Math::ToHexadecimal(_red);
+      auto green = Math::Math::ToHexadecimal(_green);
+      auto blue = Math::Math::ToHexadecimal(_blue);
+      auto colorCode = red + green + blue;
+      return std::stoi(colorCode);
+    }
+
   } // namespace Data
 } // namespace AppFrame
