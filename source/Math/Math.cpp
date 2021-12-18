@@ -8,9 +8,16 @@
 #include "Math.h"
 #include <cmath>
 #include <algorithm>
+#include <charconv>
 #include <stdexcept>
 #include <typeinfo>
 #include <vector>
+
+namespace {
+  constexpr auto Binary = 2;       // 2進数
+  constexpr auto Decimal = 10;     // 10進数
+  constexpr auto Hexadecimal = 16; // 16進数
+}
 
 namespace AppFrame {
   namespace Math {
@@ -54,6 +61,59 @@ namespace AppFrame {
       }
 #endif
       return std::clamp(value, low, height);
+    }
+
+    std::string Math::ToBinary(int num) {
+      std::string binary; // 2進数
+      while (num != 0) {
+        // 余りが出るか？
+        binary += (num % Binary == 0 ? "0" : "1");
+        num /= Binary;
+      }
+      return binary;
+    }
+
+    std::string Math::ToHexadecimal(int num) {
+      std::string hexadecimal; // 16進数
+      while (num != 0) {
+        auto param = num % Hexadecimal; // 余剰
+        hexadecimal += ToRemainder16(param); // 余剰を文字列に変換し、末尾に追加
+        num /= Hexadecimal;
+      }
+      return hexadecimal;
+    }
+
+    int Math::ToInteger(std::string_view num) {
+      return 0;
+    }
+
+    std::string Math::ToRemainder16(const int remainder) {
+#ifdef _DEBUG
+      // 引数は対象範囲に収まっているか？
+      if (Hexadecimal <= remainder) {
+        throw std::logic_error("Math::ToRemainder16:引数の値が対象範囲外です\n");
+      }
+#endif
+      // 不具合対策用
+      auto num = std::clamp(remainder, 0, 15);
+      // 10以上の場合はそれぞれ対応するアルファベット
+      // 10未満の場合は文字列に変換した値を返す
+      switch (num) {
+      case 15:
+        return "F";
+      case 14:
+        return "E";
+      case 13:
+        return "D";
+      case 12:
+        return "C";
+      case 11:
+        return "B";
+      case 10:
+        return "A";
+      default:
+        return std::to_string(num);
+      }
     }
   } // namespace Math
 } // namespace AppFrame
