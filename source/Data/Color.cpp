@@ -34,7 +34,7 @@ namespace AppFrame {
       _alpha = std::clamp(alpha, MinColor, MaxColor);
     }
 
-    void Color::Add(const int red, const int green, const int blue) {
+    void Color::AddColor(const int red, const int green, const int blue) {
       Clamp(_red + red, _green + green, blue + blue, _alpha);
     }
 
@@ -42,7 +42,7 @@ namespace AppFrame {
       _alpha = std::clamp(_alpha + add, MinColor, MaxColor);
     }
 
-    void Color::Sub(const int red, const int green, const int blue) {
+    void Color::SubColor(const int red, const int green, const int blue) {
       Clamp(_red - red, _green - green, blue - blue, _alpha);
     }
 
@@ -83,16 +83,17 @@ namespace AppFrame {
       }
 #endif
       // カラーコードの取得
-      _code = SetColor();
+      _code = GetColor(_red, _green, _blue);
     }
 
-    int Color::SetColor() const {
+    int Color::GetColor(const int red, const int green, const int blue) {
       // それぞれの輝度を16進数に変換
-      auto red = Math::Arithmetic::ToHexadecimal(_red);
-      auto green = Math::Arithmetic::ToHexadecimal(_green);
-      auto blue = Math::Arithmetic::ToHexadecimal(_blue);
-      auto colorCode = red + green + blue;
-      return std::stoi(colorCode);
+      auto r = Math::Arithmetic::ToHexadecimal(red);
+      auto g = Math::Arithmetic::ToHexadecimal(green);
+      auto b = Math::Arithmetic::ToHexadecimal(blue);
+      auto colorCode = r + g + b;
+      // 16進数文字列を整数に変換して返す
+      return std::stoi(colorCode, nullptr, 16);
     }
 
   } // namespace Data

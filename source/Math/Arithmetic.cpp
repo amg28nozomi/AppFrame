@@ -77,7 +77,10 @@ namespace AppFrame {
 
     std::string Arithmetic::ToHexadecimal(int num) {
       std::string hexadecimal; // 16進数
-      auto i = 0; // 処理回数
+      // 値が0の場合は処理を変更
+      if (num == 0) {
+        return "00";
+      }
       while (num != 0) {
         auto param = num % Hexadecimal;      // 余剰
         hexadecimal += ToRemainder16(param); // 文字列に変換した余剰を末尾に追加
@@ -107,17 +110,17 @@ namespace AppFrame {
       // 10未満の場合は文字列に変換した値を返す
       switch (num) {
       case 15:
-        return "F";
+        return "f";
       case 14:
-        return "E";
+        return "e";
       case 13:
-        return "D";
+        return "d";
       case 12:
-        return "C";
+        return "c";
       case 11:
-        return "B";
+        return "b";
       case 10:
-        return "A";
+        return "a";
       default:
         return std::to_string(num);
       }

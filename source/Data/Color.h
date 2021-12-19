@@ -27,7 +27,7 @@ namespace AppFrame {
        * @param red   赤
        * @param green 緑
        * @param blue  愛
-       * @param alpha 透過度
+       * @param alpha 透過度(デフォルトでは255)
        */
       Color(const int red, const int green, const int blue, const int alpha = MaxColor);
       /**
@@ -35,12 +35,12 @@ namespace AppFrame {
        * @param red   輝度(赤)
        * @param green 輝度(緑)
        * @param blue  輝度(青)
-       * @param alpha 透明度
+       * @param alpha 透明度(デフォルトでは255)
        */
       void SetColor(const int red, const int green, const int blue, const int alpha = MaxColor);
       /**
        * @brief 透明度の設定
-       * @param alpha 設定する透明度
+       * @param alpha 透明度
        */
       void SetAlpha(const int alpha);
       /**
@@ -49,7 +49,7 @@ namespace AppFrame {
        * @param green 緑
        * @param blue  青
        */
-      void Add(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
+      void AddColor(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
        * @brief α値の加算
        * @param add 加数
@@ -61,12 +61,20 @@ namespace AppFrame {
        * @param green 緑
        * @param blue  青
        */
-      void Sub(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
+      void SubColor(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
        * @brief 透明度の減算処理
        * @param sub 減数
        */
       void SubAlpha(const int sub);
+      /**
+       * @brief  カラーコードの取得
+       * @param  red   輝度(赤)
+       * @param  green 輝度(緑)
+       * @param  blue  輝度(青)
+       * @return カラーコード
+       */
+      static int GetColor(const int red, const int green, const int blue);
       /**
        * @brief  各輝度の取得
        * @return RGB値
@@ -142,11 +150,6 @@ namespace AppFrame {
        * @param alpha 透明度(デフォルトでは255)
        */
       void Clamp(const int red, const int green, const int blue, const int alpha = MaxColor);
-      /**
-       * @brief  カラーコードの設定
-       * @return カラーコード
-       */
-      int SetColor() const;
     };
   } // namespace Data
 } // namespace AppFrame
