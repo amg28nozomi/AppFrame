@@ -179,6 +179,7 @@
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
     <ClInclude Include="source\SoundServer\SoundMem.h" />
+    <ClInclude Include="source\SoundServer\SoundServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
     <ClCompile Include="source\SoundServer\SoundMem.cpp" />
+    <ClCompile Include="source\SoundServer\SoundServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

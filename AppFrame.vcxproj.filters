@@ -99,6 +99,9 @@
     <ClInclude Include="source\SoundServer\SoundMem.h">
       <Filter>ヘッダー ファイル\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="source\SoundServer\SoundServer.h">
+      <Filter>ヘッダー ファイル\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -144,6 +147,9 @@
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
     <ClCompile Include="source\SoundServer\SoundMem.cpp">
+      <Filter>ソース ファイル\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SoundServer\SoundServer.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
   </ItemGroup>

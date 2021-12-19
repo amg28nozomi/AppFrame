@@ -13,7 +13,7 @@ namespace AppFrame {
 
     SoundMem::SoundMem(std::filesystem::path filePath, const int playType) : FileBase(filePath) {
       _playType = playType;
-      _soundHandle = 0;
+      _soundHandle = LoadSoundMem(filePath.string().data());
     }
   }
 }
