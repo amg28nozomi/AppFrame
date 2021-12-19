@@ -178,7 +178,7 @@
     <ClInclude Include="source\Math\Vector4.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
-    <ClInclude Include="source\SoundServer\SoundNum.h" />
+    <ClInclude Include="source\SoundServer\SoundMem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
@@ -195,7 +195,7 @@
     <ClCompile Include="source\Math\Vector4.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
-    <ClCompile Include="source\SoundServer\SoundNum.cpp" />
+    <ClCompile Include="source\SoundServer\SoundMem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

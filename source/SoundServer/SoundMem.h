@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   SoundNum.h
+ * @file   SoundMem.h
  * @brief  音源ファイル情報クラス
  * 
  * @author 鈴木希海
@@ -10,16 +10,16 @@
 namespace AppFrame {
   namespace Sound {
     /**
-     * @class SoundNum
+     * @class SoundMem
      * @brief 音源ファイルクラス
      */
-    class SoundNum : public FileServer::FileBase {
+    class SoundMem : public FileServer::FileBase {
     public:
       /**
        * @brief 音源情報の生成
        * @param filePath 音源ファイルのパス
        */
-      SoundNum(std::filesystem::path filePath, const int playType);
+      SoundMem(std::filesystem::path filePath, const int playType);
       /**
        * @brief  サウンドハンドルの取得
        * @return サウンドハンドル

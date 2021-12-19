@@ -96,7 +96,7 @@
     <ClInclude Include="source\Math\Matrix44.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
-    <ClInclude Include="source\SoundServer\SoundNum.h">
+    <ClInclude Include="source\SoundServer\SoundMem.h">
       <Filter>ヘッダー ファイル\Sound</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,7 +143,7 @@
     <ClCompile Include="source\Math\Matrix44.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="source\SoundServer\SoundNum.cpp">
+    <ClCompile Include="source\SoundServer\SoundMem.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
   </ItemGroup>
