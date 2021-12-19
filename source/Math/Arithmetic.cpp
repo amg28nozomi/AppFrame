@@ -12,12 +12,6 @@
 #include <stdexcept>
 #include <vector>
 
-namespace {
-  constexpr auto Binary = 2;       // 2êiêî
-  constexpr auto Decimal = 10;     // 10êiêî
-  constexpr auto Hexadecimal = 16; // 16êiêî
-}
-
 namespace AppFrame {
   namespace Math {
 

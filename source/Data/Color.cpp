@@ -93,7 +93,7 @@ namespace AppFrame {
       auto b = Math::Arithmetic::ToHexadecimal(blue);
       auto colorCode = r + g + b;
       // 16i”•¶š—ñ‚ğ®”‚É•ÏŠ·‚µ‚Ä•Ô‚·
-      return std::stoi(colorCode, nullptr, 16);
+      return std::stoi(colorCode, nullptr, Math::Hexadecimal);
     }
 
   } // namespace Data

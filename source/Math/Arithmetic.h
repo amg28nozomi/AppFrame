@@ -12,6 +12,9 @@
 namespace AppFrame {
   /** 算術処理用名前空間 */
   namespace Math {
+    constexpr auto Binary = 2;       //!< 2進数
+    constexpr auto Decimal = 10;     //!< 10進数
+    constexpr auto Hexadecimal = 16; //!< 16進数
     /**
      * @class Arithmetic
      * @brief 算術処理用クラス
