@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <DxLib.h>
-#include "../Math/Math.h"
+#include "../Math/Arithmetic.h"
 
 namespace AppFrame {
   namespace Data {
@@ -74,23 +74,23 @@ namespace AppFrame {
 #else
       try {
         // デバッグビルド時は引数が不正ではないかの判定を行う
-        _red = Math::Math::Clamp(red, MinColor, MaxColor);
-        /* _green = Math::Math::Clamp(blue, MinColor, MaxColor);
-        _blue = Math::Math::Clamp(green, MinColor, MaxColor);
-        _alpha = Math::Math::Clamp(alpha, MinColor, MaxColor);*/
+        _red = Math::Arithmetic::Clamp(red, MinColor, MaxColor);
+        _green = Math::Arithmetic::Clamp(blue, MinColor, MaxColor);
+        _blue = Math::Arithmetic::Clamp(green, MinColor, MaxColor);
+        _alpha = Math::Arithmetic::Clamp(alpha, MinColor, MaxColor);
       } catch (std::logic_error error) {
         OutputDebugString(error.what()); // ロジカルに問題有り
       }
 #endif
       // カラーコードの取得
-      _code = GetColor(_red, _green, _blue);
+      _code = SetColor();
     }
 
     int Color::SetColor() const {
       // それぞれの輝度を16進数に変換
-      auto red = Math::Math::ToHexadecimal(_red);
-      auto green = Math::Math::ToHexadecimal(_green);
-      auto blue = Math::Math::ToHexadecimal(_blue);
+      auto red = Math::Arithmetic::ToHexadecimal(_red);
+      auto green = Math::Arithmetic::ToHexadecimal(_green);
+      auto blue = Math::Arithmetic::ToHexadecimal(_blue);
       auto colorCode = red + green + blue;
       return std::stoi(colorCode);
     }

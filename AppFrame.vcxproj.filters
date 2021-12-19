@@ -69,7 +69,7 @@
     <ClInclude Include="source\Math\Vector4.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
-    <ClInclude Include="source\Math\Math.h">
+    <ClInclude Include="source\Math\Arithmetic.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
     <ClInclude Include="source\Mode\ModeBase.h">
@@ -93,6 +93,9 @@
     <ClInclude Include="source\FileServer\LoadJson.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
+    <ClInclude Include="source\Math\Matrix44.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -110,7 +113,7 @@
     <ClCompile Include="source\Application\JoypadState.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
-    <ClCompile Include="source\Math\Math.cpp">
+    <ClCompile Include="source\Math\Arithmetic.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
     <ClCompile Include="source\Mode\ModeBase.cpp">
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="source\FileServer\LoadJson.cpp">
       <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\Matrix44.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

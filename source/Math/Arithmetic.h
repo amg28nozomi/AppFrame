@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   Math.h
+ * @file   Arithmetic.h
  * @brief  算術処理クラス
  * 
  * @author 鈴木希海
@@ -13,24 +13,28 @@ namespace AppFrame {
   /** 算術処理用名前空間 */
   namespace Math {
     /**
-     * @class Math
+     * @class Arithmetic
      * @brief 算術処理用クラス
      */
-    class Math {
+    class Arithmetic {
     public:
       /**
-       * @brief  値のクランプ処理
-       * @tparam T      引数の型
-       *                int、float、double型ではない場合は処理を中断
+       * @brief  整数値のクランプ処理
        * @param  value  クランプする値
        * @param  low    下限
        * @param  height 上限
        * @return クランプした値
-       *         条件を満たしていない場合はvalueを返す
        * @throw  std::logic_error std::invalid_argument
        */
-      template <typename T>
-      static T Clamp(const T value, const T low, const T height);
+      static int Clamp(const int value, const int low, const int height);
+      /**
+       * @brief  
+       * @param  value  単精度浮動小数点実数
+       * @param  low    クランプ下限
+       * @param  height クランプ上限
+       * @return クランプした値
+       */
+      static float Clamp(const float value, const float low, const float height);
       /**
        * @brief  10進数値を2進数値に変換
        * @param  num 10進数値

@@ -5,6 +5,7 @@
  * @author —é–ØŠóŠC
  * @date   December 2021
  *********************************************************************/
+#pragma once
 
 namespace AppFrame {
   namespace App {
