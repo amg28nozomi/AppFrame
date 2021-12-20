@@ -22,20 +22,24 @@ namespace AppFrame {
        */
       FileBase();
       /**
-       * @brief ファイルデータの生成
+       * @brief ファイルデータの生成(キー情報無し)
        * @param filePath ファイルのパス
        */
       FileBase(std::filesystem::path filePath);
+      /**
+       * @brief ファイルデータの生成(キー情報有り)
+       * @param filrPath
+       * @param key
+       */
+      FileBase(std::filesystem::path filrPath, std::string_view key);
       /**
        * @brief ファイルデータの破棄
        */
       ~FileBase();
       /**
-       * @brief パスの破棄
+       * @brief ファイルデータのリセット
        */
-      inline void Clear() {
-        _path.clear();
-      }
+      void Clear();
       /**
        * @brief  パスの取得
        * @return ファイルパスを返す
@@ -50,8 +54,16 @@ namespace AppFrame {
       inline std::string GetFileName() const {
         return _path.stem().string();
       }
+      /**
+       * @brief  キー情報の取得
+       * @return 連想配列に登録するキー
+       */
+      inline std::string GetKey() const {
+        return _key;
+      }
     protected:
       std::filesystem::path _path; //!< ファイルパス
+      std::string _key;            //!< 連想配列で使用するキー
     };
   } // namespace FileServer
 } // namespace AppFrame

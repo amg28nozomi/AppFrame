@@ -68,7 +68,7 @@ namespace AppFrame {
       static inline bool _isAdd = false; //!< 生成フラグ
       static inline bool _windowMode;    //!< ウィンドウモード
       static inline std::shared_ptr<ApplicationBase> _instance = nullptr; //!< 実態
-      std::unique_ptr<FileServer::FileServer> _fileServer;  //!
+      std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
     };
   } // namespace App
 } // namespace AppFrame

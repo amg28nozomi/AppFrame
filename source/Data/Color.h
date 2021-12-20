@@ -79,14 +79,14 @@ namespace AppFrame {
        * @brief  各輝度の取得
        * @return RGB値
        */
-      inline const auto GetLuminace() const {
+      inline const std::tuple<int, int, int> GetLuminace() const {
         return std::make_tuple(_red, _green, _blue);
       }
       /**
        * @brief  RGBA値の取得
        * @return 各輝度と透明度
        */
-      inline const auto GetRgba() const {
+      inline const std::tuple<int, int, int, int> GetRgba() const {
         return std::make_tuple(_red, _green, _blue, _alpha);
       }
       /**

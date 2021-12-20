@@ -7,8 +7,10 @@
  *********************************************************************/
 #include "Color.h"
 #include <algorithm>
+#ifdef _DEBUG
 #include <stdexcept>
-#include <DxLib.h>
+#endif
+#include <Windows.h>
 #include "../Math/Arithmetic.h"
 
 namespace AppFrame {
@@ -18,8 +20,8 @@ namespace AppFrame {
       _red = 0;
       _green = 0;
       _blue = 0;
-      _alpha = 0;
-      _code = 0;
+      _alpha = MaxColor;
+      _code = GetColor(_red, _green, _blue);
     }
 
     Color::Color(const int red, const int green, const int blue, const int alpha) {
@@ -91,8 +93,9 @@ namespace AppFrame {
       auto r = Math::Arithmetic::ToHexadecimal(red);
       auto g = Math::Arithmetic::ToHexadecimal(green);
       auto b = Math::Arithmetic::ToHexadecimal(blue);
+      // Œ‹‡
       auto colorCode = r + g + b;
-      // 16i”•¶š—ñ‚ğ®”‚É•ÏŠ·‚µ‚Ä•Ô‚·
+      // 16i”•¶š—ñ‚ğ®”‚É•ÏŠ·‚·‚é
       return std::stoi(colorCode, nullptr, Math::Hexadecimal);
     }
 

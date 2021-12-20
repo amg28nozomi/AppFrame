@@ -19,7 +19,7 @@ namespace AppFrame {
 #ifndef _DEBUG
       // ‰ºŒÀ‚ªãŒÀ‚ğ’´‰ß‚µ‚Ä‚¢‚È‚¢‚©H
       if (height <= low) {
-        return value; // Œ³‚Ì’l‚ğ•Ô‚·
+        return -1; // Œ³‚Ì’l‚ğ•Ô‚·
       }
 #else
       if (height <= low) {

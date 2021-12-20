@@ -61,7 +61,7 @@ namespace AppFrame {
       }
       /**
        * @brief  “ü—Íî•ñ‚Ìæ“¾
-       * @return ‰Ÿ‰ºî•ñ‚ÆƒgƒŠƒKî•ñ
+       * @return ‰Ÿ‰ºî•ñ ƒgƒŠƒKî•ñ
        */
       inline const auto GetInput() const {
         return std::make_pair(_press, _trigger);
