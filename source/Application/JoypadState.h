@@ -42,7 +42,7 @@ namespace AppFrame {
        * @brief  識別番号の取得
        * @return 識別番号
        */
-      inline const auto GetId() const {
+      inline const int GetId() const {
         return _id;
       }
       /**
@@ -63,22 +63,23 @@ namespace AppFrame {
        * @brief  入力情報の取得
        * @return 押下情報 トリガ情報
        */
-      inline const auto GetInput() const {
+      inline const std::pair<int, int> GetInput() const {
         return std::make_pair(_press, _trigger);
       }
       /**
        * @brief  アナログスティックの入力状態の取得
-       * @return アナログスティックの押下情報
+       * @return X軸の入力状態 y軸の入力状態
        */
-      inline const auto GetLever() const {
-        return _lever;
+      inline const std::pair<int, int> GetLever() const {
+        return std::make_pair(_leverX, _leverY);
       }
     private:
-      static int _connection;     //!< 総接続数
-      int _id;                    //!< 識別番号
-      int _press;                 //!< 押下情報
-      int _trigger;               //!< トリガ情報
-      std::pair<int, int> _lever; //!< アナログスティック
+      static int _connection; //!< 総接続数
+      int _id;                //!< 識別番号
+      int _press;             //!< 押下情報
+      int _trigger;           //!< トリガ情報
+      int _leverX;            //!< アナログスティックの入力情報(縦)
+      int _leverY;            //!< アナログスティックの入力情報(横)
     };
   } // namespace App
 } // namespace AppFrame

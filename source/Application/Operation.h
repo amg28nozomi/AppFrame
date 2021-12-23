@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include <string>
 
 namespace AppFrame {
   namespace App {

@@ -23,10 +23,12 @@ namespace AppFrame {
       ++_connection;
       _press = 0;
       _trigger = 0;
+      _leverX = 0;
+      _leverY = 0;
     }
 
     JoypadState::~JoypadState() {
-      --_connection;
+      --_connection; // 接続数を減らす
     }
 
     bool JoypadState::Process() {
@@ -41,8 +43,7 @@ namespace AppFrame {
       // トリガ情報の更新
       _trigger = _press ^ old & _press;
       // アナログスティックの入力状態取得
-      auto&& [xBuf, yBuf] = _lever;
-      if (!GetJoypadAnalogInput(&xBuf, &yBuf, _id)) {
+      if (!GetJoypadAnalogInput(&_leverX, &_leverY, _id)) {
 #ifdef _DEBUG
         throw std::logic_error("アナログスティックの入力状態の取得に失敗しました\n");
 #endif
