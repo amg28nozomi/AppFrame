@@ -8,6 +8,9 @@
 #pragma once
 #include <unordered_map>
 #include <filesystem>
+#ifdef _DEBUG
+#include <stdexcept>
+#endif
 
 namespace AppFrame {
   namespace FileServer {
@@ -49,6 +52,12 @@ namespace AppFrame {
        * @throw  std::logic_error
        */
       static std::string_view Differebce(const int key, const int path) noexcept;
+      /**
+       * @brief  std::logic_error‚Ìæ“¾
+       * @param  message ƒGƒ‰[‚É‚½‚¹‚é•¶š—ñ
+       * @return İ’è‚µ‚½logic_error‚ğ•Ô‚·
+       */
+      static std::logic_error GetLogicError(std::string message);
 #endif
     };
   } // namespace FileServer

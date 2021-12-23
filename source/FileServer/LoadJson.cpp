@@ -39,6 +39,7 @@ namespace AppFrame {
         return FileBaseMap(); // 空データを返す
       }
       namespace json = nlohmann; // 別名定義
+      // jsonオブジェクトに
       json::json j;
       jsonFile >> j;
       jsonFile.close();
@@ -91,6 +92,10 @@ namespace AppFrame {
         message = "キーのサイズがパスよりも" + std::to_string(value) + "多いです\n";
       }
       return std::string_view(message);
+    }
+
+    std::logic_error LoadJson::GetLogicError(std::string message) {
+      return std::logic_error("LoadJson::" + message + "/n");
     }
 #endif
 
