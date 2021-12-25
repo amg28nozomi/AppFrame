@@ -105,6 +105,9 @@
     <ClInclude Include="source\FileServer\WriteJson.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
+    <ClInclude Include="source\Data\ServerBase.h">
+      <Filter>ヘッダー ファイル\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -157,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="source\FileServer\WriteJson.cpp">
       <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Data\ServerBase.cpp">
+      <Filter>ソース ファイル\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

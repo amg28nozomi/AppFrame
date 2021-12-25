@@ -169,6 +169,7 @@
     <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\Color.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
+    <ClInclude Include="source\Data\ServerBase.h" />
     <ClInclude Include="source\FileServer\FileBase.h" />
     <ClInclude Include="source\FileServer\FileOutput.h" />
     <ClInclude Include="source\FileServer\FileServer.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\Color.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />
+    <ClCompile Include="source\Data\ServerBase.cpp" />
     <ClCompile Include="source\FileServer\FileBase.cpp" />
     <ClCompile Include="source\FileServer\FileOutput.cpp" />
     <ClCompile Include="source\FileServer\FileServer.cpp" />

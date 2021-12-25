@@ -61,6 +61,13 @@ namespace AppFrame {
       inline std::string GetKey() const {
         return _key;
       }
+      /**
+       * @brief  キーとパスの取得
+       * @return 左辺:キー 右辺:パス
+       */
+      inline std::pair<std::string_view, std::filesystem::path> GetFileData() {
+        return { _key, _path };
+      }
     protected:
       std::filesystem::path _path; //!< ファイルパス
       std::string _key;            //!< 連想配列で使用するキー
