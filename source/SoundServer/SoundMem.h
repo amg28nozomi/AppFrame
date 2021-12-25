@@ -24,22 +24,22 @@ namespace AppFrame {
        * @brief  サウンドハンドルの取得
        * @return サウンドハンドル
        */
-      inline const auto GetSoundHandle() const {
+      inline const int GetSoundHandle() const {
         return _soundHandle;
       }
       /**
        * @brief  再生タイプの取得
        * @return 再生タイプ
        */
-      inline const auto GetPlayType() const {
+      inline const int GetPlayType() const {
         return _playType;
       }
       /**
        * @brief  音源情報の取得
        * @return サウンドハンドル 再生タイプ
        */
-      inline const auto GetSoundData() const {
-        return std::make_pair(_soundHandle, _playType);
+      inline const std::pair<int, int> GetSoundData() const {
+        return { _soundHandle, _playType };
       }
     private:
       int _soundHandle; //!< サウンドハンドル

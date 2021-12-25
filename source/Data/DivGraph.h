@@ -38,15 +38,15 @@ namespace AppFrame {
        * @brief  分割情報の取得
        * @return 画像の分割数を返す
        */
-      inline const auto GetNum() const {
-        return std::make_tuple(_xNum, _yNum, _allNum);
+      inline const std::tuple<int, int, int> GetNum() const {
+        return { _xNum, _yNum, _allNum };
       }
       /**
        * @brief  分割後の画像サイズの取得
        * @return 画像サイズを返す
        */
-      inline const auto GetSize() const {
-        return std::make_pair(_xSize, _ySize);
+      inline const std::pair<int, int> GetSize() const {
+        return { _xSize, _ySize };
       }
     private:
       int _xNum;   //!< 縦分割数
