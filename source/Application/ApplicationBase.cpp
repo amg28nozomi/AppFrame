@@ -8,7 +8,9 @@
 #include "ApplicationBase.h"
 #include <string>
 #include <algorithm>
+#ifdef _DEBUG
 #include <stdexcept>
+#endif
 #include <DxLib.h>
 #include "../FileServer/FileServer.h"
 
@@ -23,11 +25,10 @@ namespace AppFrame {
   namespace App {
     
     ApplicationBase::ApplicationBase() {
-#ifdef _DEBUG
-      _windowMode = false;
-#endif
 #ifndef _DEBUG
       _windowMode = true;
+#else
+      _windowMode = false;
 #endif
       _fileServer = nullptr;
     }
@@ -69,6 +70,38 @@ namespace AppFrame {
         return false; // 初期化失敗
       }
       return true;    // 初期化成功
+    }
+
+    void ApplicationBase::Run() {
+      // メインループ
+      while (_state != State::Quit) {
+#ifndef _DEBUG
+        Input();   // 入力
+        Process(); // 更新
+        Draw();    // 描画
+#else
+        try {
+          Input();   // 入力
+          Process(); // 更新
+          Draw();    // 描画
+        } catch (std::logic_error error) {
+          // 例外発生時、出力を行う
+          OutputDebugString(error.what());
+        }
+#endif
+      }
+    }
+
+    bool ApplicationBase::Input() {
+      return true;
+    }
+
+    bool ApplicationBase::Process() {
+      return true;
+    }
+
+    bool ApplicationBase::Draw() {
+      return true;
     }
 
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {

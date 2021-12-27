@@ -108,6 +108,9 @@
     <ClInclude Include="source\Data\ServerBase.h">
       <Filter>ヘッダー ファイル\Data</Filter>
     </ClInclude>
+    <ClInclude Include="source\Math\GravityBase.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="source\Data\ServerBase.cpp">
       <Filter>ソース ファイル\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\GravityBase.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

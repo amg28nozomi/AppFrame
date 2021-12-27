@@ -27,6 +27,14 @@ namespace AppFrame {
     class ApplicationBase {
     public:
       /**
+       * @brief  アプリケーションの状態
+       */
+      enum class State {
+        Play,   //!< 実行中
+        Paused, //!< 一時停止
+        Quit    //!< 終了
+      };
+      /**
        * @brief コンストラクタ
        * 
        */
@@ -41,6 +49,26 @@ namespace AppFrame {
        *         失敗した場合はfalseを返す
        */
       virtual bool Init();
+      /**
+       * @brief  実行処理
+       */
+      virtual void Run();
+      /**
+       * @brief  入力処理
+       * @return true:処理成功 false:処理失敗
+       * @throw
+       */
+      virtual bool Input();
+      /**
+       * @brief  更新処理
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Process();
+      /**
+       * @brief  描画処理
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Draw();
       /**
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
@@ -64,10 +92,11 @@ namespace AppFrame {
        */
       static void SetWindowSize(int width, int height, bool bit = true);
     protected:
+      State _state{State::Play}; //!< アプリケーションの状態
       static inline std::tuple<int, int, int> _window; //!< ウィンドウ情報
-      static inline bool _isAdd = false; //!< 生成フラグ
+      static inline bool _isAdd{false}; //!< 生成フラグ
       static inline bool _windowMode;    //!< ウィンドウモード
-      static inline std::shared_ptr<ApplicationBase> _instance = nullptr; //!< 実態
+      static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< 実態
       std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
     };
   } // namespace App
