@@ -9,6 +9,7 @@
 
 namespace AppFrame {
   namespace Application {
+    constexpr auto ProcessError = -1; // 処理失敗
     /**
      * @class InputBase
      * @brief 入力状態クラス
@@ -26,7 +27,7 @@ namespace AppFrame {
       /**
        * @brief  更新処理
        */
-      virtual bool Process() = 0;
+      virtual void Process() = 0;
       /**
        * @brief  総接続数の取得
        * @return 総接続数
@@ -43,7 +44,16 @@ namespace AppFrame {
       }
     protected:
       static inline int _connection{0}; //!< 総接続数
+      int _press{0};   //!< 押下情報
+      int _trigger{0}; //!< トリガ情報
       bool _active{true}; //!< 有効かどうか
+      /**
+       * @brief  トリガ情報の更新
+       * @param  old 前フレームの入力状態
+       */
+      inline void Trigger(int old) {
+        _trigger =  _press ^ old & _press;
+      }
     };
   } // Application
 } // AppFrame

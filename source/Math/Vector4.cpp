@@ -14,6 +14,20 @@ namespace AppFrame {
     Vector4::Vector4() : _x(0), _y(0), _z(0), _w(1.0) {
     }
 
+    Vector4::Vector4(float x, float y) {
+      _x = x;
+      _y = y;
+      _z = 0;
+      _w = 0;
+    }
+
+    Vector4::Vector4(int x, int y) {
+      _x = static_cast<float>(x);
+      _y = static_cast<float>(y);
+      _z = 0;
+      _w = 0;
+    }
+
     Vector4::Vector4(float x, float y, float w, float z) {
       _x = x;
       _y = y;

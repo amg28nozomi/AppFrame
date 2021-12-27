@@ -6,9 +6,8 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
-#include <DxLib.h>
-#include <tuple>
 #include "InputBase.h"
+#include <utility>
 
 namespace AppFrame {
   namespace Application {
@@ -20,14 +19,13 @@ namespace AppFrame {
     public:
       /**
        * @brief コンストラクタ
+       * @param id パッドの識別子
        */
-      JoypadState();
+      JoypadState(const int id);
       /**
        * @brief  入力状態の更新
-       * @return 更新に成功した場合はtrue
-       *         失敗した場合はfalseを返す
        */
-      bool Process() override;
+      void Process() override;
       /**
        * @brief  識別番号の取得
        * @return 識別番号
@@ -65,8 +63,6 @@ namespace AppFrame {
       }
     private:
       int _id{0};      //!< 識別番号
-      int _press{0};   //!< 押下情報
-      int _trigger{0}; //!< トリガ情報
       int _leverX{0};  //!< アナログスティックの入力情報(縦)
       int _leverY{0};  //!< アナログスティックの入力情報(横)
     };

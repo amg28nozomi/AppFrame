@@ -167,6 +167,7 @@
     <ClInclude Include="source\Application\ApplicationBase.h" />
     <ClInclude Include="source\Application\InputBase.h" />
     <ClInclude Include="source\Application\JoypadState.h" />
+    <ClInclude Include="source\Application\MouseState.h" />
     <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\Color.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
     <ClCompile Include="source\Application\InputBase.cpp" />
     <ClCompile Include="source\Application\JoypadState.cpp" />
+    <ClCompile Include="source\Application\MouseState.cpp" />
     <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\Color.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />

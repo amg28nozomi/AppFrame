@@ -114,6 +114,9 @@
     <ClInclude Include="source\Application\InputBase.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
+    <ClInclude Include="source\Application\MouseState.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -174,6 +177,9 @@
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
     <ClCompile Include="source\Application\InputBase.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\MouseState.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
   </ItemGroup>

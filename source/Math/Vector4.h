@@ -21,6 +21,18 @@ namespace AppFrame {
        */
       Vector4();
       /**
+       * @brief 2次元ベクトルの生成
+       * @param x x成分
+       * @param y y成分
+       */
+      Vector4(float x, float y);
+      /**
+       * @brief 型変換処理有り
+       * @param x x成分(整数)
+       * @param y y成分(整数)
+       */
+      Vector4(int x, int y);
+      /**
        * @brief ベクトルの生成
        * @param x x成分
        * @param y y成分
@@ -56,22 +68,22 @@ namespace AppFrame {
        * @brief  2次元ベクトルの取得
        * @return xy成分を返す
        */
-      inline const auto GetVector2() const {
-        return std::make_pair(_x, _y);
+      inline const std::pair<float, float> GetVector2() const {
+        return {_x, _y};
       }
       /**
        * @brief  3次元ベクトルの取得
        * @return xyz成分を返す
        */
-      inline const auto GetVector3() const {
-        return std::make_tuple(_x, _y, _z);
+      inline const std::tuple<float, float, float> GetVector3() const {
+        return {_x, _y, _z};
       }
       /**
        * @brief  4次元ベクトルの取得
        * @return xyzw成分
        */
-      inline const auto GetVector4() const {
-        return std::make_tuple(_x, _y, _z, _w);
+      inline const std::tuple<float, float, float, float> GetVector4() const {
+        return {_x, _y, _z, _w};
       }
       /**
        * @brief  x成分の取得
