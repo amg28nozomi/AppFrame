@@ -15,9 +15,7 @@ namespace {
 namespace AppFrame {
   namespace Application {
 
-    int JoypadState::_connection = 0;
-
-    JoypadState::JoypadState() {
+    JoypadState::JoypadState() : InputBase() {
       // Ú‘±”‚ğ¯•Ê”Ô†‚Éİ’è
       _id = _connection;
       ++_connection;
@@ -25,10 +23,6 @@ namespace AppFrame {
       _trigger = 0;
       _leverX = 0;
       _leverY = 0;
-    }
-
-    JoypadState::~JoypadState() {
-      --_connection; // Ú‘±”‚ğŒ¸‚ç‚·
     }
 
     bool JoypadState::Process() {

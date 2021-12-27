@@ -8,6 +8,7 @@
 #pragma once
 #include <DxLib.h>
 #include <tuple>
+#include "InputBase.h"
 
 namespace AppFrame {
   namespace Application {
@@ -15,29 +16,18 @@ namespace AppFrame {
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
      */
-    class JoypadState {
+    class JoypadState : public InputBase {
     public:
       /**
        * @brief コンストラクタ
        */
       JoypadState();
       /**
-       * @brief デストラクタ
-       */
-      ~JoypadState();
-      /**
        * @brief  入力状態の更新
        * @return 更新に成功した場合はtrue
        *         失敗した場合はfalseを返す
        */
-      bool Process();
-      /**
-       * @brief  総接続数の取得
-       * @return 総接続数
-       */
-      static inline const int ConnectJpypad() {
-        return _connection;
-      }
+      bool Process() override;
       /**
        * @brief  識別番号の取得
        * @return 識別番号
@@ -74,12 +64,11 @@ namespace AppFrame {
         return std::make_pair(_leverX, _leverY);
       }
     private:
-      static int _connection; //!< 総接続数
-      int _id;                //!< 識別番号
-      int _press;             //!< 押下情報
-      int _trigger;           //!< トリガ情報
-      int _leverX;            //!< アナログスティックの入力情報(縦)
-      int _leverY;            //!< アナログスティックの入力情報(横)
+      int _id{0};      //!< 識別番号
+      int _press{0};   //!< 押下情報
+      int _trigger{0}; //!< トリガ情報
+      int _leverX{0};  //!< アナログスティックの入力情報(縦)
+      int _leverY{0};  //!< アナログスティックの入力情報(横)
     };
   } // namespace Application
 } // namespace AppFrame
