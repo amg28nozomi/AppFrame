@@ -11,7 +11,7 @@
 namespace AppFrame {
   namespace Mode {
 
-    ModeBase::ModeBase(App::ApplicationBase& app) : _app(app) {
+    ModeBase::ModeBase(Application::ApplicationBase& app) : _app(app) {
     }
 
     ModeBase::~ModeBase() {

@@ -1,20 +1,21 @@
 /*****************************************************************//**
- * @file   Operation.cpp
- * @brief  入力処理クラスの定義
+ * @file   InputBase.cpp
+ * @brief  入力状態の基底クラス
  * 
  * @author 鈴木希海
  * @date   December 2021
  *********************************************************************/
-#include "Operation.h"
-#include <DxLib.h>
+#include "InputBase.h"
 
 namespace AppFrame {
   namespace Application {
 
-    Operation::Operation() {
+    InputBase::InputBase() {
+      ++_connection;
     }
 
-    Operation::~Operation() {
+    InputBase::~InputBase() {
+      --_connection;
     }
-  } // namespace Application
-} // namespace AppFrame
+  } // Application
+} // AppFrame

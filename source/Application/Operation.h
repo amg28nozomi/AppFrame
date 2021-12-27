@@ -9,7 +9,7 @@
 #include <string>
 
 namespace AppFrame {
-  namespace App {
+  namespace Application {
     /**
      * @class Operation
      * @brief “ü—Íˆ—
@@ -26,5 +26,5 @@ namespace AppFrame {
       ~Operation();
     private:
     };
-  } // namespace App
+  } // namespace Application
 } // namespace AppFrame

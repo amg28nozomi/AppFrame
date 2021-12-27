@@ -10,7 +10,7 @@
 #include <tuple>
 
 namespace AppFrame {
-  namespace App {
+  namespace Application {
     /**
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
@@ -81,5 +81,5 @@ namespace AppFrame {
       int _leverX;            //!< アナログスティックの入力情報(縦)
       int _leverY;            //!< アナログスティックの入力情報(横)
     };
-  } // namespace App
+  } // namespace Application
 } // namespace AppFrame

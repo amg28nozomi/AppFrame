@@ -13,7 +13,7 @@ namespace {
 }
 
 namespace AppFrame {
-  namespace App {
+  namespace Application {
 
     int JoypadState::_connection = 0;
 

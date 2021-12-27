@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
+    <ClInclude Include="source\Application\InputBase.h" />
     <ClInclude Include="source\Application\JoypadState.h" />
     <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\Color.h" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
+    <ClCompile Include="source\Application\InputBase.cpp" />
     <ClCompile Include="source\Application\JoypadState.cpp" />
     <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\Color.cpp" />

@@ -19,7 +19,7 @@ namespace AppFrame {
     class FileServer;
   } // namespace FileServer
   /** Application用名前空間 */
-  namespace App {
+  namespace Application {
     /**
      * @class ApplicationBase
      * @brief アプリケーションの基底クラス
@@ -99,5 +99,5 @@ namespace AppFrame {
       static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< 実態
       std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
     };
-  } // namespace App
+  } // namespace Application
 } // namespace AppFrame

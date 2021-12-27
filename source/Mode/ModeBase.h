@@ -8,7 +8,7 @@
 #pragma once
 
 namespace AppFrame {
-  namespace App {
+  namespace Application {
     /**
      * @class ApplicationBase
      * @brief 前方宣言
@@ -26,7 +26,7 @@ namespace AppFrame {
        * @brief モードの生成
        * @param app アプリケーションの参照
        */
-      ModeBase(App::ApplicationBase& app);
+      ModeBase(Application::ApplicationBase& app);
       /**
        * @brief モードの削除
        */
@@ -60,11 +60,11 @@ namespace AppFrame {
        * @brief  アプリケーションの取得
        * @return アプリケーションの参照
        */
-      inline App::ApplicationBase& GetApplication() const {
+      inline Application::ApplicationBase& GetApplication() const {
         return _app;
       }
     protected:
-      App::ApplicationBase& _app; //!< アプリケーションの参照
+      Application::ApplicationBase& _app; //!< アプリケーションの参照
     };
   } // namespace Mode
 } // namespace AppFrame

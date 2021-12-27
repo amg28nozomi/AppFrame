@@ -22,7 +22,7 @@ namespace {
 }
 
 namespace AppFrame {
-  namespace App {
+  namespace Application {
     
     ApplicationBase::ApplicationBase() {
 #ifndef _DEBUG
@@ -117,5 +117,5 @@ namespace AppFrame {
       }
       SetGraphMode(sizeX, sizeY, bitColor);
     }
-  } // namespace App
+  } // namespace Application
 } // namespace AppFrame
