@@ -39,8 +39,11 @@ namespace AppFrame {
        */
       virtual ~ServerBase() = 0;
       /**
-       * @brief  “o˜^ˆ—
+       * @brief  “o˜^ˆ——pƒˆ‰¼‘zŠÖ”
+       *         “o˜^ˆ—‚Í”h¶ƒNƒ‰ƒX‘¤‚ÅÀ‘•‚·‚é‚±‚Æ
        * @param  files ƒtƒ@ƒCƒ‹î•ñ
+       * @param  value “o˜^‚·‚é’l
+       * @return true:“o˜^¬Œ÷ false:“o˜^¸”s
        */
       virtual bool Register(std::string_view key, const I value) = 0;
       /**

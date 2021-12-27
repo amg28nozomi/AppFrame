@@ -24,7 +24,7 @@ namespace AppFrame {
     bool ServerBase<T, I>::LoadFiles(std::vector<FileServer::FileBase> files) {
       // ファイルは存在するか？
       if (files.empty()) {
-        return false; // ファイルが空
+        return false; // データが空
       }
       for (auto file : files) {
         auto [key, path] = file.GetFileData();
@@ -36,7 +36,19 @@ namespace AppFrame {
         if (!std::filesystem::exists(path)) {
           continue; // 有効ではない
         }
+#ifndef _DEBUG
+        Register(key, path); // 登録処理に移行
+#else
+        try {
+          Register(key, path);
+        } catch (std::logic_error error) {
+          // 例外がある場合は出力
+          DebugString(error.what());
+        }
+#endif
+        Register(key, path);
       }
+      return true; // 処理終了
     }
 
     template <typename T, typename I>
