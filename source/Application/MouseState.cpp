@@ -1,7 +1,4 @@
 #include "MouseState.h"
-#ifdef _DEBUG
-#include <stdexcept>
-#endif
 #include <DxLib.h>
 
 namespace AppFrame {

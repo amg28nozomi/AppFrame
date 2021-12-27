@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include <string>
+#include <vector>
 
 namespace AppFrame {
   namespace Application {
@@ -24,7 +25,12 @@ namespace AppFrame {
        * @brief デストラクタ
        */
       ~Operation();
+      /**
+       * @brief 更新処理
+       */
+      void Process();
     private:
+      std::vector<class JoypadState> _joypads;
     };
   } // namespace Application
 } // namespace AppFrame
