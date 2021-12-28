@@ -5,6 +5,7 @@ namespace AppFrame {
   namespace Application {
 
     MouseState::MouseState() : InputBase() {
+      _type = Type::Mouse;
     }
 
     void MouseState::Process() {

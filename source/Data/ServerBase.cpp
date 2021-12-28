@@ -46,7 +46,6 @@ namespace AppFrame {
           DebugString(error.what());
         }
 #endif
-        Register(key, path);
       }
       return true; // ˆ—I—¹
     }

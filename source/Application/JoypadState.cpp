@@ -14,6 +14,7 @@ namespace AppFrame {
     JoypadState::JoypadState(const int id) : InputBase() {
       // Ú‘±”‚ğ¯•Ê”Ô†‚Éİ’è
       _id = id;
+      _type = Type::Joypad;
       ++_connection;
     }
 

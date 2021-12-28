@@ -17,6 +17,14 @@ namespace AppFrame {
     class InputBase {
     public:
       /**
+       * @class Type
+       * @brief 入力デバイスの種類
+       */
+      enum class Type {
+        Joypad, //!< ジョイパッド
+        Mouse   //!< マウス
+      };
+      /**
        * @brief  コンストラクタ
        */
       InputBase();
@@ -28,6 +36,13 @@ namespace AppFrame {
        * @brief  更新処理
        */
       virtual void Process() = 0;
+      /**
+       * @brief  デバイスタイプの取得
+       * @return デバイスタイプ
+       */
+      inline const Type GetType() const {
+        return _type;
+      }
       /**
        * @brief  総接続数の取得
        * @return 総接続数
@@ -44,6 +59,7 @@ namespace AppFrame {
       }
     protected:
       static inline int _connection{0}; //!< 総接続数
+      Type _type{};
       int _press{0};   //!< 押下情報
       int _trigger{0}; //!< トリガ情報
       bool _active{true}; //!< 有効かどうか
