@@ -21,11 +21,11 @@ namespace AppFrame {
 
     void Operation::Process() {
       // デバイスは接続されているか？
-      if (JoypadState::GetConnection() != GetJoypadNum()) {
+      if (GetJoypadNum() == 0) {
         return; // 接続されていない
       }
       for (auto&& pad : _joypads) {
-        pad.Process();
+        pad.Process(); // 更新処理呼び出し
       }
     }
   } // namespace Application

@@ -18,6 +18,13 @@ namespace AppFrame {
     class Operation {
     public:
       /**
+       * @brief 状態
+       */
+      enum class State {
+        Active, // 正常
+        Paused  // 一時停止
+      };
+      /**
        * @brief コンストラクタ
        */
       Operation();
