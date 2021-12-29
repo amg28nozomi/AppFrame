@@ -72,7 +72,7 @@ namespace AppFrame {
        * @param  message 使用するエラー文
        * @return 指定した形式に変換したlogic_error
        */
-      std::logic_error LogicError(std::string_view message);
+      std::logic_error LogicError(std::string_view message) const;
       /**
        * @brief ログへの出力処理
        * @param message 出力する文字列

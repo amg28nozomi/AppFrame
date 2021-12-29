@@ -57,9 +57,9 @@ namespace AppFrame {
 
 #ifdef _DEBUG
     template <typename T, typename I>
-    std::logic_error ServerBase<T, I>::LogicError(std::string_view message) {
+    std::logic_error ServerBase<T, I>::LogicError(std::string_view message) const {
       // éwíËÇµÇΩå`éÆÇ…èCê≥
-      std::string m = _name + "" + message + "\n";
+      std::string m = _name + ":" + message + "\n";
       return std::logic_error(m);
     }
 

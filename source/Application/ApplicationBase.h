@@ -9,12 +9,16 @@
 #pragma once
 #include <tuple>
 #include <memory>
+
 /** フレームワーク用名前空間 */
 namespace AppFrame {
+
   constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度情報
   constexpr auto WindowHeight = 1080; //!< デフォルトの解像度情報
   constexpr auto BitColor32 = 32;     //!< 32ビットカラー
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
+  constexpr auto Frame60 = 60;        //!< 60フレーム
+
   namespace FileServer {
     class FileServer;
   } // namespace FileServer
@@ -83,6 +87,11 @@ namespace AppFrame {
       inline const auto GetWidnowData() {
         return _window;
       }
+      /**
+       * @brief  経過フレーム取得用の純粋仮想関数
+       * @return 現在呼び出されているモードのフレームカウント
+       */
+      virtual const int GetFrameCount() = 0;
       /**
        * @brief  ウィンドウ情報の設定
        * @param  width  解像度
