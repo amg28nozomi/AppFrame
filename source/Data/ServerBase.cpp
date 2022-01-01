@@ -123,7 +123,8 @@ namespace AppFrame {
       return !_registry.contains(key.data());
 #else
       if (_registry.contains(key.data())) {
-        return false; // Šù‚Ég—p‚³‚ê‚Ä‚¢‚é
+        throw LogicError(key + ":‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
+        return false; // “o˜^Ï‚İ
       }
       return true; // –¢g—p
 #endif

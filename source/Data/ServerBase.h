@@ -114,6 +114,7 @@ namespace AppFrame {
        * @brief  キーの検索
        * @param  key 検索する文字列
        * @return true:登録済み false:未登録
+       * @throw  Debug:既に使用されている場合、例外を発射する
        */
       bool KeySearch(std::string_view key);
 #ifdef _DEBUG
