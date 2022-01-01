@@ -77,6 +77,13 @@ namespace AppFrame {
        */
       bool Exist(std::filesystem::path filePath) const;
       /**
+       * @brief  ファイル拡張子が一致しているかの判定
+       * @param  filePath ファイルのパス
+       * @param  extension 対応するファイル拡張子
+       * @return true:一致 false:一致していない
+       */
+      bool HasExtension(std::filesystem::path filePath, std::string_view extension) const;
+      /**
        * @brief  対象データが有効かの判定
        * @param  file ファイルデータ
        * @param  extension ファイル拡張子(デフォルトは拡張子なし)

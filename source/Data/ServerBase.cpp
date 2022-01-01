@@ -105,6 +105,20 @@ namespace AppFrame {
       return flag;
     }
 
+    template <typename T, typename I>
+    bool ServerBase<T, I>::HasExtension(std::filesystem::path filePath, std::string_view extension) const {
+#ifndef _DEBUG
+      // Šg’£Žq‚ªˆê’v‚µ‚Ä‚¢‚é‚©
+      return filePath.stem() == extension;
+#else
+      if (filePath.stem() != extension) {
+        throw LogicError(filePath.string() + ":Šg’£Žq‚ªˆê’v‚µ‚Ä‚¢‚Ü‚¹‚ñ");
+        return false; // ”ñˆê’v
+      }
+      return true; // ˆê’v
+#endif
+    }
+
 #ifdef _DEBUG
     template <typename T, typename I>
     std::logic_error ServerBase<T, I>::LogicError(std::string_view message) const {
