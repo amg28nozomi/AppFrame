@@ -105,17 +105,27 @@ namespace AppFrame {
       return flag;
     }
 
+#ifdef _DEBUG
     template <typename T, typename I>
     bool ServerBase<T, I>::HasExtension(std::filesystem::path filePath, std::string_view extension) const {
-#ifndef _DEBUG
-      // 拡張子が一致しているか
-      return filePath.stem() == extension;
-#else
       if (filePath.stem() != extension) {
         throw LogicError(filePath.string() + ":拡張子が一致していません");
         return false; // 非一致
       }
       return true; // 一致
+    }
+#endif
+
+    template <typename T, typename I>
+    bool ServerBase<T, I>::UsedKey(std::string_view key) const {
+#ifndef _DEBUG
+      // キーは使用可能か
+      return !_registry.contains(key.data());
+#else
+      if (_registry.contains(key.data())) {
+        return false; // 既に使用されている
+      }
+      return true; // 未使用
 #endif
     }
 

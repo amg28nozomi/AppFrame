@@ -76,13 +76,32 @@ namespace AppFrame {
        * @throw  Debug:パスが有効ではない場合、logic_errorを返す
        */
       bool Exist(std::filesystem::path filePath) const;
+#ifndef _DEBUG
       /**
-       * @brief  ファイル拡張子が一致しているかの判定
+       * @brief  ファイル拡張子が一致しているかの判定(Release)
        * @param  filePath ファイルのパス
        * @param  extension 対応するファイル拡張子
        * @return true:一致 false:一致していない
        */
+      inline bool HasExtension(std::filesystem::path filePath, std::string_view extension) const {
+        return filePath.string() == extension;
+      }
+#else
+      /**
+       * @brief  ファイル拡張子が一致しているかの判定(Debug)
+       * @param  filePath ファイルのパス
+       * @param  extension 対応するファイル拡張子
+       * @return true:一致 false:一致していない
+       * @throw  一致していない場合、logic_errorを返す
+       */
       bool HasExtension(std::filesystem::path filePath, std::string_view extension) const;
+#endif
+      /**
+       * @brief  キーが使用可能かの判定
+       * @param  key レジストリへの登録で使用する文字列
+       * @return true:使用可能 false:すでに使用されている
+       */
+      bool UsedKey(std::string_view key) const;
       /**
        * @brief  対象データが有効かの判定
        * @param  file ファイルデータ
