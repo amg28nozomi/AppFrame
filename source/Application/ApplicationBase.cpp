@@ -26,7 +26,7 @@ namespace AppFrame {
     
     ApplicationBase::ApplicationBase() {
 #ifndef _DEBUG
-      _windowMode = true;
+      _windowMode = true;    // 
 #else
       _windowMode = false;
 #endif
@@ -37,8 +37,10 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Init() {
+      // 各種初期化実行
       SetWindowSize(WindowWidth, WindowHeight);
-      ChangeWindowMode(true);
+      ChangeWindowMode(_windowMode);
+      // DXライブラリの初期化に成功したか
       if (DxLib::DxLib_Init() == InitError) {
 #ifdef _DEBUG
         throw std::logic_error("ApplicationBase:DXライブラリの初期化に失敗しました\n");
@@ -52,23 +54,21 @@ namespace AppFrame {
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
-
-      auto flag = false; // 初期化フラグ
 #ifndef _DEBUG
-      // ファイルサーバの初期化
-      // 初期化に失敗した場合は対応したエラーを発射
-      flag = _fileServer->Init();
+      if (!_fileServer->Init()) {
+        return false; // 初期化失敗
+      }
 #else
       try {
-        flag = _fileServer->Init();
+        // ファイルサーバの初期化
+        // 初期化に失敗した場合は対応したエラーを発射
+        _fileServer->Init();
       }
       catch (std::logic_error error) {
         OutputDebugString(error.what());
-      }
-#endif
-      if (!flag) {
         return false; // 初期化失敗
       }
+#endif
       return true;    // 初期化成功
     }
 
@@ -106,16 +106,15 @@ namespace AppFrame {
 
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
       // 画面解像度の設定
-      auto&& [sizeX, sizeY, bitColor] = _window;
-      sizeX = std::clamp(width, WidthMin, WindowWidth);
-      sizeY = std::clamp(width, HeightMin, WindowHeight);
+      _width = std::clamp(width, WidthMin, WindowWidth);
+      _height = std::clamp(width, HeightMin, WindowHeight);
       if (bit) {
-        bitColor = BitColor32;
+        _colorBit = BitColor32;
       }
       else {
-        bitColor = BitColor16;
+        _colorBit = BitColor16;
       }
-      SetGraphMode(sizeX, sizeY, bitColor);
+      SetGraphMode(_width, _height, _colorBit);
     }
   } // namespace Application
 } // namespace AppFrame

@@ -56,7 +56,7 @@ namespace AppFrame {
        * @return 入力状態の参照
        * @throw  std::logic_error
        */
-      InputBase& GetDevice(int type, int number = 0);
+      // InputBase& GetDevice(int type, int number = 0);
       /**
        * @brief  入力デバイスが接続されているかの判定
        * @return true:接続あり　false:接続なし

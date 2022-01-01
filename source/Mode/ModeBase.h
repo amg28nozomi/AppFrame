@@ -15,6 +15,9 @@ namespace AppFrame {
      */
     class ApplicationBase;
   }
+  /**
+   * @brief モード用の名前空間
+   */
   namespace Mode {
     /**
      * @class ModeBase

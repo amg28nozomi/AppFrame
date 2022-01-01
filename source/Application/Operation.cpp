@@ -66,16 +66,16 @@ namespace AppFrame {
       }
     }
 
-    bool Operation::AddDevice(class InputBase& device) {
-      // 入力デバイス
+    bool Operation::AddDevice(InputBase& device) {
+      // 追加された場合
       return false;
     }
 
-    InputBase& Operation::GetDevice(int type, int number) {
-#ifndef _DEBUG
-#else
-#endif
-    }
+//    InputBase& Operation::GetDevice(int type, int number) {
+//#ifndef _DEBUG
+//#else
+//#endif
+//    }
 
     const bool Operation::IsConnection() {
       // ジョイパッドは接続されているか

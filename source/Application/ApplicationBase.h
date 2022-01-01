@@ -12,13 +12,14 @@
 
 /** フレームワーク用名前空間 */
 namespace AppFrame {
-
   constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度情報
   constexpr auto WindowHeight = 1080; //!< デフォルトの解像度情報
   constexpr auto BitColor32 = 32;     //!< 32ビットカラー
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   constexpr auto Frame60 = 60;        //!< 60フレーム
-
+  /**
+   * @
+   */
   namespace FileServer {
     class FileServer;
   } // namespace FileServer
@@ -77,15 +78,15 @@ namespace AppFrame {
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
        */
-      inline const auto GetWindowSize() {
-        return std::make_pair(std::get<0>(_window), std::get<1>(_window));
+      inline const std::pair<int, int> GetWindowSize() {
+        return std::make_pair(_width, _height);
       }
       /**
        * @brief  ウィンドウ情報の取得
        * @return ウィンドウサイズ・カラービット数を返す
        */
-      inline const auto GetWidnowData() {
-        return _window;
+      inline const std::tuple<int, int, int> GetWidnowData() {
+        return std::make_tuple(_width, _height, _colorBit);
       }
       /**
        * @brief  経過フレーム取得用の純粋仮想関数
@@ -101,10 +102,12 @@ namespace AppFrame {
        */
       static void SetWindowSize(int width, int height, bool bit = true);
     protected:
-      State _state{State::Play}; //!< アプリケーションの状態
-      static inline std::tuple<int, int, int> _window; //!< ウィンドウ情報
+      State _state{State::Play};      //!< アプリケーションの状態
+      static inline int _width{0};    //!< ウィンドウサイズ(幅)
+      static inline int _height{0};   //!< ウィンドウサイズ(高さ)
+      static inline int _colorBit{0}; //!< カラービット数
       static inline bool _isAdd{false}; //!< 生成フラグ
-      static inline bool _windowMode;    //!< ウィンドウモード
+      static inline bool _windowMode{false};    //!< ウィンドウモード
       static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< 実態
       std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
     };

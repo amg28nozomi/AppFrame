@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include <filesystem>
 #include <unordered_map>
 #include <vector>
 #ifdef _DEBUG
@@ -39,6 +40,15 @@ namespace AppFrame {
        */
       virtual ~ServerBase() = 0;
       /**
+       * @brief  初期化
+       */
+      virtual bool Init();
+      /**
+       * @brief  解放処理
+       * @return true:処理成功 false:問題発生
+       */
+      virtual bool Release() = 0;
+      /**
        * @brief  登録処理用純粋仮想関数
        *         登録処理は派生クラス側で実装すること
        * @param  files ファイル情報
@@ -59,6 +69,21 @@ namespace AppFrame {
       virtual T Get(std::string_view key) const = 0;
     protected:
       std::unordered_map<std::string, T> _registry; //!< レジストリー
+      /**
+       * @brief  対象ファイルが存在するかの判定
+       * @param  filePath 対象ファイルのパス
+       * @return true:ファイルは存在する false:ファイルは存在しない
+       * @throw  Debug:パスが有効ではない場合、logic_errorを返す
+       */
+      bool Exist(std::filesystem::path filePath) const;
+      /**
+       * @brief  対象データが有効かの判定
+       * @param  file ファイルデータ
+       * @param  extension ファイル拡張子(デフォルトは拡張子なし)
+       * @return true:有効 false:有効ではない
+       * @throw  Debug:問題発生時にstd::logic_errorを返す
+       */
+      bool IsTarget(FileServer::FileBase file, std::string_view extension = "") const;
       /**
        * @brief  キーの検索
        * @param  key 検索する文字列
