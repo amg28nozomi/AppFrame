@@ -7,13 +7,19 @@
 namespace AppFrame {
   namespace Data {
 
+#ifndef _DEBUG
     template <typename T, typename I>
     ServerBase<T, I>::ServerBase() {
       _registry.clear();
-#ifdef _DEBUG
-      _name = "ServerBase";
-#endif
     }
+#else
+    template <typename T, typename I>
+    ServerBase<T, I>::ServerBase(const bool flag) {
+      _registry.clear();
+      _name = "ServerBase";
+      _debug = flag;
+    }
+#endif
 
     template <typename T, typename I>
     bool ServerBase<T, I>::Init() {
@@ -65,31 +71,25 @@ namespace AppFrame {
     bool ServerBase<T, I>::IsTarget(FileServer::FileBase file, std::string_view extension) const {
       // キーに使用する文字列とファイルパス
       auto [key, path] = file.GetFileData();
-      // 拡張子に指定はあるか？
-      if (!extension.empty()) {
-        // 拡張子は対応しているか？
-        if (path.stem() != extension.data()) {
-#ifdef _DEBUG
-          throw LogicError(file.GetFileName() + ":拡張子が異なります");
-#endif
-          return false; // ファイル形式が異なる
-        }
+#ifndef _DEBUG
+      // ファイル形式は一致しているか
+      if (!HasExtension(path, extension)) {
+        return false; // ファイル形式が異なる
       }
       // ファイルは存在するか
-      if (!std::filesystem::exists(path)) {
-#ifdef _DEBUG
-        throw LogicError(file.GetFileName() + ":パスが有効ではありません");
-#endif
+      if (!Exist(path)) {
         return false; // パスが有効ではない
       }
-      // キーは使用されていないか
-      if (_registry.contains(key.data())) {
-#ifdef _DEBUG
-        throw LogicError(file.GetFileName() + ":キーが重複しています");
-#endif
-        return false; // キーが重複している
+#else
+      try {
+        HasExtension(path, extension);
+        Exist(path);
+      } catch (std::logic_error error) {
+        DebugString(error); // 例外が発生した場合は出力
+        return false;
       }
-      return true;  // ターゲットである
+#endif
+      return true;  // 登録対象
     }
 
     template <typename T, typename I>
@@ -105,16 +105,21 @@ namespace AppFrame {
       return flag;
     }
 
-#ifdef _DEBUG
     template <typename T, typename I>
     bool ServerBase<T, I>::HasExtension(std::filesystem::path filePath, std::string_view extension) const {
+      if (extension.empty()) {
+        return true; // 拡張子の指定なし
+      }
+#ifndef _DEBUG
+      return _filePath.stem() == extension;
+#else
       if (filePath.stem() != extension) {
         throw LogicError(filePath.string() + ":拡張子が一致していません");
         return false; // 非一致
       }
       return true; // 一致
-    }
 #endif
+    }
 
     template <typename T, typename I>
     bool ServerBase<T, I>::UsedKey(std::string_view key) const {
@@ -141,6 +146,9 @@ namespace AppFrame {
     template <typename T, typename I>
     void ServerBase<T, I>::DebugString(std::string_view message) {
       OutputDebugString(message.data());
+      if (_debug) {
+        // ログへの書き出しを行う
+      }
     }
 #endif
   } // namespace Data

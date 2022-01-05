@@ -63,13 +63,24 @@ namespace AppFrame {
 
     bool FileServer::LoadFiles(std::filesystem::path jsonPath) {
 #ifndef _DEBUG
-      if (!Exist(jsonPath)) {
-        return false; // パスが有効ではない
+      // パスは有効か
+      if (!IsTarget(jsonPath, ".json")) {
+        return false; // 読み取り対象ではない
       }
 #else
+      try {
+        IsTarget(jsonPath, ".json");
+      } catch (std::logic_error error) {
+        DebugString(error.what());
+        return false;
+      }
 #endif
+      LoadJson::LoadJsonFile(jsonPath);
+      
       return true;
     }
+
+
 
 //    FileServer::FileServer() : _debugLog(LogText) {
 //      _debug = true;

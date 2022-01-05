@@ -31,10 +31,18 @@ namespace AppFrame {
      */
     class ServerBase {
     public:
+#ifndef _DEBUG
       /**
-       * @brief  コンストラクタ
+       * @brief  コンストラクタ(Release)
        */
       ServerBase();
+#else
+      /**
+       * @brief  コンストラクタ(Debug)
+       * @param  flag ログ出力フラグ(デフォルトではfalse)
+       */
+      ServerBase(const bool flag = false);
+#endif
       /**
        * @brief  デストラクタ
        */
@@ -76,17 +84,6 @@ namespace AppFrame {
        * @throw  Debug:パスが有効ではない場合、logic_errorを返す
        */
       bool Exist(std::filesystem::path filePath) const;
-#ifndef _DEBUG
-      /**
-       * @brief  ファイル拡張子が一致しているかの判定(Release)
-       * @param  filePath ファイルのパス
-       * @param  extension 対応するファイル拡張子
-       * @return true:一致 false:一致していない
-       */
-      inline bool HasExtension(std::filesystem::path filePath, std::string_view extension) const {
-        return filePath.string() == extension;
-      }
-#else
       /**
        * @brief  ファイル拡張子が一致しているかの判定(Debug)
        * @param  filePath ファイルのパス
@@ -95,7 +92,6 @@ namespace AppFrame {
        * @throw  一致していない場合、logic_errorを返す
        */
       bool HasExtension(std::filesystem::path filePath, std::string_view extension) const;
-#endif
       /**
        * @brief  キーが使用可能かの判定
        * @param  key レジストリへの登録で使用する文字列
@@ -107,7 +103,6 @@ namespace AppFrame {
        * @param  file ファイルデータ
        * @param  extension ファイル拡張子(デフォルトは拡張子なし)
        * @return true:有効 false:有効ではない
-       * @throw  Debug:問題発生時にstd::logic_errorを返す
        */
       bool IsTarget(FileServer::FileBase file, std::string_view extension = "") const;
       /**
@@ -119,6 +114,7 @@ namespace AppFrame {
       bool KeySearch(std::string_view key);
 #ifdef _DEBUG
       std::string _name; //!< サーバー名
+      bool _debug;       //!< ログ出力フラグ
       /**
        * @brief  logic_errorの生成
        * @param  message 使用するエラー文
