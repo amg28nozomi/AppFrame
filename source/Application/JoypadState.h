@@ -7,15 +7,17 @@
  *********************************************************************/
 #pragma once
 #include "InputBase.h"
+#include <array>
 #include <utility>
 
 namespace AppFrame {
   namespace Application {
+    constexpr auto XInputMax = 22; //!< 扱う入力データの総数
     /**
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
      */
-    class JoypadState : public InputBase {
+    class JoypadState : public InputBase < std::array<int, XInputMax> > {
     public:
       /**
        * @brief コンストラクタ
@@ -33,38 +35,14 @@ namespace AppFrame {
       inline const int GetId() const {
         return _id;
       }
-      /**
-       * @brief  押下情報の取得
-       * @return 押下情報
-       */
-      inline const int GetPress() const {
-        return _press;
-      }
-      /**
-       * @brief  トリガ情報の取得
-       * @return トリガ情報
-       */
-      inline const int GetTrigger() const {
-        return _trigger;
-      }
-      /**
-       * @brief  入力情報の取得
-       * @return 押下情報 トリガ情報
-       */
-      inline const std::pair<int, int> GetInput() const {
-        return std::make_pair(_press, _trigger);
-      }
-      /**
-       * @brief  アナログスティックの入力状態の取得
-       * @return X軸の入力状態 y軸の入力状態
-       */
-      inline const std::pair<int, int> GetLever() const {
-        return std::make_pair(_leverX, _leverY);
-      }
     private:
       int _id{0};      //!< 識別番号
-      int _leverX{0};  //!< アナログスティックの入力情報(縦)
-      int _leverY{0};  //!< アナログスティックの入力情報(横)
+      std::
+      /**
+       * @brief XInputの入力データをint型に変換する
+       * @param press XInputの入力情報を格納する構造体
+       */
+      void ChangeData(XINPUT_STATE press);
     };
   } // namespace Application
 } // namespace AppFrame

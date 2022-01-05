@@ -49,7 +49,7 @@ namespace AppFrame {
       if (map[KEY].size() != map[PATH].size()) {
 #ifdef _DEBUG
         auto error = Differebce(static_cast<int>(map[KEY].size()), map[PATH]);
-        throw(std::logic_error("キーとパスのサイズが一致していません。jsonファイルを確認して下さい"));
+        throw std::logic_error("キーとパスのサイズが一致していません。jsonファイルを確認して下さい");
 #endif
       }
       const std::string directry = map[DIRECTORY]; // ディレクトリパス

@@ -11,9 +11,11 @@ namespace AppFrame {
   namespace Application {
     constexpr auto ProcessError = -1; // 処理失敗
     /**
-     * @class InputBase
-     * @brief 入力状態クラス
+     * @class  InputBase
+     * @brief  入力状態クラス
+     * @tparam T 入力状態を扱う型
      */
+    template <typename T>
     class InputBase {
     public:
       /**
@@ -59,17 +61,10 @@ namespace AppFrame {
       }
     protected:
       static inline int _connection{0}; //!< 総接続数
-      Type _type{};
-      int _press{0};   //!< 押下情報
-      int _trigger{0}; //!< トリガ情報
+      Type _type{};       //!< 状態
+      T _press;           //!< 押下情報
+      T _trigger;         //!< トリガ情報
       bool _active{true}; //!< 有効かどうか
-      /**
-       * @brief  トリガ情報の更新
-       * @param  old 前フレームの入力状態
-       */
-      inline void Trigger(int old) {
-        _trigger =  _press ^ old & _press;
-      }
     };
   } // Application
 } // AppFrame

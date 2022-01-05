@@ -9,12 +9,13 @@
 
 namespace AppFrame {
   namespace Application {
-
-    InputBase::InputBase() {
+    template <typename T>
+    InputBase <typename T>::InputBase() {
       ++_connection;
     }
 
-    InputBase::~InputBase() {
+    template <typename T>
+    InputBase<typename T>::~InputBase() {
       --_connection;
     }
   } // Application
