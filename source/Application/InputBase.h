@@ -19,12 +19,18 @@ namespace AppFrame {
     class InputBase {
     public:
       /**
-       * @class Type
-       * @brief 入力デバイスの種類
+       * @brief 入力デバイスの種類を表す
        */
       enum class Type {
         Joypad, //!< ジョイパッド
         Mouse   //!< マウス
+      };
+      /**
+       * @brief 入力デバイスの状態用列挙型クラス
+       */
+      enum class State {
+        Active,   // 接続有り
+        NonActive // 接続無し
       };
       /**
        * @brief  コンストラクタ
@@ -59,9 +65,20 @@ namespace AppFrame {
       bool IsActive() const {
         return _active;
       }
+      /**
+       * @brief  押下情報の取得
+       * @return 押下情報
+       */
+      virtual T GetKey() const;
+      /**
+       * @brief  トリガ情報の取得
+       * @return トリガ情報
+       */
+      virtual T GetTriggerKey() const;
     protected:
       static inline int _connection{0}; //!< 総接続数
-      Type _type{};       //!< 状態
+      Type _type{};       //!< デバイスの機種
+      State _state{ State::Active }; //!< 状態
       T _press;           //!< 押下情報
       T _trigger;         //!< トリガ情報
       bool _active{true}; //!< 有効かどうか

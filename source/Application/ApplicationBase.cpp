@@ -12,6 +12,7 @@
 #include <stdexcept>
 #endif
 #include <DxLib.h>
+#include "../FileServer/FileBase.h"
 #include "../FileServer/FileServer.h"
 
 namespace {
@@ -26,7 +27,7 @@ namespace AppFrame {
     
     ApplicationBase::ApplicationBase() {
 #ifndef _DEBUG
-      _windowMode = true;    // 
+      _windowMode = true;
 #else
       _windowMode = false;
 #endif

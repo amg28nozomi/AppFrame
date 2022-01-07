@@ -9,9 +9,6 @@
 #include <array>
 #include <DxLib.h>
 #include "ApplicationBase.h"
-#include "InputBase.h"
-#include "JoypadState.h"
-#include "MouseState.h"
 
 namespace {
   constexpr auto PadMax = 4;   // ジョイパッドの接続数上限
@@ -29,8 +26,7 @@ namespace AppFrame {
       DX_INPUT_PAD4  // ジョイパッド4
     };
 
-    Operation::Operation(ApplicationBase& app) : _app(app) {
-
+    Operation::Operation(ApplicationBase& app) : _app(app), _joypads() {
     }
 
     Operation::~Operation() {
@@ -45,10 +41,8 @@ namespace AppFrame {
           _state = State::NonActive;
           return; // 接続なし
         }
-        // 各種デバイスの入力処理を実行
-        for (auto&& device : _devices) {
-          device.Process();
-        }
+        // 入力デバイスの更新
+        _joypads.Process();
       case State::Paused:
         return; // 実行なし
       case State::NonActive:
@@ -66,16 +60,11 @@ namespace AppFrame {
       }
     }
 
-    bool Operation::AddDevice(InputBase& device) {
+    bool Operation::AddJoypad() {
+      GetJoypadNum();
       // 追加された場合
       return false;
     }
-
-//    InputBase& Operation::GetDevice(int type, int number) {
-//#ifndef _DEBUG
-//#else
-//#endif
-//    }
 
     const bool Operation::IsConnection() {
       // ジョイパッドは接続されているか
@@ -88,11 +77,5 @@ namespace AppFrame {
       }
       return true;    // 接続あり
     }
-
-    //std::future<bool> Operation::ReConnect() {
-    //  // 1秒間に1度、再設定を行う
-    //  ReSetupJoypad();
-    //  return true;
-    //}
   } // namespace Application
 } // namespace AppFrame

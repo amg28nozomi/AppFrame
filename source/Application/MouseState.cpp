@@ -12,7 +12,7 @@ namespace AppFrame {
       // “ü—Íó‘Ô‚ÌXV
       auto old = _press;
       _press = GetMouseInput();
-      Trigger(old);
+      _trigger = _press ^ old & _press;
       // Œ»İÀ•W‚Ìæ“¾
       int x, y;
       GetMousePoint(&x, &y);

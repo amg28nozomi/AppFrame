@@ -18,5 +18,15 @@ namespace AppFrame {
     InputBase<typename T>::~InputBase() {
       --_connection;
     }
+
+    template <typename T>
+    T InputBase<typename T>::GetKey() const {
+      return _press;
+    }
+
+    template <typename T>
+    T InputBase<typename T>::GetTriggerKey() const {
+      return _trigger;
+    }
   } // Application
 } // AppFrame

@@ -128,7 +128,7 @@ namespace AppFrame {
       return !_registry.contains(key.data());
 #else
       if (_registry.contains(key.data())) {
-        throw LogicError(key + ":‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
+        throw LogicError(key.data() + ":‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
         return false; // “o˜^Ï‚İ
       }
       return true; // –¢g—p
@@ -139,7 +139,7 @@ namespace AppFrame {
     template <typename T, typename I>
     std::logic_error ServerBase<T, I>::LogicError(std::string_view message) const {
       // w’è‚µ‚½Œ`®‚ÉC³
-      std::string m = _name + ":" + message + "\n";
+      std::string m = _name + ":" + message.data() + "\n";
       return std::logic_error(m);
     }
 

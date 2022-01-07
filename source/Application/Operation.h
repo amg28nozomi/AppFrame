@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <future>
+#include "JoypadState.h"
 
 namespace AppFrame {
   namespace Application {
@@ -44,19 +45,10 @@ namespace AppFrame {
        */
       void Process();
       /**
-       * @brief  入力デバイスの追加
-       * @param  device 入力デバイスの参照
+       * @brief  入力デバイスの登録
        * @return true:追加成功 false:追加失敗
        */
-      bool AddDevice(class InputBase& device);
-      /**
-       * @brief  指定したデバイスの取得
-       * @param  type デバイスタイプ(0:キーボード  1:マウス  2:ジョイパッド)
-       * @param  number ジョイパッド番号(デフォルトでは0)
-       * @return 入力状態の参照
-       * @throw  std::logic_error
-       */
-      // InputBase& GetDevice(int type, int number = 0);
+      bool AddJoypad();
       /**
        * @brief  入力デバイスが接続されているかの判定
        * @return true:接続あり　false:接続なし
@@ -70,15 +62,10 @@ namespace AppFrame {
         return _state;
       }
     private:
-      ApplicationBase& _app;     //!< アプリケーションの参照
-      State _state{};            //!< 状態
-      std::vector<InputBase> _devices; //!< 入力デバイス
-      int _access{0}; //!< 接続数
-      /**
-       * @brief  ジョイパッドの再接続処理
-       * @return true:再接続完了 false:接続無し
-       */
-      /*std::future<bool> ReConnect();*/
+      ApplicationBase& _app; //!< アプリケーションの参照
+      State _state{};        //!< 状態
+      class JoypadState _joypads;  //!< ジョイパッドの入力状態
+      int _accessLimit{0};   //!< デバイスの接続上限
     };
   } // namespace Application
 } // namespace AppFrame

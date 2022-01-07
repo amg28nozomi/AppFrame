@@ -15,7 +15,7 @@ namespace AppFrame {
      * @class MouseState
      * @brief マウスの入力状態
      */
-    class MouseState : public InputBase {
+    class MouseState : public InputBase <int> {
     public:
       /**
        * @brief  コンストラクタ

@@ -7,23 +7,22 @@
  *********************************************************************/
 #pragma once
 #include "InputBase.h"
-#include <array>
 #include <utility>
+#include <DxLib.h>
 
 namespace AppFrame {
   namespace Application {
-    constexpr auto XInputMax = 22; //!< 扱う入力データの総数
     /**
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
      */
-    class JoypadState : public InputBase < std::array<int, XInputMax> > {
+    class JoypadState : public InputBase < XINPUT_STATE > {
     public:
       /**
        * @brief コンストラクタ
        * @param id パッドの識別子
        */
-      JoypadState(const int id);
+      JoypadState(const int id = 0);
       /**
        * @brief  入力状態の更新
        */
@@ -36,13 +35,16 @@ namespace AppFrame {
         return _id;
       }
     private:
-      int _id{0};      //!< 識別番号
-      std::
+      int _id; //!< ジョイパッドの識別番号
       /**
-       * @brief XInputの入力データをint型に変換する
-       * @param press XInputの入力情報を格納する構造体
+       * @brief  トリガ情報の生成
+       * @param  press 対象キーの押下情報
+       * @param  old   対象キーの押下情報(前フレーム)
+       * @return 対象キーのトリガ情報
        */
-      void ChangeData(XINPUT_STATE press);
+      inline int Trigger(const int press, const int old) {
+        return press ^ old & press;
+      }
     };
   } // namespace Application
 } // namespace AppFrame
