@@ -16,6 +16,9 @@ namespace AppFrame {
 
     JoypadState::JoypadState(const int id) {
       _id = id; // Ú‘±”‚ğ¯•Ê”Ô†‚Éİ’è
+      _press = XINPUT_STATE();
+      _trigger = _press;
+      _state = State::Active;
       _type = Type::Joypad;
     }
 

@@ -19,19 +19,15 @@ namespace AppFrame {
    */
   namespace Application {
 
-    KeyboardState::KeyboardState() {
+    KeyboardState::KeyboardState() : InputBase() {
       _type = Type::Keyborad;
-    }
-
-    KeyboardState::~KeyboardState() {
-
     }
 
     void KeyboardState::Process() {
       auto old = _press; // 前フレームの状態
       char keyboard[AllKeysNum];
       // 入力状態の取得に成功したか
-      if (GetHitKeyStateAll(keyboard) == ProcessError) {
+      if (GetHitKeyStateAll(keyboard) == Error) {
 #ifdef _DEBUG
         throw std::logic_error("KeyboardState:入力状態の更新に失敗しました\n");
 #endif
@@ -48,7 +44,7 @@ namespace AppFrame {
     const int KeyboardState::GetKey(const int keyCode) const {
 #ifndef _DEBUG
       if (keyCode < 0 || AllKeysNum < keyCode) {
-        return ProcessError; // 引数が範囲外
+        return Error; // 引数が範囲外
       }
 #else
       // 引数が有効かの判定
@@ -56,7 +52,7 @@ namespace AppFrame {
         auto number = Math::Arithmetic::Clamp(keyCode, 0, AllKeysNum);
       } catch (std::out_of_range error) {
         OutputDebugString(error.what());
-        return ProcessError; //範囲外
+        return Error; //範囲外
       }
 #endif
       return _press.at(keyCode);

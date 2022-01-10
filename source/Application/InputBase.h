@@ -7,10 +7,15 @@
  *********************************************************************/
 #pragma once
 #include <DxLib.h>
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief アプリケーション
+   */
   namespace Application {
-    constexpr auto ProcessError = -1; // 処理失敗
+    constexpr auto Error = -1; // 処理失敗
     /**
      * @class  InputBase
      * @brief  入力状態クラス
@@ -41,7 +46,7 @@ namespace AppFrame {
       /**
        * @brief  デストラクタ
        */
-      ~InputBase();
+      virtual ~InputBase();
       /**
        * @brief  更新処理
        */

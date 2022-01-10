@@ -7,8 +7,13 @@
  *********************************************************************/
 #pragma once
 #include <tuple>
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief データベース
+   */
   namespace Data {
     constexpr auto MaxColor = 255; //!< 色の上限
     constexpr auto MinColor = 0;   //!< 色の下限

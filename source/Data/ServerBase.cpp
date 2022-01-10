@@ -27,10 +27,9 @@ namespace AppFrame {
       return true;
     }
 
-
-    template <typename T, typename I>
-    bool ServerBase<T, I>::Register(std::string_view key, const I value) {
-    }
+    //template <typename T, typename I>
+    //bool ServerBase<T, I>::Register(std::string_view key, const I value) {
+    //}
 
     template <typename T, typename I>
     bool ServerBase<T, I>::LoadFiles(std::vector<FileServer::FileBase> files) {

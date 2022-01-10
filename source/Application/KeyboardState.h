@@ -29,10 +29,10 @@ namespace AppFrame {
        * @brief コンストラクタ
        */
       KeyboardState();
-      /**
-       * @brief デストラクタ
-       */
-      ~KeyboardState();
+      ///**
+      // * @brief デストラクタ
+      // */
+      //~KeyboardState() override;
       /**
        * @brief 入力状態の更新
        */
