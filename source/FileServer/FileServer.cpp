@@ -6,7 +6,9 @@
  * @date   December 2021
  *********************************************************************/
 #include "FileServer.h"
+#ifdef _DEBUG
 #include <stdexcept>
+#endif
 #include <Windows.h>
 #include "FileBase.h"
 #include "LoadJson.h"
@@ -29,7 +31,7 @@ namespace AppFrame {
 #endif
 
     FileServer::~FileServer() {
-      Init();
+      Release();
     }
 
     bool FileServer::Init() {
@@ -41,7 +43,6 @@ namespace AppFrame {
       _registry.clear();
       return true;
     }
-    // ’Ç‰Á
 
     bool FileServer::Register(std::string_view key, const std::filesystem::path path) {
 #ifndef _DEBUG

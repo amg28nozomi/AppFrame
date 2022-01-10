@@ -9,24 +9,18 @@
 
 namespace AppFrame {
   namespace Application {
+
     template <typename T>
-    InputBase <typename T>::InputBase() {
+    InputBase<typename T>::InputBase() {
+      _press = 0;
+      _trigger = 0;
       ++_connection;
+      _state = State::Active;
     }
 
     template <typename T>
     InputBase<typename T>::~InputBase() {
       --_connection;
-    }
-
-    template <typename T>
-    T InputBase<typename T>::GetKey() const {
-      return _press;
-    }
-
-    template <typename T>
-    T InputBase<typename T>::GetTriggerKey() const {
-      return _trigger;
     }
   } // Application
 } // AppFrame

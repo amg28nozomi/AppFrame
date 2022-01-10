@@ -70,11 +70,6 @@ namespace AppFrame {
        * @return true:処理成功 false:問題発生
        */
       virtual bool LoadFiles(std::vector<FileServer::FileBase> files);
-      /**
-       * @brief  指定した値の取得
-       * @param  key 値に紐づけられた文字列
-       */
-      virtual T Get(std::string_view key) const = 0;
     protected:
       std::unordered_map<std::string, T> _registry; //!< レジストリー
       /**

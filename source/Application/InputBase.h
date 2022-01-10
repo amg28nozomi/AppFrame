@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include <DxLib.h>
 
 namespace AppFrame {
   namespace Application {
@@ -19,18 +20,19 @@ namespace AppFrame {
     class InputBase {
     public:
       /**
-       * @brief 入力デバイスの種類を表す
+       * @brief 入力デバイスの種類
        */
       enum class Type {
-        Joypad, //!< ジョイパッド
-        Mouse   //!< マウス
+        Joypad,  //!< ジョイパッド
+        Mouse,   //!< マウス
+        Keyborad //!< キーボード
       };
       /**
-       * @brief 入力デバイスの状態用列挙型クラス
+       * @brief 入力デバイスの状態
        */
       enum class State {
-        Active,   // 接続有り
-        NonActive // 接続無し
+        Active,   //!< 接続有り
+        NonActive //!< 接続無し
       };
       /**
        * @brief  コンストラクタ
@@ -65,20 +67,10 @@ namespace AppFrame {
       bool IsActive() const {
         return _active;
       }
-      /**
-       * @brief  押下情報の取得
-       * @return 押下情報
-       */
-      virtual T GetKey() const;
-      /**
-       * @brief  トリガ情報の取得
-       * @return トリガ情報
-       */
-      virtual T GetTriggerKey() const;
     protected:
       static inline int _connection{0}; //!< 総接続数
-      Type _type{};       //!< デバイスの機種
-      State _state{ State::Active }; //!< 状態
+      Type _type;         //!< デバイスの機種
+      State _state;       //!< 状態
       T _press;           //!< 押下情報
       T _trigger;         //!< トリガ情報
       bool _active{true}; //!< 有効かどうか

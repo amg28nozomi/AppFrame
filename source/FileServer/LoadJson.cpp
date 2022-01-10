@@ -39,7 +39,6 @@ namespace AppFrame {
         return FileBaseMap(); // 空データを返す
       }
       namespace json = nlohmann; // 別名定義
-      // jsonオブジェクトに
       json::json j;
       jsonFile >> j;
       jsonFile.close();

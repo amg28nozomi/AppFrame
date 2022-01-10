@@ -128,7 +128,8 @@ namespace AppFrame {
       return !_registry.contains(key.data());
 #else
       if (_registry.contains(key.data())) {
-        throw LogicError(key.data() + ":‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
+        std::string message = key.data();
+        throw LogicError(message + ":‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·");
         return false; // “o˜^Ï‚İ
       }
       return true; // –¢g—p

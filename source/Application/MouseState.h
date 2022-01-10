@@ -15,6 +15,7 @@ namespace AppFrame {
      * @class MouseState
      * @brief マウスの入力状態
      */
+    template <typename T>
     class MouseState : public InputBase <int> {
     public:
       /**
@@ -26,13 +27,30 @@ namespace AppFrame {
        */
       void Process() override;
       /**
+       * @brief  押下情報の取得
+       * @return 押下情報
+       */
+      inline int GetKey() const {
+        return _press;
+      }
+      /**
+       * @brief  トリガ情報の取得
+       * @return トリガ情報
+       */
+      inline int GetTriggerKey() {
+        return _trigger;
+      }
+      /**
        * @brief  座標の取得
-       * @return 座標
+       * @return カーソル座標
        */
       inline Math::Vector4 GetPosition() const {
         return _position;
       }
-
+      /**
+       * @brief  変化量の取得
+       * @return カーソルの変化量
+       */
       inline Math::Vector4 GetMove() const {
         return _move;
       }

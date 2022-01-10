@@ -23,15 +23,15 @@ namespace AppFrame {
       }
 #else
       if (height <= low) {
-        throw std::logic_error("Arithmetic::Clamp:下限値が上限値を超過、または一致しています\n");
+        throw std::out_of_range("Arithmetic::Clamp:下限値が上限値を超過、または一致しています\n");
         return value;
       }
       // 値は範囲内に収まっているか
       if (value < low) {
-        throw std::logic_error("Arithmetic::値が下限を下回りました value:" + std::to_string(value) + " low:" + std::to_string(low));
+        throw std::out_of_range("Arithmetic::値が下限を下回りました value:" + std::to_string(value) + " low:" + std::to_string(low));
       }
       else if (height < value) {
-        throw std::logic_error("Arithmetic::値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height));
+        throw std::out_of_range("Arithmetic::値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height));
       }
 #endif
       return std::clamp(value, low, height);
@@ -45,15 +45,15 @@ namespace AppFrame {
       }
 #else
       if (height <= low) {
-        throw std::logic_error("Arithmetic::Clamp:下限値が上限値を超過、または一致しています\n");
+        throw std::out_of_range("Arithmetic::Clamp:下限値が上限値を超過、または一致しています\n");
         return value;
       }
       // 値は範囲内に収まっているか
       if (value < low) {
-        throw std::logic_error("Arithmetic::値が下限を下回りました value:" + std::to_string(value) + " low:" + std::to_string(low));
+        throw std::out_of_range("Arithmetic::値が下限を下回りました value:" + std::to_string(value) + " low:" + std::to_string(low));
       }
       else if (height < value) {
-        throw std::logic_error("Arithmetic::値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height));
+        throw std::out_of_range("Arithmetic::値が上限を超過しました value:" + std::to_string(value) + " height:" + std::to_string(height));
       }
 #endif
       return std::clamp(value, low, height);

@@ -4,11 +4,15 @@
 namespace AppFrame {
   namespace Application {
 
-    MouseState::MouseState() : InputBase() {
+    template <typename T>
+    MouseState<T>::MouseState() {
       _type = Type::Mouse;
+      _press = 0;
+      _trigger = 0;
     }
 
-    void MouseState::Process() {
+    template <typename T>
+    void MouseState<T>::Process() {
       // “ü—Íó‘Ô‚ÌXV
       auto old = _press;
       _press = GetMouseInput();
