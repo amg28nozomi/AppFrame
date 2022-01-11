@@ -14,12 +14,11 @@
 namespace AppFrame {
   namespace Application {
 
-    JoypadState::JoypadState(const int id) {
+    JoypadState::JoypadState(const int id) : InputBase() {
       _id = id; // Ú‘±”‚ğ¯•Ê”Ô†‚Éİ’è
       _press = XINPUT_STATE();
       _trigger = _press;
-      _state = State::Active;
-      _type = Type::Joypad;
+      _type = DeviceType::Joypad;
     }
 
     void JoypadState::Process() {

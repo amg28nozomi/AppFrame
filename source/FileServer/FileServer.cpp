@@ -10,7 +10,6 @@
 #include <stdexcept>
 #endif
 #include <Windows.h>
-#include "FileBase.h"
 #include "LoadJson.h"
 
 namespace {

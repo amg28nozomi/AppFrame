@@ -1,18 +1,15 @@
 #include "MouseState.h"
-#include <DxLib.h>
 
 namespace AppFrame {
   namespace Application {
 
-    template <typename T>
-    MouseState<T>::MouseState() {
-      _type = Type::Mouse;
+    MouseState::MouseState() : InputBase() {
+      _type = DeviceType::Mouse;
       _press = 0;
       _trigger = 0;
     }
 
-    template <typename T>
-    void MouseState<T>::Process() {
+    void MouseState::Process() {
       // “ü—Íó‘Ô‚ÌXV
       auto old = _press;
       _press = GetMouseInput();

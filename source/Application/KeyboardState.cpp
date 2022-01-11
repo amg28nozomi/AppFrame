@@ -20,7 +20,9 @@ namespace AppFrame {
   namespace Application {
 
     KeyboardState::KeyboardState() : InputBase() {
-      _type = Type::Keyborad;
+      _press.fill(0);
+      _trigger = _press;
+      _type = DeviceType::Keyborad;
     }
 
     void KeyboardState::Process() {

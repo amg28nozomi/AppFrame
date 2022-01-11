@@ -19,15 +19,13 @@ namespace AppFrame {
     /**
      * @class  InputBase
      * @brief  入力状態クラス
-     * @tparam T 入力状態を扱う型
      */
-    template <typename T>
     class InputBase {
     public:
       /**
        * @brief 入力デバイスの種類
        */
-      enum class Type {
+      enum class DeviceType {
         Joypad,  //!< ジョイパッド
         Mouse,   //!< マウス
         Keyborad //!< キーボード
@@ -55,7 +53,7 @@ namespace AppFrame {
        * @brief  デバイスタイプの取得
        * @return デバイスタイプ
        */
-      inline const Type GetType() const {
+      inline const DeviceType GetType() const {
         return _type;
       }
       /**
@@ -74,11 +72,9 @@ namespace AppFrame {
       }
     protected:
       static inline int _connection{0}; //!< 総接続数
-      Type _type;         //!< デバイスの機種
-      State _state;       //!< 状態
-      T _press;           //!< 押下情報
-      T _trigger;         //!< トリガ情報
-      bool _active{true}; //!< 有効かどうか
+      DeviceType _type{0}; //!< デバイスの機種
+      State _state;        //!< 状態
+      bool _active{true};  //!< 有効かどうか
     };
   } // Application
 } // AppFrame

@@ -12,6 +12,10 @@ namespace AppFrame {
     ServerBase<T, I>::ServerBase() {
       _registry.clear();
     }
+
+    ServerBase<FileServer::FileBase, std::filesystem::path>::ServerBase() {
+      _registry.clear();
+    }
 #else
     template <typename T, typename I>
     ServerBase<T, I>::ServerBase(const bool flag) {
@@ -19,10 +23,25 @@ namespace AppFrame {
       _name = "ServerBase";
       _debug = flag;
     }
+
+    ServerBase<FileServer::FileBase, std::filesystem::path>::ServerBase(const bool flag) {
+      _registry.clear();
+      _name = "ServerBase";
+      _debug = flag;
+    }
 #endif
+
+    //template<typename T, typename I>
+    //ServerBase<T, I>::~ServerBase() {
+    //}
 
     template <typename T, typename I>
     bool ServerBase<T, I>::Init() {
+      _registry.clear();
+      return true;
+    }
+
+    bool ServerBase<FileServer::FileBase, std::filesystem::path>::Init() {
       _registry.clear();
       return true;
     }
@@ -61,9 +80,34 @@ namespace AppFrame {
       return true; // 処理終了
     }
 
-    template <typename T, typename I>
-    bool ServerBase<T, I>::KeySearch(std::string_view key) {
-      return true;
+    bool ServerBase<FileServer::FileBase, std::filesystem::path>::LoadFiles(std::vector<FileServer::FileBase> files) {
+      // ファイルは存在するか？
+      if (files.empty()) {
+        return false; // データが空
+      }
+      for (auto file : files) {
+        auto [key, path] = file.GetFileData();
+        // キーは既に登録されているか
+        if (_registry.contains(key.data())) {
+          continue; // 登録済み
+        }
+        // パスは有効か
+        if (!std::filesystem::exists(path)) {
+          continue; // 有効ではない
+        }
+#ifndef _DEBUG
+        Register(key, path); // 登録処理に移行
+#else
+        try {
+          Register(key, path);
+        }
+        catch (std::logic_error error) {
+          // 例外がある場合は出力
+          DebugString(error.what());
+        }
+#endif
+      }
+      return true; // 処理終了
     }
 
     template <typename T, typename I>
@@ -85,6 +129,31 @@ namespace AppFrame {
         Exist(path);
       } catch (std::logic_error error) {
         DebugString(error); // 例外が発生した場合は出力
+        return false;
+      }
+#endif
+      return true;  // 登録対象
+    }
+
+    bool ServerBase<FileServer::FileBase, std::filesystem::path>::IsTarget(FileServer::FileBase file, std::string_view extension) const {
+      // キーに使用する文字列とファイルパス
+      auto [key, path] = file.GetFileData();
+#ifndef _DEBUG
+      // ファイル形式は一致しているか
+      if (!HasExtension(path, extension)) {
+        return false; // ファイル形式が異なる
+      }
+      // ファイルは存在するか
+      if (!Exist(path)) {
+        return false; // パスが有効ではない
+      }
+#else
+      try {
+        HasExtension(path, extension);
+        Exist(path);
+      }
+      catch (std::logic_error error) {
+        DebugString(error.what()); // 例外が発生した場合は出力
         return false;
       }
 #endif
@@ -144,7 +213,7 @@ namespace AppFrame {
     }
 
     template <typename T, typename I>
-    void ServerBase<T, I>::DebugString(std::string_view message) {
+    void ServerBase<T, I>::DebugString(std::string_view message) const {
       OutputDebugString(message.data());
       if (_debug) {
         // ログへの書き出しを行う

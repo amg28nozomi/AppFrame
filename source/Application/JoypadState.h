@@ -16,7 +16,7 @@ namespace AppFrame {
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
      */
-    class JoypadState : public InputBase < XINPUT_STATE > {
+    class JoypadState : public InputBase  {
     public:
       /**
        * @brief コンストラクタ
@@ -36,6 +36,8 @@ namespace AppFrame {
       }
     private:
       int _id; //!< ジョイパッドの識別番号
+      XINPUT_STATE _press;   //!< 入力情報(押下入力)
+      XINPUT_STATE _trigger; //!< 入力情報(トリガ入力)
       /**
        * @brief  トリガ情報の生成
        * @param  press 対象キーの押下情報

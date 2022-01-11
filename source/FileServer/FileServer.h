@@ -8,12 +8,11 @@
 #pragma once
 #include "../Data/ServerBase.h"
 #include "FileOutput.h"
+#include "FileBase.h"
 
 /** FileWorker—p–¼‘O‹óŠÔ */
 namespace AppFrame {
   namespace FileServer {
-
-    class FileBase;
 
     class FileServer : public Data::ServerBase < FileBase, std::filesystem::path > {
     public:

@@ -15,8 +15,7 @@ namespace AppFrame {
      * @class MouseState
      * @brief マウスの入力状態
      */
-    template <typename T>
-    class MouseState : public InputBase <int> {
+    class MouseState : public InputBase {
     public:
       /**
        * @brief  コンストラクタ
@@ -55,6 +54,8 @@ namespace AppFrame {
         return _move;
       }
     private:
+      int _press;   //!< 押下情報
+      int _trigger; //!< トリガ情報
       Math::Vector4 _position{0,0}; //!< 座標
       Math::Vector4 _move{0,0};     //!< 変化量
     };
