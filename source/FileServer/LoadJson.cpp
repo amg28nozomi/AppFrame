@@ -17,6 +17,13 @@
 
 // jsonファイルの読み取りで使用する標準キー
 namespace {
+  constexpr auto Directory = "directory"; //!< ディレクトリ
+  constexpr auto Param = "param";         //!< パラメータ
+  constexpr auto Extension = "extension"; //!< ファイル拡張子
+  constexpr auto Key = "key";             //!< 連想配列に登録するキー
+  constexpr auto FileName = "filename";   //!< ファイル名
+
+
   constexpr auto MAP = "map";             // マップ
   constexpr auto DIRECTORY = "directory"; // ディレクトリパス
   constexpr auto FORMAT = "format";       // フォーマット

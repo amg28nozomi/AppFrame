@@ -116,6 +116,5 @@ namespace AppFrame {
       void DebugString(std::string_view message) const;
 #endif
     };
-
   } // namespace Data
 } // namespace AppFrame
