@@ -176,7 +176,7 @@
     <ClInclude Include="source\FileServer\FileBase.h" />
     <ClInclude Include="source\FileServer\FileOutput.h" />
     <ClInclude Include="source\FileServer\FileServer.h" />
-    <ClInclude Include="source\FileServer\LoadJson.h" />
+    <ClInclude Include="source\FileServer\JsonServer.h" />
     <ClInclude Include="source\FileServer\WriteJson.h" />
     <ClInclude Include="source\Math\Arithmetic.h" />
     <ClInclude Include="source\Math\GravityBase.h" />
@@ -200,6 +200,7 @@
     <ClCompile Include="source\FileServer\FileBase.cpp" />
     <ClCompile Include="source\FileServer\FileOutput.cpp" />
     <ClCompile Include="source\FileServer\FileServer.cpp" />
+    <ClCompile Include="source\FileServer\JsonServer.cpp" />
     <ClCompile Include="source\FileServer\LoadJson.cpp" />
     <ClCompile Include="source\FileServer\WriteJson.cpp" />
     <ClCompile Include="source\Math\Arithmetic.cpp" />

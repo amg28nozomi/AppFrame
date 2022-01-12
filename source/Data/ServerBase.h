@@ -12,23 +12,27 @@
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
-
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
     class FileBase;
   }
-
+  /**
+   * @brief データベース
+   */
   namespace Data {
     /**
+     * @class ServerBase
+     * @brief サーバの基底となるテンプレートクラス
      * @tparam T 連想配列の値に該当する型
      * @tparam I 登録処理で使用する型
      */
     template <typename T, typename I>
-    /**
-     * @class ServerBase
-     * @brief サーバの基底クラス
-     */
     class ServerBase {
     public:
 #ifndef _DEBUG
@@ -59,7 +63,7 @@ namespace AppFrame {
       /**
        * @brief  登録処理用純粋仮想関数
        *         登録処理は派生クラス側で実装すること
-       * @param  files ファイル情報
+       * @param  key 登録に使用する文字列
        * @param  value 登録する値
        * @return true:登録成功 false:登録失敗
        */

@@ -90,9 +90,6 @@
     <ClInclude Include="source\FileServer\FileServer.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
-    <ClInclude Include="source\FileServer\LoadJson.h">
-      <Filter>ヘッダー ファイル\FileServer</Filter>
-    </ClInclude>
     <ClInclude Include="source\Math\Matrix44.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
@@ -119,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="source\Application\KeyboardState.h">
       <Filter>ヘッダー ファイル\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileServer\JsonServer.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="source\Application\KeyboardState.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileServer\JsonServer.cpp">
+      <Filter>ソース ファイル\FileServer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
