@@ -132,6 +132,9 @@
     <ClInclude Include="source\Server\ServerTemplateVector.h">
       <Filter>ヘッダー ファイル\Server</Filter>
     </ClInclude>
+    <ClInclude Include="source\Server\ServerTemplateUnordered.h">
+      <Filter>ヘッダー ファイル\Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -204,6 +207,9 @@
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
     <ClCompile Include="source\Server\ServerTemplateVector.cpp">
+      <Filter>ソース ファイル\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\ServerTemplateUnordered.cpp">
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
   </ItemGroup>

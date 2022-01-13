@@ -18,7 +18,7 @@ namespace AppFrame {
   namespace Server {
     /**
      * @class ServerTemplateVector
-     * @brief vector配列に対応したサーバテンプレート
+     * @brief 動的配列に対応したサーバテンプレート
      */
     template <typename T>
     class ServerTemplateVector : public ServerBase<std::vector<T>> {
