@@ -8,6 +8,7 @@
 #pragma once
 #ifdef _DEBUG
 #include <stdexcept>
+#include <Windows.h>
 #endif
 
 //#include <filesystem>
@@ -109,6 +110,20 @@ namespace AppFrame {
       return flag;
 #endif
     }
+
+#ifdef _DEBUG
+    template <typename T>
+    std::logic_error ServerBase<T>::LogicError(std::string_view message) const {
+      std::string error = _name + ":" + message.data();
+      return std::logic_error(error);
+    }
+
+    template <typename T>
+    void ServerBase<T>::DebugString(std::string_view message) const {
+      // デバッグウィンドウに出力する
+      OutputDebugString(message.data());
+    }
+#endif
   } // namespace Server
 //  namespace FileServer {
 //    class FileBase;

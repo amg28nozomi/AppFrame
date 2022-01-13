@@ -19,6 +19,16 @@ namespace {
 
 namespace AppFrame {
   namespace FileServer {
+
+    FileServer::FileServer() : Server::ServerTemplateUnordered<std::string, std::filesystem::path>() {
+#ifdef _DEBUG
+      _name = "FileServer";
+#endif
+    }
+
+    bool FileServer::LoadJsonFile(std::filesystem::path jsonFile) {
+      return true;
+    }
 //
 //#ifndef _DEBUG
 //    FileServer::FileServer() : ServerBase() {

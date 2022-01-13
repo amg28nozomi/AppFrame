@@ -6,12 +6,31 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include "../Server/ServerTemplateUnordered.h"
+#include <filesystem>
 #include "FileOutput.h"
 #include "FileBase.h"
 
 /** FileWorker用名前空間 */
 namespace AppFrame {
   namespace FileServer {
+    /**
+     * @class FileServer
+     * @brief ファイル管理用サーバ
+     */
+    class FileServer : public Server::ServerTemplateUnordered<std::string, std::filesystem::path> {
+    public:
+      /**
+       * @brief コンストラクタ
+       */
+      FileServer();
+      /**
+       * @brief  jsonファイルの読み取り
+       * @param  jsonFile jsonファイルのパス
+       * @return true:読み取り成功 false:読み取り失敗
+       */
+      bool LoadJsonFile(std::filesystem::path jsonFile);
+    };
 
 //    class FileServer : public Data::ServerBase < FileBase, std::filesystem::path > {
 //    public:

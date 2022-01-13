@@ -58,7 +58,7 @@ namespace AppFrame {
     bool ServerTemplateUnordered<Key, Value>::Release() {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // ƒfƒtƒHƒ‹ƒg‚Å‚Í‘S—v‘f‚Ì‰ğ•ú‚Ì‚İ‚ğs‚¤
-      UnorderedServer::_registry.claer();
+      ServerTemplateUnordered<Key, Value>::_registry.clear();
       return true;
     }
 
@@ -66,7 +66,7 @@ namespace AppFrame {
     bool ServerTemplateUnordered<Key, Value>::Register(Key key, Value value) {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // ƒL[‚Í“o˜^‰Â”\‚©H
-      if (!UsedKey()) {
+      if (!UsedKey(key)) {
         return false; // “o˜^Ï‚İ
       }
       // “o˜^
