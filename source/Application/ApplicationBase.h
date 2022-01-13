@@ -20,9 +20,9 @@ namespace AppFrame {
   /**
    * @
    */
-  namespace FileServer {
-    class FileServer;
-  } // namespace FileServer
+  //namespace FileServer {
+  //  class FileServer;
+  //} // namespace FileServer
   /** Application用名前空間 */
   namespace Application {
     /**
@@ -109,7 +109,7 @@ namespace AppFrame {
       static inline bool _isAdd{false}; //!< 生成フラグ
       static inline bool _windowMode{false};    //!< ウィンドウモード
       static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< 実態
-      std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
+      //std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
     };
   } // namespace Application
 } // namespace AppFrame

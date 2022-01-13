@@ -6,7 +6,6 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
-#include "../Data/ServerBase.h"
 #include "FileOutput.h"
 #include "FileBase.h"
 
@@ -14,52 +13,52 @@
 namespace AppFrame {
   namespace FileServer {
 
-    class FileServer : public Data::ServerBase < FileBase, std::filesystem::path > {
-    public:
-#ifndef _DEBUG
-      /**
-       * @brief コンストラクタ
-       */
-      FileServer();
-#else
-      /**
-       * @brief コンストラクタ
-       * @param filePath ログ出力用ファイルのパス(デフォルトでは空)
-       */
-      FileServer(std::filesystem::path filePath = "");
-#endif
-      /**
-       * @brief デストラクタ
-       */
-      ~FileServer() override;
-      /**
-       * @brief  初期化
-       */
-      bool Init() override;
-      /**
-       * @brief  レジストリの初期化
-       * @return 
-       */
-      bool Release() override;
-      /**
-       * @brief  ファイル情報の登録
-       * @param  key  登録に使用する文字列
-       * @param  path ファイルのパス
-       * @return true:登録成功 false:登録失敗
-       */
-      bool Register(std::string_view key, const std::filesystem::path path) override;
-      /**
-       * @brief  ファイル情報の読み取り
-       * @param  jsonPath jsonファイルのポス
-       * @return true:読み取り成功 false:問題発生
-       */
-      bool LoadFiles(std::filesystem::path jsonPath);
-    protected:
-#ifdef _DEBUG
-      class FileOutput _fileLog; //!< ファイル出力システム
-      bool _debug{false};        //!< ログ出力フラグ
-#endif
-    };
+//    class FileServer : public Data::ServerBase < FileBase, std::filesystem::path > {
+//    public:
+//#ifndef _DEBUG
+//      /**
+//       * @brief コンストラクタ
+//       */
+//      FileServer();
+//#else
+//      /**
+//       * @brief コンストラクタ
+//       * @param filePath ログ出力用ファイルのパス(デフォルトでは空)
+//       */
+//      FileServer(std::filesystem::path filePath = "");
+//#endif
+//      /**
+//       * @brief デストラクタ
+//       */
+//      ~FileServer() override;
+//      /**
+//       * @brief  初期化
+//       */
+//      bool Init() override;
+//      /**
+//       * @brief  レジストリの初期化
+//       * @return 
+//       */
+//      bool Release() override;
+//      /**
+//       * @brief  ファイル情報の登録
+//       * @param  key  登録に使用する文字列
+//       * @param  path ファイルのパス
+//       * @return true:登録成功 false:登録失敗
+//       */
+//      bool Register(std::string_view key, const std::filesystem::path path) override;
+//      /**
+//       * @brief  ファイル情報の読み取り
+//       * @param  jsonPath jsonファイルのポス
+//       * @return true:読み取り成功 false:問題発生
+//       */
+//      bool LoadFiles(std::filesystem::path jsonPath);
+//    protected:
+//#ifdef _DEBUG
+//      class FileOutput _fileLog; //!< ファイル出力システム
+//      bool _debug{false};        //!< ログ出力フラグ
+//#endif
+//    };
 
     /**
      * @class FileServer

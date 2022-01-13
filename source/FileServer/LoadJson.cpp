@@ -11,6 +11,7 @@
 #include <stdexcept>
 #include <vector>
 #include <queue>
+#include <nlohmann/json.hpp>
 #include "../Data/DivGraph.h"
 #include "FileBase.h"
 #include "FileServer.h"
@@ -86,46 +87,46 @@ namespace AppFrame {
       return fileMap;
     }
 
-    bool LoadJson::LoadDivGraphData(nlohmann::json json) {
-      // 画像ファイルが存在するディレクトリパス
-      auto directory = json["directory"].get<std::string>();
-      for (auto data : json["file"]["data"]) {
-#ifndef _DEBUG
-#else
-#endif
-        auto key = data["key"].get<std::string>();
-        auto divGraph =  AddDivGraph(data, directory);
-        // コンテナに登録する
-
-      }
-      return true;
-    }
-
-    Data::DivGraph LoadJson::AddDivGraph(nlohmann::json param, std::string_view directory) {
-      // 各種パラメータの取得
-      auto filePath = directory.data() + param["filename"].get<std::string>() + ".png";
-      auto xNum = param["xnum"].get<int>();
-      auto yNum = param["ynum"].get<int>();
-      auto allNum = param["allnum"].get<int>();
-      auto xSize = param["xsize"].get<int>();
-      auto ySize = param["ysize"].get<int>();
-      // 生成した画像情報を返す
-      return Data::DivGraph(filePath, xNum, yNum, allNum, xSize, ySize);
-    }
-
-    Sound::SoundMem LoadJson::AddSoundMem(nlohmann::json param, std::string_view directory, std::string_view extension) {
-      auto filePath = directory.data() + param["filename"].get<std::string>() + extension.data();
-      auto playType = param["playtype"].get<int>();
-      return Sound::SoundMem(filePath, playType);
-    }
-
-    bool LoadJson::TypeChack(nlohmann::json json) {
-      switch (json.get<int>()) {
-      default:
-        return false;
-      }
-      return true;
-    }
+//    bool LoadJson::LoadDivGraphData(nlohmann::json json) {
+//      // 画像ファイルが存在するディレクトリパス
+//      auto directory = json["directory"].get<std::string>();
+//      for (auto data : json["file"]["data"]) {
+//#ifndef _DEBUG
+//#else
+//#endif
+//        auto key = data["key"].get<std::string>();
+//        auto divGraph =  AddDivGraph(data, directory);
+//        // コンテナに登録する
+//
+//      }
+//      return true;
+//    }
+//
+//    Data::DivGraph LoadJson::AddDivGraph(nlohmann::json param, std::string_view directory) {
+//      // 各種パラメータの取得
+//      auto filePath = directory.data() + param["filename"].get<std::string>() + ".png";
+//      auto xNum = param["xnum"].get<int>();
+//      auto yNum = param["ynum"].get<int>();
+//      auto allNum = param["allnum"].get<int>();
+//      auto xSize = param["xsize"].get<int>();
+//      auto ySize = param["ysize"].get<int>();
+//      // 生成した画像情報を返す
+//      return Data::DivGraph(filePath, xNum, yNum, allNum, xSize, ySize);
+//    }
+//
+//    Sound::SoundMem LoadJson::AddSoundMem(nlohmann::json param, std::string_view directory, std::string_view extension) {
+//      auto filePath = directory.data() + param["filename"].get<std::string>() + extension.data();
+//      auto playType = param["playtype"].get<int>();
+//      return Sound::SoundMem(filePath, playType);
+//    }
+//
+//    bool LoadJson::TypeChack(nlohmann::json json) {
+//      switch (json.get<int>()) {
+//      default:
+//        return false;
+//      }
+//      return true;
+//    }
 
 
 #ifdef _DEBUG

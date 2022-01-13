@@ -172,11 +172,11 @@
     <ClInclude Include="source\Application\Operation.h" />
     <ClInclude Include="source\Data\Color.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
-    <ClInclude Include="source\Data\ServerBase.h" />
     <ClInclude Include="source\FileServer\FileBase.h" />
     <ClInclude Include="source\FileServer\FileOutput.h" />
     <ClInclude Include="source\FileServer\FileServer.h" />
     <ClInclude Include="source\FileServer\JsonServer.h" />
+    <ClInclude Include="source\FileServer\LoadJson.h" />
     <ClInclude Include="source\FileServer\WriteJson.h" />
     <ClInclude Include="source\Math\Arithmetic.h" />
     <ClInclude Include="source\Math\GravityBase.h" />
@@ -184,6 +184,8 @@
     <ClInclude Include="source\Math\Vector4.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
+    <ClInclude Include="source\Server\ServerBase.h" />
+    <ClInclude Include="source\Server\ServerTemplateVector.h" />
     <ClInclude Include="source\SoundServer\SoundMem.h" />
     <ClInclude Include="source\SoundServer\SoundServer.h" />
   </ItemGroup>
@@ -196,7 +198,6 @@
     <ClCompile Include="source\Application\Operation.cpp" />
     <ClCompile Include="source\Data\Color.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />
-    <ClCompile Include="source\Data\ServerBase.cpp" />
     <ClCompile Include="source\FileServer\FileBase.cpp" />
     <ClCompile Include="source\FileServer\FileOutput.cpp" />
     <ClCompile Include="source\FileServer\FileServer.cpp" />
@@ -209,6 +210,8 @@
     <ClCompile Include="source\Math\Vector4.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
+    <ClCompile Include="source\Server\ServerBase.cpp" />
+    <ClCompile Include="source\Server\ServerTemplateVector.cpp" />
     <ClCompile Include="source\SoundServer\SoundMem.cpp" />
     <ClCompile Include="source\SoundServer\SoundServer.cpp" />
   </ItemGroup>

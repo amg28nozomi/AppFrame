@@ -13,7 +13,6 @@
 #endif
 #include <DxLib.h>
 #include "../FileServer/FileBase.h"
-#include "../FileServer/FileServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -31,7 +30,7 @@ namespace AppFrame {
 #else
       _windowMode = false;
 #endif
-      _fileServer = nullptr;
+      //_fileServer = nullptr;
     }
 
     ApplicationBase::~ApplicationBase() {
@@ -54,21 +53,21 @@ namespace AppFrame {
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
-      _fileServer = std::make_unique<FileServer::FileServer>();
+      //_fileServer = std::make_unique<FileServer::FileServer>();
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
       }
 #else
-      try {
-        // ファイルサーバの初期化
-        // 初期化に失敗した場合は対応したエラーを発射
-        _fileServer->Init();
-      }
-      catch (std::logic_error error) {
-        OutputDebugString(error.what());
-        return false; // 初期化失敗
-      }
+      //try {
+      //  // ファイルサーバの初期化
+      //  // 初期化に失敗した場合は対応したエラーを発射
+      //  _fileServer->Init();
+      //}
+      //catch (std::logic_error error) {
+      //  OutputDebugString(error.what());
+      //  return false; // 初期化失敗
+      //}
 #endif
       return true;    // 初期化成功
     }

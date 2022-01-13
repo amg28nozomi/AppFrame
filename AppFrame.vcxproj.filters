@@ -49,6 +49,12 @@
     <Filter Include="ソース ファイル\Mode">
       <UniqueIdentifier>{79001127-80ed-4c76-92d8-9aa958d4b75a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Server">
+      <UniqueIdentifier>{9cb5e190-a979-4503-8508-4faddf07add9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Server">
+      <UniqueIdentifier>{f361762e-35d3-4026-85ef-f29867131681}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -102,9 +108,6 @@
     <ClInclude Include="source\FileServer\WriteJson.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
-    <ClInclude Include="source\Data\ServerBase.h">
-      <Filter>ヘッダー ファイル\Data</Filter>
-    </ClInclude>
     <ClInclude Include="source\Math\GravityBase.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
@@ -119,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="source\FileServer\JsonServer.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FileServer\LoadJson.h">
+      <Filter>ヘッダー ファイル\FileServer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\ServerBase.h">
+      <Filter>ヘッダー ファイル\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\ServerTemplateVector.h">
+      <Filter>ヘッダー ファイル\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +185,6 @@
     <ClCompile Include="source\FileServer\WriteJson.cpp">
       <Filter>ソース ファイル\FileServer</Filter>
     </ClCompile>
-    <ClCompile Include="source\Data\ServerBase.cpp">
-      <Filter>ソース ファイル\Data</Filter>
-    </ClCompile>
     <ClCompile Include="source\Math\GravityBase.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
@@ -190,6 +199,12 @@
     </ClCompile>
     <ClCompile Include="source\FileServer\JsonServer.cpp">
       <Filter>ソース ファイル\FileServer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\ServerBase.cpp">
+      <Filter>ソース ファイル\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\ServerTemplateVector.cpp">
+      <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

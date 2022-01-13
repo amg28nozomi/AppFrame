@@ -12,7 +12,6 @@
 
 namespace AppFrame {
   namespace Mode {
-
     class ModeBase;
     /**
      * @class ModeServer

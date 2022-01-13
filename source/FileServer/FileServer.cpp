@@ -19,66 +19,66 @@ namespace {
 
 namespace AppFrame {
   namespace FileServer {
-
-#ifndef _DEBUG
-    FileServer::FileServer() : ServerBase() {
-    }
-#else
-    FileServer::FileServer(std::filesystem::path filePath) : ServerBase(), _fileLog(filePath) {
-      _name = ServerName;
-    }
-#endif
-
-    FileServer::~FileServer() {
-      Release();
-    }
-
-    bool FileServer::Init() {
-      return ServerBase::Init();
-    }
-
-    bool FileServer::Release() {
-      // “o˜^‚³‚ê‚Ä‚¢‚éƒtƒ@ƒCƒ‹î•ñ‚ğˆêŠ‡íœ‚·‚é
-      _registry.clear();
-      return true;
-    }
-
-    bool FileServer::Register(std::string_view key, const std::filesystem::path path) {
-#ifndef _DEBUG
-      // ‘ÎÛ‚Í“o˜^‰Â”\‚©H
-      if (!IsTarget({key, path})) {
-        return false;
-      }
-#else
-      try {
-        IsTarget((key, path));
-      } catch (std::logic_error error) {
-        DebugString(error.what());
-        return false; // “o˜^¸”s
-      }
-#endif
-      _registry.emplace(key, path); // ƒŒƒWƒXƒgƒŠ‚É“o˜^
-      return true;
-    }
-
-    bool FileServer::LoadFiles(std::filesystem::path jsonPath) {
-#ifndef _DEBUG
-      // ƒpƒX‚Í—LŒø‚©
-      if (!IsTarget(jsonPath, ".json")) {
-        return false; // “Ç‚İæ‚è‘ÎÛ‚Å‚Í‚È‚¢
-      }
-#else
-      try {
-        IsTarget(jsonPath, ".json");
-      } catch (std::logic_error error) {
-        DebugString(error.what());
-        return false;
-      }
-#endif
-      LoadJson::LoadJsonFile(jsonPath);
-      
-      return true;
-    }
+//
+//#ifndef _DEBUG
+//    FileServer::FileServer() : ServerBase() {
+//    }
+//#else
+//    FileServer::FileServer(std::filesystem::path filePath) : ServerBase(), _fileLog(filePath) {
+//      _name = ServerName;
+//    }
+//#endif
+//
+//    FileServer::~FileServer() {
+//      Release();
+//    }
+//
+//    bool FileServer::Init() {
+//      return ServerBase::Init();
+//    }
+//
+//    bool FileServer::Release() {
+//      // “o˜^‚³‚ê‚Ä‚¢‚éƒtƒ@ƒCƒ‹î•ñ‚ğˆêŠ‡íœ‚·‚é
+//      _registry.clear();
+//      return true;
+//    }
+//
+//    bool FileServer::Register(std::string_view key, const std::filesystem::path path) {
+//#ifndef _DEBUG
+//      // ‘ÎÛ‚Í“o˜^‰Â”\‚©H
+//      if (!IsTarget({key, path})) {
+//        return false;
+//      }
+//#else
+//      try {
+//        IsTarget((key, path));
+//      } catch (std::logic_error error) {
+//        DebugString(error.what());
+//        return false; // “o˜^¸”s
+//      }
+//#endif
+//      _registry.emplace(key, path); // ƒŒƒWƒXƒgƒŠ‚É“o˜^
+//      return true;
+//    }
+//
+//    bool FileServer::LoadFiles(std::filesystem::path jsonPath) {
+//#ifndef _DEBUG
+//      // ƒpƒX‚Í—LŒø‚©
+//      if (!IsTarget(jsonPath, ".json")) {
+//        return false; // “Ç‚İæ‚è‘ÎÛ‚Å‚Í‚È‚¢
+//      }
+//#else
+//      try {
+//        IsTarget(jsonPath, ".json");
+//      } catch (std::logic_error error) {
+//        DebugString(error.what());
+//        return false;
+//      }
+//#endif
+//      LoadJson::LoadJsonFile(jsonPath);
+//      
+//      return true;
+//    }
 
 
 
