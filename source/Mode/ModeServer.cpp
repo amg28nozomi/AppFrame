@@ -13,19 +13,32 @@
 namespace AppFrame {
   namespace Mode {
 
-    ModeServer::ModeServer(std::string_view key, std::shared_ptr<ModeBase> mode) {
+    ModeServer::ModeServer(std::string_view key, std::shared_ptr<ModeBase> mode) :
+     Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>>(){
       // コンテナの初期化
       _registry.clear();
-      _modes.clear();
-
+      _list.clear();
+#ifdef _DEBUG
+      _name = "FileServer";
+#endif
     }
 
-    bool ModeServer::Register(std::string_view key, std::shared_ptr<ModeBase> mode) {
-      if (_registry.contains(key.data())) {
+    bool ModeServer::Release() {
+      // 登録されている全シーンの解放を行う
+      for (auto mode : _list) {
+        mode->Exit(); // 終了処理呼び出し
+      }
+      return false;
+    }
+
+    bool ModeServer::AddMode(std::string_view key, std::shared_ptr<ModeBase> mode) {
+      // キーが重複しているか
+      if (!UsedKey(key.data())) {
+        // 重複している場合は既に登録されているモードを削除
         _registry.erase(key.data());
       }
       // モードの登録
-      _registry.emplace(key, mode);
+      _registry.emplace(key.data(), mode);
       auto flag = false; // 初期化フラグ
       // モードの初期化
 #ifndef _DEBUG
@@ -34,8 +47,8 @@ namespace AppFrame {
       try {
         flag = mode->Init();
       } catch (std::logic_error error) {
-        // 初期化処理失敗
-        OutputDebugString(error.what());
+        // 初期化で問題発生
+        DebugString(error.what());
       }
 #endif
       return flag;
@@ -43,15 +56,15 @@ namespace AppFrame {
 
     bool ModeServer::Process() const {
       // モードはスタックされているか
-      if (_modes.empty()) {
+      if (_list.empty()) {
         return true; // 未登録
       }
 #ifndef _DEBUG
-      return _modes.back()->Process();
+      return _list.back()->Process();
 #else
       auto flag = true; // 処理フラグ
       try {
-        flag = _modes.back()->Process();
+        flag = _list.back()->Process();
       } catch (std::logic_error error) {
         OutputDebugString(error.what());
       }
@@ -62,7 +75,7 @@ namespace AppFrame {
     bool ModeServer::Draw() const {
       auto flag = true; // 処理フラグ
       // スタックされているモードの描画
-      for (auto&& mode : _modes) {
+      for (auto&& mode : _list) {
 #ifndef _DEBUG
         // 描画処理は正常終了したか
         if (!mode->Draw()) {
@@ -75,7 +88,7 @@ namespace AppFrame {
           }
         } catch (std::logic_error error) {
           // 例外が発生した場合はログに出力
-          OutputDebugString(error.what());
+          DebugString(error.what());
         }
 #endif
       }

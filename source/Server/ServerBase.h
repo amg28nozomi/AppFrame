@@ -10,11 +10,6 @@
 #include <stdexcept>
 #include <Windows.h>
 #endif
-
-//#include <filesystem>
-//#include <unordered_map>
-//#include <vector>
-
 /**
  * @brief アプリケーションフレーム
  */

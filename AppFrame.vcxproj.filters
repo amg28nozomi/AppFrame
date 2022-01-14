@@ -212,6 +212,9 @@
     <ClCompile Include="source\Server\ServerTemplateUnordered.cpp">
       <Filter>ソース ファイル\Server</Filter>
     </ClCompile>
+    <ClCompile Include="source\Application\WinMain.cpp">
+      <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

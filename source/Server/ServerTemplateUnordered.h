@@ -34,6 +34,7 @@ namespace AppFrame {
        * @return true:‰ğ•ú¬Œ÷ false:–â‘è”­¶
        */
       virtual bool Release() override;
+    protected:
       /**
        * @brief  ƒfƒtƒHƒ‹ƒg‚Ì“o˜^ˆ—
        * @param  key “o˜^‚É•R‚Ã‚¯‚éƒL[î•ñ
@@ -41,15 +42,12 @@ namespace AppFrame {
        * @return true:“o˜^¬Œ÷ false:“o˜^¸”s
        */
       virtual bool Register(Key key, Value value);
-    protected:
       /**
        * @brief  ‘ÎÛƒL[‚ª–¢g—p‚©‚Ì”»’è
        * @param  key ”»’è‘ÎÛ
        * @return true:“o˜^‰Â”\ false:g—pÏ‚İ
        */
       bool UsedKey(Key key) const;
-
-
     };
 
     template <typename Key, typename Value>

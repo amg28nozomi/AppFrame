@@ -12,6 +12,7 @@
 #include <stdexcept>
 #endif
 #include <DxLib.h>
+#include "../FileServer/FileServer.h"
 #include "../FileServer/FileBase.h"
 
 namespace {
@@ -23,17 +24,25 @@ namespace {
 
 namespace AppFrame {
   namespace Application {
-    
     ApplicationBase::ApplicationBase() {
 #ifndef _DEBUG
       _windowMode = true;
 #else
       _windowMode = false;
 #endif
-      //_fileServer = nullptr;
     }
 
     ApplicationBase::~ApplicationBase() {
+    }
+
+    bool ApplicationBase::SetInstance() {
+      // 実態が登録されているかの判定
+      if (!_setInstance) {
+        if (_instance == nullptr) {
+          return true; // 登録を行う
+        }
+      }
+      return false; // 登録済み
     }
 
     bool ApplicationBase::Init() {
@@ -53,23 +62,27 @@ namespace AppFrame {
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
-      //_fileServer = std::make_unique<FileServer::FileServer>();
+      _fileServer = std::make_unique<FileServer::FileServer>();
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
       }
 #else
-      //try {
-      //  // ファイルサーバの初期化
-      //  // 初期化に失敗した場合は対応したエラーを発射
-      //  _fileServer->Init();
-      //}
-      //catch (std::logic_error error) {
-      //  OutputDebugString(error.what());
-      //  return false; // 初期化失敗
-      //}
+      try {
+        // ファイルサーバの初期化
+        // 初期化に失敗した場合は対応したエラーを発射
+        _fileServer->Init();
+      }
+      catch (std::logic_error error) {
+        OutputDebugString(error.what());
+        return false; // 初期化失敗
+      }
 #endif
       return true;    // 初期化成功
+    }
+
+    void ApplicationBase::Release() {
+      DxLib_End();
     }
 
     void ApplicationBase::Run() {

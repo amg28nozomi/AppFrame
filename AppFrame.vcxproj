@@ -197,6 +197,7 @@
     <ClCompile Include="source\Application\KeyboardState.cpp" />
     <ClCompile Include="source\Application\MouseState.cpp" />
     <ClCompile Include="source\Application\Operation.cpp" />
+    <ClCompile Include="source\Application\WinMain.cpp" />
     <ClCompile Include="source\Data\Color.cpp" />
     <ClCompile Include="source\Data\DivGraph.cpp" />
     <ClCompile Include="source\FileServer\FileBase.cpp" />

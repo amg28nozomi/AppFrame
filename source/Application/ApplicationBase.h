@@ -9,6 +9,7 @@
 #pragma once
 #include <tuple>
 #include <memory>
+#include "../FileServer/FileServer.h"
 
 /** フレームワーク用名前空間 */
 namespace AppFrame {
@@ -18,12 +19,8 @@ namespace AppFrame {
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   constexpr auto Frame60 = 60;        //!< 60フレーム
   /**
-   * @
+   * @brief アプリケーションベース
    */
-  //namespace FileServer {
-  //  class FileServer;
-  //} // namespace FileServer
-  /** Application用名前空間 */
   namespace Application {
     /**
      * @class ApplicationBase
@@ -55,6 +52,10 @@ namespace AppFrame {
        */
       virtual bool Init();
       /**
+       * @brief アプリケーションの解放
+       */
+      virtual void Release();
+      /**
        * @brief  実行処理
        */
       virtual void Run();
@@ -74,6 +75,20 @@ namespace AppFrame {
        * @return true:処理成功 false:処理失敗
        */
       virtual bool Draw();
+      /**
+       * @brief  アプリケーションの参照を取得
+       * @return アプリケーションの参照
+       */
+      static std::shared_ptr<ApplicationBase> GetApplication() {
+        return _instance;
+      }
+      /**
+       * @brief  ファイルサーバの参照を取得する
+       * @return ファイルサーバの参照
+       */
+      FileServer::FileServer& GetFileServer() {
+        return *_fileServer;
+      }
       /**
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
@@ -101,15 +116,27 @@ namespace AppFrame {
        *                true:32ビットカラー(デフォルト)  false:16ビットカラー
        */
       static void SetWindowSize(int width, int height, bool bit = true);
+      /**
+       * @brief  アプリケーションの終了判定
+       * @return 
+       */
+      inline bool GameEnd() const {
+        return _state != State::Quit;
+      }
     protected:
-      State _state{State::Play};      //!< アプリケーションの状態
+      State _state{State::Paused};      //!< アプリケーションの状態
       static inline int _width{0};    //!< ウィンドウサイズ(幅)
       static inline int _height{0};   //!< ウィンドウサイズ(高さ)
       static inline int _colorBit{0}; //!< カラービット数
-      static inline bool _isAdd{false}; //!< 生成フラグ
+      static inline bool _setInstance{false};   //!< 生成フラグ
       static inline bool _windowMode{false};    //!< ウィンドウモード
-      static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< 実態
-      //std::unique_ptr<FileServer::FileServer> _fileServer;  //!< ファイルサーバ
+      static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< アプリケーションの実体
+      std::unique_ptr<FileServer::FileServer> _fileServer{nullptr};  //!< ファイルサーバ
+      /**
+       * @brief  Instanceの設定を行う
+       * @return 
+       */
+      static bool SetInstance();
     };
   } // namespace Application
 } // namespace AppFrame

@@ -33,6 +33,7 @@ namespace AppFrame {
     }
 
     bool FileServer::LoadJsonFile(std::filesystem::path jsonFile) {
+      // jsonファイルの読み取り
       return true;
     }
 
@@ -127,6 +128,8 @@ namespace AppFrame {
       }
       return true;    // 有効
     }
+
+
 //
 //#ifndef _DEBUG
 //    FileServer::FileServer() : ServerBase() {
