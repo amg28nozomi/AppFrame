@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   Operation.h
+ * @file   InputOperation.h
  * @brief  入力処理クラス
  * 
  * @author 鈴木希海
@@ -18,10 +18,10 @@ namespace AppFrame {
     constexpr auto DeviceMouse = 1;    //!< マウス
     constexpr auto DeviceJoypad = 2;   //!< ジョイパッド
     /**
-     * @class Operation
+     * @class InputOperation
      * @brief 入力処理
      */
-    class Operation {
+    class InputOperation {
     public:
       /**
        * @brief 実行状態
@@ -35,11 +35,11 @@ namespace AppFrame {
        * @brief コンストラクタ
        * @param app アプリケーションの参照
        */
-      Operation(class ApplicationBase& app);
+      InputOperation(class ApplicationBase& app);
       /**
        * @brief デストラクタ
        */
-      ~Operation();
+      ~InputOperation();
       /**
        * @brief 更新処理
        */

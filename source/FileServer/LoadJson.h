@@ -7,35 +7,38 @@
  *********************************************************************/
 #pragma once
 #include <unordered_map>
+#include <vector>
 #include <filesystem>
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
-#include "../FileServer/FileBase.h"
+#include <nlohmann/json.hpp>
+#include "../Data/DivGraph.h"
 
 namespace AppFrame {
   namespace FileServer {
-    class FileBase;
-    class FileServer;
     constexpr auto JSON = ".json"; //!< jsonファイルのフォーマット
     /**
      * @class LoadJson
      * @brief jsonファイルの読み取りを行う静的クラス
      */
     class LoadJson {
-    private:
-      /**
-       * @brief 文字列をキーとしてファイル情報を管理する連想配列
-       */
-      using FileBaseMap = std::unordered_map<std::string, FileBase>;
     public:
+      /**
+       * @brief  jsonファイルの読み取り処理(DivGraph用)
+       * @param  jsonPath
+       * @return DivGraph用のデータが格納された動的配列
+       *         first:連想配列の登録に使用するキー pair:画像ファイル情報
+       */
+      static std::vector<std::pair<std::string_view,
+        std::filesystem::path>> LoadDivGraoh(std::filesystem::path jsonPath);
       /**
        * @brief  jsonファイルの読み取り処理
        * @param  jsonPath jsonファイルのパス
        * @return 取得したファイルデータを返す
        * @throw  std::logic_error
        */
-      static std::unordered_map<std::string, FileBase> LoadJsonFile(std::filesystem::path jsonPath);
+      //static std::vector<std::pair<std::string, Data::DivGraph>> LoadJsonFile(std::filesystem::path jsonPath);
       /**
        * @brief  対象ファイルがjsonファイルかを判定する
        * @param  path 判定ファイルのパス
@@ -44,6 +47,13 @@ namespace AppFrame {
        */
       static bool IsJson(const std::filesystem::path path);
     private:
+      /**
+       * @brief  jsonファイルの読み取り
+       * @param  jsonFile 対象ファイルのパス
+       * @return 読み取りに成功した場合は対象のjsonオブジェクトを返す
+       *         読み取りに失敗した場合は空のオブジェクトを返す
+       */
+      static nlohmann::json LoadJsonFile(std::filesystem::path jsonFile);
 #ifdef _DEBUG
       /**
        * @brief  エラーメッセージの取得

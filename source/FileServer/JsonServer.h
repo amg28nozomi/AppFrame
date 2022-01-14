@@ -6,6 +6,7 @@
  * @date   January 2022
  *********************************************************************/
 #pragma once
+#include "../Server/ServerTemplateUnordered.h"
 #include <nlohmann/json.hpp>
 /**
  * @brief アプリケーションフレーム
@@ -19,6 +20,7 @@ namespace AppFrame {
      * @class JsonServer
      * @brief jsonを管理するサーバクラスの基底クラス
      */
+
     //class JsonServer : public Data::ServerBase < std::filesystem::path, std::filesystem::path> {
     //public:
     //  /**

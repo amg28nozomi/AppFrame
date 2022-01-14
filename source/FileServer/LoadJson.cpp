@@ -11,8 +11,6 @@
 #include <stdexcept>
 #include <vector>
 #include <queue>
-#include <nlohmann/json.hpp>
-#include "../Data/DivGraph.h"
 #include "FileBase.h"
 #include "FileServer.h"
 #include "../SoundServer/SoundMem.h"
@@ -37,55 +35,93 @@ namespace {
 namespace AppFrame {
   namespace FileServer {
 
-    std::unordered_map<std::string, FileBase> LoadJson::LoadJsonFile(std::filesystem::path jsonPath) {
-      // ファイルの展開
-      std::ifstream jsonFile(jsonPath);
-      // 読み取り失敗
-      if (!jsonFile) {
-#ifdef _DEBUG
-        throw std::logic_error(jsonPath.string() + " : ファイルの読み取りに失敗しました\n");
+    std::vector<std::pair<std::string_view, std::filesystem::path>> LoadJson::LoadDivGraoh(std::filesystem::path jsonPath) {
+      using DivGraphs = std::vector<std::pair<std::string_view, std::filesystem::path>>;
+#ifndef _DEBUG
+      // jsonファイルの読み取り
+      auto data = LoadJsonFile(jsonPath);
+#else
+      nlohmann::json data;
+      try {
+        data = LoadJsonFile(jsonPath);
+      } catch (std::logic_error error) {
+        OutputDebugString(error.what());
+      }
 #endif
-        return FileBaseMap(); // 空データを返す
+      // データの取得に失敗した場合は空データを返す
+      if (data.empty()) {
+        return DivGraphs(); // 失敗
       }
-      // 
-      namespace json = nlohmann;
-      json::json j = json::json::parse(jsonFile);
-      jsonFile.close();
-
-      auto map = j[MAP]; // データ
-      // キーとパスのサイズは等しいか
-      if (map[KEY].size() != map[PATH].size()) {
-#ifdef _DEBUG
-        auto error = Differebce(static_cast<int>(map[KEY].size()), map[PATH]);
-        throw std::logic_error("キーとパスのサイズが一致していません。jsonファイルを確認して下さい");
-#endif
-      }
-      const std::string directry = map[DIRECTORY]; // ディレクトリパス
-      const std::string format = map[FORMAT];      // フォーマット
-      std::queue<std::string_view> keys;           // 登録用キー
-      // キーのコピー
-      for (auto key : map[KEY]) {
-        keys.push(key);
-      }
-      FileBaseMap fileMap; // ファイルデータ
-      // 連想配列への登録
-      for (auto path : map[PATH]) {
-        std::string fileName = path; // ファイル名
-        // ファイルパス
-        std::string filePath = directry + fileName + format;
-        // パスは存在するか
-        if (std::filesystem::exists(filePath)) {
-#ifdef _DEBUG
-          OutputDebugString(filePath.c_str());
-          OutputDebugString(" : 対象ファイルは存在していません。\n");
-#endif
-          keys.pop(); // 先頭のキーを破棄
-          continue;
-        }
-
-      }
-      return fileMap;
+      DivGraphs divGraphs; // データベース
+      auto values = data["values"];
     }
+
+    nlohmann::json LoadJson::LoadJsonFile(std::filesystem::path jsonFile) {
+      // ファイルの読み取り
+      std::ifstream read(jsonFile);
+      // 読み取りに失敗した場合は終了
+      if (!read) {
+#ifdef _DEBUG
+        throw std::logic_error(jsonFile.string() + " : ファイルの読み取りに失敗しました\n");
+#endif
+        return nlohmann::json(); // 空データを返す
+      }
+      // パース
+      nlohmann::json j = nlohmann::json::parse(jsonFile);
+      read.close();
+      return j;
+    }
+
+//    std::vector<std::pair<std::string, Data::DivGraph>> LoadJson::LoadJsonFile(std::filesystem::path jsonPath) {
+//      using DivGraphMap = std::vector<std::pair<std::string, Data::DivGraph>>;
+//      // ファイルの展開
+//      std::ifstream jsonFile(jsonPath);
+//      // 読み取り失敗
+//      if (!jsonFile) {
+//#ifdef _DEBUG
+//        throw std::logic_error(jsonPath.string() + " : ファイルの読み取りに失敗しました\n");
+//#endif
+//        return DivGraphMap(); // 空データを返す
+//      }
+//      // jsonファイル
+//      namespace json = nlohmann;
+//      json::json j = json::json::parse(jsonFile);
+//      jsonFile.close();
+//
+//      auto map = j[MAP]; // データ
+//      // キーとパスのサイズは等しいか
+//      if (map[KEY].size() != map[PATH].size()) {
+//#ifdef _DEBUG
+//        auto error = Differebce(static_cast<int>(map[KEY].size()), map[PATH]);
+//        throw std::logic_error("キーとパスのサイズが一致していません。jsonファイルを確認して下さい");
+//#endif
+//      }
+//      const std::string directry = map[DIRECTORY]; // ディレクトリパス
+//      const std::string format = map[FORMAT];      // フォーマット
+//      std::queue<std::string_view> keys;           // 登録用キー
+//      // キーのコピー
+//      for (auto key : map[KEY]) {
+//        keys.push(key);
+//      }
+//      DivGraphMap fileMap; // ファイルデータ
+//      // 連想配列への登録
+//      for (auto path : map[PATH]) {
+//        std::string fileName = path; // ファイル名
+//        // ファイルパス
+//        std::string filePath = directry + fileName + format;
+//        // パスは存在するか
+//        if (std::filesystem::exists(filePath)) {
+//#ifdef _DEBUG
+//          OutputDebugString(filePath.c_str());
+//          OutputDebugString(" : 対象ファイルは存在していません。\n");
+//#endif
+//          keys.pop(); // 先頭のキーを破棄
+//          continue;
+//        }
+//
+//      }
+//      return fileMap;
+//    }
 
 //    bool LoadJson::LoadDivGraphData(nlohmann::json json) {
 //      // 画像ファイルが存在するディレクトリパス

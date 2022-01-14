@@ -1,11 +1,11 @@
 /*****************************************************************//**
- * @file   Operation.cpp
+ * @file   InputOperation.cpp
  * @brief  入力処理クラスの定義
  * 
  * @author 鈴木希海
  * @date   December 2021
  *********************************************************************/
-#include "Operation.h"
+#include "InputOperation.h"
 #include <array>
 #include <DxLib.h>
 #include "ApplicationBase.h"
@@ -26,14 +26,14 @@ namespace AppFrame {
       DX_INPUT_PAD4  // ジョイパッド4
     };
 
-    Operation::Operation(ApplicationBase& app) : _app(app), _joypads(DX_INPUT_PAD1) {
+    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypads(DX_INPUT_PAD1) {
       _state = State::Active;
     }
 
-    Operation::~Operation() {
+    InputOperation::~InputOperation() {
     }
 
-    void Operation::Process() {
+    void InputOperation::Process() {
       // 状態に応じてた処理の実行
       switch (_state) {
       case State::Active:
@@ -61,13 +61,13 @@ namespace AppFrame {
       }
     }
 
-    bool Operation::AddJoypad() {
+    bool InputOperation::AddJoypad() {
       GetJoypadNum();
       // 追加された場合
       return false;
     }
 
-    const bool Operation::IsConnection() {
+    const bool InputOperation::IsConnection() {
       // ジョイパッドは接続されているか
       if (GetJoypadNum == 0) {
         // 接続状態の場合は非接続状態に移行

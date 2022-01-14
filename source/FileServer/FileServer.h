@@ -30,7 +30,7 @@ namespace AppFrame {
        */
       bool Init() override;
       /**
-       * @brief  jsonファイルの読み取り
+       * @brief  jsonファイルの読み取り(未実装)
        * @param  jsonFile jsonファイルのパス
        * @return true:読み取り成功 false:読み取り失敗
        */
@@ -42,7 +42,7 @@ namespace AppFrame {
       bool SetExtension(std::vector<std::string> extensions);
     protected:
       std::vector<std::string> _extensions; //!< 対応ファイル形式
-      bool _setExtension; //!< 対象ファイル形式を指定したかの判定
+      bool _setExtension{false}; //!< 対象ファイル形式を指定したかの判定
       /**
        * @brief  対象ファイルが登録対象かの判定
        * @param  filePath 対象ファイルのパス
@@ -53,10 +53,9 @@ namespace AppFrame {
       /**
        * @brief  ファイル形式が一致しているかの判定
        * @param  filePath 対象ファイルのパス
-       * @param  extension 対応している拡張子
        * @return true:一致 false:対象ではない
        */
-      bool HasExtension(std::filesystem::path filePath, std::string_view extension) const;
+      bool HasExtension(std::filesystem::path filePath, std::string_view extension = "") const;
       /**
        * @brief  対象パスが存在するかの判定
        * @param  filePath 対象ファイルのパス

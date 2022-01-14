@@ -10,8 +10,10 @@
 #include <tuple>
 #include <memory>
 #include "../FileServer/FileServer.h"
-
-/** フレームワーク用名前空間 */
+#include "../Mode/ModeServer.h"
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
   constexpr auto WindowWidth = 1920;  //!< デフォルトの解像度情報
   constexpr auto WindowHeight = 1080; //!< デフォルトの解像度情報
@@ -44,7 +46,7 @@ namespace AppFrame {
       /**
        * @brief デストラクタ
        */
-      ~ApplicationBase();
+      virtual ~ApplicationBase();
       /**
        * @brief  アプリケーションの初期化
        * @return 初期化に成功した場合はtrue
@@ -60,30 +62,32 @@ namespace AppFrame {
        */
       virtual void Run();
       /**
-       * @brief  入力処理
-       * @return true:処理成功 false:処理失敗
-       * @throw
+       * @brief  終了処理
        */
-      virtual bool Input();
-      /**
-       * @brief  更新処理
-       * @return true:処理成功 false:処理失敗
-       */
-      virtual bool Process();
-      /**
-       * @brief  描画処理
-       * @return true:処理成功 false:処理失敗
-       */
-      virtual bool Draw();
+      virtual void Terminate();
       /**
        * @brief  アプリケーションの参照を取得
        * @return アプリケーションの参照
        */
-      static std::shared_ptr<ApplicationBase> GetApplication() {
+      static std::shared_ptr<ApplicationBase> GetInstance() {
         return _instance;
       }
       /**
-       * @brief  ファイルサーバの参照を取得する
+       * @brief  インプットオペレーションの取得
+       * @return インプットオペレーションの参照
+       */
+      class InputOperation& GetOperation() {
+        return *_input;
+      }
+      /**
+       * @brief  モードサーバの取得
+       * @return モードサーバの参照
+       */
+      Mode::ModeServer& GetModeServer() {
+        return *_modeServer;
+      }
+      /**
+       * @brief  ファイルサーバの取得
        * @return ファイルサーバの参照
        */
       FileServer::FileServer& GetFileServer() {
@@ -116,27 +120,47 @@ namespace AppFrame {
        *                true:32ビットカラー(デフォルト)  false:16ビットカラー
        */
       static void SetWindowSize(int width, int height, bool bit = true);
-      /**
-       * @brief  アプリケーションの終了判定
-       * @return 
-       */
-      inline bool GameEnd() const {
-        return _state != State::Quit;
-      }
     protected:
-      State _state{State::Paused};      //!< アプリケーションの状態
+      State _state{State::Paused};    //!< アプリケーションの状態
+      static inline int _particleMax{0}; //!< 使用するパーティクル上限
       static inline int _width{0};    //!< ウィンドウサイズ(幅)
       static inline int _height{0};   //!< ウィンドウサイズ(高さ)
       static inline int _colorBit{0}; //!< カラービット数
       static inline bool _setInstance{false};   //!< 生成フラグ
       static inline bool _windowMode{false};    //!< ウィンドウモード
-      static inline std::shared_ptr<ApplicationBase> _instance{ nullptr }; //!< アプリケーションの実体
-      std::unique_ptr<FileServer::FileServer> _fileServer{nullptr};  //!< ファイルサーバ
+      //!< アプリケーションの実体
+      static inline std::shared_ptr<ApplicationBase> _instance{nullptr};
+      //!< ファイルサーバ
+      std::unique_ptr<FileServer::FileServer> _fileServer{nullptr};
+      //!< インプットオペレーション
+      std::unique_ptr<InputOperation> _input{nullptr};
+      //!< モードサーバ
+      std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
       /**
-       * @brief  Instanceの設定を行う
-       * @return 
+       * @brief  入力処理
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Input();
+      /**
+       * @brief  更新処理
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Process();
+      /**
+       * @brief  描画処理
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Draw();
+      /**
+       * @brief  Instanceの生成を行うかの判定
+       * @return true:生成に移行 false:既に実体が定義されている
        */
       static bool SetInstance();
+      /**
+       * @brief  アプリケーションを終了するかの判定
+       * @return 
+       */
+      void IsQuit();
     };
   } // namespace Application
 } // namespace AppFrame

@@ -33,8 +33,7 @@ namespace AppFrame {
     }
 
     bool FileServer::LoadJsonFile(std::filesystem::path jsonFile) {
-      // jsonファイルの読み取り
-      return true;
+      return false;
     }
 
     bool FileServer::SetExtension(std::vector<std::string> extensions) {
@@ -86,10 +85,7 @@ namespace AppFrame {
         return false; // パスが不正
       }
       // 対象のファイル形式は有効か
-      if (!HasExtension(filePath, extension)) {
-        return false; // 有効ではない
-      }
-      return true;    // 登録対象
+      return HasExtension(filePath, extension);
 #else
       auto flag = false;
       try {

@@ -11,7 +11,8 @@
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
-#include <DxLib.h>
+#include "EffekseerForDXLib.h"
+#include "InputOperation.h"
 #include "../FileServer/FileServer.h"
 #include "../FileServer/FileBase.h"
 
@@ -25,6 +26,7 @@ namespace {
 namespace AppFrame {
   namespace Application {
     ApplicationBase::ApplicationBase() {
+      _particleMax = 4000;
 #ifndef _DEBUG
       _windowMode = true;
 #else
@@ -39,6 +41,7 @@ namespace AppFrame {
       // 実態が登録されているかの判定
       if (!_setInstance) {
         if (_instance == nullptr) {
+          _setInstance = true; 
           return true; // 登録を行う
         }
       }
@@ -49,7 +52,7 @@ namespace AppFrame {
       // 各種初期化実行
       SetWindowSize(WindowWidth, WindowHeight);
       ChangeWindowMode(_windowMode);
-      // DXライブラリの初期化に成功したか
+      // DXライブラリの初期化
       if (DxLib::DxLib_Init() == InitError) {
 #ifdef _DEBUG
         throw std::logic_error("ApplicationBase:DXライブラリの初期化に失敗しました\n");
@@ -58,11 +61,20 @@ namespace AppFrame {
       }
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
+//      // Effekseerの初期化
+//      if (Effekseer_Init(_particleMax) == InitError) {
+//#ifdef _DEBUG
+//        throw std::logic_error("ApplicationBase:Effekseerの初期化に失敗しました\n");
+//#endif
+//        return false; // 初期化失敗
+//      }
       // Zバッファの設定
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
+      // 
+
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
@@ -106,6 +118,8 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Input() {
+      IsQuit(); // 終了判定
+      _input->Process(); // 入力状態の更新
       return true;
     }
 
@@ -115,6 +129,11 @@ namespace AppFrame {
 
     bool ApplicationBase::Draw() {
       return true;
+    }
+
+    void ApplicationBase::Terminate() {
+      // DXライブラリの終了
+      DxLib_End();
     }
 
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
@@ -128,6 +147,13 @@ namespace AppFrame {
         _colorBit = BitColor16;
       }
       SetGraphMode(_width, _height, _colorBit);
+    }
+
+    void ApplicationBase::IsQuit() {
+      // メッセージループに失敗した場合は終了
+      if (ProcessMessage() == Error) {
+        _state = State::Quit; // 終了状態に遷移
+      }
     }
   } // namespace Application
 } // namespace AppFrame
