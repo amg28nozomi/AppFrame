@@ -25,11 +25,44 @@ namespace AppFrame {
        */
       FileServer();
       /**
+       * @brief  初期化
+       * @return true:初期化成功 false:初期化失敗
+       */
+      bool Init() override;
+      /**
        * @brief  jsonファイルの読み取り
        * @param  jsonFile jsonファイルのパス
        * @return true:読み取り成功 false:読み取り失敗
        */
       bool LoadJsonFile(std::filesystem::path jsonFile);
+      /**
+       * @brief  対象ファイル形式の指定(Instance後、一度のみ設定可能)
+       * @param  extensions ファイル拡張子(文字列)を格納した動的配列
+       */
+      bool SetExtension(std::vector<std::string> extensions);
+    protected:
+      std::vector<std::string> _extensions; //!< 対応ファイル形式
+      bool _setExtension; //!< 対象ファイル形式を指定したかの判定
+      /**
+       * @brief  対象ファイルが登録対象かの判定
+       * @param  filePath 対象ファイルのパス
+       * @param  extension 登録可能なファイル形式
+       * @return true:登録対象 false:非登録対象
+       */
+      bool IsTarget(std::filesystem::path filePath, std::string_view extension = "") const;
+      /**
+       * @brief  ファイル形式が一致しているかの判定
+       * @param  filePath 対象ファイルのパス
+       * @param  extension 対応している拡張子
+       * @return true:一致 false:対象ではない
+       */
+      bool HasExtension(std::filesystem::path filePath, std::string_view extension) const;
+      /**
+       * @brief  対象パスが存在するかの判定
+       * @param  filePath 対象ファイルのパス
+       * @return true:有効 false:パスが不正
+       */
+      bool Exist(std::filesystem::path filePath) const;
     };
 
 //    class FileServer : public Data::ServerBase < FileBase, std::filesystem::path > {

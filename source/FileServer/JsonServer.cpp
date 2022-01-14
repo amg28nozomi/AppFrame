@@ -67,7 +67,7 @@ namespace AppFrame {
 //
 //#else
 //      // ファイル形式は対応しているか
-//      if (filePath.stem() != stem) {
+//      if (filePath.extension() != stem) {
 //        throw std::logic_error("ファイル形式が正しくありません\n");
 //        return false;
 //      }

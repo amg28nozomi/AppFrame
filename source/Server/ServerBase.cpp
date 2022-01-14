@@ -6,10 +6,10 @@
  * @date   December 2021
  *********************************************************************/
 #include "ServerBase.h"
-
+#include <vector>
 namespace AppFrame {
   namespace Server {
-  } // namespace Server
+  } // export namespace Server
 } // namespace AppFrame
 
 //namespace AppFrame {

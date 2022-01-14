@@ -35,7 +35,7 @@ namespace AppFrame {
        */
       virtual bool Release() override;
       /**
-       * @brief  “o˜^ˆ—
+       * @brief  ƒfƒtƒHƒ‹ƒg‚Ì“o˜^ˆ—
        * @param  key “o˜^‚É•R‚Ã‚¯‚éƒL[î•ñ
        * @param  value “o˜^—pƒf[ƒ^
        * @return true:“o˜^¬Œ÷ false:“o˜^¸”s
@@ -48,6 +48,8 @@ namespace AppFrame {
        * @return true:“o˜^‰Â”\ false:g—pÏ‚İ
        */
       bool UsedKey(Key key) const;
+
+
     };
 
     template <typename Key, typename Value>
@@ -58,7 +60,7 @@ namespace AppFrame {
     bool ServerTemplateUnordered<Key, Value>::Release() {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // ƒfƒtƒHƒ‹ƒg‚Å‚Í‘S—v‘f‚Ì‰ğ•ú‚Ì‚İ‚ğs‚¤
-      ServerTemplateUnordered<Key, Value>::_registry.clear();
+      UnorderedServer::_registry.clear();
       return true;
     }
 

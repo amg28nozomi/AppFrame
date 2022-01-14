@@ -21,13 +21,111 @@ namespace AppFrame {
   namespace FileServer {
 
     FileServer::FileServer() : Server::ServerTemplateUnordered<std::string, std::filesystem::path>() {
+      _extensions.clear();
 #ifdef _DEBUG
       _name = "FileServer";
 #endif
     }
 
+    bool FileServer::Init() {
+      using UnorderedServer = Server::ServerTemplateUnordered<std::string, std::filesystem::path>;
+      return UnorderedServer::Init();
+    }
+
     bool FileServer::LoadJsonFile(std::filesystem::path jsonFile) {
       return true;
+    }
+
+    bool FileServer::SetExtension(std::vector<std::string> extensions) {
+      // ファイル形式の指定は行われているか
+      if (_setExtension) {
+        return false; // 登録済み
+      }
+      for (auto extension : extensions) {
+        // 空データの場合はスキップ
+        if (extension.empty()) {
+          continue;
+        }
+        // 同一拡張子が登録されていないかの判定
+        for (auto number = 0; auto data : _extensions) {
+          // 重複している場合は処理をループ終了
+          if (extension == data) {
+            break; // 重複している
+          }
+          ++number; // 処理カウントを加算
+          // 全要素の判定が完了した場合は末尾に登録
+          if (number == static_cast<int>(_extensions.size())) {
+            _extensions.emplace_back(extension); // 登録
+          }
+        }
+      }
+      // 要素の有無で登録が成功したか判定
+      _setExtension = !_extensions.empty();
+      // 処理に成功した場合は使用領域を切り詰める
+      if (_setExtension) {
+        _extensions.shrink_to_fit();
+      }
+#ifndef _DEBUG
+      return _setExtension;
+#else
+      // 登録に失敗した場合は例外をthrowする
+      else {
+        throw LogicError("拡張子の登録に失敗しました");
+        return false; // 登録失敗
+      }
+      return true;    // 登録成功
+#endif
+    }
+
+    bool FileServer::IsTarget(std::filesystem::path filePath, std::string_view extension) const {
+      namespace fs = std::filesystem;
+#ifndef _DEBUG
+      // パスが有効かの判定
+      if (!Exist(filePath)) {
+        return false; // パスが不正
+      }
+      // 対象のファイル形式は有効か
+      if (!HasExtension(filePath, extension)) {
+        return false; // 有効ではない
+      }
+      return true;    // 登録対象
+#else
+      auto flag = false;
+      try {
+        flag = Exist(filePath);
+        if (flag) {
+          flag = HasExtension(filePath, extension);
+        }
+      } catch (std::logic_error error) {
+        DebugString(error.what()); // 例外発生時は出力
+      }
+      return flag; // 処理フラグを返す
+#endif
+    }
+
+    bool FileServer::HasExtension(std::filesystem::path filePath, std::string_view extension) const {
+#ifndef _DEBUG
+      return filePath.extension().string() == extension;
+#else
+      // ファイル形式は一致しているか？
+      if (filePath.extension().string() != extension) {
+        throw LogicError(filePath.filename().string() + "ファイル形式が有効ではありません");
+        return false; // ファイル形式が異なる
+      }
+      return true;    // ファイル形式は有効
+#endif
+    }
+
+    bool FileServer::Exist(std::filesystem::path filePath) const {
+      namespace fs = std::filesystem;
+      // パスが有効かの判定
+      if (!fs::exists(filePath)) {
+#ifdef _DEBUG
+        throw LogicError(filePath.string() + ":ファイルパスが有効ではありません");
+#endif
+        return false; // パスが不正
+      }
+      return true;    // 有効
     }
 //
 //#ifndef _DEBUG

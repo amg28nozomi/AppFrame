@@ -20,7 +20,7 @@ namespace AppFrame {
       if (std::filesystem::exists(jsonName)) {
         return jsonName; // 生成済み
       }
-      if (jsonName.stem() == ".json") {
+      if (jsonName.extension() == ".json") {
         // 拡張子がjsonでない場合も弾く
         throw std::logic_error("WriteJson::AddJson:対象ファイルの拡張子がjson形式ではありません\n");
         return "";

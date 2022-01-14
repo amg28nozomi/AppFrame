@@ -33,7 +33,7 @@ namespace AppFrame {
        */
       virtual bool Release() override;
       /**
-       * @brief  “o˜^ˆ—
+       * @brief  ƒfƒtƒHƒ‹ƒg‚Ì“o˜^ˆ—
        * @param  value “o˜^ƒf[ƒ^
        * @return true:“o˜^¬Œ÷ false:“o˜^¸”s
        */

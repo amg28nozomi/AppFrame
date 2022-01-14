@@ -59,7 +59,7 @@ namespace AppFrame {
       virtual bool Release() = 0;
     protected:
       ServerState _state; //!< 状態
-      T _registry{ 0 };   //!< データベース
+      T _registry{};      //!< データベース
 #ifdef _DEBUG
       std::string _name;  //!< サーバ名
       /**
@@ -114,7 +114,7 @@ namespace AppFrame {
 #ifdef _DEBUG
     template <typename T>
     std::logic_error ServerBase<T>::LogicError(std::string_view message) const {
-      std::string error = _name + ":" + message.data();
+      std::string error = _name + ":" + message.data() + "\n";
       return std::logic_error(error);
     }
 

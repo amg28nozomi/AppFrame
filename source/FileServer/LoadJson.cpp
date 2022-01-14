@@ -150,7 +150,7 @@ namespace AppFrame {
 #endif
 
     bool LoadJson::IsJson(const std::filesystem::path path) {
-      auto format = path.stem().string(); // ファイル拡張子
+      auto format = path.extension().string(); // ファイル拡張子
       if (format != "json") {
 #ifdef _DEBUG
         throw std::logic_error(format + ":対象はjsonファイルではありません\n");

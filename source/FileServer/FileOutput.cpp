@@ -57,7 +57,7 @@ namespace AppFrame {
 
     bool FileOutput::IsPath(std::filesystem::path path) {
       // Šg’£q‚Í‘Î‰‚µ‚Ä‚¢‚é‚©
-      bool flag = path.stem() == ".text";
+      bool flag = path.extension() == ".text";
       if (!flag) {
 #ifdef _DEBUG
         OutputDebugString("Šg’£q‚ª•s³‚Å‚·\n");
