@@ -12,6 +12,9 @@
 
 namespace AppFrame {
   namespace Application {
+    constexpr auto JoypadButtonNum = 16; //!< ボタン総数
+    constexpr auto InputPress = true;    //!< 押下情報
+    constexpr auto InputTrigger = false; //!< トリガ入力
     /**
      * @class JoypadState
      * @brief ジョイパッドの入力状態(XInput)
@@ -33,6 +36,29 @@ namespace AppFrame {
        */
       inline const int GetId() const {
         return _id;
+      }
+      /**
+       * @brief  ボタン情報の取得(押下)
+       * @param  key  対応するキー番号(0～15)
+       *              DXライブラリのXINPUTボタン入力定義
+       * @brief  type 取得する情報の種類
+       *              InputPress:押下情報(デフォルト) InputTrigger:トリガ情報
+       * @return true:入力有り false:入力無し
+       */
+      bool GetButton(const int key, const bool type = InputPress) const;
+      /**
+       * @brief  押下情報の取得
+       * @return 押下情報
+       */
+      XINPUT_STATE GetPress() const {
+        return _press;
+      }
+      /**
+       * @brief  トリガ入力の取得
+       * @return トリガ入力
+       */
+      XINPUT_STATE GetTrigger() const {
+        return _trigger;
       }
     private:
       int _id; //!< ジョイパッドの識別番号

@@ -83,9 +83,9 @@ namespace AppFrame {
        * @brief  モードサーバの取得
        * @return モードサーバの参照
        */
-      Mode::ModeServer& GetModeServer() {
-        return *_modeServer;
-      }
+      //Mode::ModeServer& GetModeServer() {
+      //  return *_modeServer;
+      //}
       /**
        * @brief  ファイルサーバの取得
        * @return ファイルサーバの参照
@@ -111,7 +111,7 @@ namespace AppFrame {
        * @brief  経過フレーム取得用の純粋仮想関数
        * @return 現在呼び出されているモードのフレームカウント
        */
-      virtual const int GetFrameCount() = 0;
+      virtual const int GetFrameCount() const = 0;
       /**
        * @brief  ウィンドウ情報の設定
        * @param  width  解像度
@@ -135,7 +135,7 @@ namespace AppFrame {
       //!< インプットオペレーション
       std::unique_ptr<InputOperation> _input{nullptr};
       //!< モードサーバ
-      std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
+      //std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗

@@ -30,8 +30,8 @@ namespace AppFrame {
        * @return DivGraph用のデータが格納された動的配列
        *         first:連想配列の登録に使用するキー pair:画像ファイル情報
        */
-      static std::vector<std::pair<std::string_view,
-        std::filesystem::path>> LoadDivGraoh(std::filesystem::path jsonPath);
+      //static std::vector<std::pair<std::string_view,
+      //  std::filesystem::path>> LoadDivGraoh(std::filesystem::path jsonPath);
       /**
        * @brief  jsonファイルの読み取り処理
        * @param  jsonPath jsonファイルのパス
@@ -53,7 +53,7 @@ namespace AppFrame {
        * @return 読み取りに成功した場合は対象のjsonオブジェクトを返す
        *         読み取りに失敗した場合は空のオブジェクトを返す
        */
-      static nlohmann::json LoadJsonFile(std::filesystem::path jsonFile);
+      //static nlohmann::json LoadJsonFile(std::filesystem::path jsonFile);
 #ifdef _DEBUG
       /**
        * @brief  エラーメッセージの取得

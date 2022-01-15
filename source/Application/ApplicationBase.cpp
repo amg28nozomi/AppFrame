@@ -28,9 +28,9 @@ namespace AppFrame {
     ApplicationBase::ApplicationBase() {
       _particleMax = 4000;
 #ifndef _DEBUG
-      _windowMode = true;
-#else
       _windowMode = false;
+#else
+      _windowMode = true;
 #endif
     }
 
@@ -61,7 +61,7 @@ namespace AppFrame {
       }
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
-//      // Effekseerの初期化
+      // Effekseerの初期化
 //      if (Effekseer_Init(_particleMax) == InitError) {
 //#ifdef _DEBUG
 //        throw std::logic_error("ApplicationBase:Effekseerの初期化に失敗しました\n");
@@ -74,6 +74,7 @@ namespace AppFrame {
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
       // 
+      _input = std::make_unique<InputOperation>(*this);
 
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
@@ -128,6 +129,7 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Draw() {
+      ScreenFlip();
       return true;
     }
 

@@ -39,6 +39,14 @@ namespace AppFrame {
        */
       static float Clamp(const float value, const float low, const float height);
       /**
+       * @brief  対象の値が範囲内に収まっているかの判定
+       * @param  value  対象値
+       * @param  low    下限
+       * @param  height  上限
+       * @return true:範囲内に収まっている false:範囲外
+       */
+      static bool IsRange(const int value, const int low, const int height);
+      /**
        * @brief  10進数値を2進数値に変換
        * @param  num 10進数値
        * @return 引数を2進数で表した文字列

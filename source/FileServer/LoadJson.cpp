@@ -35,42 +35,42 @@ namespace {
 namespace AppFrame {
   namespace FileServer {
 
-    std::vector<std::pair<std::string_view, std::filesystem::path>> LoadJson::LoadDivGraoh(std::filesystem::path jsonPath) {
-      using DivGraphs = std::vector<std::pair<std::string_view, std::filesystem::path>>;
-#ifndef _DEBUG
-      // jsonファイルの読み取り
-      auto data = LoadJsonFile(jsonPath);
-#else
-      nlohmann::json data;
-      try {
-        data = LoadJsonFile(jsonPath);
-      } catch (std::logic_error error) {
-        OutputDebugString(error.what());
-      }
-#endif
-      // データの取得に失敗した場合は空データを返す
-      if (data.empty()) {
-        return DivGraphs(); // 失敗
-      }
-      DivGraphs divGraphs; // データベース
-      auto values = data["values"];
-    }
-
-    nlohmann::json LoadJson::LoadJsonFile(std::filesystem::path jsonFile) {
-      // ファイルの読み取り
-      std::ifstream read(jsonFile);
-      // 読み取りに失敗した場合は終了
-      if (!read) {
-#ifdef _DEBUG
-        throw std::logic_error(jsonFile.string() + " : ファイルの読み取りに失敗しました\n");
-#endif
-        return nlohmann::json(); // 空データを返す
-      }
-      // パース
-      nlohmann::json j = nlohmann::json::parse(jsonFile);
-      read.close();
-      return j;
-    }
+//    std::vector<std::pair<std::string_view, std::filesystem::path>> LoadJson::LoadDivGraoh(std::filesystem::path jsonPath) {
+//      using DivGraphs = std::vector<std::pair<std::string_view, std::filesystem::path>>;
+//#ifndef _DEBUG
+//      // jsonファイルの読み取り
+//      auto data = LoadJsonFile(jsonPath);
+//#else
+//      nlohmann::json data;
+//      try {
+//        data = LoadJsonFile(jsonPath);
+//      } catch (std::logic_error error) {
+//        OutputDebugString(error.what());
+//      }
+//#endif
+//      // データの取得に失敗した場合は空データを返す
+//      if (data.empty()) {
+//        return DivGraphs(); // 失敗
+//      }
+//      DivGraphs divGraphs; // データベース
+//      auto values = data["values"];
+//    }
+//
+//    nlohmann::json LoadJson::LoadJsonFile(std::filesystem::path jsonFile) {
+//      // ファイルの読み取り
+//      std::ifstream read(jsonFile);
+//      // 読み取りに失敗した場合は終了
+//      if (!read) {
+//#ifdef _DEBUG
+//        throw std::logic_error(jsonFile.string() + " : ファイルの読み取りに失敗しました\n");
+//#endif
+//        return nlohmann::json(); // 空データを返す
+//      }
+//      // パース
+//      nlohmann::json j = nlohmann::json::parse(jsonFile);
+//      read.close();
+//      return j;
+//    }
 
 //    std::vector<std::pair<std::string, Data::DivGraph>> LoadJson::LoadJsonFile(std::filesystem::path jsonPath) {
 //      using DivGraphMap = std::vector<std::pair<std::string, Data::DivGraph>>;

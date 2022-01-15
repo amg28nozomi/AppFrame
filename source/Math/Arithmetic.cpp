@@ -59,6 +59,14 @@ namespace AppFrame {
       return std::clamp(value, low, height);
     }
 
+    bool Arithmetic::IsRange(const int value, const int low, const int height) {
+      // ‘ÎÛ‚Í”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©
+      if (value < low || height < value) {
+        return true; // ”ÍˆÍ“à
+      }
+      return false;  // ”ÍˆÍŠO
+    }
+
     std::string Arithmetic::ToBinary(int num) {
       std::string binary; // 2i”
       while (num != 0) {

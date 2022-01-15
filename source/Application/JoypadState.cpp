@@ -10,6 +10,7 @@
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
+#include "../Math/Arithmetic.h"
 
 namespace AppFrame {
   namespace Application {
@@ -36,12 +37,26 @@ namespace AppFrame {
         button = Trigger(_press.Buttons[no], old.Buttons[no]);
         ++no;
       }
+      // トリガーボタンの更新
       _trigger.LeftTrigger = Trigger(_press.LeftTrigger, old.LeftTrigger);
       _trigger.RightTrigger = Trigger(_press.RightTrigger, old.RightTrigger);
+      // 各種スティックの更新
       _trigger.ThumbLX = Trigger(_press.ThumbLX, old.ThumbLX);
       _trigger.ThumbLY = Trigger(_press.ThumbLY, old.ThumbLY);
       _trigger.ThumbRX = Trigger(_press.ThumbRX, old.ThumbRX);
       _trigger.ThumbRY = Trigger(_press.ThumbRY, old.ThumbRY);
     }
-  }
-}
+
+    bool JoypadState::GetButton(const int key, const bool type) const {
+      // 範囲内に収まっているかの判定
+      if (!Math::Arithmetic::IsRange(key, 0, 15)) {
+        return false; // キーが不正
+      }
+      // フラグに応じて返す値を切り替える
+      if (type) {
+        return _press.Buttons[key]; // 押下情報を返す
+      }
+      return _trigger.Buttons[key]; // トリガ情報を返す
+    }
+  } // namespace Application
+} // namespace AppFrame

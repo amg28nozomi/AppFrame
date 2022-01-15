@@ -53,10 +53,10 @@ namespace AppFrame {
           _state = State::Active;
           return;
         }
-        // 指定フレームに一度、再設定を試みる
-        if (_app.GetFrameCount() % Count120 == 0) {
-          ReSetupJoypad();
-        }
+        //// 指定フレームに一度、再設定を試みる
+        //if (_app.GetFrameCount() % Count120 == 0) {
+        //  ReSetupJoypad();
+        //}
         return;
       }
     }

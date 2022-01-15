@@ -61,10 +61,15 @@ namespace AppFrame {
       const State OperationState() const {
         return _state;
       }
+      /**
+       * @brief  ジョイパッドの押下情報取得
+       * @return ジョイパッドの押下情報
+       */
+      bool JoypadInputButtons(const int id) const;
     private:
       ApplicationBase& _app; //!< アプリケーションの参照
       State _state{};        //!< 状態
-      JoypadState _joypads;  //!< ジョイパッドの入力状態
+      JoypadState _joypad;  //!< ジョイパッドの入力状態
       int _accessLimit{0};   //!< デバイスの接続上限
     };
   } // namespace Application
