@@ -42,7 +42,13 @@ namespace AppFrame{
     }
 
     bool ModeFade::Process() {
-      return true;
+      // フェードイン処理の終了判定
+      if (IsFinish()) {
+        // 自身を削除する
+        _app.GetModeServer().PopBuck();
+        return true;
+      }
+      return false;
     }
 
     bool ModeFade::Draw() const {

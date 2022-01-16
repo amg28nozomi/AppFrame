@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   ModeServer.h
- * @brief  各種シーンを管理するサーバクラス
+ * @brief  各種モードを管理するサーバクラス
  * 
  * @author 鈴木希海
  * @date   December 2021
@@ -37,6 +37,22 @@ namespace AppFrame {
        */
       void AddMode(std::string_view key, std::shared_ptr<ModeBase> mode);
       /**
+       * @brief  指定したモードをリストの末尾に追加する
+       * @param  key 対象モードに紐づけられた文字列
+       * @return true:追加成功 false:追加失敗
+       */
+      bool PushBuck(std::string_view key);
+      /**
+       * @brief  リストの末尾に登録されているモードを削除する
+       */
+      void PopBuck();
+      /**
+       * @brief  モードの遷移処理
+       * @param  key 対象モードに紐づけられた文字列
+       * @return
+       */
+      bool TransionToMode(std::string_view key);
+      /**
        * @brief  モードの更新
        * @return 
        */
@@ -47,7 +63,26 @@ namespace AppFrame {
        */
       bool Draw() const;
     private:
-      std::list<std::shared_ptr<Mode::ModeBase>> _list; //!< モードのスタック
+      std::list<std::shared_ptr<ModeBase>> _modes; //!< モードのリスト
+      /**
+       * @brief  モードの登録
+       * @param  key  モードに紐づける文字列
+       * @param  mode 登録するモード
+       * @return 
+       */
+      bool Register(std::string key, std::shared_ptr<ModeBase> mode) override;
+      /**
+       * @brief  データベースから指定したモードを取得する
+       * @param  key 対象モードに紐づけられた文字列
+       * @return 指定したモードを返す
+       *         キーが有効ではない場合、nullptrを返す
+       */
+      std::shared_ptr<ModeBase> GetMode(std::string_view key);
+      /**
+       * @brief  リストの末尾の要素の直前に指定したモードを追加する
+       * @param  key 対象モードに紐づけられた文字列
+       */
+      void InsertBeforeBack(std::string_view key);
     };
 
     /**

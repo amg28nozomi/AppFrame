@@ -7,7 +7,9 @@
  * @date   January 2022
  *********************************************************************/
 #include "ModeFadeIn.h"
+#include "../Application/ApplicationBase.h"
 #include "../Data/Color.h"
+#include "ModeServer.h"
 
 namespace AppFrame{
   namespace Mode {
@@ -23,11 +25,7 @@ namespace AppFrame{
     bool ModeFadeIn::Process() {
       // アルファ値の加算
       _alpha += _deltaAlpha;
-      // フェードイン処理の終了判定
-      if (IsFinish()) {
-        return true;
-      }
-      return false;
+      return ModeFade::Process();
     }
 
     bool ModeFadeIn::IsFinish() {

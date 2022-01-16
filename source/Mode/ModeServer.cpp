@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * @file   ModeServer.cpp
- * @brief  
+ * @brief  各種モードを管理するサーバクラスの定義
  * 
  * @author 鈴木希海
  * @date   December 2021
@@ -9,6 +9,12 @@
 #include <stdexcept>
 #include <Windows.h>
 #include "ModeBase.h"
+#include "ModeFadeIn.h"
+
+namespace {
+  constexpr auto FadeIn = "FadeIn";   // フェードイン登録用のキー
+  constexpr auto FadeOut = "FadeOut"; // フェードアウト登録用のキー
+}
 
 namespace AppFrame {
   namespace Mode {
@@ -17,52 +23,72 @@ namespace AppFrame {
      Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>>(){
       // コンテナの初期化
       _registry.clear();
-      _list.clear();
+      _modes.clear();
 #ifdef _DEBUG
       _name = "FileServer";
 #endif
+      // 各種モードの登録
+      Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
+      Register(key.data(), mode);
     }
 
     bool ModeServer::Release() {
       // 登録されている全シーンの解放を行う
-      for (auto mode : _list) {
+      for (auto mode : _modes) {
         mode->Exit(); // 終了処理呼び出し
       }
       return false;
     }
 
     void ModeServer::AddMode(std::string_view key, std::shared_ptr<ModeBase> mode) {
-      // キーが重複しているか
-      if (!UsedKey(key.data())) {
-        // 重複している場合は既に登録されているモードを削除
-        _registry.erase(key.data());
-      }
-      // モードの登録
-      _registry.emplace(key.data(), mode);
-#ifndef _DEBUG
-      // モードの初期化
-      mode->Init();
-#else
-      try {
-        mode->Init();
-      } catch (std::logic_error error) {
-        // 初期化で問題発生
-        DebugString(error.what());
-      }
+      Register(key.data(), mode);
+    }
+
+    bool ModeServer::PushBuck(std::string_view key) {
+      // モードの取得
+      auto mode = GetMode(key.data());
+      // モードの取得に成功したか
+      if (mode == nullptr) {
+#ifdef _DEBUG
+        throw LogicError("対象キーが不正です");
 #endif
+        return false; // キーが不正
+      }
+      // リストの末尾に追加
+      _modes.push_back(mode);
+      return true;
+    }
+
+    void ModeServer::PopBuck() {
+      // モードは登録されているか
+      if (_modes.empty()) {
+        return; // モードが未登録
+      }
+      // 末尾のモードを削除する
+      _modes.back()->Exit();
+      _modes.pop_back();
+    }
+
+    void ModeServer::InsertBeforeBack(std::string_view key) {
+      auto mode = GetMode(key.data());
+      // 取得に成功したか
+      if (mode == nullptr) {
+        return;
+      }
+      _modes.insert(std::prev(_modes.end()), mode);
     }
 
     bool ModeServer::Process() const {
       // モードはスタックされているか
-      if (_list.empty()) {
+      if (_modes.empty()) {
         return true; // 未登録
       }
 #ifndef _DEBUG
-      return _list.back()->Process();
+      return _modes.back()->Process();
 #else
       auto flag = true; // 処理フラグ
       try {
-        flag = _list.back()->Process();
+        flag = _modes.back()->Process();
       } catch (std::logic_error error) {
         OutputDebugString(error.what());
       }
@@ -73,7 +99,7 @@ namespace AppFrame {
     bool ModeServer::Draw() const {
       auto flag = true; // 処理フラグ
       // スタックされているモードの描画
-      for (auto&& mode : _list) {
+      for (auto&& mode : _modes) {
 #ifndef _DEBUG
         // 描画処理は正常終了したか
         if (!mode->Draw()) {
@@ -91,6 +117,30 @@ namespace AppFrame {
 #endif
       }
       return flag;
+    }
+
+    bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {
+      // キーは登録しているか
+      if (!UsedKey(key)) {
+        // 重複している場合は対象を削除
+        _registry.erase(key);
+      }
+      mode->Init();
+      _registry.emplace(key, mode);
+    }
+
+    std::shared_ptr<ModeBase> ModeServer::GetMode(std::string_view key) {
+      // モードは登録されているか
+      if (!_registry.contains(key.data())) {
+        return nullptr; // 未登録
+      }
+      auto mode = _registry.at(key.data());
+      mode->Enter(); // 入口処理を実行
+      return mode;
+    }
+
+    bool ModeServer::TransionToMode(std::string_view key) {
+
     }
   } // namespace Mode
 } // namespace AppFrame
