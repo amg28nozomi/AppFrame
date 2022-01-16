@@ -17,8 +17,7 @@ namespace AppFrame {
     constexpr auto JoypadLeftStick = false; // 左スティック
     constexpr auto JoypadRightStick = true; // 右スティック
 
-    JoypadState::JoypadState(const int id) : InputBase() {
-      _id = id; // 接続数を識別番号に設定
+    JoypadState::JoypadState() : InputBase() {
       _press = XINPUT_STATE();
       _trigger = _press;
       _type = DeviceType::Joypad;
@@ -27,11 +26,11 @@ namespace AppFrame {
     void JoypadState::Process() {
       auto old = _press;
       // 入力状態の取得
-      if (!GetJoypadXInputState(_id, &_press)) {
+      if (GetJoypadXInputState(PAD_INPUT_1, &_press) == Error) {
+        _state = State::NonActive;
 #ifdef _DEBUG
         throw std::logic_error("識別IDが有効ではありません\n");
 #endif
-        _state = State::NonActive;
         return; // 取得失敗
       }
       // 各種トリガ情報の更新

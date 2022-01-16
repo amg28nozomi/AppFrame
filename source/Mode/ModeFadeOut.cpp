@@ -7,18 +7,18 @@
  *********************************************************************/
 #include "ModeFadeOut.h"
 #include "../Application/ApplicationBase.h"
-#include "../Data/Color.h"
 
 namespace AppFrame {
   namespace Mode {
 
-    ModeFadeOut::ModeFadeOut(Application::ApplicationBase& app, Data::Color color) : ModeFade(app, color) {
+    ModeFadeOut::ModeFadeOut(Application::ApplicationBase& app, const Data::Color color) : ModeFade(app, color) {
     }
 
     bool ModeFadeOut::Enter() {
       // 各種パラメータの初期化
       _alpha = AlphaMin;
       _deltaAlpha = AlphaDelta;
+      return true;
     }
 
     bool ModeFadeOut::Process() {

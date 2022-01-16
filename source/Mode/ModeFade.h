@@ -8,16 +8,11 @@
  *********************************************************************/
 #pragma once
 #include "ModeBase.h"
+#include "../Data/Color.h"
 /**
  * @brief アプリケーションフレーム
  */
 namespace AppFrame {
-  /**
-   * @brief Data
-   */
-  namespace Data {
-    class Color;
-  } // namespace Data
   /**
    * @brief モードベース
    */
@@ -81,10 +76,10 @@ namespace AppFrame {
       float _alpha{0.0f};      //!< アルファ値
       float _deltaAlpha{0.0f}; //!< アルファ値の変化量
       /**
-       * @brief  処理の終了判定用の純粋仮想関数
-       * @return true:処理終了 false:処理継続
+       * @brief  フェード処理の終了判定
+       * @return false
        */
-      virtual bool IsFinish() = 0;
+      virtual bool IsFinish();
     };
   } // namespace Mode
 } // namespace AppFrame

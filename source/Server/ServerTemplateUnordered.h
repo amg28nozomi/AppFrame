@@ -78,7 +78,7 @@ namespace AppFrame {
     bool ServerTemplateUnordered<Key, Value>::UsedKey(Key key) const {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // キーは未登録か
-      if (!UnorderedServer::_registry.contains(key)) {
+      if (UnorderedServer::_registry.contains(key)) {
 #ifdef _DEBUG
         throw UnorderedServer::LogicError("キーが重複しています");
 #endif
@@ -88,4 +88,3 @@ namespace AppFrame {
     }
   } // namespace Server
 } // namespace AppFrame
-

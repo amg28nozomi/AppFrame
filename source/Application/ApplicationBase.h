@@ -20,6 +20,9 @@ namespace AppFrame {
   constexpr auto BitColor32 = 32;     //!< 32ビットカラー
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   constexpr auto Frame60 = 60;        //!< 60フレーム
+  namespace Mode {
+    class ModeBase;
+  } // namespace Mode
   /**
    * @brief アプリケーションベース
    */

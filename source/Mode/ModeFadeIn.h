@@ -27,7 +27,7 @@ namespace AppFrame {
        * @param app   アプリケーションの参照
        * @param color フェード処理で使用するRGB値
        */
-      ModeFadeIn(Application::ApplicationBase& app, Data::Color color);
+      ModeFadeIn(Application::ApplicationBase& app, const Data::Color color = Data::Color());
       /**
        * @brief  入口処理
        * @return treu

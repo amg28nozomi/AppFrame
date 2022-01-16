@@ -8,18 +8,18 @@
  *********************************************************************/
 #include "ModeFadeIn.h"
 #include "../Application/ApplicationBase.h"
-#include "../Data/Color.h"
-#include "ModeServer.h"
 
 namespace AppFrame{
   namespace Mode {
-    ModeFadeIn::ModeFadeIn(Application::ApplicationBase& app, Data::Color color) : ModeFade(app, color) {
+
+    ModeFadeIn::ModeFadeIn(Application::ApplicationBase& app, const Data::Color color) : ModeFade(app, color) {
     }
 
     bool ModeFadeIn::Enter() {
       // 各種パラメータの初期化
       _alpha = AlphaMax;
       _deltaAlpha = -AlphaDelta;
+      return true;
     }
 
     bool ModeFadeIn::Process() {

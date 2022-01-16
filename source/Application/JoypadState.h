@@ -23,20 +23,12 @@ namespace AppFrame {
     public:
       /**
        * @brief コンストラクタ
-       * @param id パッドの識別子
        */
-      JoypadState(const int id = 0);
+      JoypadState();
       /**
        * @brief  入力状態の更新
        */
       void Process() override;
-      /**
-       * @brief  識別番号の取得
-       * @return 識別番号
-       */
-      inline const int GetId() const {
-        return _id;
-      }
       /**
        * @brief  ボタン情報の取得(押下)
        * @param  key  対応するキー番号(0～15)

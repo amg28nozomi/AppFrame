@@ -21,11 +21,12 @@ namespace AppFrame {
      * @brief フェードアウト処理を行うモード
      */
     class ModeFadeOut : public ModeFade {
+    public:
       /**
        * @brief  コンストラクタ
        * @param  app アプリケーションの参照
        */
-      ModeFadeOut(Application::ApplicationBase& app, Data::Color color);
+      ModeFadeOut(Application::ApplicationBase& app, const Data::Color color = Data::Color());
       /**
        * @brief  入口処理
        * @return true

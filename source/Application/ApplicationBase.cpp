@@ -15,6 +15,8 @@
 #include "InputOperation.h"
 #include "../FileServer/FileServer.h"
 #include "../FileServer/FileBase.h"
+#include "../Mode/ModeBase.h"
+#include "../Mode/ModeFadeIn.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -61,21 +63,15 @@ namespace AppFrame {
       }
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
-      // Effekseerの初期化
-//      if (Effekseer_Init(_particleMax) == InitError) {
-//#ifdef _DEBUG
-//        throw std::logic_error("ApplicationBase:Effekseerの初期化に失敗しました\n");
-//#endif
-//        return false; // 初期化失敗
-//      }
       // Zバッファの設定
       SetUseZBuffer3D(TRUE);
       SetWriteZBuffer3D(TRUE);
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
-      // 
+      // インプットオペレーションの生成
       _input = std::make_unique<InputOperation>(*this);
-
+      // モードサーバの生成
+      _modeServer = std::make_unique<Mode::ModeServer>("base", std::make_unique<Mode::ModeFadeIn>(*this));
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
@@ -119,17 +115,21 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Input() {
-      IsQuit(); // 終了判定
+      IsQuit();          // 終了判定
       _input->Process(); // 入力状態の更新
       return true;
     }
 
     bool ApplicationBase::Process() {
+      // モードサーバの更新処理を実行
+      _modeServer->Process();
       return true;
     }
 
     bool ApplicationBase::Draw() {
-      ScreenFlip();
+      ClearDrawScreen();   // 画面をクリア
+      _modeServer->Draw(); // モードサーバの描画処理実行
+      ScreenFlip();        // 
       return true;
     }
 

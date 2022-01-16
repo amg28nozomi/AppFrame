@@ -12,7 +12,6 @@
 #endif
 #include <DxLib.h>
 #include "../Application/ApplicationBase.h"
-#include "../Data/Color.h"
 #include "../Math/Arithmetic.h"
 
 namespace AppFrame{
@@ -58,6 +57,7 @@ namespace AppFrame{
       DrawBox(0, 0, _width, _height, _color.GetColorCode(), TRUE);
       // ブレンドモードをノーマルに戻す
       SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+      return true;
     }
 
     void ModeFade::SetColor(const Data::Color color) {
@@ -75,6 +75,10 @@ namespace AppFrame{
       }
       // 問題がない場合は代入
       _deltaAlpha = value;
+    }
+
+    bool ModeFade::IsFinish() {
+      return false;
     }
   } // namespace Mode
 } // namespace AppFrame

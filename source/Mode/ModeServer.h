@@ -9,15 +9,15 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <memory>
 #include <list>
-#include "ModeBase.h"
 
 namespace AppFrame {
   namespace Mode {
+    class ModeBase;
     /**
      * @class ModeServer
      * @brief モードの管理を行うサーバ
      */
-    class ModeServer : public Server::ServerTemplateUnordered<std::string, std::shared_ptr<Mode::ModeBase>> {
+    class ModeServer : public Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>> {
     public:
       /**
        * @brief コンストラクタ
@@ -41,7 +41,7 @@ namespace AppFrame {
        * @param  key 対象モードに紐づけられた文字列
        * @return true:追加成功 false:追加失敗
        */
-      bool PushBuck(std::string_view key);
+      bool PushBack(std::string_view key);
       /**
        * @brief  リストの末尾に登録されているモードを削除する
        */
@@ -56,7 +56,7 @@ namespace AppFrame {
        * @brief  モードの更新
        * @return 
        */
-      bool Process() const;
+      bool Process();
       /**
        * @brief  モードの描画
        * @return 

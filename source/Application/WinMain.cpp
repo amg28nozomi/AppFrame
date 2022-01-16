@@ -16,10 +16,23 @@ int CALLBACK WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPSTR lp
   if (app == nullptr) {
     return -1; // 実体が空
   }
+#ifndef _DEBUG
   // 初期化に成功した場合のみゲームに移行
-  if (app->Init()) { 
+  if (app->Init()) {
     app->Run();
   }
+#else
+  try {
+    // 初期化に成功した場合のみゲームに移行
+    if (app->Init()) {
+      app->Run();
+    }
+  }
+  // 例外をcatchした場合はプログラムを終了する
+  catch (std::logic_error error) {
+    OutputDebugString(error.what());
+  }
+#endif
   // アプリケーション終了
   app->Terminate();
   return 0;

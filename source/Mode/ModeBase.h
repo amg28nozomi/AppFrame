@@ -46,7 +46,7 @@ namespace AppFrame {
        * @brief  ƒ‚[ƒh‚Ì‰Šú‰»
        * @return true:‰Šú‰»¬Œ÷ false:‰Šú‰»¸”s
        */
-      virtual bool Init() = 0;
+      virtual bool Init();
       /**
        * @brief  “üŒûˆ—
        * @return true:ˆ—¬Œ÷ false:ˆ—¸”s

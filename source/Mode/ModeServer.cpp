@@ -6,10 +6,8 @@
  * @date   December 2021
  *********************************************************************/
 #include "ModeServer.h"
-#include <stdexcept>
-#include <Windows.h>
-#include "ModeBase.h"
 #include "ModeFadeIn.h"
+#include "ModeFadeOut.h"
 
 namespace {
   constexpr auto FadeIn = "FadeIn";   // フェードイン登録用のキー
@@ -29,7 +27,11 @@ namespace AppFrame {
 #endif
       // 各種モードの登録
       Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
+      Register(FadeOut, std::make_shared<ModeFadeOut>(mode->GetApplication()));
       Register(key.data(), mode);
+      // 指定した順番でリストに登録する
+      PushBack(key.data());
+      PushBack(FadeOut);
     }
 
     bool ModeServer::Release() {
@@ -44,7 +46,7 @@ namespace AppFrame {
       Register(key.data(), mode);
     }
 
-    bool ModeServer::PushBuck(std::string_view key) {
+    bool ModeServer::PushBack(std::string_view key) {
       // モードの取得
       auto mode = GetMode(key.data());
       // モードの取得に成功したか
@@ -78,7 +80,7 @@ namespace AppFrame {
       _modes.insert(std::prev(_modes.end()), mode);
     }
 
-    bool ModeServer::Process() const {
+    bool ModeServer::Process() {
       // モードはスタックされているか
       if (_modes.empty()) {
         return true; // 未登録
@@ -127,6 +129,7 @@ namespace AppFrame {
       }
       mode->Init();
       _registry.emplace(key, mode);
+      return true;
     }
 
     std::shared_ptr<ModeBase> ModeServer::GetMode(std::string_view key) {
@@ -140,7 +143,10 @@ namespace AppFrame {
     }
 
     bool ModeServer::TransionToMode(std::string_view key) {
-
+      InsertBeforeBack(key);
+      InsertBeforeBack(FadeIn);
+      PushBack(FadeOut);
+      return true;
     }
   } // namespace Mode
 } // namespace AppFrame
