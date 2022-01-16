@@ -26,7 +26,7 @@ namespace AppFrame {
       DX_INPUT_PAD4  // ジョイパッド4
     };
 
-    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypads(DX_INPUT_PAD1) {
+    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypad(DX_INPUT_PAD1) {
       _state = State::Active;
     }
 
@@ -43,7 +43,7 @@ namespace AppFrame {
           return; // 接続なし
         }
         // 入力デバイスの更新
-        _joypads.Process();
+        _joypad.Process();
       case State::Paused:
         return; // 実行なし
       case State::NonActive:

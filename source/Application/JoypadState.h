@@ -47,18 +47,18 @@ namespace AppFrame {
        */
       bool GetButton(const int key, const bool type = InputPress) const;
       /**
-       * @brief  押下情報の取得
-       * @return 押下情報
+       * @brief  アナログスティックの入力状態を取得
+       * @brief  stick 左右どちらのアナログスティックの入力を取得するか
+       *               false:左スティック　true:右スティック
+       * @return first:横軸の入力状態 second:縦軸の入力状態
        */
-      XINPUT_STATE GetPress() const {
-        return _press;
-      }
+      std::pair<int, int> GetStick(const bool stick) const;
       /**
-       * @brief  トリガ入力の取得
-       * @return トリガ入力
+       * @brief  左右トリガーボタンの入力状態を取得
+       * @return first:左トリガー second:右トリガー
        */
-      XINPUT_STATE GetTrigger() const {
-        return _trigger;
+      inline std::pair<int, int> GetTrigger() const {
+        return std::make_pair(_press.LeftTrigger, _press.RightTrigger);
       }
     private:
       int _id; //!< ジョイパッドの識別番号

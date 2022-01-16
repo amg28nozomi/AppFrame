@@ -14,6 +14,8 @@
 
 namespace AppFrame {
   namespace Application {
+    constexpr auto JoypadLeftStick = false; // 左スティック
+    constexpr auto JoypadRightStick = true; // 右スティック
 
     JoypadState::JoypadState(const int id) : InputBase() {
       _id = id; // 接続数を識別番号に設定
@@ -37,14 +39,6 @@ namespace AppFrame {
         button = Trigger(_press.Buttons[no], old.Buttons[no]);
         ++no;
       }
-      // トリガーボタンの更新
-      _trigger.LeftTrigger = Trigger(_press.LeftTrigger, old.LeftTrigger);
-      _trigger.RightTrigger = Trigger(_press.RightTrigger, old.RightTrigger);
-      // 各種スティックの更新
-      _trigger.ThumbLX = Trigger(_press.ThumbLX, old.ThumbLX);
-      _trigger.ThumbLY = Trigger(_press.ThumbLY, old.ThumbLY);
-      _trigger.ThumbRX = Trigger(_press.ThumbRX, old.ThumbRX);
-      _trigger.ThumbRY = Trigger(_press.ThumbRY, old.ThumbRY);
     }
 
     bool JoypadState::GetButton(const int key, const bool type) const {
@@ -53,10 +47,25 @@ namespace AppFrame {
         return false; // キーが不正
       }
       // フラグに応じて返す値を切り替える
-      if (type) {
+      if (type == InputPress) {
         return _press.Buttons[key]; // 押下情報を返す
       }
       return _trigger.Buttons[key]; // トリガ情報を返す
+    }
+
+    std::pair<int, int> JoypadState::GetStick(const bool stick) const {
+      int x, y; // 縦横の入力状態
+      // 左右どちらの入力状態を取得するか
+      if (stick == JoypadLeftStick) {
+        // 左スティックの入力状態を返す
+        x = static_cast<int>(_press.ThumbLX);
+        y = static_cast<int>(_press.ThumbLY);
+        return std::make_pair(x, y);
+      }
+      // 右スティックの入力状態を返す
+      x = static_cast<int>(_press.ThumbRX);
+      y = static_cast<int>(_press.ThumbRY);
+      return std::make_pair(x, y);
     }
   } // namespace Application
 } // namespace AppFrame

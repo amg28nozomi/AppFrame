@@ -62,10 +62,12 @@ namespace AppFrame {
         return _state;
       }
       /**
-       * @brief  ジョイパッドの押下情報取得
-       * @return ジョイパッドの押下情報
+       * @brief  ジョイパッド状態の取得
+       * @return ジョイパッドの入力状態の参照
        */
-      bool JoypadInputButtons(const int id) const;
+      inline JoypadState& GetJoypadState() {
+        return _joypad;
+      }
     private:
       ApplicationBase& _app; //!< アプリケーションの参照
       State _state{};        //!< 状態
