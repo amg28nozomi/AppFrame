@@ -33,10 +33,9 @@ namespace AppFrame {
       /**
        * @brief  データベースにモードを登録する
        * @param  key 登録に使用する文字列
-       * @param  mode 登録するモード
-       * @return true:登録成功 false:登録失敗
+       * @param  mode 登録するモードのシェアードポインタ
        */
-      bool AddMode(std::string_view key, std::shared_ptr<ModeBase> mode);
+      void AddMode(std::string_view key, std::shared_ptr<ModeBase> mode);
       /**
        * @brief  モードの更新
        * @return 

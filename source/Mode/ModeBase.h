@@ -6,22 +6,30 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
-  namespace Application {
-    /**
-     * @class ApplicationBase
-     * @brief 前方宣言
-     */
-    class ApplicationBase;
-  }
   /**
-   * @brief モード用の名前空間
+   * @brief アプリケーションベース
+   */
+  namespace Application {
+    class ApplicationBase;
+    class InputOperation;
+  } // namespace Application
+  /**
+   * @brief ファイルサーバ
+   */
+  namespace FileServer {
+    class FileServer;
+  } // namespace FileServer
+  /**
+   * @brief モード
    */
   namespace Mode {
     /**
      * @class ModeBase
-     * @brief シーンの基底クラス
+     * @brief モードの基底クラス
      */
     class ModeBase {
     public:
@@ -29,7 +37,7 @@ namespace AppFrame {
        * @brief モードの生成
        * @param app アプリケーションの参照
        */
-      ModeBase(Application::ApplicationBase& app);
+      ModeBase(Application::ApplicationBase &app);
       /**
        * @brief モードの削除
        */
@@ -50,6 +58,12 @@ namespace AppFrame {
        */
       virtual bool Exit();
       /**
+       * @brief  モード専用の入力処理
+       * @param  input インプットオペレーションの参照
+       * @return true:処理成功 false:処理失敗
+       */
+      virtual bool Input(Application::InputOperation& input);
+      /**
        * @brief  モードの更新
        * @return true:更新成功 false:更新失敗
        */
@@ -58,14 +72,22 @@ namespace AppFrame {
        * @brief  モードの描画
        * @return true:描画成功 false:描画失敗
        */
-      virtual bool Draw();
+      virtual bool Draw() const;
       /**
        * @brief  アプリケーションの取得
        * @return アプリケーションの参照
        */
-      inline Application::ApplicationBase& GetApplication() const {
-        return _app;
-      }
+      Application::ApplicationBase& GetApplication();
+      /**
+       * @brief  モードサーバの取得
+       * @return モードサーバの参照
+       */
+      class ModeServer& GetModeServer();
+      /**
+       * @brief  ファイルサーバの取得
+       * @return ファイルサーバの参照
+       */
+      FileServer::FileServer& GetFileServer();
     protected:
       Application::ApplicationBase& _app; //!< アプリケーションの参照
     };

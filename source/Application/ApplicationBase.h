@@ -83,9 +83,9 @@ namespace AppFrame {
        * @brief  モードサーバの取得
        * @return モードサーバの参照
        */
-      //Mode::ModeServer& GetModeServer() {
-      //  return *_modeServer;
-      //}
+      Mode::ModeServer& GetModeServer() {
+        return *_modeServer;
+      }
       /**
        * @brief  ファイルサーバの取得
        * @return ファイルサーバの参照
@@ -135,7 +135,7 @@ namespace AppFrame {
       //!< インプットオペレーション
       std::unique_ptr<InputOperation> _input{nullptr};
       //!< モードサーバ
-      //std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
+      std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗
@@ -158,9 +158,8 @@ namespace AppFrame {
       static bool SetInstance();
       /**
        * @brief  アプリケーションを終了するかの判定
-       * @return 
        */
-      void IsQuit();
+      virtual void IsQuit();
     };
   } // namespace Application
 } // namespace AppFrame

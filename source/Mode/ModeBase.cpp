@@ -7,6 +7,8 @@
  *********************************************************************/
 #include "ModeBase.h"
 #include "../Application/ApplicationBase.h"
+#include "ModeServer.h"
+#include "../FileServer/FileServer.h"
 
 namespace AppFrame {
   namespace Mode {
@@ -29,12 +31,28 @@ namespace AppFrame {
       return true;
     }
 
+    bool ModeBase::Input(Application::InputOperation& input) {
+      return true;
+    }
+
     bool ModeBase::Process() {
       return true;
     }
 
-    bool ModeBase::Draw() {
+    bool ModeBase::Draw() const {
       return true;
+    }
+
+    Application::ApplicationBase& ModeBase::GetApplication() {
+      return _app;
+    }
+
+    ModeServer& ModeBase::GetModeServer() {
+      return _app.GetModeServer();
+    }
+
+    FileServer::FileServer& ModeBase::GetFileServer() {
+      return _app.GetFileServer();
     }
   } // namespace Mode
 } // namespace AppFrame

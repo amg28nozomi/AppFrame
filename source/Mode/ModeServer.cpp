@@ -31,7 +31,7 @@ namespace AppFrame {
       return false;
     }
 
-    bool ModeServer::AddMode(std::string_view key, std::shared_ptr<ModeBase> mode) {
+    void ModeServer::AddMode(std::string_view key, std::shared_ptr<ModeBase> mode) {
       // キーが重複しているか
       if (!UsedKey(key.data())) {
         // 重複している場合は既に登録されているモードを削除
@@ -39,19 +39,17 @@ namespace AppFrame {
       }
       // モードの登録
       _registry.emplace(key.data(), mode);
-      auto flag = false; // 初期化フラグ
-      // モードの初期化
 #ifndef _DEBUG
-      flag = mode->Init();
+      // モードの初期化
+      mode->Init();
 #else
       try {
-        flag = mode->Init();
+        mode->Init();
       } catch (std::logic_error error) {
         // 初期化で問題発生
         DebugString(error.what());
       }
 #endif
-      return flag;
     }
 
     bool ModeServer::Process() const {
