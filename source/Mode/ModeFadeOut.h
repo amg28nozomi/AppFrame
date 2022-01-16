@@ -1,7 +1,7 @@
 /*****************************************************************//**
- * @file   ModeFadeIn.h
+ * @file   ModeFadeOut.h
  * @brief  モードフェードのサブクラス
- *         フェードイン処理を行う
+ *         フェードアウト処理を行う
  * 
  * @author 鈴木希海
  * @date   January 2022
@@ -17,20 +17,18 @@ namespace AppFrame {
    */
   namespace Mode {
     /**
-     * @class ModeFadeIn
-     * @brief フェードイン処理を行うモード
+     * @class ModeFadeOut
+     * @brief フェードアウト処理を行うモード
      */
-    class ModeFadeIn : public ModeFade {
-    public:
+    class ModeFadeOut : public ModeFade {
       /**
-       * @brief コンストラクタ
-       * @param app   アプリケーションの参照
-       * @param color フェード処理で使用するRGB値
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
        */
-      ModeFadeIn(Application::ApplicationBase& app, Data::Color color);
+      ModeFadeOut(Application::ApplicationBase& app, Data::Color color);
       /**
        * @brief  入口処理
-       * @return treu
+       * @return true
        */
       bool Enter() override;
       /**
@@ -41,7 +39,7 @@ namespace AppFrame {
     private:
       /**
        * @brief  フェード処理の終了判定
-       * @return true:処理完了 false:処理継続
+       * @return true:終了 false:処理継続
        */
       bool IsFinish() override;
     };
