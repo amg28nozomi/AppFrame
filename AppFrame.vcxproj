@@ -166,7 +166,8 @@
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
     <ClInclude Include="source\Application\InputBase.h" />
-    <ClInclude Include="source\Application\XboxState.h" />
+    <ClInclude Include="source\Application\JoypadState.h" />
+    <ClInclude Include="source\Application\XBoxState.h" />
     <ClInclude Include="source\Application\KeyboardState.h" />
     <ClInclude Include="source\Application\MouseState.h" />
     <ClInclude Include="source\Application\InputOperation.h" />
@@ -196,6 +197,7 @@
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
     <ClCompile Include="source\Application\InputBase.cpp" />
+    <ClCompile Include="source\Application\JoypadState.cpp" />
     <ClCompile Include="source\Application\XBoxState.cpp" />
     <ClCompile Include="source\Application\KeyboardState.cpp" />
     <ClCompile Include="source\Application\MouseState.cpp" />

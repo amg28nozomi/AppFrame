@@ -69,7 +69,7 @@
     <ClInclude Include="source\Application\InputOperation.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="source\Application\XboxState.h">
+    <ClInclude Include="source\Application\XBoxState.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="source\Math\Vector4.h">
@@ -143,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="source\Mode\ModeFadeOut.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\JoypadState.h">
+      <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="source\Mode\ModeFadeOut.cpp">
       <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\JoypadState.cpp">
+      <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
