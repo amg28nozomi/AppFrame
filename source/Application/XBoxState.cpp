@@ -1,11 +1,11 @@
 /*****************************************************************//**
- * @file   JoypadState.cpp
- * @brief  
+ * @file   XBoxState.cpp
+ * @brief  Xboxコントローラーの入力状態クラスの定義
  * 
  * @author 鈴木希海
  * @date   December 2021
  *********************************************************************/
-#include "JoypadState.h"
+#include "XBoxState.h"
 #include <string>
 #ifdef _DEBUG
 #include <stdexcept>
@@ -17,13 +17,13 @@ namespace AppFrame {
     constexpr auto JoypadLeftStick = false; // 左スティック
     constexpr auto JoypadRightStick = true; // 右スティック
 
-    JoypadState::JoypadState() : InputBase() {
+    XBoxState::XBoxState() : InputBase() {
       _press = XINPUT_STATE();
       _trigger = _press;
       _type = DeviceType::Joypad;
     }
 
-    void JoypadState::Process() {
+    void XBoxState::Process() {
       auto old = _press;
       // 入力状態の取得
       if (GetJoypadXInputState(PAD_INPUT_1, &_press) == Error) {
@@ -40,7 +40,7 @@ namespace AppFrame {
       }
     }
 
-    bool JoypadState::GetButton(const int key, const bool type) const {
+    bool XBoxState::GetButton(const int key, const bool type) const {
       // 範囲内に収まっているかの判定
       if (!Math::Arithmetic::IsRange(key, 0, 15)) {
         return false; // キーが不正
@@ -52,7 +52,7 @@ namespace AppFrame {
       return _trigger.Buttons[key]; // トリガ情報を返す
     }
 
-    std::pair<int, int> JoypadState::GetStick(const bool stick) const {
+    std::pair<int, int> XBoxState::GetStick(const bool stick) const {
       int x, y; // 縦横の入力状態
       // 左右どちらの入力状態を取得するか
       if (stick == JoypadLeftStick) {

@@ -69,7 +69,7 @@
     <ClInclude Include="source\Application\InputOperation.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
-    <ClInclude Include="source\Application\JoypadState.h">
+    <ClInclude Include="source\Application\XboxState.h">
       <Filter>ヘッダー ファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="source\Math\Vector4.h">
@@ -158,7 +158,7 @@
     <ClCompile Include="source\Math\Vector4.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
-    <ClCompile Include="source\Application\JoypadState.cpp">
+    <ClCompile Include="source\Application\XBoxState.cpp">
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="source\Math\Arithmetic.cpp">

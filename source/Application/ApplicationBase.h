@@ -20,9 +20,18 @@ namespace AppFrame {
   constexpr auto BitColor32 = 32;     //!< 32ビットカラー
   constexpr auto BitColor16 = 16;     //!< 16ビットカラー
   constexpr auto Frame60 = 60;        //!< 60フレーム
+  /**
+   * @brief モードベース
+   */
   namespace Mode {
     class ModeBase;
   } // namespace Mode
+  /**
+   * @brief サウンドベース
+   */
+  namespace Sound {
+    class SoundServer;
+  } // namespace Sound
   /**
    * @brief アプリケーションベース
    */
@@ -97,6 +106,13 @@ namespace AppFrame {
         return *_fileServer;
       }
       /**
+       * @brief  サウンドサーバの取得
+       * @return サウンドサーバの参照
+       */
+      Sound::SoundServer& GetSoundServer() {
+        return *_soundServer;
+      }
+      /**
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
        */
@@ -139,6 +155,8 @@ namespace AppFrame {
       std::unique_ptr<InputOperation> _input{nullptr};
       //!< モードサーバ
       std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
+      //!< サウンドサーバ
+      std::unique_ptr<Sound::SoundServer> _soundServer{nullptr};
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗

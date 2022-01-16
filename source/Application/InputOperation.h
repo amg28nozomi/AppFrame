@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 #include <future>
-#include "JoypadState.h"
+#include "XBoxState.h"
 
 namespace AppFrame {
   namespace Application {
@@ -65,13 +65,13 @@ namespace AppFrame {
        * @brief  ジョイパッド状態の取得
        * @return ジョイパッドの入力状態の参照
        */
-      inline JoypadState& GetJoypadState() {
+      inline XBoxState& GetJoypadState() {
         return _joypad;
       }
     private:
       ApplicationBase& _app; //!< アプリケーションの参照
       State _state{};        //!< 状態
-      JoypadState _joypad;  //!< ジョイパッドの入力状態
+      XBoxState _joypad;  //!< ジョイパッドの入力状態
       int _accessLimit{0};   //!< デバイスの接続上限
     };
   } // namespace Application

@@ -1,6 +1,6 @@
 /*****************************************************************//**
- * @file   JoypadState.h
- * @brief  ジョイパッドの入力状態クラス
+ * @file   XBoxState.h
+ * @brief  Xboxコントローラーの入力状態クラス
  * 
  * @author 鈴木希海
  * @date   December 2021
@@ -12,19 +12,19 @@
 
 namespace AppFrame {
   namespace Application {
-    constexpr auto JoypadButtonNum = 16; //!< ボタン総数
+    constexpr auto ButtonNum = 16; //!< ボタン総数
     constexpr auto InputPress = true;    //!< 押下情報
     constexpr auto InputTrigger = false; //!< トリガ入力
     /**
-     * @class JoypadState
-     * @brief ジョイパッドの入力状態(XInput)
+     * @class XBoxState
+     * @brief Xboxコントローラーの入力状態(XInput)
      */
-    class JoypadState : public InputBase  {
+    class XBoxState : public InputBase  {
     public:
       /**
        * @brief コンストラクタ
        */
-      JoypadState();
+      XBoxState();
       /**
        * @brief  入力状態の更新
        */
@@ -53,7 +53,6 @@ namespace AppFrame {
         return std::make_pair(_press.LeftTrigger, _press.RightTrigger);
       }
     private:
-      int _id; //!< ジョイパッドの識別番号
       XINPUT_STATE _press;   //!< 入力情報(押下入力)
       XINPUT_STATE _trigger; //!< 入力情報(トリガ入力)
       /**
