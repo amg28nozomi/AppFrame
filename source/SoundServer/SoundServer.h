@@ -6,52 +6,46 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include "../Server/ServerTemplateUnordered.h"
 #include <filesystem>
 #include <unordered_map>
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief サウンドベース
+   */
   namespace Sound {
     /**
      * @class SoundServer
      * @brief 音源を管理するサウンドサーバ
      */
-    class SoundServer {
-    private:
-      /**
-       * @brief サウンドハンドルを
-       */
-      using SoundMap = std::unordered_map<std::string, int>;
+    class SoundServer : Server::ServerTemplateUnordered<std::string, int> {
     public:
       /**
-       * @brief  初期化
-       *         サウンドサーバを使用する場合は必ず初期化すること
-       * @return true:初期化成功 false:初期化失敗
-       * @throw  std::logic_error
+       * @brief コンストラクタ
        */
-      static void Init();
+      SoundServer();
       /**
-       * @brief  音源情報の登録
-       * @param  key   登録用文字列
-       * @param  path  音源ファイルのパス
-       * @return true:登録成功 false:登録失敗
+       * @brief  解放処理
+       * @return true:正常 false:異常終了
        */
-      static bool AddSound(std::string_view key, std::filesystem::path path);
+      bool Release() override;
       /**
-       * @brief  音源ファイル情報の読み取り・登録処理
-       * @param  soundFile 音源情報の動的配列
-       * @return true:登録成功 false:問題発生
+       * @brief  音源ファイルの読み取り
+       * @param  key サウンドハンドルに紐づける文字列
+       * @param  soundFile 音源ファイルのパス
+       * @return true:正常終了 false:読み取り失敗
        */
-      static bool LoadSoundFiles(std::vector<class SoundMem> soundFile);
+      bool AddSound(std::string_view key, const std::filesystem::path soundFile);
       /**
        * @brief  指定したサウンドハンドルの取得
-       * @param  key キー(文字列)
-       * @return 取得に成功した場合はサウンドハンドルを返す
-       *         失敗した場合は-1を返す
+       * @param  key 対象のサウンドハンドルに紐づけられた文字列
+       * @return サウンドハンドル
+       *         キーが有効ではない場合は-1を返す
        */
-      static const int GetSoundMem(std::string_view key);
-    private:
-      static std::filesystem::path _directory; // ディレクトリ
-      static SoundMap _sounds; //!< サウンド情報
+      int GetSoundMem(std::string_view key) const;
     };
   } // namespace Sound
 } // namespace AppFrame

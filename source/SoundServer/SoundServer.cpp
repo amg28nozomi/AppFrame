@@ -8,90 +8,50 @@
 #include "SoundServer.h"
 #include <DxLib.h>
 #include "SoundMem.h"
-#include "../FileServer/LoadJson.h"
 
 namespace AppFrame {
   namespace Sound {
 
-    SoundServer::SoundMap SoundServer::_sounds;
-    std::filesystem::path SoundServer::_directory;
-
-    void SoundServer::Init() {
-      _sounds.clear();
-      _directory.clear();
+    SoundServer::SoundServer() : Server::ServerTemplateUnordered<std::string, int>() {
+#ifdef _DEBUG
+      _name = "SoundServer";
+#endif
     }
 
-    bool SoundServer::AddSound(std::string_view key, std::filesystem::path path) {
-      namespace fs = std::filesystem;
-      // ファイルは存在するか
-      if (!fs::exists(path)) {
-#ifdef _DEBUG
-        throw std::logic_error("パスが不正です");
-#endif
-        return false; // 存在しない
+    bool SoundServer::Release() {
+      if (_registry.empty()) {
+        return true; // データが空
       }
-      // キーは既に登録されているか
-      if (_sounds.contains(key.data())) {
-#ifdef _DEBUG
-        throw std::logic_error("SoundServer:キーが重複しています\n");
-#endif
-        return false;
+      // サウンドハンドルの全開放を行う
+      for (auto [key, handle] : _registry) {
+        // サウンドハンドルの解放を行う
+        DeleteSoundMem(handle);
       }
-      // サウンドハンドルの取得
-      auto handle = LoadSoundMem(path.string().c_str());
-      if (handle == -1) {
-        // 読み取り失敗
-#ifdef _DEBUG
-        throw std::logic_error("SoundServer:音源ファイルの読み取りに失敗しました\n");
-#endif
-        return false;
-      }
-      _sounds.emplace(key.data(), handle);
-      return true; // 登録成功
-    }
-
-    bool SoundServer::LoadSoundFiles(std::vector<class SoundMem> soundFile) {
-      if (soundFile.empty()) {
-        return false; // 要素無し
-      }
-#ifdef _DEBUG
-      int miss = 0; // 登録に失敗した回数
-#endif
-      for (auto file : soundFile) {
-        // 登録情報
-        auto key = file.GetKey();
-        auto path = file.GetFilePath();
-#ifndef _DEBUG
-        AddSound(key, path);
-      }
-      return true;
-    }
-#else
-        try {
-          // 登録に失敗した場合はカウントを増加させる
-          if (!AddSound(key, path)) {
-            ++miss;
-          }
-        }
-        catch (std::logic_error error) {
-          OutputDebugString(error.what());
-        }
-      }
-      if (miss) {
-        throw std::logic_error("SoundServer:" + std::to_string(miss) + "回登録処理に失敗しました");
-      }
+      _registry.clear(); // レジストリを解放する
       return true; // 正常終了
     }
-#endif
 
-    const int SoundServer::GetSoundMem(std::string_view key) {
-      // キーの検索
-      auto ite = _sounds.find(key.data());
-      if (ite == _sounds.end()) {
-        return -1; // 未登録
+    bool SoundServer::AddSound(std::string_view key, const std::filesystem::path soundFile) {
+      // キーは未使用か
+      if (!SoundServer::UsedKey(key.data())) {
+        return false; // キーが重複している
       }
-      return ite->second; // 取得成功
+      // 音源情報の読み取り
+      auto handle = LoadSoundMem(soundFile.string().data());
+      // サウンドハンドルの取得に成功したか
+      if (handle == -1) {
+        return false; // 読み取り失敗
+      }
+      // レジストリに登録
+      _registry.emplace(key.data(), handle);
     }
 
+    int SoundServer::GetSoundMem(std::string_view key) const {
+      if (!UsedKey(key.data())) {
+        return -1; // キーが有効ではない
+      }
+      // サウンドハンドルを返す
+      return _registry.at(key.data());
+    }
   } // namespace Sound
 } // nemaspace AppFrame
