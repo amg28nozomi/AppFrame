@@ -17,11 +17,15 @@ namespace AppFrame {
    */
   namespace Data {
     class Color;
-  }
+  } // namespace Data
   /**
    * @brief モードベース
    */
   namespace Mode {
+    constexpr auto AlphaMax = 255.0f; //!< アルファ値の上限
+    constexpr auto AlphaMin = 0.0f;   //!< アルファ値の下限
+    constexpr auto FadeTime = 60.0f;  //!< デフォルトのフェード時間(フレーム)
+    constexpr auto AlphaDelta = (AlphaMax / FadeTime); //!< アルファ値の変化量(デフォルト)
     /**
      * @class ModeFade
      * @brief シーン遷移用モード
@@ -64,11 +68,23 @@ namespace AppFrame {
        * @param color 設定するRGB値
        */
       void SetColor(const Data::Color color);
+      /**
+       * @brief アルファ値の変化量を設定
+       * @param value 0~255までのfloat値
+       */
+      void SetDeltaAlpha(const float value);
     protected:
+      Data::Color _basic; //!< 標準カラー値
+      Data::Color _color; //!< フェード処理で使用するRGB値
       int _width;  //!< フェードボックスの横幅
       int _height; //!< フェードボックスの縦幅
-      Data::Color _basic; //!< 標準カラー値
-      Data::Color _color; //!< フェード処理で使用するRGBA値
+      float _alpha{0.0f};      //!< アルファ値
+      float _deltaAlpha{0.0f}; //!< アルファ値の変化量
+      /**
+       * @brief  処理の終了判定用の純粋仮想関数
+       * @return true:処理終了 false:処理継続
+       */
+      virtual bool IsFinish() = 0;
     };
   } // namespace Mode
 } // namespace AppFrame

@@ -138,6 +138,9 @@
     <ClInclude Include="source\Mode\ModeFade.h">
       <Filter>ヘッダー ファイル\Mode</Filter>
     </ClInclude>
+    <ClInclude Include="source\Mode\ModeFadeIn.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -219,6 +222,9 @@
       <Filter>ソース ファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="source\Mode\ModeFade.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Mode\ModeFadeIn.cpp">
       <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>

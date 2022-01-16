@@ -184,6 +184,7 @@
     <ClInclude Include="source\Math\Vector4.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeFade.h" />
+    <ClInclude Include="source\Mode\ModeFadeIn.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
     <ClInclude Include="source\Server\ServerBase.h" />
     <ClInclude Include="source\Server\ServerTemplateUnordered.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="source\Math\Vector4.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeFade.cpp" />
+    <ClCompile Include="source\Mode\ModeFadeIn.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
     <ClCompile Include="source\Server\ServerBase.cpp" />
     <ClCompile Include="source\Server\ServerTemplateUnordered.cpp" />

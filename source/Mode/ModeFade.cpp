@@ -7,9 +7,13 @@
  * @date   January 2022
  *********************************************************************/
 #include "ModeFade.h"
+#ifdef _DEBUG
+#include <stdexcept>
+#endif
 #include <DxLib.h>
 #include "../Application/ApplicationBase.h"
 #include "../Data/Color.h"
+#include "../Math/Arithmetic.h"
 
 namespace AppFrame{
   namespace Mode {
@@ -43,7 +47,7 @@ namespace AppFrame{
 
     bool ModeFade::Draw() const {
       // ブレンドモードの切り替え
-      SetDrawBlendMode(DX_BLENDMODE_ALPHA, _color.GetAlpha());
+      SetDrawBlendMode(DX_BLENDMODE_ALPHA, static_cast<int>(_alpha));
       // フェード処理用のボックスを描画
       DrawBox(0, 0, _width, _height, _color.GetColorCode(), TRUE);
       // ブレンドモードをノーマルに戻す
@@ -53,6 +57,18 @@ namespace AppFrame{
     void ModeFade::SetColor(const Data::Color color) {
       // 現在のRGB情報を変更する
       _basic = color;
+    }
+
+    void ModeFade::SetDeltaAlpha(const float value) {
+      // 値が範囲内に収まっていない場合は処理を実行しない
+      if (!Math::Arithmetic::IsRange(value, AlphaMin, AlphaMax)) {
+#ifdef _DEBUG
+        throw std::logic_error("ModeFade:対象の値が範囲内に収まっていません\n");
+#endif
+        return; // 設定を行わない
+      }
+      // 問題がない場合は代入
+      _deltaAlpha = value;
     }
   } // namespace Mode
 } // namespace AppFrame
