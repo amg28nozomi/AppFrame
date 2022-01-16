@@ -17,7 +17,6 @@
 #include "../FileServer/FileBase.h"
 #include "../Mode/ModeBase.h"
 #include "../Mode/ModeFadeIn.h"
-#include "../SoundServer/SoundServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -74,7 +73,7 @@ namespace AppFrame {
       // モードサーバの生成
       _modeServer = std::make_unique<Mode::ModeServer>("base", std::make_unique<Mode::ModeFadeIn>(*this));
       // サウンドサーバの生成
-      _soundServer = std::make_unique<Sound::SoundServer>(*this);
+      _soundServer = std::make_unique<Sound::SoundServer>();
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗

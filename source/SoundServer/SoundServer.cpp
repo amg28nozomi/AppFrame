@@ -44,6 +44,7 @@ namespace AppFrame {
       }
       // ƒŒƒWƒXƒgƒŠ‚É“o˜^
       _registry.emplace(key.data(), handle);
+      return true;
     }
 
     int SoundServer::GetSoundMem(std::string_view key) const {

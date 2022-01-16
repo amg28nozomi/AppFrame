@@ -11,6 +11,7 @@
 #include <memory>
 #include "../FileServer/FileServer.h"
 #include "../Mode/ModeServer.h"
+#include "../SoundServer/SoundServer.h"
 /**
  * @brief アプリケーションフレーム
  */
@@ -26,12 +27,6 @@ namespace AppFrame {
   namespace Mode {
     class ModeBase;
   } // namespace Mode
-  /**
-   * @brief サウンドベース
-   */
-  namespace Sound {
-    class SoundServer;
-  } // namespace Sound
   /**
    * @brief アプリケーションベース
    */

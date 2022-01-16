@@ -26,7 +26,7 @@ namespace AppFrame {
       DX_INPUT_PAD4  // ジョイパッド4
     };
 
-    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypad(DX_INPUT_PAD1) {
+    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypad() {
       _state = State::Active;
     }
 
