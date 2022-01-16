@@ -41,7 +41,7 @@ namespace AppFrame {
       /**
        * @brief モードの削除
        */
-      ~ModeBase();
+      virtual ~ModeBase();
       /**
        * @brief  モードの初期化
        * @return true:初期化成功 false:初期化失敗

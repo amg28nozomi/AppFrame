@@ -135,6 +135,9 @@
     <ClInclude Include="source\Server\ServerTemplateUnordered.h">
       <Filter>ヘッダー ファイル\Server</Filter>
     </ClInclude>
+    <ClInclude Include="source\Mode\ModeFade.h">
+      <Filter>ヘッダー ファイル\Mode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -214,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="source\Application\WinMain.cpp">
       <Filter>ソース ファイル\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Mode\ModeFade.cpp">
+      <Filter>ソース ファイル\Mode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
