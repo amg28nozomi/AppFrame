@@ -10,3 +10,4 @@
 
 #include "Application/ApplicationBase.h"
 #include "Application/InputOperation.h"
+#include "Application/JoypadState.h"

@@ -14,7 +14,7 @@ namespace AppFrame {
     constexpr auto MaxColumn = 4; //!< 列の上限
     /**
      * @class Matrix4x4
-     * @brief 行列クラス
+     * @brief 4*4行列クラス
      */
     class Matrix44 {
     private:
@@ -27,7 +27,7 @@ namespace AppFrame {
       Matrix44();
       /**
        * @brief 行列のコピー
-       * @param values
+       * @param values 
        */
       Matrix44(const MatrixArray values);
       /**
@@ -40,6 +40,42 @@ namespace AppFrame {
        * @return 初期化した行列を返す
        */
       static void Reset(MatrixArray& matrix);
+      /**
+       * @brief  単位行列の作成
+       * @return 単位行列
+       */
+      static Matrix44 Identyty();
+      /**
+       * @brief  平行移動行列の取得
+       * @param  x x軸方向ベクトル
+       * @param  y y軸方向ベクトル
+       * @param  z z軸平行ベクトル
+       * @return 平行移動行列
+       */
+      static Matrix44 Translate(float x, float y, float z);
+      /**
+       * @brief  拡大縮小行列の取得
+       * @param  x
+       * @param  y
+       * @param  z
+       * @return 拡大縮小行列
+       */
+      static Matrix44 Scaling(float x, float y, float z);
+      /**
+       * @brief  回転行列(x軸)
+       * @param  angle 
+       */
+      void RotateX(float angle);
+      /**
+       * @brief  回転行列(y軸)
+       * @param  angle
+       */
+      void RotateY(float angle);
+      /**
+       * @brief  回転行列(z軸)
+       * @param  angle
+       */
+      void RotateZ(float angle);
     private:
       MatrixArray _rowColumn; //!< 行列
     };

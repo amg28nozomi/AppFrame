@@ -26,7 +26,7 @@ namespace AppFrame {
     void XBoxState::Process() {
       auto old = _press;
       // “ü—Íó‘Ô‚Ìæ“¾
-      if (GetJoypadXInputState(PAD_INPUT_1, &_press) == Error) {
+      if (GetJoypadXInputState(DX_INPUT_PAD1, &_press) == Error) {
         _state = State::NonActive;
 #ifdef _DEBUG
         throw std::logic_error("¯•ÊID‚ª—LŒø‚Å‚Í‚ ‚è‚Ü‚¹‚ñ\n");
