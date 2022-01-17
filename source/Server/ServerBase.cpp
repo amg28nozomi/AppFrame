@@ -198,7 +198,7 @@ namespace AppFrame {
 //    }
 //
 //    template <typename T, typename I>
-//    bool ServerBase<T, I>::UsedKey(std::string_view key) const {
+//    bool ServerBase<T, I>::UseKey(std::string_view key) const {
 //#ifndef _DEBUG
 //      // キーは使用可能か
 //      return !_registry.contains(key.data());

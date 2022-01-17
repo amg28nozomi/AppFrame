@@ -197,7 +197,7 @@ namespace AppFrame {
 //       * @param  key レジストリへの登録で使用する文字列
 //       * @return true:使用可能 false:すでに使用されている
 //       */
-//      bool UsedKey(std::string_view key) const;
+//      bool UseKey(std::string_view key) const;
 //      /**
 //       * @brief  対象データが有効かの判定
 //       * @param  file ファイルデータ
