@@ -9,7 +9,6 @@
 #include "InputBase.h"
 #include <array>
 #include <string>
-
 /**
  * @brief アプリケーションフレーム
  */
@@ -45,4 +44,3 @@ namespace AppFrame {
     };
   } // namespace Application
 } // namespace AppFrame
-

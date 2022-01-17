@@ -12,3 +12,5 @@
 #include "Application/InputOperation.h"
 #include "Application/JoypadState.h"
 #include "Mode/ModeBase.h"
+#include "Server/ServerTemplateUnordered.h"
+#include "Server/ServerTemplateVector.h"

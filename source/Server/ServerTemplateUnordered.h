@@ -43,11 +43,11 @@ namespace AppFrame {
        */
       virtual bool Register(Key key, Value value);
       /**
-       * @brief  対象キーが未使用かの判定
+       * @brief  対象キーが使用可能かの判定
        * @param  key 判定対象
        * @return true:登録可能 false:使用済み
        */
-      bool UsedKey(Key key) const;
+      bool UseKey(Key key) const;
     };
 
     template <typename Key, typename Value>
@@ -66,7 +66,7 @@ namespace AppFrame {
     bool ServerTemplateUnordered<Key, Value>::Register(Key key, Value value) {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // キーは登録可能か？
-      if (!UsedKey(key)) {
+      if (!UseKey(key)) {
         return false; // 登録済み
       }
       // 登録
@@ -75,7 +75,7 @@ namespace AppFrame {
     }
 
     template <typename Key, typename Value>
-    bool ServerTemplateUnordered<Key, Value>::UsedKey(Key key) const {
+    bool ServerTemplateUnordered<Key, Value>::UseKey(Key key) const {
       using UnorderedServer = ServerBase<std::unordered_map<Key, Value>>;
       // キーは未登録か
       if (UnorderedServer::_registry.contains(key)) {
