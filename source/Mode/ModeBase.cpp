@@ -43,6 +43,10 @@ namespace AppFrame {
       return true;
     }
 
+    void ModeBase::TimeClear() {
+      _count = 0;
+    }
+
     Application::ApplicationBase& ModeBase::GetApplication() {
       return _app;
     }
@@ -53,6 +57,10 @@ namespace AppFrame {
 
     FileServer::FileServer& ModeBase::GetFileServer() {
       return _app.GetFileServer();
+    }
+
+    void ModeBase::StepTime() {
+      ++_count;
     }
   } // namespace Mode
 } // namespace AppFrame

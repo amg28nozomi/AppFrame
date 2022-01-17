@@ -18,13 +18,13 @@ namespace AppFrame{
     bool ModeFadeIn::Enter() {
       // 各種パラメータの初期化
       _alpha = AlphaMax;
-      _deltaAlpha = -AlphaDelta;
+      _deltaAlpha = AlphaDelta;
       return true;
     }
 
     bool ModeFadeIn::Process() {
-      // アルファ値の加算
-      _alpha += _deltaAlpha;
+      // アルファ値の減算
+      _alpha -= _deltaAlpha;
       return ModeFade::Process();
     }
 

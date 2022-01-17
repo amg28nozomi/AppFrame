@@ -140,6 +140,13 @@ namespace AppFrame {
       DxLib_End();
     }
 
+    void ApplicationBase::RequestTerminate() {
+      // アプリケーションが終了状態ではない場合
+      if (_state != State::Quit) {
+        _state = State::Quit;
+      }
+    }
+
     void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
       // 画面解像度の設定
       _width = std::clamp(width, WidthMin, WindowWidth);

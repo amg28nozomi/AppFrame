@@ -74,10 +74,14 @@ namespace AppFrame {
        */
       virtual bool Draw() const;
       /**
+       * @brief  経過フレームの初期化
+       */
+      virtual void TimeClear();
+      /**
        * @brief  アプリケーションの取得
        * @return アプリケーションの参照
        */
-      Application::ApplicationBase& GetApplication();
+      virtual Application::ApplicationBase& GetApplication();
       /**
        * @brief  モードサーバの取得
        * @return モードサーバの参照
@@ -88,8 +92,20 @@ namespace AppFrame {
        * @return ファイルサーバの参照
        */
       FileServer::FileServer& GetFileServer();
+      /**
+       * @brief  本モードの経過フレーム数を取得
+       * @return フレームカウンタ
+       */
+      int GetFrameCount() const {
+        return _count;
+      }
     protected:
       Application::ApplicationBase& _app; //!< アプリケーションの参照
+      int _count{0}; //!< 本モード内での経過時間
+      /**
+       * @brief 時間経過処理
+       */
+      virtual void StepTime();
     };
   } // namespace Mode
 } // namespace AppFrame

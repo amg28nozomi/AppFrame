@@ -22,8 +22,8 @@ namespace AppFrame {
     }
 
     bool ModeFadeOut::Process() {
-      // アルファ値の減算
-      _alpha -= _deltaAlpha;
+      // アルファ値の加算
+      _alpha += _deltaAlpha;
       return ModeFade::Process();
     }
 

@@ -73,6 +73,10 @@ namespace AppFrame {
        */
       virtual void Terminate();
       /**
+       * @brief  アプリケーションの終了要請
+       */
+      virtual void RequestTerminate();
+      /**
        * @brief  アプリケーションの参照を取得
        * @return アプリケーションの参照
        */
