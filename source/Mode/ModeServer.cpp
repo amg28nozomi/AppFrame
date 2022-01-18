@@ -48,7 +48,7 @@ namespace AppFrame {
 
     bool ModeServer::PushBack(std::string_view key) {
       // ƒ‚[ƒh‚Ìæ“¾
-      auto mode = GetMode(key.data());
+      auto mode = FetchMode(key.data());
       // ƒ‚[ƒh‚Ìæ“¾‚É¬Œ÷‚µ‚½‚©
       if (mode == nullptr) {
 #ifdef _DEBUG
@@ -72,7 +72,7 @@ namespace AppFrame {
     }
 
     void ModeServer::InsertBeforeBack(std::string_view key) {
-      auto mode = GetMode(key.data());
+      auto mode = FetchMode(key.data());
       // æ“¾‚É¬Œ÷‚µ‚½‚©
       if (mode == nullptr) {
         return;
@@ -132,7 +132,7 @@ namespace AppFrame {
       return true;
     }
 
-    std::shared_ptr<ModeBase> ModeServer::GetMode(std::string_view key) {
+    std::shared_ptr<ModeBase> ModeServer::FetchMode(std::string_view key) {
       // ƒ‚[ƒh‚Í“o˜^‚³‚ê‚Ä‚¢‚é‚©
       if (!_registry.contains(key.data())) {
         return nullptr; // –¢“o˜^
