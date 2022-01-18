@@ -81,8 +81,9 @@ namespace AppFrame {
       /**
        * @brief  リストの末尾の要素の直前に指定したモードを追加する
        * @param  key 対象モードに紐づけられた文字列
+       * @return true:追加成功 false:追加失敗
        */
-      void InsertBeforeBack(std::string_view key);
+      bool InsertBeforeBack(std::string_view key);
     };
 
     /**
