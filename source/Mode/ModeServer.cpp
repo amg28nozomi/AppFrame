@@ -29,9 +29,6 @@ namespace AppFrame {
       Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
       Register(FadeOut, std::make_shared<ModeFadeOut>(mode->GetApplication()));
       Register(key.data(), mode);
-      // w’è‚µ‚½‡”Ô‚ÅƒŠƒXƒg‚É“o˜^‚·‚é
-      PushBack(key.data());
-      PushBack(FadeOut);
     }
 
     bool ModeServer::Release() {
