@@ -77,7 +77,7 @@ namespace AppFrame {
        * @return 指定したモードを返す
        *         キーが有効ではない場合、nullptrを返す
        */
-      std::shared_ptr<ModeBase> GetMode(std::string_view key);
+      std::shared_ptr<ModeBase> FetchMode(std::string_view key);
       /**
        * @brief  リストの末尾の要素の直前に指定したモードを追加する
        * @param  key 対象モードに紐づけられた文字列
