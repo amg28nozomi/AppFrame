@@ -46,7 +46,7 @@ namespace AppFrame {
       bool LoadModel(std::string_view filePath);
     private:
       //!< アニメーションを保持するデータベース
-      std::unordered_map<std::string, std::pair<std::string, int>> _animas;
+      std::unordered_map<std::string, std::pair<std::string, int>> _animations;
     };
   } // namespace Model
 } // namespace AppFrame

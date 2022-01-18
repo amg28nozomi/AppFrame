@@ -10,32 +10,34 @@
 namespace AppFrame {
   namespace Model {
 
-    ModelServer::ModelServer() : Server::ServerTemplateUnordered<std::string, ModelMap>() {
+    ModelServer::ModelServer() : Server::ServerTemplateUnordered<std::string, std::vector<int>>() {
+      // アニメーションの解放
+      _animations.clear();
     }
 
     bool ModelServer::Release() {
-      // 登録されている全データの削除を行う
-      for (auto&& [key, model] : _registry) {
-        // モデルハンドルとアニメーションを取得
-        auto&& [handles, anima] = model;
+      // 登録されているモデルデータの解放
+      for (auto&& [key, handles] : _registry) {
         // モデルデータの削除
         for (auto handle : handles) {
           MV1DeleteModel(handle);
         }
-        // コンテナの解放
+        // ハンドルを削除する
         handles.clear();
-        anima.clear();
       }
+      // アニメーションの削除
+      _animations.clear();
     }
     
-    bool AddModel(std::string_view key, std::string_view path) {
+    bool ModelServer::AddModel(std::string_view key, std::string_view path) {
       return true;
     }
 
     bool ModelServer::LoadModel(std::string_view key) {
       // ファイルの読み取り
       if (_registry.contains(key.data())) {
-        auto [handles, animas] = _registry.at(key.data());
+        auto handles = _registry.at(key.data());
+
         // モデルが登録されている場合は既存モデルを削除する
         
       }
