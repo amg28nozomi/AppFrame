@@ -23,12 +23,12 @@ namespace AppFrame {
     class GravityBase {
     public:
       /**
-       * @brief  重力加速度を表す平行移動行列を取得する
+       * @brief  重力スケールの取得
        * @param  speed 対象の加速度
        * @param  mass  対象の質量
-       * @return 加速度を表す平行移動行列を返す
+       * @return 対象の重力スケール
        */
-      static Matrix44 GravityImparted(float speed, float mass);
+      static float GravityScale(float speed, float mass);
       /**
        * @brief  重力加速度の取得
        * @return 重力加速度
