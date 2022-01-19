@@ -43,7 +43,7 @@ namespace AppFrame{
       std::vector<int> handles;
       handles.resize(allNum);
       // グラフィックハンドルの読み取り
-      if (DxLib::LoadDivGraph(filePath.string().data(), xNum, yNum, allNum, xSize, ySize, &handles.data()) == -1) {
+      if (DxLib::LoadDivGraph(filePath.string().data(), xNum, yNum, allNum, xSize, ySize, handles.data()) == -1) {
         return false; // 読み取りに失敗
       }
       // データベース上に登録する
@@ -67,7 +67,7 @@ namespace AppFrame{
       return _registry.at(key.data()).first;
     }
 
-    const int ResourceServer::GetHandle(std::string_view key, const int no = 0) const {
+    const int ResourceServer::GetHandle(std::string_view key, const int no) const {
       // キーは登録されているか
       if (!UseKey(key.data())) {
         return -1; // 未登録
