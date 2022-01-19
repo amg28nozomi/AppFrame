@@ -64,8 +64,7 @@ namespace AppFrame {
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
       // Zバッファの設定
-      SetUseZBuffer3D(TRUE);
-      SetWriteZBuffer3D(TRUE);
+      SetZBuffer();
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
       // インプットオペレーションの生成
@@ -158,6 +157,12 @@ namespace AppFrame {
         _colorBit = BitColor16;
       }
       SetGraphMode(_width, _height, _colorBit);
+    }
+
+    void ApplicationBase::SetZBuffer(bool flag) {
+      // Zバッファを使用するかの設定
+      SetUseZBuffer3D(flag);
+      SetWriteZBuffer3D(flag);
     }
 
     void ApplicationBase::IsQuit() {

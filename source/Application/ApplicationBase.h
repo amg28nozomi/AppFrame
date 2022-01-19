@@ -180,6 +180,11 @@ namespace AppFrame {
        * @brief  アプリケーションを終了するかの判定
        */
       virtual void IsQuit();
+      /**
+       * @brief Zバッファの設定を有効にするか
+       * @param flag true:有効化(デフォルト) false:有効化しない
+       */
+      virtual void SetZBuffer(bool flag = true);
     };
   } // namespace Application
 } // namespace AppFrame
