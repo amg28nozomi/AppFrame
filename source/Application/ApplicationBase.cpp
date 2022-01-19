@@ -16,6 +16,7 @@
 #include "../FileServer/FileBase.h"
 #include "../Mode/ModeBase.h"
 #include "../Mode/ModeFadeIn.h"
+#include "../Resource/ResourceServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -33,6 +34,8 @@ namespace AppFrame {
 #else
       _windowMode = true;
 #endif
+      // ログファイルの出力を行うかの設定
+      SetOutApplicationLogValidFlag(_windowMode);
     }
 
     ApplicationBase::~ApplicationBase() {
@@ -63,14 +66,15 @@ namespace AppFrame {
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
       // Zバッファの設定
-      SetUseZBuffer3D(TRUE);
-      SetWriteZBuffer3D(TRUE);
+      SetZBuffer();
       // ファイルサーバの生成
       _fileServer = std::make_unique<FileServer::FileServer>();
       // インプットオペレーションの生成
       _input = std::make_unique<InputOperation>(*this);
       // モードサーバの生成
       _modeServer = std::make_unique<Mode::ModeServer>("base", std::make_unique<Mode::ModeFadeIn>(*this));
+      // リソースサーバの生成
+      _resourceServer = std::make_unique<Resource::ResourceServer>();
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
 #ifndef _DEBUG
@@ -159,11 +163,21 @@ namespace AppFrame {
       SetGraphMode(_width, _height, _colorBit);
     }
 
+    void ApplicationBase::SetZBuffer(bool flag) {
+      // Zバッファを使用するかの設定
+      SetUseZBuffer3D(flag);
+      SetWriteZBuffer3D(flag);
+    }
+
     void ApplicationBase::IsQuit() {
       // メッセージループに失敗した場合は終了
       if (ProcessMessage() == Error) {
         _state = State::Quit; // 終了状態に遷移
       }
+    }
+
+    Resource::ResourceServer& ApplicationBase::GetResourceServer() {
+      return *_resourceServer;
     }
   } // namespace Application
 } // namespace AppFrame

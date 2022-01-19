@@ -28,6 +28,12 @@ namespace AppFrame {
     class ModeBase;
   } // namespace Mode
   /**
+   * @brief リソースベース
+   */
+  namespace Resource {
+    class ResourceServer;
+  } // namespace Resource
+  /**
    * @brief アプリケーションベース
    */
   namespace Application {
@@ -112,6 +118,11 @@ namespace AppFrame {
         return *_soundServer;
       }
       /**
+       * @brief  リソースサーバの取得
+       * @return リソースサーバの参照
+       */
+      Resource::ResourceServer& GetResourceServer();
+      /**
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
        */
@@ -156,6 +167,8 @@ namespace AppFrame {
       std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
       //!< サウンドサーバ
       std::unique_ptr<Sound::SoundServer> _soundServer{nullptr};
+      //!< リソースサーバ
+      std::unique_ptr<Resource::ResourceServer> _resourceServer{nullptr};
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗
@@ -180,6 +193,11 @@ namespace AppFrame {
        * @brief  アプリケーションを終了するかの判定
        */
       virtual void IsQuit();
+      /**
+       * @brief Zバッファの設定を有効にするか
+       * @param flag true:有効化(デフォルト) false:有効化しない
+       */
+      virtual void SetZBuffer(bool flag = true);
     };
   } // namespace Application
 } // namespace AppFrame

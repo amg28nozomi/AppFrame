@@ -29,9 +29,6 @@ namespace AppFrame {
       Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
       Register(FadeOut, std::make_shared<ModeFadeOut>(mode->GetApplication()));
       Register(key.data(), mode);
-      // 指定した順番でリストに登録する
-      PushBack(key.data());
-      PushBack(FadeOut);
     }
 
     bool ModeServer::Release() {
@@ -71,13 +68,20 @@ namespace AppFrame {
       _modes.pop_back();
     }
 
-    void ModeServer::InsertBeforeBack(std::string_view key) {
+    bool ModeServer::InsertBeforeBack(std::string_view key) {
       auto mode = FetchMode(key.data());
       // 取得に成功したか
       if (mode == nullptr) {
-        return;
+        return false; // 取得失敗
+      }
+      // モードはスタックされているか
+      if (_modes.empty()) {
+        // 空の場合は末尾に追加する
+        _modes.emplace_back(mode);
+        return true;
       }
       _modes.insert(std::prev(_modes.end()), mode);
+      return true;
     }
 
     bool ModeServer::Process() {
