@@ -189,6 +189,7 @@
     <ClInclude Include="source\Mode\ModeFadeIn.h" />
     <ClInclude Include="source\Mode\ModeFadeOut.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
+    <ClInclude Include="source\Resource\ResourceServer.h" />
     <ClInclude Include="source\Server\ServerBase.h" />
     <ClInclude Include="source\Server\ServerTemplateUnordered.h" />
     <ClInclude Include="source\Server\ServerTemplateVector.h" />
@@ -222,6 +223,7 @@
     <ClCompile Include="source\Mode\ModeFadeIn.cpp" />
     <ClCompile Include="source\Mode\ModeFadeOut.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
+    <ClCompile Include="source\Resource\ResourceServer.cpp" />
     <ClCompile Include="source\Server\ServerBase.cpp" />
     <ClCompile Include="source\Server\ServerTemplateUnordered.cpp" />
     <ClCompile Include="source\Server\ServerTemplateVector.cpp" />

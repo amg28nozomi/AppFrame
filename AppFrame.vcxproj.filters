@@ -55,6 +55,12 @@
     <Filter Include="ソース ファイル\Server">
       <UniqueIdentifier>{f361762e-35d3-4026-85ef-f29867131681}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Resource">
+      <UniqueIdentifier>{7277c394-1788-428f-8e75-6fc3a36fa9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Resource">
+      <UniqueIdentifier>{97422259-343a-49f9-b7bb-06c599eedb7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -150,6 +156,9 @@
     <ClInclude Include="source\Math\Utility.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="source\Resource\ResourceServer.h">
+      <Filter>ヘッダー ファイル\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -244,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="source\Math\Utility.cpp">
       <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Resource\ResourceServer.cpp">
+      <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
