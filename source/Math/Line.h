@@ -1,0 +1,55 @@
+/*****************************************************************//**
+ * @file   Line.h
+ * @brief  線分クラス
+ * 
+ * @author 鈴木希海
+ * @date   January 2022
+ *********************************************************************/
+#pragma once
+
+namespace AppFrame {
+  namespace Math {
+
+    class Vector4;
+    /**
+     * @class Line
+     * @brief 線分ベクトル
+     */
+    class Line {
+    public:
+      /**
+       * @brief 空のコンストラクタ
+       */
+      Line();
+      /**
+       * @brief コンストラクタ
+       */
+      Line(Vector4 first, Vector4 end);
+      /**
+       * @brief  ベクトルの取得
+       * @return first:先端 second:終端
+       */
+      std::pair<Vector4, Vector4> GetVector() const {
+        return std::make_pair(_start, _end);
+      }
+      /**
+       * @brief  先端ベクトルの取得
+       * @return 先端ベクトル
+       */
+      Vector4 GetStart() const {
+        return _start;
+      }
+      /**
+       * @brief  終端ベクトルの取得
+       * @return 終端ベクトル
+       */
+      Vector4 GetEnd() const {
+        return _end;
+      }
+      static Vector4 Long(Line a, Line b);
+    private:
+      Vector4 _start; //!< 先端
+      Vector4 _end;   //!< 終端
+    };
+  } // namespace Math
+} // namespace AppFrame

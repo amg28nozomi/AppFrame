@@ -181,6 +181,7 @@
     <ClInclude Include="source\FileServer\WriteJson.h" />
     <ClInclude Include="source\Math\Arithmetic.h" />
     <ClInclude Include="source\Math\GravityBase.h" />
+    <ClInclude Include="source\Math\Line.h" />
     <ClInclude Include="source\Math\Matrix44.h" />
     <ClInclude Include="source\Math\Utility.h" />
     <ClInclude Include="source\Math\Vector4.h" />
@@ -215,6 +216,7 @@
     <ClCompile Include="source\FileServer\WriteJson.cpp" />
     <ClCompile Include="source\Math\Arithmetic.cpp" />
     <ClCompile Include="source\Math\GravityBase.cpp" />
+    <ClCompile Include="source\Math\Line.cpp" />
     <ClCompile Include="source\Math\Matrix44.cpp" />
     <ClCompile Include="source\Math\Utility.cpp" />
     <ClCompile Include="source\Math\Vector4.cpp" />

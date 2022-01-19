@@ -159,6 +159,9 @@
     <ClInclude Include="source\Resource\ResourceServer.h">
       <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="source\Math\Line.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -256,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="source\Resource\ResourceServer.cpp">
       <Filter>ソース ファイル\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\Line.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
