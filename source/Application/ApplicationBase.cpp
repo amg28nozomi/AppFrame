@@ -17,6 +17,7 @@
 #include "../FileServer/FileBase.h"
 #include "../Mode/ModeBase.h"
 #include "../Mode/ModeFadeIn.h"
+#include "../Resource/ResourceServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -73,6 +74,8 @@ namespace AppFrame {
       _input = std::make_unique<InputOperation>(*this);
       // モードサーバの生成
       _modeServer = std::make_unique<Mode::ModeServer>("base", std::make_unique<Mode::ModeFadeIn>(*this));
+      // リソースサーバの生成
+      _resourceServer = std::make_unique<Resource::ResourceServer>();
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
 #ifndef _DEBUG
@@ -172,6 +175,10 @@ namespace AppFrame {
       if (ProcessMessage() == Error) {
         _state = State::Quit; // 終了状態に遷移
       }
+    }
+
+    Resource::ResourceServer& ApplicationBase::GetResourceServer() {
+      return *_resourceServer;
     }
   } // namespace Application
 } // namespace AppFrame

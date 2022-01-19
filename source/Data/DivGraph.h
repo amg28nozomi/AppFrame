@@ -36,14 +36,14 @@ namespace AppFrame {
       void Clear();
       /**
        * @brief  分割情報の取得
-       * @return 画像の分割数を返す
+       * @return 画像の分割数を返す(xNum, yNum, allNum)
        */
       inline const std::tuple<int, int, int> GetNum() const {
         return { _xNum, _yNum, _allNum };
       }
       /**
        * @brief  分割後の画像サイズの取得
-       * @return 画像サイズを返す
+       * @return 画像サイズを返す(xSize, ySize)
        */
       inline const std::pair<int, int> GetSize() const {
         return { _xSize, _ySize };
