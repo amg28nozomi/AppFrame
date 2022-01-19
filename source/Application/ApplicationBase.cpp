@@ -34,6 +34,8 @@ namespace AppFrame {
 #else
       _windowMode = true;
 #endif
+      // ログファイルの出力を行うかの設定
+      SetOutApplicationLogValidFlag(_windowMode);
     }
 
     ApplicationBase::~ApplicationBase() {
