@@ -8,8 +8,8 @@ namespace AppFrame {
     /**
      * @class  ResourceServer
      * @brief  文字列をキーとして画像情報とグラフィックハンドルを管理するサーバ
-     * @tparam Key 画像情報に紐づける文字列
-     * @tparam Value first:画像情報 second:グラフィックハンドルを格納するコンテナ
+     *         Key 画像情報に紐づける文字列
+     *         Value first:画像情報 second:グラフィックハンドルを格納するコンテナ
      */
     class ResourceServer : Server::ServerTemplateUnordered<std::string, std::pair<Data::DivGraph, std::vector<int>>> {
     public:
@@ -74,4 +74,3 @@ namespace AppFrame {
     };
   } // namespace Resource
 } // namespace AppFrame
-
