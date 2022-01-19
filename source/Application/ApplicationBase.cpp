@@ -11,7 +11,6 @@
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
-#include "EffekseerForDXLib.h"
 #include "InputOperation.h"
 #include "../FileServer/FileServer.h"
 #include "../FileServer/FileBase.h"

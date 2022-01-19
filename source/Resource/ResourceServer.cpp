@@ -19,6 +19,7 @@ namespace AppFrame{
         handles.clear();
       }
       _registry.clear();
+      return true;
     }
 
     bool ResourceServer::LoadDivGraph(std::string_view key, Data::DivGraph divGraph) {
