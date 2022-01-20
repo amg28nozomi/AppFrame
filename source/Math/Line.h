@@ -46,10 +46,9 @@ namespace AppFrame {
       Vector4 GetEnd() const {
         return _end;
       }
-      static Vector4 Long(Line a, Line b);
     private:
-      Vector4 _start; //!< 先端
-      Vector4 _end;   //!< 終端
+      Vector4 _start; //!< 先端ベクトル
+      Vector4 _end;   //!< 終端ベクトル
     };
   } // namespace Math
 } // namespace AppFrame
