@@ -6,11 +6,11 @@
  * @date   January 2022
  *********************************************************************/
 #pragma once
+#include <utility>
+#include "Vector4.h"
 
 namespace AppFrame {
   namespace Math {
-
-    class Vector4; //!< 前方宣言
     /**
      * @class Line
      * @brief 線分ベクトル
