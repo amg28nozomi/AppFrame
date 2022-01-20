@@ -11,6 +11,7 @@
 #include "Application/ApplicationBase.h"
 #include "Application/InputOperation.h"
 #include "Application/JoypadState.h"
+#include "Data/Color.h"
 #include "Mode/ModeBase.h"
 #include "Mode/ModeServer.h"
 #include "Server/ServerTemplateUnordered.h"
@@ -19,3 +20,4 @@
 #include "Math/Matrix44.h"
 #include "Math/GravityBase.h"
 #include "Math/Arithmetic.h"
+#include "Math/Line.h"
