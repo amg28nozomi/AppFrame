@@ -16,6 +16,20 @@
 namespace AppFrame {
   namespace FileServer{
 
+    //JsonServer::JsonServer() : ServerTemplateUnordered<std::string, nlohmann::json>() {
+    //  // コンテナの解放
+    //  _registry.clear();
+    //}
+
+    //bool JsonServer::Release() {
+
+    //}
+
+    //bool JsonServer::SetJsonDirectory(std::string_view key) {
+    //  // ディレクトリパスの設定
+    //  _directory = key.data();
+    //}
+
 //    JsonServer::JsonServer() : ServerBase() {
 //      _registry.clear();
 //    }

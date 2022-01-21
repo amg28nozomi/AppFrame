@@ -18,8 +18,41 @@ namespace AppFrame {
   namespace FileServer {
     /**
      * @class JsonServer
-     * @brief jsonを管理するサーバクラスの基底クラス
+     * @brief ファイルパスをキーとしてjsonデータを管理するサーバクラス
      */
+    //class JsonServer : public Server::ServerTemplateUnordered<std::filesystem::path, nlohmann::json> {
+    //public:
+    //  /**
+    //   * @brief コンストラクタ
+    //   */
+    //  JsonServer();
+    //  /**
+    //   * @brief デストラクタ
+    //   */
+    //  ~JsonServer();
+    //  /**
+    //   * @brief  コンテナの解放処理
+    //   * @return 
+    //   */
+    //  bool Release() override;
+
+
+    //private:
+    //  static inline std::filesystem::path _directory{}; //!< 共通のディレクトリパス
+    //  /**
+    //   * @brief  
+    //   * @param  filePath jsonファイルのパス
+    //   * @return 
+    //   */
+    //  bool LoadJsonFile(std::filesystem::path);
+
+    //  /**
+    //   * @brief  jsonファイルが格納されているディレクトリパスの設定
+    //   * @param  path ディレクトリパス
+    //   * @return true:設定完了 false:設定失敗
+    //   */
+    //  static bool SetJsonDirectory(std::string_view path);
+    //};
 
     //class JsonServer : public Data::ServerBase < std::filesystem::path, std::filesystem::path> {
     //public:

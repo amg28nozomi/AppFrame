@@ -173,6 +173,7 @@
     <ClInclude Include="source\Application\InputOperation.h" />
     <ClInclude Include="source\Data\Color.h" />
     <ClInclude Include="source\Data\DivGraph.h" />
+    <ClInclude Include="source\Data\Singleton.h" />
     <ClInclude Include="source\FileServer\FileBase.h" />
     <ClInclude Include="source\FileServer\FileOutput.h" />
     <ClInclude Include="source\FileServer\FileServer.h" />
