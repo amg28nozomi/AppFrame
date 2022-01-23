@@ -28,7 +28,7 @@ namespace AppFrame {
       _w = 0;
     }
 
-    Vector4::Vector4(float x, float y, float w, float z) {
+    Vector4::Vector4(float x, float y, float z, float w) {
       _x = x;
       _y = y;
       _z = z;
