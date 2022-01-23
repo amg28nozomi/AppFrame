@@ -10,6 +10,7 @@
 #include <vector>
 #include <future>
 #include "JoypadState.h"
+#include "XboxState.h"
 
 namespace AppFrame {
   namespace Application {
