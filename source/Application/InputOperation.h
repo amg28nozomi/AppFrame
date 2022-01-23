@@ -9,11 +9,12 @@
 #include <string>
 #include <vector>
 #include <future>
-#include "XBoxState.h"
 #include "JoypadState.h"
 
 namespace AppFrame {
   namespace Application {
+
+    class XBoxState;
     // デバイスタイプ(入力状態の取得で使用)
     constexpr auto DeviceKeyboard = 0; //!< キーボード
     constexpr auto DeviceMouse = 1;    //!< マウス
@@ -63,16 +64,24 @@ namespace AppFrame {
         return _state;
       }
       /**
+       * @brief  XBOXコントローラ入力状態の取得
+       * @return XBOXコントローラの入力状態の参照
+       */
+      inline XBoxState& GetXBoxState() {
+        return _xBox;
+      }
+      /**
        * @brief  ジョイパッド状態の取得
        * @return ジョイパッドの入力状態の参照
        */
-      inline JoypadState& GetJoypadState() {
-        return _joypad;
-      }
+      //inline JoypadState& GetJoypadState() {
+      //  return _joypad;
+      //}
     private:
       ApplicationBase& _app; //!< アプリケーションの参照
       State _state{};        //!< 状態
-      JoypadState _joypad;  //!< ジョイパッドの入力状態
+      XBoxState _xBox; //!< xボックスコントローラの入力状態
+      // JoypadState _joypad;  //!< ジョイパッドの入力状態
       int _accessLimit{0};   //!< デバイスの接続上限
     };
   } // namespace Application

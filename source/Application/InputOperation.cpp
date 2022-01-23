@@ -9,6 +9,7 @@
 #include <array>
 #include <DxLib.h>
 #include "ApplicationBase.h"
+#include "XBoxState.h"
 
 namespace {
   constexpr auto PadMax = 4;   // ジョイパッドの接続数上限
@@ -26,7 +27,7 @@ namespace AppFrame {
       DX_INPUT_PAD4  // ジョイパッド4
     };
 
-    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _joypad() {
+    InputOperation::InputOperation(ApplicationBase& app) : _app(app), _xBox() {
       _state = State::Active;
     }
 
@@ -43,7 +44,7 @@ namespace AppFrame {
           return; // 接続なし
         }
         // 入力デバイスの更新
-        _joypad.Process();
+        _xBox.Process();
       case State::Paused:
         return; // 実行なし
       case State::NonActive:
