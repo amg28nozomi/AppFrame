@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include "InputBase.h"
+#include <array>
 #include <utility>
 #include <DxLib.h>
 
@@ -54,7 +55,7 @@ namespace AppFrame {
       }
     private:
       XINPUT_STATE _press;   //!< 入力情報(押下入力)
-      XINPUT_STATE _trigger; //!< 入力情報(トリガ入力)
+      std::array<bool, ButtonNum> _triggerButtons; //!< 各種ボタンの押下情報
       /**
        * @brief  トリガ情報の生成
        * @param  press 対象キーの押下情報

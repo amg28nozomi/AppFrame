@@ -19,7 +19,7 @@ namespace AppFrame {
 
     XBoxState::XBoxState() : InputBase() {
       _press = XINPUT_STATE();
-      _trigger = _press;
+      _triggerButtons.fill(false);
       _type = DeviceType::Joypad;
     }
 
@@ -33,8 +33,8 @@ namespace AppFrame {
 #endif
         return; // 取得失敗
       }
-      // 各種トリガ情報の更新
-      for (auto no = 0; auto&& button : _trigger.Buttons) {
+      // ボタン情報の更新
+      for (auto no = 0; auto && button : _triggerButtons) {
         button = Trigger(_press.Buttons[no], old.Buttons[no]);
         ++no;
       }
@@ -49,7 +49,7 @@ namespace AppFrame {
       if (type == InputPress) {
         return _press.Buttons[key]; // 押下情報を返す
       }
-      return _trigger.Buttons[key]; // トリガ情報を返す
+      return _triggerButtons[key];  // トリガ情報を返す
     }
 
     std::pair<int, int> XBoxState::GetStick(const bool stick) const {
