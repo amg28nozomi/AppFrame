@@ -11,6 +11,7 @@
 #include "Application/ApplicationBase.h"
 #include "Application/InputOperation.h"
 #include "Application/JoypadState.h"
+#include "Application/XboxState.h"
 #include "Data/Color.h"
 #include "Mode/ModeBase.h"
 #include "Mode/ModeServer.h"
