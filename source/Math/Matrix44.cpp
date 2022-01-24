@@ -8,6 +8,7 @@
 #include "Matrix44.h"
 #include <cmath>
 #include <tuple>
+#include "Arithmetic.h"
 
 namespace AppFrame {
   namespace Math {
@@ -80,6 +81,24 @@ namespace AppFrame {
       _rowColumn[0][1] = sin;
       _rowColumn[1][0] = -sin;
       _rowColumn[1][1] = cos;
+    }
+
+    Matrix44 Matrix44::operator*(const Matrix44 rhs) const {
+      MatrixArray matrix;
+      for (auto row = 0; row < MaxRow; ++row) {
+        for (auto column = 0; column < MaxColumn; ++column) {
+          float value = 0.0f;
+          for (auto m = 0; m < 4; ++m) {
+            value += _rowColumn[row][column] * rhs.GetValue(m, column);
+          }
+          matrix[row][column] = value;
+        }
+      }
+      return Matrix44(matrix);
+    }
+
+    float Matrix44::GetValue(const int row, const int column) const {
+      return _rowColumn[row][column];
     }
   } // namespace Math
 } // namespace AppFrame

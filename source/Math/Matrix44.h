@@ -76,6 +76,18 @@ namespace AppFrame {
        * @param  angle
        */
       void RotateZ(float angle);
+      /**
+       * @brief  行列同士の乗算
+       * @return 
+       */
+      Matrix44 operator* (const Matrix44 rhs) const;
+      /**
+       * @brief  指定した行列の値を取得する
+       * @param  row 行
+       * @param  column 列
+       * @return 指定した行列の値
+       */
+      float GetValue(const int row, const int column) const;
     private:
       MatrixArray _rowColumn; //!< 行列
     };

@@ -15,6 +15,8 @@ namespace AppFrame {
    * @brief 算術処理ベース
    */
   namespace Math {
+    class Matrix44;
+
     /**
      * @class Utility
      * @brief 算術処理用の補助機能
@@ -25,6 +27,11 @@ namespace AppFrame {
       static constexpr float _pi{static_cast<float>(std::numbers::pi)};
       //!< 
       static constexpr float _degrees180{180.0f};
+      /**
+       * @brief ワールド座標行列への変換
+       */
+      static Matrix44 ToWorldMatrix();
+
       /**
        * @brief  デグリー値をラジアン値に変換する
        * @param  degree デグリー値
