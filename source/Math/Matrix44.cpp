@@ -9,6 +9,7 @@
 #include <cmath>
 #include <tuple>
 #include "Arithmetic.h"
+#include "Vector4.h"
 
 namespace AppFrame {
   namespace Math {
@@ -27,7 +28,7 @@ namespace AppFrame {
       }
     }
 
-    Matrix44 Matrix44::Identyty() {
+    Matrix44 Matrix44::Identity() {
       MatrixArray identyty;
       Reset(identyty);
       // 単位行列の作成
@@ -40,7 +41,7 @@ namespace AppFrame {
 
     Matrix44 Matrix44::Translate(float x, float y, float z) {
       // 単位行列の取得
-      auto translate = Identyty();
+      auto translate = Identity();
       translate._rowColumn[0][3] = x;
       translate._rowColumn[1][3] = y;
       translate._rowColumn[2][3] = z;
@@ -48,7 +49,7 @@ namespace AppFrame {
     }
 
     Matrix44 Matrix44::Scaling(float x, float y, float z) {
-      auto scaling = Identyty();
+      auto scaling = Identity();
       // 拡縮値の設定
       scaling._rowColumn[0][0] = x;
       scaling._rowColumn[1][1] = y;
@@ -81,6 +82,18 @@ namespace AppFrame {
       _rowColumn[0][1] = sin;
       _rowColumn[1][0] = -sin;
       _rowColumn[1][1] = cos;
+    }
+
+    void Matrix44::MulTranslate(const AppFrame::Math::Vector4 translate) {
+      _rowColumn[3][0] += translate.GetX();
+      _rowColumn[3][1] += translate.GetY();
+      _rowColumn[3][2] += translate.GetZ();
+    }
+
+    void Matrix44::MulScaling(const AppFrame::Math::Vector4 scale) {
+      _rowColumn[0][0] *= scale.GetX();
+      _rowColumn[1][1] *= scale.GetY();
+      _rowColumn[2][2] *= scale.GetZ();
     }
 
     Matrix44 Matrix44::operator*(const Matrix44 rhs) const {

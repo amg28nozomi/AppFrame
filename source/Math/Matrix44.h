@@ -10,6 +10,7 @@
 
 namespace AppFrame {
   namespace Math {
+    class Vector4;
     constexpr auto MaxRow = 4;    //!< 行の上限
     constexpr auto MaxColumn = 4; //!< 列の上限
     /**
@@ -44,7 +45,7 @@ namespace AppFrame {
        * @brief  単位行列の作成
        * @return 単位行列
        */
-      static Matrix44 Identyty();
+      static Matrix44 Identity();
       /**
        * @brief  平行移動行列の取得
        * @param  x x軸方向ベクトル
@@ -61,6 +62,16 @@ namespace AppFrame {
        * @return 拡大縮小行列
        */
       static Matrix44 Scaling(float x, float y, float z);
+      /**
+       * @brief 行列の平行移動
+       * @param translate 平行移動ベクトル
+       */
+      void MulTranslate(const AppFrame::Math::Vector4 translate);
+      /**
+       * @brief 行列のスケーリング
+       * @param scale 拡縮ベクトル
+       */
+      void MulScaling(const AppFrame::Math::Vector4 scale);
       /**
        * @brief  回転行列(x軸)
        * @param  angle 
