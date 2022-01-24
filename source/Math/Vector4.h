@@ -65,6 +65,27 @@ namespace AppFrame {
        */
       void Sub(const float x, const float y, const float z);
       /**
+       * @brief x¬•ª‚Ì‰ÁZ
+       * @param x ‰Á”
+       */
+      inline void AddX(const float x) {
+        _x += x;
+      }
+      /**
+       * @brief y¬•ª‚Ì‰ÁZ
+       * @param x ‰Á”
+       */
+      inline void AddY(const float y) {
+        _y += y;
+      }
+      /**
+       * @brief z¬•ª‚Ì‰ÁZ
+       * @param z ‰Á”
+       */
+      inline void AddZ(const float z) {
+        _z += z;
+      }
+      /**
        * @brief  2ŸŒ³ƒxƒNƒgƒ‹‚Ìæ“¾
        * @return xy¬•ª‚ğ•Ô‚·
        */
