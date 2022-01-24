@@ -60,6 +60,7 @@ namespace AppFrame {
     bool ServerTemplateVector<T>::Register(T value) {
       // ––”ö‚É—v‘f‚ğ\’z
       ServerBase<std::vector<T>>::_registry.emplace_back(value);
+      return true;
     }
   } // namespace Server
 } // namespace AppFrame
