@@ -77,6 +77,27 @@ namespace AppFrame {
        */
       void Set(const float x, const float y = 0.0f, const float z = 0.0f);
       /**
+       * @brief 指定した値をx成分にセットする
+       * @param x
+       */
+      inline void SetX(const float x) {
+        _x = x;
+      }
+      /**
+       * @brief 指定した値をy成分にセットする
+       * @param y セットする値
+       */
+      inline void SetY(const float y) {
+        _y = y;
+      }
+      /**
+       * @brief 指定した値をz成分にセットする
+       * @param z セットする値
+       */
+      inline void SetZ(const float z) {
+        _z = z;
+      }
+      /**
        * @brief x成分の加算
        * @param x 加数
        */
