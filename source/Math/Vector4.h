@@ -65,6 +65,18 @@ namespace AppFrame {
        */
       void Sub(const float x, const float y, const float z);
       /**
+       * @brief ベクトルの設定
+       * @param vector セットするベクトル
+       */
+      void Set(const Vector4 vector);
+      /**
+       * @brief 指定した値をベクトルにセットする
+       * @param x x成分にセットする値
+       * @param y y成分にセットする値
+       * @param z z成分にセットする値
+       */
+      void Set(const float x, const float y = 0.0f, const float z = 0.0f);
+      /**
        * @brief x成分の加算
        * @param x 加数
        */

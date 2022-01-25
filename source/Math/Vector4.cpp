@@ -59,6 +59,19 @@ namespace AppFrame {
       _z -= z;
     }
 
+    void Vector4::Set(const Vector4 vector) {
+      _x = vector.GetX();
+      _y = vector.GetY();
+      _z = vector.GetZ();
+      _w = vector.GetW();
+    }
+
+    void Vector4::Set(const float x, const float y, const float z) {
+      _x = x;
+      _y = y;
+      _z = z;
+    }
+
     Vector4 Vector4::operator+(const Vector4 vector) {
       auto x = _x + vector._x;
       auto y = _y + vector._y;
