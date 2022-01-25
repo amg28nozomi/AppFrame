@@ -36,7 +36,7 @@ namespace AppFrame {
        * @param max
        * @return 
        */
-      bool XBoxState::SetDeadZone(const float min, const float max);
+      bool SetDeadZone(const float min, const float max);
       /**
        * @brief  ボタン情報の取得(押下)
        * @param  key  対応するキー番号(0～15)
