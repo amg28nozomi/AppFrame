@@ -69,10 +69,15 @@ namespace AppFrame {
 
     bool Arithmetic::IsRange(const float value, const float low, const float height) {
       // ‘ÎÛ‚Í”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©
-      if (value < height || low < value) {
+      if (value <= height || low <= value) {
         return true; // ”ÍˆÍ“à
       }
       return false;  // ”ÍˆÍŠO
+    }
+
+    bool Arithmetic::IsPositive(const int value) {
+      // ’l‚ª0ˆÈã‚©‚Ì”»’è‚ğs‚¤
+      return 0 <= value;
     }
 
     std::string Arithmetic::ToBinary(int num) {

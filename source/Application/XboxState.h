@@ -31,6 +31,13 @@ namespace AppFrame {
        */
       void Process() override;
       /**
+       * @brief
+       * @param min
+       * @param max
+       * @return 
+       */
+      bool XBoxState::SetDeadZone(const float min, const float max);
+      /**
        * @brief  ボタン情報の取得(押下)
        * @param  key  対応するキー番号(0～15)
        *              DXライブラリのXINPUTボタン入力定義
@@ -56,6 +63,7 @@ namespace AppFrame {
     private:
       XINPUT_STATE _press;   //!< 入力情報(押下入力)
       std::array<bool, ButtonNum> _triggerButtons; //!< 各種ボタンの押下情報
+      std::pair<short, short> _deadZone;           //!< 各種スティックのデッドゾーン情報
       /**
        * @brief  トリガ情報の生成
        * @param  press 対象キーの押下情報
@@ -65,6 +73,15 @@ namespace AppFrame {
       inline int Trigger(const int press, const int old) {
         return press ^ old & press;
       }
+      /**
+       * @brief デッドゾーン処理
+       * @param param 入力情報の参照
+       */
+      void DeadZone(short& param);
+      /**
+       * @brief アナログスティックの更新
+       */
+      void AnalogStickUpdate();
     };
   } // namespace Application
 } // namespace AppFrame

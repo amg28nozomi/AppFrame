@@ -55,6 +55,12 @@ namespace AppFrame {
        */
       static bool IsRange(const float value, const float low, const float height);
       /**
+       * @brief  指定した整数値が正数かの判定
+       * @param  value 判定対象
+       * @return true:正数 false:正数ではない
+       */
+      static bool IsPositive(const int value);
+      /**
        * @brief  10進数値を2進数値に変換
        * @param  num 10進数値
        * @return 引数を2進数で表した文字列
