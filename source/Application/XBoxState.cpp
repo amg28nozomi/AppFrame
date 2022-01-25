@@ -37,7 +37,7 @@ namespace AppFrame {
     }
 
     void XBoxState::Process() {
-      auto old = _press.Buttons; // 前フレームのボタン入力情報
+      auto old = _press; // 前フレームのボタン入力情報
       // 入力状態の取得に成功したか
       if (GetJoypadXInputState(DX_INPUT_PAD1, &_press) == Error) {
         // 失敗した場合は未接続状態に遷移
@@ -52,7 +52,7 @@ namespace AppFrame {
       // ボタンのみトリガ情報を更新する
       for (auto no = 0; auto && button : _triggerButtons) {
         // 入力状態を比較してトリガ情報を算出する
-        button = Trigger(_press.Buttons[no], old[no]);
+        button = Trigger(_press.Buttons[no], old.Buttons[no]);
         ++no;
       }
     }
