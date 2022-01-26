@@ -55,6 +55,28 @@ namespace AppFrame {
       return true; // 登録成功
     }
 
+    void ModelServer::DeleteModels() {
+      Release(); // 全てのモデルハンドルを削除
+    }
+
+    bool ModelServer::DeleteDuqlicateModels(std::string_view key, bool flag) {
+      // フラグが立っている場合は全要素に処理を行う
+      if (flag) {
+        for (auto [key, value] : _registry) {
+          auto [path, handle, animes] = value;
+          // 複製されたモデルハンドルのみを削除
+          DeleteDuqlicateModels(handle);
+        }
+      }
+      // 要素はあるか
+      if (!_registry.contains(key.data())) {
+        return false; // 未登録
+      }
+      // 複製されたモデルハンドルのみを削除する
+      DeleteDuqlicateModels(Handles(key.data()));
+      return true; // 削除完了
+    }
+
     std::pair<int, int> ModelServer::GetModel(std::string_view key, const int no) {
       // キーが登録されているかの判定
       if (_registry.contains(key.data())) {
@@ -74,11 +96,38 @@ namespace AppFrame {
       return std::make_pair(handle, size);
     }
 
+    int ModelServer::GetAnimIndex(std::string_view key, std::string_view animName) {
+      // キーは有効か
+      if (!_registry.contains(key.data())) {
+        return -1; // 未登録
+      }
+      const auto animes = Animes(key.data());
+      // 対象アニメーションは存在するか
+      if (!animes.contains(animName.data())) {
+        return -1; // 存在しない
+      }
+      // アニメーション番号を返す
+      return animes.at(animName.data());
+    }
+
     void ModelServer::DeleteModels(std::vector<int>& handles) {
       for (auto handle : handles) {
         MV1DeleteModel(handle); // モデルハンドルを削除する
       }
       handles.clear(); // コンテナを解放する
+    }
+
+    void ModelServer::DeleteDuqlicateModels(std::vector<int>& handles) {
+      // オリジナルのモデルハンドル
+      auto original = handles.front();
+      // 複製されたモデルハンドルを削除する
+      std::erase_if(handles, [original](int handle) {
+        if (original != handle) {
+          MV1DeleteModel(handle); // モデルハンドルを削除する
+          return true;
+        }
+        return false;
+        });
     }
 
     std::vector<int>& ModelServer::Handles(std::string_view key) {
