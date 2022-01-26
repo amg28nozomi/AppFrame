@@ -17,6 +17,7 @@
 #include "../Data/DivGraph.h"
 #include "../SoundServer/SoundMem.h"
 #include "../Resource/ResourceServer.h"
+#include "../Model/ModelServer.h"
 
 // jsonファイルの読み取りで使用する標準キー
 namespace {
@@ -102,9 +103,10 @@ namespace AppFrame {
       auto files = json[File]; // ファイル名と登録用キーが格納されたコンテナ
       // 読み取ったデータをサーバに登録する
       for (auto data : files) {
-        auto key = data[ModelKey].get<std::string>(); // 紐づける文字列
+        auto key = data[ModelKey].get<std::string>();      // 登録に使用する文字列
         auto fileName = data[FileName].get<std::string>(); // ファイル名
         std::filesystem::path filePath = directory + fileName + extension;   // ファイルパスの作成
+
       }
       return true;
     }

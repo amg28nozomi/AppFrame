@@ -17,6 +17,7 @@
 #include "../Mode/ModeBase.h"
 #include "../Mode/ModeFadeIn.h"
 #include "../Resource/ResourceServer.h"
+#include "../Model/ModelServer.h"
 
 namespace {
   constexpr auto WidthMin = 640;
@@ -77,6 +78,8 @@ namespace AppFrame {
       _resourceServer = std::make_unique<Resource::ResourceServer>();
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
+      // モデルサーバの生成
+      _modelServerl = std::make_unique<Model::ModelServer>();
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
@@ -178,6 +181,10 @@ namespace AppFrame {
 
     Resource::ResourceServer& ApplicationBase::GetResourceServer() {
       return *_resourceServer;
+    }
+
+    Model::ModelServer& ApplicationBase::GetModelServer() const {
+      return *_modelServerl;
     }
   } // namespace Application
 } // namespace AppFrame
