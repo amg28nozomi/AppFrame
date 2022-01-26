@@ -43,14 +43,11 @@ namespace {
   constexpr auto DataTypeModel = "model"; //!< モデルデータ
   constexpr auto TextureData = "texture"; //!< 画像データ
 
-  constexpr auto Directory = "directory"; //!< ディレクトリ
   constexpr auto Param = "param";         //!< パラメータ
-  constexpr auto Extension = "extension"; //!< ファイル拡張子
   constexpr auto Key = "key";             //!< 連想配列に登録するキー
 
 
   constexpr auto MAP = "map";             // マップ
-  constexpr auto DIRECTORY = "directory"; // ディレクトリパス
   constexpr auto FORMAT = "format";       // フォーマット
   constexpr auto NUMS = "nums";           // 要素数取得キー
   constexpr auto KEY = "key";             // 連想配列登録用キー
