@@ -19,12 +19,13 @@ namespace AppFrame {
 
     ModeServer::ModeServer(std::string_view key, std::shared_ptr<ModeBase> mode) :
      Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>>(){
+#ifdef _DEBUG
+      // サーバ名の設定
+      SetServerName("ModeServer");
+#endif
       // コンテナの初期化
       _registry.clear();
       _modes.clear();
-#ifdef _DEBUG
-      _name = "FileServer";
-#endif
       // 各種モードの登録
       Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
       Register(FadeOut, std::make_shared<ModeFadeOut>(mode->GetApplication()));

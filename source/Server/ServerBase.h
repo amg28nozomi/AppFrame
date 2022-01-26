@@ -58,6 +58,11 @@ namespace AppFrame {
 #ifdef _DEBUG
       std::string _name;  //!< サーバ名
       /**
+       * @brief デバッグ処理で使用するサーバ名の設定
+       * @param name サーバ名
+       */
+      void SetServerName(std::string_view name);
+      /**
        * @brief  logic_errorの生成
        * @param  message 出力する文字列
        * @return logic_error
@@ -107,6 +112,11 @@ namespace AppFrame {
     }
 
 #ifdef _DEBUG
+    template <typename T>
+    void ServerBase<T>::SetServerName(std::string_view name) {
+      _name = name.data(); // 引数の文字列をサーバ名として使用する
+    }
+
     template <typename T>
     std::logic_error ServerBase<T>::LogicError(std::string_view message) const {
       std::string error = _name + ":" + message.data() + "\n";

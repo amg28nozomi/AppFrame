@@ -14,7 +14,7 @@ namespace AppFrame {
 
     SoundServer::SoundServer() : Server::ServerTemplateUnordered<std::string, int>() {
 #ifdef _DEBUG
-      _name = "SoundServer";
+      SetServerName("SoundServer"); // ƒT[ƒo–¼‚Ìİ’è
 #endif
     }
 

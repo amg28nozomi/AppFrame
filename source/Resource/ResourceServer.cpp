@@ -6,8 +6,10 @@ namespace AppFrame{
   namespace Resource {
 
     ResourceServer::ResourceServer(std::string_view path) : Server::ServerTemplateUnordered<std::string, std::pair<Data::DivGraph, std::vector<int>>>() {
-      // ディレクトリパスの設定
-      SetDirectryPath(path.data());
+#ifdef _DEBUG
+      SetServerName("ResourceServer"); // サーバ名の設定
+#endif
+      SetDirectryPath(path.data());    // ディレクトリパスの設定
     }
 
     bool ResourceServer::Release() {
