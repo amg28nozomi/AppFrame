@@ -16,6 +16,9 @@
 #include "../Data/DivGraph.h"
 
 namespace AppFrame {
+  namespace Application {
+    class ApplicationBase;
+  }
   namespace FileServer {
     constexpr auto JSON = ".json"; //!< jsonファイルのフォーマット
     /**
@@ -24,6 +27,17 @@ namespace AppFrame {
      */
     class LoadJson {
     public:
+      /**
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
+       */
+      LoadJson(Application::ApplicationBase& app);
+      /**
+       * @brief  jsonファイルの読み取り処理
+       * @param  path jsonファイルのパス
+       * @return true:読み取り成功 false:読み取り失敗
+       */
+      bool LoadJsonFile(std::string_view path);
       /**
        * @brief  jsonファイルの読み取り処理(DivGraph用)
        * @param  jsonPath
@@ -47,6 +61,19 @@ namespace AppFrame {
        */
       static bool IsJson(const std::filesystem::path path);
     private:
+      Application::ApplicationBase& _app; //!< アプリケーションの参照
+      /**
+       * @brief  モデル情報の読み取り処理
+       * @param  json モデル情報が格納されたjsonオブジェクト
+       * @return true:読み取り成功 false:問題発生
+       */
+      bool LoadModelData(const nlohmann::json json);
+      /**
+       * @brief  LoadDivGraph情報の読み取り
+       * @param  json 画像情報が格納されたjsonオブジェクト
+       * @return 
+       */
+      bool LoadDivGraphData(const nlohmann::json json);
       /**
        * @brief  jsonファイルの読み取り
        * @param  jsonFile 対象ファイルのパス
@@ -62,7 +89,7 @@ namespace AppFrame {
        * @return 差分に応じたエラーメッセージを返す
        * @throw  std::logic_error
        */
-      static std::string_view Differebce(const int key, const int path) noexcept;
+      std::string_view Differebce(const int key, const int path) noexcept;
       /**
        * @brief  std::logic_errorの取得
        * @param  message エラーに持たせる文字列

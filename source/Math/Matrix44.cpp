@@ -76,12 +76,13 @@ namespace AppFrame {
     }
 
     void Matrix44::RotateZ(float angle) {
+      Matrix44 matrix = Identity(); // íPà çsóÒâª
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
       _rowColumn[0][0] *= cos;
-      _rowColumn[0][1] *= sin;
-      _rowColumn[1][0] *= -sin;
-      _rowColumn[1][1] *= cos;
+      matrix._rowColumn[0][1] *= sin;
+      matrix._rowColumn[1][0] *= -sin;
+      matrix._rowColumn[1][1] *= cos;
     }
 
     void Matrix44::MulTranslate(const AppFrame::Math::Vector4 translate) {
