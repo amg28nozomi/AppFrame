@@ -61,6 +61,12 @@
     <Filter Include="ソース ファイル\Resource">
       <UniqueIdentifier>{97422259-343a-49f9-b7bb-06c599eedb7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Model">
+      <UniqueIdentifier>{09587ca1-c55f-47d8-82d5-6517884cbc8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Model">
+      <UniqueIdentifier>{4f3e336f-86be-4093-b91e-085f50bd845f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\appframe.h">
@@ -165,6 +171,9 @@
     <ClInclude Include="source\Data\Singleton.h">
       <Filter>ヘッダー ファイル\Data</Filter>
     </ClInclude>
+    <ClInclude Include="source\Model\ModelServer.h">
+      <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -265,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="source\Math\Line.cpp">
       <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Model\ModelServer.cpp">
+      <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

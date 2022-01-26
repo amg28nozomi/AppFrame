@@ -186,6 +186,7 @@
     <ClInclude Include="source\Math\Matrix44.h" />
     <ClInclude Include="source\Math\Utility.h" />
     <ClInclude Include="source\Math\Vector4.h" />
+    <ClInclude Include="source\Model\ModelServer.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeFade.h" />
     <ClInclude Include="source\Mode\ModeFadeIn.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="source\Math\Matrix44.cpp" />
     <ClCompile Include="source\Math\Utility.cpp" />
     <ClCompile Include="source\Math\Vector4.cpp" />
+    <ClCompile Include="source\Model\ModelServer.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeFade.cpp" />
     <ClCompile Include="source\Mode\ModeFadeIn.cpp" />
