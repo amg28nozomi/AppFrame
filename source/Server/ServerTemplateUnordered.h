@@ -8,6 +8,8 @@
 #pragma once
 #include "ServerBase.h"
 #include <unordered_map>
+#include <vector>
+#include <utility>
 /**
  * @brief アプリケーションフレーム
  */

@@ -1,15 +1,32 @@
+/*****************************************************************//**
+ * @file   ModelServer.cpp
+ * @brief  文字列をキーとしてモデル情報とアニメーションを管理するサーバクラス
+ *
+ * @author 鈴木希海
+ * @date   January 2022
+ *********************************************************************/
 #include "ModelServer.h"
+#include <utility>
+#include <DxLib.h>
 #include "../Math/Arithmetic.h"
+#include "../Model/ModelData.h"
 
 namespace AppFrame {
   namespace Model {
 
-    ModelServer::ModelServer() : Server::ServerTemplateUnordered<std::string, ModelDatas>() {
+    ModelServer::ModelServer() : Server::ServerTemplateUnordered<std::string, ModelData>() {
+#ifdef _DEBUG
+      SetServerName("ModelServer");
+#endif
+      Server::ServerTemplateUnordered<std::string, ModelData>::Release();
     }
 
     bool ModelServer::Release() {
       // 各種コンテナの解放処理を行う
       for (auto&& [key, value] : _registry) {
+        DeleteModels(value.GetHandles());
+        value.Handl
+
         // 値として格納されているデータを取得
         auto&& [path, handles, animes] = value;
         DeleteModels(handles); // モデルハンドルを削除
@@ -51,7 +68,7 @@ namespace AppFrame {
         animes.emplace(animName, num);
       }
       // 読み取ったデータを登録する
-      _registry.emplace(key.data(), path.data(), std::move(handles), std::move(animes));
+      _registry.emplace(key.data(), path.data(), handles, animes);
       return true; // 登録成功
     }
 
@@ -59,13 +76,13 @@ namespace AppFrame {
       Release(); // 全てのモデルハンドルを削除
     }
 
-    bool ModelServer::DeleteDuqlicateModels(std::string_view key, bool flag) {
+    bool ModelServer::DeleteDuplicateModels(std::string_view key, bool flag) {
       // フラグが立っている場合は全要素に処理を行う
       if (flag) {
         for (auto [key, value] : _registry) {
           auto [path, handle, animes] = value;
           // 複製されたモデルハンドルのみを削除
-          DeleteDuqlicateModels(handle);
+          DeleteDuplicateModels(handle);
         }
       }
       // 要素はあるか
@@ -73,14 +90,14 @@ namespace AppFrame {
         return false; // 未登録
       }
       // 複製されたモデルハンドルのみを削除する
-      DeleteDuqlicateModels(Handles(key.data()));
+      DeleteDuplicateModels(Handles(key.data()));
       return true; // 削除完了
     }
 
-    std::pair<int, int> ModelServer::GetModel(std::string_view key, const int no) {
+    std::pair<int, unsigned short> ModelServer::GetModel(std::string_view key, unsigned short number) {
       // キーが登録されているかの判定
       if (_registry.contains(key.data())) {
-        return std::make_pair(-1, -1); // キーが未登録
+        return std::make_pair(-1, MaxNumber); // キーが未登録
       }
       auto handles = Handles(key.data()); // コンテナを取得
       auto size = static_cast<int>(handles.size());
@@ -89,7 +106,7 @@ namespace AppFrame {
         return std::make_pair(handles.at(no), no); // 対応するモデルハンドルを返す
       }
       // オリジナルハンドルを基に複製
-      auto handle = MV1DuqlicateModel(handles.front());
+      auto handle = DxLib::MV1DuplicateModel(handles.front());
       // 複製したモデルハンドルを末尾に登録
       handles.emplace_back(handle);
       // モデルハンドルと識別番号を返す
@@ -117,7 +134,7 @@ namespace AppFrame {
       handles.clear(); // コンテナを解放する
     }
 
-    void ModelServer::DeleteDuqlicateModels(std::vector<int>& handles) {
+    void ModelServer::DeleteDuplicateModels(std::vector<int>& handles) {
       // オリジナルのモデルハンドル
       auto original = handles.front();
       // 複製されたモデルハンドルを削除する
@@ -135,7 +152,7 @@ namespace AppFrame {
       return handles;
     }
 
-    std::unordered_map<std::string, int>& ModelServer::Animes(std::string_view key) {
+    const std::unordered_map<std::string, int>& ModelServer::Animes(std::string_view key) {
       auto [path, handles, animes] = _registry[key.data()];
       return animes;
     }
