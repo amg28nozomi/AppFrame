@@ -299,9 +299,11 @@ namespace AppFrame {
 
     bool LoadJson::IsJson(const std::filesystem::path path) {
       auto format = path.extension().string(); // ファイル拡張子
+      // ファイル拡張子はjsonか
       if (format != ".json") {
 #ifdef _DEBUG
-        throw GetLogicError(format + ":対象はjsonファイルではありません");
+        auto message = path.string() + ":対象はjsonファイルではありません\n";
+        OutputDebugString(message.data());
 #endif
         return false; // jsonファイルではない
       }

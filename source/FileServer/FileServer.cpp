@@ -20,10 +20,12 @@ namespace {
 namespace AppFrame {
   namespace FileServer {
 
-    FileServer::FileServer() : Server::ServerTemplateUnordered<std::string, std::filesystem::path>() {
+    FileServer::FileServer(Application::ApplicationBase& app) : Server::ServerTemplateUnordered<std::string, std::filesystem::path>() {
+      // LoadJsonの生成
+      _loadJson = std::make_unique<LoadJson>(app);
       _extensions.clear();
 #ifdef _DEBUG
-      _name = "FileServer";
+      SetServerName("FileServer");
 #endif
     }
 
@@ -32,8 +34,14 @@ namespace AppFrame {
       return UnorderedServer::Init();
     }
 
-    bool FileServer::LoadJsonFile(std::filesystem::path jsonFile) {
-      return false;
+    bool FileServer::LoadJsonFile(std::string_view jsonFile) const {
+      // 対象はjsonファイルか
+      if (!_loadJson->IsJson(jsonFile)) {
+        return false; // jsonファイルではない
+      }
+      // jsonファイルの場合は読み取りを行う
+      _loadJson->LoadJsonFile(jsonFile.data());
+      return true;
     }
 
     bool FileServer::SetExtension(std::vector<std::string> extensions) {

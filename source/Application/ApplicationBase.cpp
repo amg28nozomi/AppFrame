@@ -68,7 +68,7 @@ namespace AppFrame {
       // Zバッファの設定
       SetZBuffer();
       // ファイルサーバの生成
-      _fileServer = std::make_unique<FileServer::FileServer>();
+      _fileServer = std::make_unique<FileServer::FileServer>(*this);
       // インプットオペレーションの生成
       _input = std::make_unique<InputOperation>(*this);
       // モードサーバの生成

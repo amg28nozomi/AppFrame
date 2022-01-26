@@ -13,7 +13,14 @@
 
 /** FileWorker用名前空間 */
 namespace AppFrame {
+
+  namespace Application {
+    class ApplicationBase; //!< アプリケーション
+  } // namespace Application
+
   namespace FileServer {
+
+    class LoadJson; //!< 前方宣言
     /**
      * @class FileServer
      * @brief ファイル管理用サーバ
@@ -23,24 +30,25 @@ namespace AppFrame {
       /**
        * @brief コンストラクタ
        */
-      FileServer();
+      FileServer(Application::ApplicationBase& app);
       /**
        * @brief  初期化
        * @return true:初期化成功 false:初期化失敗
        */
       bool Init() override;
       /**
-       * @brief  jsonファイルの読み取り(未実装)
+       * @brief  jsonファイルの読み取り
        * @param  jsonFile jsonファイルのパス
-       * @return true:読み取り成功 false:読み取り失敗
+       * @return true:読み取り実行 false:問題発生
        */
-      bool LoadJsonFile(std::filesystem::path jsonFile);
+      bool LoadJsonFile(std::string_view jsonFile) const;
       /**
        * @brief  対象ファイル形式の指定(Instance後、一度のみ設定可能)
        * @param  extensions ファイル拡張子(文字列)を格納した動的配列
        */
       bool SetExtension(std::vector<std::string> extensions);
     protected:
+      std::unique_ptr<LoadJson> _loadJson;  //!< jsonファイルの読み取り
       std::vector<std::string> _extensions; //!< 対応ファイル形式
       bool _setExtension{false}; //!< 対象ファイル形式を指定したかの判定
       /**
