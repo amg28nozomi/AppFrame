@@ -29,18 +29,17 @@ namespace AppFrame {
     }
 
     Matrix44 Matrix44::Identity() {
-      MatrixArray identyty;
-      Reset(identyty);
+      MatrixArray identity;
+      Reset(identity);
       // 単位行列の作成
-      identyty[0][0] = 1.0f;
-      identyty[1][1] = 1.0f;
-      identyty[2][2] = 1.0f;
-      identyty[3][3] = 1.0f;
-      return Matrix44(identyty);
+      for (auto i = 0; i < MaxRow; ++i) {
+        identity[i][i] = 1.0f;
+      }
+      return Matrix44(identity);
     }
 
     Matrix44 Matrix44::Translate(float x, float y, float z) {
-      // 単位行列の取得
+      // 単位行列の生成
       auto translate = Identity();
       translate._rowColumn[0][3] = x;
       translate._rowColumn[1][3] = y;
@@ -49,6 +48,7 @@ namespace AppFrame {
     }
 
     Matrix44 Matrix44::Scaling(float x, float y, float z) {
+      // 単位行列の生成
       auto scaling = Identity();
       // 拡縮値の設定
       scaling._rowColumn[0][0] = x;
@@ -60,28 +60,28 @@ namespace AppFrame {
     void Matrix44::RotateX(float angle) {
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[1][1] = cos;
-      _rowColumn[1][2] = sin;
-      _rowColumn[2][1] = -sin;
-      _rowColumn[2][2] = cos;
+      _rowColumn[1][1] *= cos;
+      _rowColumn[1][2] *= sin;
+      _rowColumn[2][1] *= -sin;
+      _rowColumn[2][2] *= cos;
     }
 
     void Matrix44::RotateY(float angle) {
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[0][0] = cos;
-      _rowColumn[0][2] = sin;
-      _rowColumn[2][0] = -sin;
-      _rowColumn[2][2] = cos;
+      _rowColumn[0][0] *= cos;
+      _rowColumn[0][2] *= sin;
+      _rowColumn[2][0] *= -sin;
+      _rowColumn[2][2] *= cos;
     }
 
     void Matrix44::RotateZ(float angle) {
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[0][0] = cos;
-      _rowColumn[0][1] = sin;
-      _rowColumn[1][0] = -sin;
-      _rowColumn[1][1] = cos;
+      _rowColumn[0][0] *= cos;
+      _rowColumn[0][1] *= sin;
+      _rowColumn[1][0] *= -sin;
+      _rowColumn[1][1] *= cos;
     }
 
     void Matrix44::MulTranslate(const AppFrame::Math::Vector4 translate) {
