@@ -178,6 +178,11 @@ namespace AppFrame {
        */
       float Length2D() const;
       /**
+       * @brief  ベクトルの長さの二乗を返す
+       * @return ベクトルの長さの二乗
+       */
+      float LengthSquared() const;
+      /**
        * @brief  ベクトルの正規化
        */
       void Normalize();

@@ -14,8 +14,25 @@
 
 namespace AppFrame {
   namespace Application {
-
-    class XBoxState;
+    // XBOXコントローラの各種ボタンに紐づける文字列
+    constexpr auto PadUp = "up";       //!< 上矢印ボタン
+    constexpr auto PadDown = "down";   //!< 下矢印ボタン
+    constexpr auto PadLeft = "left";   //!< 左矢印ボタン
+    constexpr auto PadRight = "right"; //!< 右矢印ボタン
+    constexpr auto PadStart = "start"; //!< STARTボタン
+    constexpr auto PadBack = "back";   //!< BACKボタン
+    //!< 左スティック
+    constexpr auto PadLeftThumb = "leftThumb";
+    //!< 右スティック
+    constexpr auto PadRightThumb = "rightThumb";
+    //!< LBボタン
+    constexpr auto PadLeftShoulder = "leftShoulder";
+    //!< RBボタン
+    constexpr auto PadRightShoulder = "rightShoulder";
+    constexpr auto PadButtonA = "a"; //!< Aボタン
+    constexpr auto PadButtonB = "b"; //!< Bボタン
+    constexpr auto PadButtonX = "x"; //!< Xボタン
+    constexpr auto PadButtonY = "y"; //!< Yボタン
     // デバイスタイプ(入力状態の取得で使用)
     constexpr auto DeviceKeyboard = 0; //!< キーボード
     constexpr auto DeviceMouse = 1;    //!< マウス
@@ -84,6 +101,12 @@ namespace AppFrame {
       XBoxState _xBox; //!< xボックスコントローラの入力状態
       // JoypadState _joypad;  //!< ジョイパッドの入力状態
       int _accessLimit{0};   //!< デバイスの接続上限
+      /**
+       * @brief 
+       * @param  key 対象ボタンのキー
+       * @return 
+       */
+      int ToNumber(std::string_view key) const;
     };
   } // namespace Application
 } // namespace AppFrame

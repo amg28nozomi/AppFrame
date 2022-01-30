@@ -108,6 +108,10 @@ namespace AppFrame {
       return std::sqrt(_x * _x + _y * _y);
     }
 
+    float Vector4::LengthSquared() const {
+      return _x * _x + _y * _y + _z * _z;
+    }
+
     void Vector4::Normalize() {
       auto length = Length();
       _x /= length;

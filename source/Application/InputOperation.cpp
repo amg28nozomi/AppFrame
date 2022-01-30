@@ -79,5 +79,10 @@ namespace AppFrame {
       }
       return true;    // Ú‘±‚ ‚è
     }
+
+    int InputOperation::ToNumber(std::string_view key) const {
+      // ‘ÎÛ‚ÌƒL[‚ğ•ÏŠ·‚·‚é
+      if()
+    }
   } // namespace Application
 } // namespace AppFrame

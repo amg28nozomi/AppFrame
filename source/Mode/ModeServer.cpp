@@ -132,7 +132,7 @@ namespace AppFrame {
         // d•¡‚µ‚Ä‚¢‚éê‡‚Í‘ÎÛ‚ðíœ
         _registry.erase(key);
       }
-      mode->Init();
+      // mode->Init();
       _registry.emplace(key, mode);
       return true;
     }
