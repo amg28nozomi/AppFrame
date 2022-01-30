@@ -82,7 +82,7 @@ namespace AppFrame {
 
     int InputOperation::ToNumber(std::string_view key) const {
       // ‘ÎÛ‚ÌƒL[‚ğ•ÏŠ·‚·‚é
-      if()
+      return 0;
     }
   } // namespace Application
 } // namespace AppFrame
