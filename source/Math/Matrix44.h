@@ -42,6 +42,12 @@ namespace AppFrame {
        */
       static void Reset(MatrixArray& matrix);
       /**
+       * @brief
+       * @param matrix
+       * @return 
+       */
+      static Matrix44 Identity(const Matrix44& matrix);
+      /**
        * @brief  単位行列の作成
        * @return 単位行列
        */

@@ -28,6 +28,14 @@ namespace AppFrame {
       }
     }
 
+    Matrix44 Matrix44::Identity(const Matrix44& matrix) {
+      auto m = matrix._rowColumn;
+      for (auto i = 0; i < MaxRow; ++i) {
+        m[i][i] = 1.0f;
+      }
+      return Matrix44(m);
+    }
+
     Matrix44 Matrix44::Identity() {
       MatrixArray identity;
       Reset(identity);

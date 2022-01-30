@@ -160,6 +160,21 @@ namespace AppFrame {
        *                true:32ビットカラー(デフォルト)  false:16ビットカラー
        */
       static void SetWindowSize(int width, int height, bool bit = true);
+#ifdef _DEBUG
+      /**
+       * @brief  デバッグフラグの取得
+       * @return デバッグフラグ
+       */
+      static inline bool GetDebugFlag() {
+        return _debug;
+      }
+      /**
+       * @brief  デバッグフラグの切り替え
+       */
+      inline void ChengeDebugFlag() {
+        _debug = !_debug;
+      }
+#endif
     protected:
       State _state{State::Paused};    //!< アプリケーションの状態
       static inline int _particleMax{0}; //!< 使用するパーティクル上限
@@ -182,6 +197,10 @@ namespace AppFrame {
       std::unique_ptr<Resource::ResourceServer> _resourceServer{nullptr};
       //!< モデルサーバ
       std::unique_ptr<Model::ModelServer> _modelServer{nullptr};
+#ifdef _DEBUG
+      //!< デバッグフラグ
+      static inline bool _debug{false};
+#endif
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗
