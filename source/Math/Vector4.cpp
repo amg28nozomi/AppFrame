@@ -104,12 +104,22 @@ namespace AppFrame {
       return std::sqrt(_x * _x + _y * _y + _z * _z);
     }
 
+    float Vector4::Length(const Vector4& vector) {
+      auto [x, y, z] = vector.GetVector3();
+      return std::sqrt(x * x + y * y + z * z);
+    }
+
     float Vector4::Length2D() const {
       return std::sqrt(_x * _x + _y * _y);
     }
 
     float Vector4::LengthSquared() const {
       return _x * _x + _y * _y + _z * _z;
+    }
+
+    float Vector4::LengthSquared(const Vector4& vector) {
+      auto [x, y, z] = vector.GetVector3();
+      return x * x + y * y + z * z;
     }
 
     void Vector4::Normalize() {

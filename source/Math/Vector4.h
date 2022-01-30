@@ -173,15 +173,27 @@ namespace AppFrame {
        */
       float Length() const;
       /**
+       * @brief  指定したベクトルの長さを取得
+       * @param  vector ベクトル
+       * @return 対象ベクトルの長さ
+       */
+      static float Length(const Vector4& vector);
+      /**
        * @brief  ベクトルの長さの取得(2次元)
        * @return ベクトルの長さ
        */
       float Length2D() const;
       /**
-       * @brief  ベクトルの長さの二乗を返す
+       * @brief  ベクトルの長さの二乗の取得
        * @return ベクトルの長さの二乗
        */
       float LengthSquared() const;
+      /**
+       * @brief  指定したベクトルの長さの二乗を取得
+       * @param  vector ベクトル
+       * @return 対象ベクトルの長さの二乗
+       */
+      static float LengthSquared(const Vector4& vector);
       /**
        * @brief  ベクトルの正規化
        */
