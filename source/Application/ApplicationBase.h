@@ -132,7 +132,7 @@ namespace AppFrame {
        * @brief  モデルサーバの取得
        * @return モデルサーバの参照
        */
-      // Model::ModelServer& GetModelServer() const;
+      Model::ModelServer& GetModelServer() const;
       /**
        * @brief  画面サイズの取得
        * @return 画面の縦幅と横幅を返す
@@ -181,7 +181,7 @@ namespace AppFrame {
       //!< リソースサーバ
       std::unique_ptr<Resource::ResourceServer> _resourceServer{nullptr};
       //!< モデルサーバ
-      // std::unique_ptr<Model::ModelServer> _modelServerl{nullptr};
+      std::unique_ptr<Model::ModelServer> _modelServer{nullptr};
       /**
        * @brief  入力処理
        * @return true:処理成功 false:処理失敗

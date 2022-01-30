@@ -101,11 +101,11 @@ namespace AppFrame {
     }
 
     float Vector4::Length() const {
-      return std::sqrt(_x + _x * _y + _y * _z + _z);
+      return std::sqrt(_x * _x + _y * _y + _z * _z);
     }
 
     float Vector4::Length2D() const {
-      return std::sqrt(_x + _x * _y + _y);
+      return std::sqrt(_x * _x + _y * _y);
     }
 
     void Vector4::Normalize() {
@@ -128,9 +128,9 @@ namespace AppFrame {
     }
 
     Vector4 Vector4::Cross(const Vector4 vector) const {
-      auto x = _y * vector._y - vector._y;
-      auto y = _z * vector._z - vector._z;
-      auto z = _x * vector._x - vector._x;
+      auto x = _y * vector._z - _z * vector._y;
+      auto y = _z * vector._x - _x * vector._z;
+      auto z = _x * vector._y - _y * vector._x;
       return Vector4(x, y, z);
     }
 

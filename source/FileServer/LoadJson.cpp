@@ -105,8 +105,9 @@ namespace AppFrame {
       for (auto data : files) {
         auto key = data[ModelKey].get<std::string>();      // 登録に使用する文字列
         auto fileName = data[FileName].get<std::string>(); // ファイル名
-        std::filesystem::path filePath = directory + fileName + extension;   // ファイルパスの作成
-
+        auto filePath = directory + fileName + extension;  // ファイルパスの作成
+        // MV1モデル情報を読み込む
+        _app.GetModelServer().AddMV1Model(key, filePath);
       }
       return true;
     }

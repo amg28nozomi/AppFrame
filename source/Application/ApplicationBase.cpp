@@ -79,7 +79,7 @@ namespace AppFrame {
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
       // モデルサーバの生成
-      // _modelServerl = std::make_unique<Model::ModelServer>();
+      _modelServer = std::make_unique<Model::ModelServer>();
 #ifndef _DEBUG
       if (!_fileServer->Init()) {
         return false; // 初期化失敗
@@ -95,7 +95,9 @@ namespace AppFrame {
         return false; // 初期化失敗
       }
 #endif
-      return true;    // 初期化成功
+      // モデルサーバ初期化
+      _modelServer->Init();
+      return true; // 初期化成功
     }
 
     void ApplicationBase::Release() {
@@ -183,8 +185,8 @@ namespace AppFrame {
       return *_resourceServer;
     }
 
-    /*Model::ModelServer& ApplicationBase::GetModelServer() const {
-      return *_modelServerl;
-    }*/
+    Model::ModelServer& ApplicationBase::GetModelServer() const {
+      return *_modelServer;
+    }
   } // namespace Application
 } // namespace AppFrame
