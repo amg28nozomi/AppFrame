@@ -66,31 +66,36 @@ namespace AppFrame {
     }
 
     void Matrix44::RotateX(float angle) {
+      auto identity = Identity(); // 単位行列の取得
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[1][1] *= cos;
-      _rowColumn[1][2] *= sin;
-      _rowColumn[2][1] *= -sin;
-      _rowColumn[2][2] *= cos;
+      identity._rowColumn[1][1] = cos;
+      identity._rowColumn[1][2] = sin;
+      identity._rowColumn[2][1] = -sin;
+      identity._rowColumn[2][2] = cos;
+      *this = *this * identity;
     }
 
     void Matrix44::RotateY(float angle) {
+      auto identity = Identity(); // 単位行列の取得
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[0][0] *= cos;
-      _rowColumn[0][2] *= sin;
-      _rowColumn[2][0] *= -sin;
-      _rowColumn[2][2] *= cos;
+      identity._rowColumn[0][0] = cos;
+      identity._rowColumn[0][2] = sin;
+      identity._rowColumn[2][0] = -sin;
+      identity._rowColumn[2][2] = cos;
+      *this = *this * identity;
     }
 
     void Matrix44::RotateZ(float angle) {
-      Matrix44 matrix = Identity(); // 単位行列化
+      auto identity = Identity(); // 単位行列の取得
       auto cos = std::cos(angle);
       auto sin = std::sin(angle);
-      _rowColumn[0][0] *= cos;
-      matrix._rowColumn[0][1] *= sin;
-      matrix._rowColumn[1][0] *= -sin;
-      matrix._rowColumn[1][1] *= cos;
+      identity._rowColumn[0][0] = cos;
+      identity._rowColumn[0][1] = -sin;
+      identity._rowColumn[1][0] = sin;
+      identity._rowColumn[1][1] = cos;
+      *this = *this * identity;
     }
 
     void Matrix44::MulTranslate(const AppFrame::Math::Vector4 translate) {
