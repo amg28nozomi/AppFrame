@@ -47,6 +47,18 @@ namespace AppFrame {
       _z += z;
     }
 
+    Vector4 Vector4::AddVectorX(const float x) const {
+      return Vector4(_x + x, _y, _z);
+    }
+
+    Vector4 Vector4::AddVectorY(const float y) const {
+      return Vector4(_x, _y + y, _z);
+    }
+
+    Vector4 Vector4::AddVectorZ(const float z) const {
+      return Vector4(_x, _y, _z + z);
+    }
+
     void Vector4::Sub(const Vector4 vector) {
       _x -= vector._x;
       _y -= vector._y;

@@ -105,6 +105,24 @@ namespace AppFrame {
         _x += x;
       }
       /**
+       * @brief  x成分のみを加算したベクトルの取得
+       * @param  x x成分に加算する値
+       * @return x成分のみを加算したベクトル
+       */
+      Vector4 AddVectorX(const float x) const;
+      /**
+       * @brief  y成分のみを加算したベクトルの取得
+       * @param  y y成分に加算する値
+       * @return y成分のみを加算したベクトル
+       */
+      Vector4 AddVectorY(const float y) const;
+      /**
+       * @brief  z成分のみを加算したベクトルの取得
+       * @param  z z成分に加算する値
+       * @return z成分のみを加算したベクトル
+       */
+      Vector4 AddVectorZ(const float z) const;
+      /**
        * @brief y成分の加算
        * @param x 加数
        */
