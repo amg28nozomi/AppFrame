@@ -222,21 +222,43 @@ namespace AppFrame {
       void Normalize();
       /**
        * @brief  単位ベクトルの取得
+       * @param  vector ベクトル
        * @return 単位ベクトル
        */
-      Vector4 Normalize() const;
+      static Vector4 Normalize(const Vector4& vector);
       /**
        * @brief  ベクトル同士の内積
        * @param  vector ベクトル
        * @return 内積
        */
-      float Dot(const Vector4 vecotr) const;
+      float Dot(const Vector4& vecotr) const;
+      /**
+       * @brief  ベクトル同士の内積
+       * @param  left ベクトル(左辺)
+       * @param  right ベクトル(右辺)
+       * @return 内積
+       */
+      static float Dot(const Vector4& right, const Vector4& left);
       /**
        * @brief  ベクトルの外積
        * @param  vector ベクトル
        * @return ベクトル
        */
-      Vector4 Cross(const Vector4 vector) const;
+      Vector4 Cross(const Vector4& vector) const;
+      /**
+       * @brief  ベクトルの外積を求める
+       * @param  left  ベクトル
+       * @param  right ベクトル
+       * @return 外積
+       */
+      static Vector4 Cross(const Vector4& left, const Vector4& right);
+      /**
+       * @brief  ベクトル同士が平行かの判定
+       * @param  left  ベクトル
+       * @param  right ベクトル
+       * @return true:平行である false:平行ではない
+       */
+      static bool IsParallel(const Vector4& left, const Vector4& right);
       /**
        * @brief  指定した値をxyz成分に代入する
        * @param  value 値
@@ -247,25 +269,25 @@ namespace AppFrame {
        * @param  vector ベクトル(加数)
        * @return 加算した4次元ベクトル
        */
-      Vector4 operator + (const Vector4 vector);
+      Vector4 operator + (const Vector4& vector) const;
       /**
        * @brief  ベクトル同士の減算
        * @param  vector ベクトル(減数)
        * @return 減算した4次元ベクトル
        */
-      Vector4 operator - (const Vector4 vector);
+      Vector4 operator - (const Vector4& vector) const;
       /**
        * @brief  ベクトルのスカラー倍
        * @param  scalar スカラー値
        * @return スカラー倍した4次元ベクトル
        */
-      Vector4 operator * (const float scalar);
+      Vector4 operator * (const float scalar) const;
       /**
        * @brief  ベクトルのスカラー割り
        * @param  scalar スカラー値
        * @return スカラー割りした4次元ベクトル
        */
-      Vector4 operator/(const float scalar);
+      Vector4 operator/(const float scalar) const;
     private:
       float _x; //!< x成分
       float _y; //!< y成分

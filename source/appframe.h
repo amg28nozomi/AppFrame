@@ -21,5 +21,5 @@
 #include "Math/Matrix44.h"
 #include "Math/GravityBase.h"
 #include "Math/Arithmetic.h"
-#include "Math/Line.h"
+#include "Math/LineSegment.h"
 #include "Math/Utility.h"

@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * @file   Line.h
+ * @file   LineSegment.h
  * @brief  線分クラス
  * 
  * @author 鈴木希海
@@ -12,19 +12,41 @@
 namespace AppFrame {
   namespace Math {
     /**
-     * @class Line
+     * @class LineSegment
      * @brief 線分ベクトル
      */
-    class Line {
+    class LineSegment {
     public:
       /**
        * @brief 空のコンストラクタ
        */
-      Line();
+      LineSegment();
       /**
        * @brief コンストラクタ
        */
-      Line(Vector4 first, Vector4 end);
+      LineSegment(Vector4 first, Vector4 end);
+      /**
+       * @brief  線分と点の最短距離の二乗の取得
+       * @param  point 座標
+       * @return 線分と点の最短距離の二乗
+       */
+      float MinDistSq(const Vector4& point) const;
+      /**
+       * @brief  線分と線分の最短距離の二乗を取得
+       * @param  line 線分
+       * @return 線分と線分の最短距離(二乗)
+       */
+      float MinDistSq(const LineSegment& line) const;
+      /**
+       * @brief  線分の長さを取得
+       * @return 線分の長さ
+       */
+      float Length() const;
+      /**
+       * @brief  線分の長さの二乗を取得
+       * @return 線分の長さの二乗
+       */
+      float LengthSquared() const;
       /**
        * @brief  ベクトルの取得
        * @return first:先端 second:終端

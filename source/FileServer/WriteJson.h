@@ -25,6 +25,12 @@ namespace AppFrame {
        * @throw  logic_error
        */
       static std::filesystem::path AddJson(std::filesystem::path jsonName);
+      /**
+       * @brief  jsonファイルのセーブ
+       * @param  path
+       * @return 
+       */
+      static bool Save(std::string_view path);
     };
   } // namespace FileServer
 } // namespace AppFrame

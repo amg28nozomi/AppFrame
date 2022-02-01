@@ -88,28 +88,26 @@ namespace AppFrame {
       _z = z;
     }
 
-    Vector4 Vector4::operator+(const Vector4 vector) {
+    Vector4 Vector4::operator+(const Vector4& vector) const {
       auto x = _x + vector._x;
       auto y = _y + vector._y;
       auto z = _z + vector._z;
       return Vector4(x, y, z);
     }
 
-    Vector4 Vector4::operator-(const Vector4 vector) {
-      auto x = _x - vector._x;
-      auto y = _y - vector._y;
-      auto z = _z - vector._z;
-      return Vector4(x, y, z);
+    Vector4 Vector4::operator-(const Vector4& vector) const {
+      auto [x, y, z] = vector.GetVector3();
+      return Vector4(_x - x, _y - y, _z - z);
     }
 
-    Vector4 Vector4::operator*(const float scalar) {
+    Vector4 Vector4::operator*(const float scalar) const {
       auto x = _x * scalar;
       auto y = _y * scalar;
       auto z = _z * scalar;
       return Vector4(x, y, z);
     }
 
-    Vector4 Vector4::operator/(const float scalar) {
+    Vector4 Vector4::operator/(const float scalar) const {
       auto x = _x / scalar;
       auto y = _y / scalar;
       auto z = _z / scalar;
@@ -145,23 +143,35 @@ namespace AppFrame {
       _z /= length;
     }
 
-    Vector4 Vector4::Normalize() const {
-      auto length = Length();
-      auto x = _x / length;
-      auto y = _y / length;
-      auto z = _z / length;
+    Vector4 Vector4::Normalize(const Vector4& vector) {
+      auto length = vector.Length();
+      auto x = vector._x / length;
+      auto y = vector._y / length;
+      auto z = vector._z / length;
       return Vector4(x, y, z);
     }
 
-    float Vector4::Dot(const Vector4 vector) const {
+    float Vector4::Dot(const Vector4& vector) const {
       return _x * vector._x + _y * vector._y + _z * vector._z;
     }
 
-    Vector4 Vector4::Cross(const Vector4 vector) const {
+    float Vector4::Dot(const Vector4& right, const Vector4& left) {
+      return right.Dot(left);
+    }
+
+    Vector4 Vector4::Cross(const Vector4& vector) const {
       auto x = _y * vector._z - _z * vector._y;
       auto y = _z * vector._x - _x * vector._z;
       auto z = _x * vector._y - _y * vector._x;
       return Vector4(x, y, z);
+    }
+
+    Vector4 Vector4::Cross(const Vector4& left, const Vector4& right) {
+      return left.Cross(right);
+    }
+
+    bool Vector4::IsParallel(const Vector4& left, const Vector4& right) {
+      return Cross(left, right).LengthSquared() == 0.1f;
     }
 
     void Vector4::Fill(const float value) {

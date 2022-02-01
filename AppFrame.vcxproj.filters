@@ -108,9 +108,6 @@
     <ClInclude Include="source\FileServer\FileServer.h">
       <Filter>ヘッダー ファイル\FileServer</Filter>
     </ClInclude>
-    <ClInclude Include="source\Math\Matrix44.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
     <ClInclude Include="source\SoundServer\SoundMem.h">
       <Filter>ヘッダー ファイル\Sound</Filter>
     </ClInclude>
@@ -165,9 +162,6 @@
     <ClInclude Include="source\Resource\ResourceServer.h">
       <Filter>ヘッダー ファイル\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="source\Math\Line.h">
-      <Filter>ヘッダー ファイル\Math</Filter>
-    </ClInclude>
     <ClInclude Include="source\Data\Singleton.h">
       <Filter>ヘッダー ファイル\Data</Filter>
     </ClInclude>
@@ -176,6 +170,12 @@
     </ClInclude>
     <ClInclude Include="source\Model\ModelData.h">
       <Filter>ヘッダー ファイル\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Math\Matrix44.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Math\LineSegment.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -275,14 +275,14 @@
     <ClCompile Include="source\Resource\ResourceServer.cpp">
       <Filter>ソース ファイル\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="source\Math\Line.cpp">
-      <Filter>ソース ファイル\Math</Filter>
-    </ClCompile>
     <ClCompile Include="source\Model\ModelServer.cpp">
       <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
     <ClCompile Include="source\Model\ModelData.cpp">
       <Filter>ソース ファイル\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\LineSegment.cpp">
+      <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
