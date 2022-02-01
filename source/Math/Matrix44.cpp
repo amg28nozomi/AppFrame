@@ -9,6 +9,7 @@
 #include <cmath>
 #include <tuple>
 #include "Arithmetic.h"
+#include "Utility.h"
 #include "Vector4.h"
 
 namespace AppFrame {
@@ -65,10 +66,10 @@ namespace AppFrame {
       return scaling;
     }
 
-    void Matrix44::RotateX(float angle) {
+    void Matrix44::RotateX(float radian) {
       auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(angle);
-      auto sin = std::sin(angle);
+      auto cos = std::cos(radian);
+      auto sin = std::sin(radian);
       identity._rowColumn[1][1] = cos;
       identity._rowColumn[1][2] = sin;
       identity._rowColumn[2][1] = -sin;
@@ -76,10 +77,10 @@ namespace AppFrame {
       *this = *this * identity;
     }
 
-    void Matrix44::RotateY(float angle) {
+    void Matrix44::RotateY(float radian) {
       auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(angle);
-      auto sin = std::sin(angle);
+      auto cos = std::cos(radian);
+      auto sin = std::sin(radian);
       identity._rowColumn[0][0] = cos;
       identity._rowColumn[0][2] = sin;
       identity._rowColumn[2][0] = -sin;
@@ -87,10 +88,10 @@ namespace AppFrame {
       *this = *this * identity;
     }
 
-    void Matrix44::RotateZ(float angle) {
+    void Matrix44::RotateZ(float radian) {
       auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(angle);
-      auto sin = std::sin(angle);
+      auto cos = std::cos(radian);
+      auto sin = std::sin(radian);
       identity._rowColumn[0][0] = cos;
       identity._rowColumn[0][1] = -sin;
       identity._rowColumn[1][0] = sin;
@@ -116,7 +117,7 @@ namespace AppFrame {
         for (auto column = 0; column < MaxColumn; ++column) {
           float value = 0.0f;
           for (auto m = 0; m < 4; ++m) {
-            value += _rowColumn[row][column] * rhs.GetValue(m, column);
+            value += _rowColumn[row][m] * rhs.GetValue(m, column);
           }
           matrix[row][column] = value;
         }

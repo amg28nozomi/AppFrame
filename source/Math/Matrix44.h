@@ -80,19 +80,19 @@ namespace AppFrame {
       void MulScaling(const AppFrame::Math::Vector4 scale);
       /**
        * @brief  回転行列(x軸)
-       * @param  angle 
+       * @param  radian 角度(ラジアン値)
        */
       void RotateX(float angle);
       /**
        * @brief  回転行列(y軸)
-       * @param  angle
+       * @param  radian 角度(ラジアン値)
        */
-      void RotateY(float angle);
+      void RotateY(float radian);
       /**
        * @brief  回転行列(z軸)
-       * @param  angle
+       * @param  radian 角度(ラジアン値)
        */
-      void RotateZ(float angle);
+      void RotateZ(float radian);
       /**
        * @brief  行列同士の乗算
        * @return 

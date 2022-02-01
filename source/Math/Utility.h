@@ -15,23 +15,29 @@ namespace AppFrame {
    * @brief 算術処理ベース
    */
   namespace Math {
-    class Matrix44;
-
+    class Vector4;  // 前方宣言
+    class Matrix44; // 前方宣言
+    constexpr auto Degree = true;  //!< デグリーフラグ
+    constexpr auto Radian = false; //!< ラジアンフラグ
     /**
      * @class Utility
-     * @brief 算術処理用の補助機能
+     * @brief 算術処理用の補助機能をまとめたクラス
      */
     class Utility {
     public:
       //!< 円周率PIの定数
-      static constexpr float _pi{static_cast<float>(std::numbers::pi)};
+      static constexpr float _pi{ static_cast<float>(std::numbers::pi) };
       //!< 
-      static constexpr float _degrees180{180.0f};
+      static constexpr float _degrees180{ 180.0f };
       /**
-       * @brief ワールド座標行列への変換
+       * @brief  ワールド座標変換
+       * @param  position ローカル座標
+       * @param  rotatin  回転ベクトル
+       * @param  scale    スケール
+       * @param  angle    ローテーションフラグ(true:デグリー値 false:ラジアン値)
+       * @return ワールド座標
        */
-      static Matrix44 ToWorldMatrix();
-
+      static Matrix44 ToWorldMatrix(const Vector4& position, Vector4 rotation, const Vector4& scale , const bool angle = Radian);
       /**
        * @brief  デグリー値をラジアン値に変換する
        * @param  degree デグリー値
@@ -48,6 +54,12 @@ namespace AppFrame {
       static inline float RadianToDegree(float radian) {
         return radian * _degrees180 / _pi;
       }
+      /**
+       * @brief  回転ベクトル(デグリー値)の各成分をラジアン値に変換する
+       * @param  rotation 回転ベクトル(デグリー値)
+       * @return 各成分をラジアン値に変換したベクトルを返す
+       */
+      static Vector4 RotationToRadian(const Vector4& rotation);
     };
   } // namespace Math
 } // namespace AppFrame
