@@ -35,6 +35,10 @@ namespace AppFrame {
       _w = w;
     }
 
+    void Vector4::Zero() {
+      Fill(0); // Šeí¬•ª‚ğ0‚É‚·‚é
+    }
+
     void Vector4::Add(const Vector4 vector) {
       _x += vector._x;
       _y += vector._y;

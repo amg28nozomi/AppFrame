@@ -41,6 +41,10 @@ namespace AppFrame {
        */
       Vector4(float x, float y, float z, float w = 1.0);
       /**
+       * @brief ゼロベクトル化
+       */
+      void Zero();
+      /**
        * @brief ベクトル同士の加算
        * @param vector ベクトル(加数)
        */
