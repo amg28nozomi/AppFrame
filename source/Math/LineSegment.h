@@ -36,7 +36,7 @@ namespace AppFrame {
        * @param  line ü•ª
        * @return ü•ª‚Æü•ª‚ÌÅ’Z‹——£(“ñæ)
        */
-      float MinDistSq(const LineSegment& line) const;
+      //float MinDistSq(const LineSegment& line) const;
       /**
        * @brief  ü•ª‚Ì’·‚³‚ğæ“¾
        * @return ü•ª‚Ì’·‚³

@@ -44,25 +44,25 @@ namespace AppFrame {
       return (sC - p).LengthSquared();
     }
 
-    float LineSegment::MinDistSq(const LineSegment& line) const {
-      // ü•ª‚Ík‘Ş‚µ‚Ä‚¢‚é‚©
-      if (LengthSquared() < 0.0f) {
-        // ‘ÎÛ‚Ìü•ª‚Ík‘Ş‚µ‚Ä‚¢‚é‚©
-        if (line.LengthSquared() < 0.0f) {
-          // “_‚Æ“_‚Ì‹——£‚ğZo‚·‚é
-          return (_start - line._start).LengthSquared();
-        }
-        // ü•ª‚Æ“_‚ÌÅ’Z‹——£(“ñæ)‚ğ•Ô‚·
-        return line.MinDistSq(_start);
-      }
-      // ‘ÎÛ‚Ìü•ª‚ªk‘Ş‚µ‚Ä‚¢‚é‚©
-      else if (line.LengthSquared() < 0.0f) {
-        return MinDistSq(line._start);
-      }
-      // ü•ª“¯m‚ª•½s‚Èê‡
-      if (Vector4::IsParallel(_start, line._start)) {
+    //float LineSegment::MinDistSq(const LineSegment& line) const {
+    //  // ü•ª‚Ík‘Ş‚µ‚Ä‚¢‚é‚©
+    //  if (LengthSquared() < 0.0f) {
+    //    // ‘ÎÛ‚Ìü•ª‚Ík‘Ş‚µ‚Ä‚¢‚é‚©
+    //    if (line.LengthSquared() < 0.0f) {
+    //      // “_‚Æ“_‚Ì‹——£‚ğZo‚·‚é
+    //      return (_start - line._start).LengthSquared();
+    //    }
+    //    // ü•ª‚Æ“_‚ÌÅ’Z‹——£(“ñæ)‚ğ•Ô‚·
+    //    return line.MinDistSq(_start);
+    //  }
+    //  // ‘ÎÛ‚Ìü•ª‚ªk‘Ş‚µ‚Ä‚¢‚é‚©
+    //  else if (line.LengthSquared() < 0.0f) {
+    //    return MinDistSq(line._start);
+    //  }
+    //  // ü•ª“¯m‚ª•½s‚Èê‡
+    //  if (Vector4::IsParallel(_start, line._start)) {
 
-      }
-    }
+    //  }
+    //}
   }
 }
