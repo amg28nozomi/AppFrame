@@ -6,7 +6,6 @@
  * @date   February 2022
  *********************************************************************/
 #include "Plane.h"
-#include "Vector4.h"
 
 namespace AppFrame{
   namespace Math {

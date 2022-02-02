@@ -6,6 +6,7 @@
  * @date   February 2022
  *********************************************************************/
 #pragma once
+#include "Vector4.h"
 /**
  * @brief アプリケーションフレーム
  */
@@ -14,7 +15,6 @@ namespace AppFrame {
    * @brief 算術ベース
    */
   namespace Math {
-    class Vector4; //!< 前方宣言
     /**
      * @class Plane
      * @brief 平面クラス
