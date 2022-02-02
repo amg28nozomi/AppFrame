@@ -11,6 +11,7 @@
 
 namespace AppFrame {
   namespace Math {
+    class Plane; //!< 
     /**
      * @class LineSegment
      * @brief 線分ベクトル
@@ -48,6 +49,12 @@ namespace AppFrame {
        */
       float LengthSquared() const;
       /**
+       * @brief  平面との衝突判定
+       * @param  plane 平面
+       * @return true:衝突 false:衝突していない
+       */
+      bool IntersectPlane(const Plane& plane) const;
+      /**
        * @brief  ベクトルの取得
        * @return first:先端 second:終端
        */
@@ -67,6 +74,13 @@ namespace AppFrame {
        */
       Vector4 GetEnd() const {
         return _end;
+      }
+      /**
+       * @brief  線分の取得
+       * @return 終端から先端を引いたベクトル
+       */
+      Vector4 Segment() const {
+        return _end - _start;
       }
     private:
       Vector4 _start; //!< 先端ベクトル

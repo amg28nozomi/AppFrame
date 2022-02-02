@@ -86,6 +86,14 @@ namespace AppFrame {
       static inline auto GetClampType() {
         return _clampType;
       }
+      /**
+       * @brief
+       * @param value
+       * @return 
+       */
+      static inline bool NearZero(const float value) {
+        return value == 0.0f;
+      }
     private:
       static std::vector<std::string> _clampType; //!< Clampƒƒ\ƒbƒh‚É‘Î‰ž‚µ‚Ä‚¢‚éŒ^
       /**

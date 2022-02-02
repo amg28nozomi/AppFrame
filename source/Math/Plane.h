@@ -34,6 +34,20 @@ namespace AppFrame {
        * @return 
        */
       float SignedDist(const Vector4& point) const;
+      /**
+       * @brief  –@ü‚Ìæ“¾
+       * @return –@ü
+       */
+      Vector4 GetNormal() const {
+        return _normal;
+      }
+      /**
+       * @brief  Å’Z‹——£‚Ìæ“¾
+       * @return Å’Z‹——£
+       */
+      float GetDistance() const {
+        return _mDistance;
+      }
     private:
       Vector4 _normal;  //!< –@ü
       float _mDistance; //!<Å’Z‹——£

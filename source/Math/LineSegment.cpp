@@ -6,7 +6,9 @@
  * @date   January 2022
  *********************************************************************/
 #include "LineSegment.h"
+#include "Arithmetic.h"
 #include "Vector4.h"
+#include "Plane.h"
 
 namespace AppFrame {
   namespace Math {
@@ -42,6 +44,25 @@ namespace AppFrame {
       auto scalar = Vector4::Dot(sC, lineA) / Vector4::Dot(lineA, lineA);
       auto p = lineA * scalar;
       return (sC - p).LengthSquared();
+    }
+
+    bool LineSegment::IntersectPlane(const Plane& plane) const {
+      auto pNormal = plane.GetNormal();
+      auto d = Vector4::Dot(Segment(), pNormal);
+      // •½–Ê‚Æü•ª‚Í•½s‚©
+      if (Arithmetic::NearZero(d)) {
+        if (Arithmetic::NearZero(Vector4::Dot(_start, pNormal) - plane.GetDistance())) {
+          return true; // Õ“Ë
+        }
+        return false; // Õ“Ë‚µ‚Ä‚¢‚È‚¢
+      }
+      auto numer = -Vector4::Dot(_start, pNormal) - plane.GetDistance();
+      auto t = numer / d;
+      // t‚ªü•ª‚Ì‹«ŠE“à‚É‘¶İ‚·‚é‚©
+      if (0.0f <= t && t <= 1.0f) {
+        return true; // Õ“Ë‚µ‚½
+      }
+      return false;  // Õ“Ë‚µ‚Ä‚¢‚È‚¢
     }
 
     //float LineSegment::MinDistSq(const LineSegment& line) const {
