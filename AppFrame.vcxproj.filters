@@ -177,6 +177,9 @@
     <ClInclude Include="source\Math\LineSegment.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="source\Math\Plane.h">
+      <Filter>ヘッダー ファイル\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -282,6 +285,9 @@
       <Filter>ソース ファイル\Model</Filter>
     </ClCompile>
     <ClCompile Include="source\Math\LineSegment.cpp">
+      <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Math\Plane.cpp">
       <Filter>ソース ファイル\Math</Filter>
     </ClCompile>
   </ItemGroup>
