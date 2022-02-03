@@ -23,3 +23,4 @@
 #include "Math/Arithmetic.h"
 #include "Math/LineSegment.h"
 #include "Math/Utility.h"
+#include "Math/Plane.h"
