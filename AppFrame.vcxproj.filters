@@ -183,6 +183,9 @@
     <ClInclude Include="source\Math\Circle.h">
       <Filter>ヘッダー ファイル\Math</Filter>
     </ClInclude>
+    <ClInclude Include="source\SoundServer\SoundComponent.h">
+      <Filter>ヘッダー ファイル\Sound</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -295,6 +298,9 @@
     </ClCompile>
     <ClCompile Include="source\Math\Circle.cpp">
       <Filter>ソース ファイル\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SoundServer\SoundComponent.cpp">
+      <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
