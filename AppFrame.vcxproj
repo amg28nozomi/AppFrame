@@ -181,6 +181,7 @@
     <ClInclude Include="source\FileServer\LoadJson.h" />
     <ClInclude Include="source\FileServer\WriteJson.h" />
     <ClInclude Include="source\Math\Arithmetic.h" />
+    <ClInclude Include="source\Math\Circle.h" />
     <ClInclude Include="source\Math\GravityBase.h" />
     <ClInclude Include="source\Math\LineSegment.h" />
     <ClInclude Include="source\Math\Matrix44.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="source\FileServer\LoadJson.cpp" />
     <ClCompile Include="source\FileServer\WriteJson.cpp" />
     <ClCompile Include="source\Math\Arithmetic.cpp" />
+    <ClCompile Include="source\Math\Circle.cpp" />
     <ClCompile Include="source\Math\GravityBase.cpp" />
     <ClCompile Include="source\Math\LineSegment.cpp" />
     <ClCompile Include="source\Math\Matrix44.cpp" />

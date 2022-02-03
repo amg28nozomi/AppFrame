@@ -38,11 +38,11 @@ namespace AppFrame {
       // 状態に応じてた処理の実行
       switch (_state) {
       case State::Active:
-        // 接続判定
-        if (GetJoypadNum() == 0) {
-          _state = State::NonActive;
-          return; // 接続なし
-        }
+        //// 接続判定
+        //if (GetJoypadNum() == 0) {
+        //  _state = State::NonActive;
+        //  return; // 接続なし
+        //}
         // 入力デバイスの更新
         _xBox.Process();
       case State::Paused:
