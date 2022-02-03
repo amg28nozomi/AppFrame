@@ -199,6 +199,7 @@
     <ClInclude Include="source\Server\ServerBase.h" />
     <ClInclude Include="source\Server\ServerTemplateUnordered.h" />
     <ClInclude Include="source\Server\ServerTemplateVector.h" />
+    <ClInclude Include="source\SoundServer\SoundComponent.h" />
     <ClInclude Include="source\SoundServer\SoundMem.h" />
     <ClInclude Include="source\SoundServer\SoundServer.h" />
   </ItemGroup>
@@ -238,6 +239,7 @@
     <ClCompile Include="source\Server\ServerBase.cpp" />
     <ClCompile Include="source\Server\ServerTemplateUnordered.cpp" />
     <ClCompile Include="source\Server\ServerTemplateVector.cpp" />
+    <ClCompile Include="source\SoundServer\SoundComponent.cpp" />
     <ClCompile Include="source\SoundServer\SoundMem.cpp" />
     <ClCompile Include="source\SoundServer\SoundServer.cpp" />
   </ItemGroup>
