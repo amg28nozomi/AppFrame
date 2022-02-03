@@ -79,7 +79,7 @@ namespace AppFrame {
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
       // サウンドコンポーネントの生成
-      _soundComponent = std::make_unique<Sound::SoundComponent>();
+      _soundComponent = std::make_unique<Sound::SoundComponent>(*this);
       // モデルサーバの生成
       _modelServer = std::make_unique<Model::ModelServer>();
 #ifndef _DEBUG
