@@ -12,6 +12,7 @@
 #include "../FileServer/FileServer.h"
 #include "../Mode/ModeServer.h"
 #include "../SoundServer/SoundServer.h"
+#include "../SoundServer/SoundComponent.h"
 /**
  * @brief アプリケーションフレーム
  */
@@ -39,6 +40,12 @@ namespace AppFrame {
   namespace Resource {
     class ResourceServer;
   } // namespace Resource
+  /**
+   * @brief サウンドベース
+   */
+  namespace Sound {
+    class SoundComponent; //!< 前方宣言
+  } // namespace Sound
   /**
    * @brief アプリケーションベース
    */
@@ -124,6 +131,11 @@ namespace AppFrame {
         return *_soundServer;
       }
       /**
+       * @brief  サウンドコンポーネントの取得
+       * @return サウンドコンポーネントの参照
+       */
+      Sound::SoundComponent& GetSoundComponent();
+      /**
        * @brief  リソースサーバの取得
        * @return リソースサーバの参照
        */
@@ -193,6 +205,8 @@ namespace AppFrame {
       std::unique_ptr<Mode::ModeServer> _modeServer{nullptr};
       //!< サウンドサーバ
       std::unique_ptr<Sound::SoundServer> _soundServer{nullptr};
+      //!< サウンドコンポーネント
+      std::unique_ptr<Sound::SoundComponent> _soundComponenr{nullptr};
       //!< リソースサーバ
       std::unique_ptr<Resource::ResourceServer> _resourceServer{nullptr};
       //!< モデルサーバ

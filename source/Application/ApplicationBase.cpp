@@ -185,6 +185,10 @@ namespace AppFrame {
       return *_resourceServer;
     }
 
+    Sound::SoundComponent& ApplicationBase::GetSoundComponent() {
+      return *_soundComponenr;
+    }
+
     Model::ModelServer& ApplicationBase::GetModelServer() const {
       return *_modelServer;
     }

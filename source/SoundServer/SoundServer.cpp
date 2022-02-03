@@ -47,6 +47,13 @@ namespace AppFrame {
       return true;
     }
 
+    void SoundServer::AddSounds(const SoundMap& soundMap) {
+      // コンテナの情報を基にデータを読み取る
+      for (auto [key, path] : soundMap) {
+        AddSound(key, path);
+      }
+    }
+
     int SoundServer::GetSoundMem(std::string_view key) const {
       if (!UseKey(key.data())) {
         return -1; // キーが有効ではない

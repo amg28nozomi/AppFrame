@@ -24,6 +24,11 @@ namespace AppFrame {
     class SoundServer : Server::ServerTemplateUnordered<std::string, int> {
     public:
       /**
+       * @brief 音源情報を格納する動的配列
+       *        first:音源ファイルに紐づける文字列 second:音源ファイルのパス
+       */
+      using SoundMap = std::vector<std::pair<std::string_view, std::string_view>>;
+      /**
        * @brief コンストラクタ
        */
       SoundServer();
@@ -39,6 +44,11 @@ namespace AppFrame {
        * @return true:正常終了 false:読み取り失敗
        */
       bool AddSound(std::string_view key, const std::filesystem::path soundFile);
+      /**
+       * @brief  コンテナを使用した音源ファイルの読み取り
+       * @param  soundMap サウンド情報が格納されたコンテナ
+       */
+      void AddSounds(const SoundMap& soundMap);
       /**
        * @brief  指定したサウンドハンドルの取得
        * @param  key 対象のサウンドハンドルに紐づけられた文字列
