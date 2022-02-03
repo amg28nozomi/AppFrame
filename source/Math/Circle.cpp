@@ -16,5 +16,9 @@ namespace AppFrame {
       _radius = radius;
     }
 
+    void Circle::Process(const Vector4& move) {
+      _center.Add(move); // ’†SÀ•W‚ÉˆÚ“®—Ê‚ğ‰ÁZ‚·‚é
+    }
+
   } // namespace Math
 } // namespaece AppFrame

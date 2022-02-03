@@ -28,6 +28,11 @@ namespace AppFrame {
        */
       Circle(const Vector4& center, const float radius);
       /**
+       * @brief 中心座標の更新
+       * @param move 移動量
+       */
+      void Process(const Vector4& move);
+      /**
        * @brief  中心座標の取得
        * @return 中心座標
        */
