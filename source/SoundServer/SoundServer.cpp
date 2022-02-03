@@ -33,7 +33,7 @@ namespace AppFrame {
 
     bool SoundServer::AddSound(std::string_view key, const std::filesystem::path soundFile) {
       // キーは未使用か
-      if (!SoundServer::UseKey(key.data())) {
+      if (_registry.contains(key.data())) {
         return false; // キーが重複している
       }
       // 音源情報の読み取り
@@ -55,7 +55,7 @@ namespace AppFrame {
     }
 
     int SoundServer::GetSoundMem(std::string_view key) const {
-      if (!UseKey(key.data())) {
+      if (!_registry.contains(key.data())) {
         return -1; // キーが有効ではない
       }
       // サウンドハンドルを返す
