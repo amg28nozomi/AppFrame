@@ -206,7 +206,7 @@ namespace AppFrame {
       //!< サウンドサーバ
       std::unique_ptr<Sound::SoundServer> _soundServer{nullptr};
       //!< サウンドコンポーネント
-      std::unique_ptr<Sound::SoundComponent> _soundComponenr{nullptr};
+      std::unique_ptr<Sound::SoundComponent> _soundComponent{nullptr};
       //!< リソースサーバ
       std::unique_ptr<Resource::ResourceServer> _resourceServer{nullptr};
       //!< モデルサーバ

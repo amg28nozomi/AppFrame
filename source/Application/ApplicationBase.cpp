@@ -78,6 +78,8 @@ namespace AppFrame {
       _resourceServer = std::make_unique<Resource::ResourceServer>();
       // サウンドサーバの生成
       _soundServer = std::make_unique<Sound::SoundServer>();
+      // サウンドコンポーネントの生成
+      _soundComponent = std::make_unique<Sound::SoundComponent>();
       // モデルサーバの生成
       _modelServer = std::make_unique<Model::ModelServer>();
 #ifndef _DEBUG
@@ -186,7 +188,7 @@ namespace AppFrame {
     }
 
     Sound::SoundComponent& ApplicationBase::GetSoundComponent() {
-      return *_soundComponenr;
+      return *_soundComponent;
     }
 
     Model::ModelServer& ApplicationBase::GetModelServer() const {
