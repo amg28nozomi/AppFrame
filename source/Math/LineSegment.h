@@ -33,11 +33,11 @@ namespace AppFrame {
        */
       float MinDistSq(const Vector4& point) const;
       /**
-       * @brief  ü•ª‚Æü•ª‚ÌÅ’Z‹——£‚Ì“ñæ‚ğæ“¾
+       * @brief  ü•ª‚Æü•ª‚ÌÅ’Z‹——£‚ğæ“¾
        * @param  line ü•ª
-       * @return ü•ª‚Æü•ª‚ÌÅ’Z‹——£(“ñæ)
+       * @return ü•ª‚Æü•ª‚ÌÅ’Z‹——£
        */
-      //float MinDistSq(const LineSegment& line) const;
+      float MinDist(const LineSegment& line) const;
       /**
        * @brief  ü•ª‚Ì’·‚³‚ğæ“¾
        * @return ü•ª‚Ì’·‚³
