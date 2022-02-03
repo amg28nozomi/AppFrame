@@ -6,6 +6,7 @@
  * @date   February 2022
  *********************************************************************/
 #pragma once
+#include "Vector4.h"
 /**
  * @brief フレームワーク
  */
@@ -14,7 +15,6 @@ namespace AppFrame {
    * @brief 算術ベース
    */
   namespace Math {
-    class Vector4;
     /**
      * @class Circle
      * @brief 円の情報クラス
