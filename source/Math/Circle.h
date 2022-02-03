@@ -14,6 +14,7 @@ namespace AppFrame {
    * @brief 算術ベース
    */
   namespace Math {
+    class Vector4;
     /**
      * @class Circle
      * @brief 円の情報クラス
