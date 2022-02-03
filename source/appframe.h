@@ -18,6 +18,7 @@
 #include "Model/ModelServer.h"
 #include "Server/ServerTemplateUnordered.h"
 #include "Server/ServerTemplateVector.h"
+#include "Math/Circle.h"
 #include "Math/Vector4.h"
 #include "Math/Matrix44.h"
 #include "Math/GravityBase.h"
