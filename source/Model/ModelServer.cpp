@@ -71,6 +71,13 @@ namespace AppFrame {
       return true; // 登録成功
     }
 
+    void ModelServer::AddMV1Model(const ModelDatas& mv1Files) {
+      // コンテナから情報を取り出し登録を行う
+      for (auto [key, path] : mv1Files) {
+        AddMV1Model(key, path); // 登録を行う
+      }
+    }
+
     void ModelServer::DeleteModels() {
       Release(); // 全てのモデルハンドルを削除
     }
@@ -95,7 +102,7 @@ namespace AppFrame {
 
     std::pair<int, unsigned short> ModelServer::GetModel(std::string_view key, unsigned short number) {
       // キーが登録されているかの判定
-      if (_registry.contains(key.data())) {
+      if (!_registry.contains(key.data())) {
         return std::make_pair(-1, MaxNumber); // キーが未登録
       }
       // モデルハンドルを返す

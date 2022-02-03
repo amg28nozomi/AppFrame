@@ -25,6 +25,10 @@ namespace AppFrame {
     class ModelServer : Server::ServerTemplateUnordered<std::string, ModelData>{
     public:
       /**
+       * @brief モデル情報を格納するコンテナの別名
+       */
+      using ModelDatas = std::vector<std::pair<std::string_view, std::string_view>>;
+      /**
        * @brief コンストラクタ
        */
       ModelServer();
@@ -45,6 +49,11 @@ namespace AppFrame {
        * @return true:登録成功 false:登録失敗
        */
       bool AddMV1Model(std::string_view key, std::string_view path);
+      /**
+       * @brief  MV1ファイルの読み取り処理(複数)
+       * @param  mv1Files モデル情報に紐づける文字列
+       */
+      void AddMV1Model(const ModelDatas& mv1Files);
       /**
        * @brief  登録されている全てのモデル情報を削除する
        */

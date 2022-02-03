@@ -15,6 +15,7 @@
 #include "Data/Color.h"
 #include "Mode/ModeBase.h"
 #include "Mode/ModeServer.h"
+#include "Model/ModelServer.h"
 #include "Server/ServerTemplateUnordered.h"
 #include "Server/ServerTemplateVector.h"
 #include "Math/Vector4.h"
