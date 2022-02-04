@@ -74,7 +74,7 @@ namespace AppFrame {
       VECTOR endA(_end.GetX(), _end.GetY(), _end.GetZ());
       VECTOR endB(end.GetX(), end.GetY(), end.GetZ());
       // Å’Z‹——£‚ğ•Ô‚·
-      return Segment_Segment_MinLength(startA, startB, endA, endB);
+      return Segment_Segment_MinLength_Square(startA, endA, startB, endB);
 
       //// ü•ª‚Ík‘Ş‚µ‚Ä‚¢‚é‚©
       //if (LengthSquared() < 0.0f) {
