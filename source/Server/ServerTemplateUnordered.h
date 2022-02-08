@@ -50,6 +50,12 @@ namespace AppFrame {
        * @return true:登録可能 false:使用済み
        */
       bool UseKey(Key key) const;
+      /**
+       * @brief  データベースに対象のキーが登録されているかの判定
+       * @param  key キーとして使用しているデータ
+       * @return true:キーが登録されている false:キーは未登録
+       */
+      bool Contains(const Key key) const;
     };
 
     template <typename Key, typename Value>
@@ -88,5 +94,11 @@ namespace AppFrame {
       }
       return true;    // 使用可能
     }
+
+    template <typename Key, typename Value>
+    bool ServerTemplateUnordered<Key, Value>::Contains(const Key key) const {
+      return ServerBase<std::unordered_map<Key, Value>>::_registry.contents(key);
+    }
+
   } // namespace Server
 } // namespace AppFrame
