@@ -12,6 +12,36 @@
 namespace AppFrame{
   namespace Math {
 
+    template <typename T>
+    static T Utility::Min(const T a, const T b) {
+      return a;
+    }
+
+    template <>
+    static float Utility::Min(const float a, const float b) {
+      return (a < b) ? a : b;
+    }
+
+    template <>
+    static int Utility::Min(const int a, const int b) {
+      return (a < b) ? a : b;
+    }
+
+    template <typename T>
+    static T Utility::Max(const T a, const T b) {
+      return a;
+    }
+
+    template<>
+    static int Utility::Max(const int a, const int b) {
+      return (b < a) ? a : b;
+    }
+
+    template<>
+    static float Utility::Max(const float a, const float b) {
+      return (b < a) ? a : b;
+    }
+
     Matrix44 Utility::ToWorldMatrix(const Vector4& position, Vector4 rotation, const Vector4& scale, const bool angle) {
       // rotationがデグリー値の場合はラジアン値に変換する
       if (angle) {

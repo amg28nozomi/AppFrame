@@ -30,6 +30,24 @@ namespace AppFrame {
       //!< 
       static constexpr float _degrees180{ 180.0f };
       /**
+       * @brief  二つの値を比較して最小値を返す
+       * @tparam T 比較するデータの型
+       * @param  a 引数1
+       * @param  b 引数2
+       * @return 最小値
+       */
+      template <typename T>
+      static T Min(const T a, const T b);
+      /**
+       * @brief  二つの値を比較して最大値を返す
+       * @tparam T 比較するデータの型
+       * @param  a 引数1
+       * @param  b 引数2
+       * @return   最大値
+       */
+      template <typename T>
+      static T Max(const T a, const T b);
+      /**
        * @brief  ワールド座標変換
        * @param  position ローカル座標
        * @param  rotatin  回転ベクトル
