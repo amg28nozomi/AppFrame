@@ -125,8 +125,51 @@ namespace AppFrame {
       return Matrix44(matrix);
     }
 
+    Vector4 Matrix44::operator* (const Vector4& vector) const {
+      // 各成分の取得
+      auto [x, y, z, w] = vector.GetVector4();
+      // 処理用に配列を作成
+      std::array<float, MaxRow> vector4 = { x, y, z, w };
+      auto r = _rowColumn;
+      for (auto i = 0; i < MaxRow; ++i) {
+        vector4[i] = r[i][0] * x + r[i][1] * y + r[i][2] * z + r[i][3] * w;
+      }
+      return Vector4(vector4.at(0), vector4.at(1), vector4.at(2), vector4.at(3));
+    }
+
     float Matrix44::GetValue(const int row, const int column) const {
       return _rowColumn[row][column];
+    }
+
+    Matrix44 Matrix44::Inverse(const Matrix44 matrix) {
+      // 単位行列を用意
+      auto inverse = Identity();
+      auto rowColumn = matrix._rowColumn;
+      // 掃き出し法による逆行列の算出
+      for (auto i = 0; i < MaxColumn; ++i) {
+        auto dot = 1.0f / matrix._rowColumn[i][i];
+        
+        for (auto j = 0; j < MaxRow; ++j) {
+          rowColumn[i][j] *= dot;
+          inverse._rowColumn[i][j] *= dot;
+        }
+
+        for (auto j = 0; j < MaxRow; ++j) {
+
+          if (i == j) {
+            continue;
+          }
+
+          dot = rowColumn[j][i];
+
+          for (auto k = 0; k < MaxRow; ++k) {
+            rowColumn[j][k] -= rowColumn[i][k] * dot;
+            inverse._rowColumn[j][k] -= inverse._rowColumn[i][k] * dot;
+          }
+        }
+      }
+
+      return inverse;
     }
   } // namespace Math
 } // namespace AppFrame

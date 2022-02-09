@@ -99,12 +99,24 @@ namespace AppFrame {
        */
       Matrix44 operator* (const Matrix44 rhs) const;
       /**
+       * @brief  行列*ベクトルの乗算
+       * @param  vector ベクトル
+       * @return 
+       */
+      Vector4 operator* (const Vector4& vector) const;
+      /**
        * @brief  指定した行列の値を取得する
        * @param  row 行
        * @param  column 列
        * @return 指定した行列の値
        */
       float GetValue(const int row, const int column) const;
+      /**
+       * @brief  指定した行列の逆行列を取得する
+       * @param  matrix 行列
+       * @return 逆行列
+       */
+      static Matrix44 Inverse(const Matrix44 matrix);
     private:
       MatrixArray _rowColumn; //!< 行列
     };
