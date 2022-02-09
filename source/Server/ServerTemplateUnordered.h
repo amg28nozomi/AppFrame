@@ -97,7 +97,7 @@ namespace AppFrame {
 
     template <typename Key, typename Value>
     bool ServerTemplateUnordered<Key, Value>::Contains(const Key key) const {
-      return ServerBase<std::unordered_map<Key, Value>>::_registry.contents(key);
+      return ServerBase<std::unordered_map<Key, Value>>::_registry.contains(key);
     }
 
   } // namespace Server

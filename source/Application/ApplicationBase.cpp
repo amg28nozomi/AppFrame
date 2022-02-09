@@ -43,10 +43,10 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::SetInstance() {
-      // 実態が登録されているかの判定
+      // 実体が登録されているかの判定
       if (!_setInstance) {
         if (_instance == nullptr) {
-          _setInstance = true; 
+          _setInstance = true;
           return true; // 登録を行う
         }
       }
@@ -56,6 +56,7 @@ namespace AppFrame {
     bool ApplicationBase::Init() {
       // 各種初期化実行
       SetWindowSize(WindowWidth, WindowHeight);
+      // ウィンドウモードの設定
       ChangeWindowMode(_windowMode);
       // DXライブラリの初期化
       if (DxLib::DxLib_Init() == InitError) {
@@ -64,6 +65,7 @@ namespace AppFrame {
 #endif
         return false; // 初期化失敗
       }
+      // 背景色の設定
       SetBackgroundColor(0, 0, 255);
       SetDrawScreen(DX_SCREEN_BACK);
       // Zバッファの設定
@@ -161,11 +163,12 @@ namespace AppFrame {
       // 画面解像度の設定
       _width = std::clamp(width, WidthMin, WindowWidth);
       _height = std::clamp(width, HeightMin, WindowHeight);
+      // カラービット数の設定
       if (bit) {
-        _colorBit = BitColor32;
+        _colorBit = BitColor32; // 32bit
       }
       else {
-        _colorBit = BitColor16;
+        _colorBit = BitColor16; // 16bit
       }
       SetGraphMode(_width, _height, _colorBit);
     }
