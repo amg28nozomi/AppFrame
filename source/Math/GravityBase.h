@@ -30,6 +30,13 @@ namespace AppFrame {
        */
       static float GravityScale(float speed, float mass);
       /**
+       * @brief  重力加速度の設定
+       * @param  scale 設定する加速度
+       */
+      static void SetScale(const float scale) {
+        _acceleration;
+      }
+      /**
        * @brief  重力加速度の取得
        * @return 重力加速度
        */
