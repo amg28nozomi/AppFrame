@@ -179,5 +179,9 @@ namespace AppFrame {
       _y = value;
       _z = value;
     }
+
+    bool Vector4::NearZero(const Vector4& vector) {
+      return vector.LengthSquared() == 0.0f;
+    }
   }
 }

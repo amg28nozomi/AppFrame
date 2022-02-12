@@ -265,6 +265,12 @@ namespace AppFrame {
        */
       void Fill(const float value);
       /**
+       * @brief  対象のベクトルが0かの判定
+       * @param  vector ベクトル
+       * @return true:ゼロ false:ゼロではない
+       */
+      static bool NearZero(const Vector4& vector);
+      /**
        * @brief  ベクトル同士の加算
        * @param  vector ベクトル(加数)
        * @return 加算した4次元ベクトル
