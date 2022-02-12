@@ -56,6 +56,11 @@ namespace AppFrame {
       return translate;
     }
 
+    Matrix44 Matrix44::Translate(const Vector4& vector) {
+      auto [x, y, z] = vector.GetVector3();
+      return Translate(x, y, z);
+    }
+
     Matrix44 Matrix44::Scaling(float x, float y, float z) {
       // íPà çsóÒÇÃê∂ê¨
       auto scaling = Identity();
@@ -64,6 +69,11 @@ namespace AppFrame {
       scaling._rowColumn[1][1] = y;
       scaling._rowColumn[2][2] = z;
       return scaling;
+    }
+
+    Matrix44 Matrix44::Scaling(const Vector4& vector) {
+      auto [x, y, z] = vector.GetVector3();
+      return Scaling(x, y, z);
     }
 
     void Matrix44::RotateX(float radian) {

@@ -61,6 +61,12 @@ namespace AppFrame {
        */
       static Matrix44 Translate(float x, float y, float z);
       /**
+       * @brief  ベクトルを平行移動行列に変換する
+       * @param  vector 対象ベクトル
+       * @return 平行移動行列
+       */
+      static Matrix44 Translate(const Vector4& vector);
+      /**
        * @brief  拡大縮小行列の取得
        * @param  x
        * @param  y
@@ -68,6 +74,12 @@ namespace AppFrame {
        * @return 拡大縮小行列
        */
       static Matrix44 Scaling(float x, float y, float z);
+      /**
+       * @brief  ベクトルを拡大縮小行列に変換する
+       * @param  vector ベクトル
+       * @return 拡大縮小行列
+       */
+      static Matrix44 Scaling(const Vector4& vector);
       /**
        * @brief 行列の平行移動
        * @param translate 平行移動ベクトル
