@@ -55,6 +55,24 @@ namespace AppFrame {
        */
       static bool IsRange(const float value, const float low, const float height);
       /**
+       * @brief  二つの値の長さを取得
+       * @param  x 値1
+       * @param  y 値2
+       * @return 長さ
+       */
+      static inline float Length(const float x, const float y) {
+        return std::sqrt(x * x + y * y);
+      }
+      /**
+       * @brief  二つの値の長さの二乗を取得
+       * @param  x 値1
+       * @param  y 値2
+       * @return 長さの二乗
+       */
+      static inline float LengthSquared(const float x, const float y) {
+        return x * x + y * y;
+      }
+      /**
        * @brief  指定した整数値が正数かの判定
        * @param  value 判定対象
        * @return true:正数 false:正数ではない
