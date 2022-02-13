@@ -75,6 +75,14 @@ namespace AppFrame {
       return false;  // ”ÍˆÍŠO
     }
 
+    float Arithmetic::Length(const float x, const float y) {
+      return std::sqrt(x * x + y * y);
+    }
+
+    float Arithmetic::LengthSquared(const float x, const float y) {
+      return x * x + y * y;
+    }
+
     bool Arithmetic::IsPositive(const int value) {
       // ’l‚ª0ˆÈã‚©‚Ì”»’è‚ğs‚¤
       return 0 <= value;
