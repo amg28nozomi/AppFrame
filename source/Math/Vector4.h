@@ -10,6 +10,8 @@
 
 namespace AppFrame {
   namespace Math {
+
+    class Matrix44;
     /**
      * @class Vector4
      * @brief 四次元ベクトル
