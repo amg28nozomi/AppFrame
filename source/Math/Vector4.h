@@ -8,7 +8,13 @@
 #pragma once
 #include <tuple>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief 算術ベース
+   */
   namespace Math {
 
     class Matrix44;
@@ -272,6 +278,12 @@ namespace AppFrame {
        * @return true:ゼロ false:ゼロではない
        */
       static bool NearZero(const Vector4& vector);
+      /**
+       * @brief  対象へと向かうベクトルの取得
+       * @param  vector 対象ベクトル
+       * @return 向きベクトル
+       */
+      Vector4 Direction(const Vector4& vector) const;
       /**
        * @brief  ベクトル同士の加算
        * @param  vector ベクトル(加数)

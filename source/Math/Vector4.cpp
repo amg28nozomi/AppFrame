@@ -183,5 +183,9 @@ namespace AppFrame {
     bool Vector4::NearZero(const Vector4& vector) {
       return vector.LengthSquared() == 0.0f;
     }
+
+    Vector4 Vector4::Direction(const Vector4& vector) const {
+      return vector - *this;
+    }
   }
 }
