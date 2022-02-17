@@ -11,6 +11,7 @@
 #ifdef _DEBUG
 #include <stdexcept>
 #endif
+#include <unordered_map>
 #include "InputOperation.h"
 #include "../FileServer/FileServer.h"
 #include "../FileServer/FileBase.h"
@@ -28,6 +29,15 @@ namespace {
 
 namespace AppFrame {
   namespace Application {
+
+    /**
+     * @brief ウィンドウ情報をキーとして、画面サイズ情報をpair型で保持する連想配列
+     */
+    std::unordered_map<ApplicationBase::WindowType, std::pair<int, int>> WindowMap{
+      // デフォルトの画面サイズ情報
+      {ApplicationBase::WindowType::Default, {1920, 1080}}
+    };
+
     ApplicationBase::ApplicationBase() {
       _particleMax = 4000;
 #ifndef _DEBUG
@@ -35,8 +45,6 @@ namespace AppFrame {
 #else
       _windowMode = true;
 #endif
-      // ログファイルの出力を行うかの設定
-      SetOutApplicationLogValidFlag(_windowMode);
     }
 
     ApplicationBase::~ApplicationBase() {
@@ -54,8 +62,10 @@ namespace AppFrame {
     }
 
     bool ApplicationBase::Init() {
-      // 各種初期化実行
-      SetWindowSize(WindowWidth, WindowHeight);
+      // ログファイルの出力を行うかの設定
+      SetOutApplicationLogValidFlag(_windowMode);
+      // 画面モードの設定
+      SetWindowSize(_windowType);
       // ウィンドウモードの設定
       ChangeWindowMode(_windowMode);
       // DXライブラリの初期化
@@ -159,18 +169,30 @@ namespace AppFrame {
       }
     }
 
-    void ApplicationBase::SetWindowSize(int width, int height, bool bit) {
-      // 画面解像度の設定
-      _width = std::clamp(width, WidthMin, WindowWidth);
-      _height = std::clamp(width, HeightMin, WindowHeight);
+    void ApplicationBase::SetWindowSize(const WindowType& window, bool bit = true) {
+      // ウィンドウ情報が異なる場合のみサイズを変更する
+      if (_windowType != window) {
+        // 画面サイズの取得
+        auto [width, height] = WindowSize();
+        // 取得したサイズ情報を登録する
+        _width = width;
+        _height = height;
+      }
       // カラービット数の設定
-      if (bit) {
-        _colorBit = BitColor32; // 32bit
-      }
-      else {
-        _colorBit = BitColor16; // 16bit
-      }
+      _colorBit = ColorBit(bit);
+      // 画面モードの変更
       SetGraphMode(_width, _height, _colorBit);
+    }
+
+    int ApplicationBase::ColorBit(const bool bit) const {
+      if (bit) {
+        return BitColor32;
+      }
+      return BitColor16;
+    }
+
+    std::pair<int, int> ApplicationBase::WindowSize() const {
+      return WindowMap.at(_windowType);
     }
 
     void ApplicationBase::SetZBuffer(bool flag) {

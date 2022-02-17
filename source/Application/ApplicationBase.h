@@ -65,6 +65,12 @@ namespace AppFrame {
         Quit    //!< 終了
       };
       /**
+       * @brief  画面サイズを表す列挙型クラス
+       */
+      static enum class WindowType {
+        Default //!< 1920*1080(デフォルト)
+      };
+      /**
        * @brief コンストラクタ
        * 
        */
@@ -164,14 +170,6 @@ namespace AppFrame {
        * @return 現在呼び出されているモードのフレームカウント
        */
       virtual const int GetFrameCount() const = 0;
-      /**
-       * @brief  ウィンドウ情報の設定
-       * @param  width  解像度
-       * @param  height 解像度
-       * @param  bit    カラービット数を変更するかのフラグ
-       *                true:32ビットカラー(デフォルト)  false:16ビットカラー
-       */
-      static void SetWindowSize(int width, int height, bool bit = true);
 #ifdef _DEBUG
       /**
        * @brief  デバッグフラグの取得
@@ -188,11 +186,17 @@ namespace AppFrame {
       }
 #endif
     protected:
-      State _state{State::Paused};    //!< アプリケーションの状態
-      static inline int _particleMax{0}; //!< 使用するパーティクル上限
-      static inline int _width{0};    //!< ウィンドウサイズ(幅)
-      static inline int _height{0};   //!< ウィンドウサイズ(高さ)
-      static inline int _colorBit{0}; //!< カラービット数
+      //!< アプリケーションの状態
+      State _state{State::Paused};
+      //!< ウィンドウ情報
+      static inline WindowType _windowType{WindowType::Default};
+      //!< 使用するパーティクル上限
+      static inline int _particleMax{0};
+      //!< ウィンドウサイズ(幅)
+      static inline int _width{0};
+      //!< ウィンドウサイズ(高さ)
+      static inline int _height{0};
+      static inline int _colorBit{0};       //!< カラービット数
       static inline bool _setInstance{false};   //!< 生成フラグ
       static inline bool _windowMode{false};    //!< ウィンドウモード
       //!< アプリケーションの実体
@@ -236,9 +240,27 @@ namespace AppFrame {
        */
       static bool SetInstance();
       /**
+       * @brief  ウィンドウ情報の設定
+       * @param  window ウィンドウサイズ情報
+       * @param  bit    カラービット数を変更するかのフラグ
+       *                true:32ビットカラー(デフォルト)  false:16ビットカラー
+       */
+      void SetWindowSize(const WindowType& winodw, bool bit = true);
+      /**
        * @brief  アプリケーションを終了するかの判定
        */
       virtual void IsQuit();
+      /**
+       * @brief  カラービット数の設定
+       * @param  bit ビットカラーフラグ(true:32ビットカラー(デフォルト)  false:16ビットカラー)
+       * @return 対応するカラービット
+       */
+      int ColorBit(const bool bit) const;
+      /**
+       * @brief  ウィンドウ情報と一致する画面サイズの取得
+       * @return first:横幅 second:縦幅
+       */
+      virtual std::pair<int, int> WindowSize() const;
       /**
        * @brief Zバッファの設定を有効にするか
        * @param flag true:有効化(デフォルト) false:有効化しない
