@@ -33,7 +33,7 @@ namespace AppFrame {
     /**
      * @brief ウィンドウ情報をキーとして、画面サイズ情報をpair型で保持する連想配列
      */
-    std::unordered_map<ApplicationBase::WindowType, std::pair<int, int>> WindowMap{
+    const std::unordered_map<ApplicationBase::WindowType, std::pair<int, int>> WindowMap{
       // デフォルトの画面サイズ情報
       {ApplicationBase::WindowType::Default, {1920, 1080}}
     };
@@ -171,13 +171,13 @@ namespace AppFrame {
 
     void ApplicationBase::SetWindowSize(const WindowType& window, bool bit) {
       // ウィンドウ情報が異なる場合のみサイズを変更する
-      if (_windowType != window) {
+      // if (_windowType != window) {
         // 画面サイズの取得
         auto [width, height] = WindowSize();
         // 取得したサイズ情報を登録する
         _width = width;
         _height = height;
-      }
+      // }
       // カラービット数の設定
       _colorBit = ColorBit(bit);
       // 画面モードの変更
