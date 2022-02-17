@@ -67,7 +67,7 @@ namespace AppFrame {
       /**
        * @brief  画面サイズを表す列挙型クラス
        */
-      static enum class WindowType {
+      enum class WindowType {
         Default //!< 1920*1080(デフォルト)
       };
       /**

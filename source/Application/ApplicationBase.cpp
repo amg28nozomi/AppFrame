@@ -169,7 +169,7 @@ namespace AppFrame {
       }
     }
 
-    void ApplicationBase::SetWindowSize(const WindowType& window, bool bit = true) {
+    void ApplicationBase::SetWindowSize(const WindowType& window, bool bit) {
       // ウィンドウ情報が異なる場合のみサイズを変更する
       if (_windowType != window) {
         // 画面サイズの取得
