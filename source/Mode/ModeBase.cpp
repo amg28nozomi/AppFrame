@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #include "ModeBase.h"
+#include <time.h>
 #include "../Application/ApplicationBase.h"
 #include "ModeServer.h"
 #include "../FileServer/FileServer.h"
@@ -44,6 +45,7 @@ namespace AppFrame {
     }
 
     void ModeBase::TimeClear() {
+      // 経過時間の初期化
       _count = 0;
     }
 
@@ -60,7 +62,7 @@ namespace AppFrame {
     }
 
     void ModeBase::StepTime() {
-      ++_count;
+      ++_count; // カウンタの経過
     }
   } // namespace Mode
 } // namespace AppFrame

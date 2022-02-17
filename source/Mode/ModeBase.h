@@ -99,9 +99,20 @@ namespace AppFrame {
       int GetFrameCount() const {
         return _count;
       }
+      /**
+       * @brief  ミリ秒の取得
+       * @return 経過時間(ミリ秒)
+       */
+      long double GetMilliSecond() const {
+        return _milli;
+      }
     protected:
-      Application::ApplicationBase& _app; //!< アプリケーションの参照
-      int _count{0}; //!< 本モード内での経過時間
+      //!< アプリケーションの参照
+      Application::ApplicationBase& _app;
+      //!< 本モード内での経過時間(フレーム)
+      int _count{0};
+      //!< 本モード内での経過時間(ミリ秒)
+      long double _milli{0.0};
       /**
        * @brief 時間経過処理
        */
