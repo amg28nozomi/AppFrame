@@ -46,7 +46,10 @@ namespace AppFrame {
         return false; // サウンドハンドルの取得に失敗
       }
       // サウンドの音量を設定する
-      ChangeVolumeSoundMem(volume, handle);
+      if (ChangeVolumeSoundMem(volume, handle) == -1) {
+        return false;
+      }
+      return true;
     }
 
     bool SoundComponent::Play(std::string_view key, const int type) const {
