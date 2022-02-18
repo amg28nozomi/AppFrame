@@ -38,6 +38,17 @@ namespace AppFrame {
       return true; // 停止成功
     }
 
+    bool SoundComponent::SetVolume(std::string_view key, int volume) const {
+      // サウンドハンドルを取得
+      auto handle = SoundHandle(key);
+      // サウンドハンドルの取得に成功したか
+      if (handle == -1) {
+        return false; // サウンドハンドルの取得に失敗
+      }
+      // サウンドの音量を設定する
+      ChangeVolumeSoundMem(volume, handle);
+    }
+
     bool SoundComponent::Play(std::string_view key, const int type) const {
       // ミュート状態になっていないか
       if (_mute) {

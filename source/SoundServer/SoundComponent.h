@@ -46,6 +46,13 @@ namespace AppFrame {
        */
       bool StopSound(std::string_view key) const;
       /**
+       * @brief  指定したサウンドの音量を設定する
+       * @param  key サウンドに紐づけられた文字列
+       * @param  volume 再生音量(0~255)
+       * @return true:設定成功 false:失敗
+       */
+      bool SetVolume(std::string_view key, int volume) const;
+      /**
        * @brief  ミュートフラグの設定
        * @param  flag セットするフラグ
        */
