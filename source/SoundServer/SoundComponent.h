@@ -22,6 +22,8 @@ namespace AppFrame {
    * @brief サウンドベース
    */
   namespace Sound {
+    constexpr auto Play = true;  //!< サウンド再生中
+    constexpr auto Stop = false; //!< サウンド停止中
     /**
      * @class SoundComponent
      * @brief サウンドコンポーネント
