@@ -52,6 +52,12 @@ namespace AppFrame {
        */
       bool StopSound(std::string_view key) const;
       /**
+       * @brief  対象音源が再生されているかの判定
+       * @param  key サウンドに紐づけられた文字列
+       * @return true:再生中 false:再生されていない
+       */
+      bool CheckSound(std::string_view key) const;
+      /**
        * @brief  指定したサウンドの音量を設定する
        * @param  key サウンドに紐づけられた文字列
        * @param  volume 再生音量(0~255)
