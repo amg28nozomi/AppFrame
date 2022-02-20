@@ -21,11 +21,8 @@
 #include "../Model/ModelServer.h"
 
 namespace {
-  constexpr auto WidthMin = 640;
-  constexpr auto HeightMin = 480;
-
-  constexpr auto InitError = -1; // 初期化失敗
-}
+  constexpr auto InitError = -1;   // 初期化失敗
+} // namespace
 
 namespace AppFrame {
   namespace Application {
@@ -170,14 +167,11 @@ namespace AppFrame {
     }
 
     void ApplicationBase::SetWindowSize(const WindowType& window, bool bit) {
-      // ウィンドウ情報が異なる場合のみサイズを変更する
-      // if (_windowType != window) {
-        // 画面サイズの取得
-        auto [width, height] = WindowSize();
-        // 取得したサイズ情報を登録する
-        _width = width;
-        _height = height;
-      // }
+      // 画面サイズの取得
+      auto [width, height] = WindowSize();
+      // 取得したサイズ情報を登録する
+      _width = width;
+      _height = height;
       // カラービット数の設定
       _colorBit = ColorBit(bit);
       // 画面モードの変更
@@ -185,6 +179,7 @@ namespace AppFrame {
     }
 
     int ApplicationBase::ColorBit(const bool bit) const {
+      // bitフラグに応じた値を返す
       if (bit) {
         return BitColor32;
       }
@@ -192,6 +187,7 @@ namespace AppFrame {
     }
 
     std::pair<int, int> ApplicationBase::WindowSize() const {
+      // 現在のウィンドウタイプに対応する画面サイズを返す
       return WindowMap.at(_windowType);
     }
 

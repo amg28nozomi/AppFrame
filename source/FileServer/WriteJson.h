@@ -8,7 +8,13 @@
 #pragma once
 #include <filesystem>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
     /**
      * @class WriteJson
@@ -34,4 +40,3 @@ namespace AppFrame {
     };
   } // namespace FileServer
 } // namespace AppFrame
-

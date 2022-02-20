@@ -8,7 +8,13 @@
 #pragma once
 #include <array>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief 算術ベース
+   */
   namespace Math {
     class Vector4;
     constexpr auto MaxRow = 4;    //!< 行の上限

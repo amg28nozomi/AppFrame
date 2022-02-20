@@ -24,7 +24,7 @@ namespace AppFrame {
     class FileServer;
   } // namespace FileServer
   /**
-   * @brief モード
+   * @brief モードベース
    */
   namespace Mode {
     /**

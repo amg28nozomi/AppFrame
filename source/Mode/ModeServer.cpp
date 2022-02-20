@@ -12,7 +12,7 @@
 namespace {
   constexpr auto FadeIn = "FadeIn";   // フェードイン登録用のキー
   constexpr auto FadeOut = "FadeOut"; // フェードアウト登録用のキー
-}
+} // namespace
 
 namespace AppFrame {
   namespace Mode {

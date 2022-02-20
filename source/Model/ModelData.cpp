@@ -12,7 +12,7 @@
 namespace {
   constexpr short Begine = 0;
   constexpr unsigned short MaxNumber = 65535;
-}
+} // namespace
 
 namespace AppFrame {
   namespace Model {

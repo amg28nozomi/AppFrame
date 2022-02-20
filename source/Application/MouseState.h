@@ -9,7 +9,13 @@
 #include "InputBase.h"
 #include "../Math/Vector4.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     /**
      * @class MouseState
@@ -61,4 +67,3 @@ namespace AppFrame {
     };
   } // namespace Application
 } // namespace AppFrame
-

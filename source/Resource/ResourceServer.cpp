@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * @file   ResourceServer.cpp
+ * @brief  2D素材を管理するリソースサーバクラスの定義
+ * 
+ * @author 鈴木希海
+ * @date   February 2022
+ *********************************************************************/
 #include "ResourceServer.h"
 #include <DxLib.h>
 #include "../Math/Arithmetic.h"

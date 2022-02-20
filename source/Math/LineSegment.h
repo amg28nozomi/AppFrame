@@ -9,7 +9,13 @@
 #include <utility>
 #include "Vector4.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief 算術ベース
+   */
   namespace Math {
     class Plane; //!< 
     /**

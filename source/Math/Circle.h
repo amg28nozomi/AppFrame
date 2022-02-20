@@ -50,6 +50,5 @@ namespace AppFrame {
       Vector4 _center; //!< ’†SÀ•W
       float _radius;   //!< ”¼Œa
     };
-
-  } // namespace 
+  } // namespace Math
 } // namespaece AppFrame

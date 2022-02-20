@@ -15,10 +15,19 @@
 #include <nlohmann/json.hpp>
 #include "../Data/DivGraph.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     class ApplicationBase;
   }
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
     constexpr auto JSON = ".json"; //!< jsonファイルのフォーマット
     /**

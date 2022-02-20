@@ -9,8 +9,13 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
-  /** 算術処理用名前空間 */
+  /**
+   * @brief 算術ベース
+   */
   namespace Math {
     constexpr auto Binary = 2;       //!< 2進数
     constexpr auto Decimal = 10;     //!< 10進数
@@ -101,9 +106,9 @@ namespace AppFrame {
         return _clampType;
       }
       /**
-       * @brief
-       * @param value
-       * @return 
+       * @brief  引数が0かの判定
+       * @param  value 値
+       * @return true:0 false:0ではない
        */
       static inline bool NearZero(const float value) {
         return value == 0.0f;

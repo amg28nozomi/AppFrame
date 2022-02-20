@@ -9,7 +9,13 @@
 #include <filesystem>
 
 /** FileWorker用名前空間 */
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
     /**
      * @class FileBase
@@ -28,7 +34,7 @@ namespace AppFrame {
       FileBase(std::filesystem::path filePath);
       /**
        * @brief ファイルデータの生成(キー情報有り)
-       * @param filrPath
+       * @param filrPath 
        * @param key
        */
       FileBase(std::filesystem::path filrPath, std::string_view key);

@@ -11,7 +11,7 @@
  */
 namespace AppFrame {
   /**
-   * @brief マスベース
+   * @brief 算術ベース
    */
   namespace Math {
     class Matrix44; //!< 前方宣言
@@ -48,4 +48,3 @@ namespace AppFrame {
     };
   } // namespace Math
 } // namespace AppFrame
-

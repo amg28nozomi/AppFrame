@@ -8,7 +8,13 @@
 #pragma once
 #include "../FileServer/FileBase.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief データベース
+   */
   namespace Data {
     /**
    * @class DivGraph

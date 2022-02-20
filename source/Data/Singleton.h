@@ -9,8 +9,10 @@
 #include <memory>
 #include <Windows.h>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
-
   /**
    * @class Singleton
    * @brief シングルトンクラス

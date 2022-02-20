@@ -15,7 +15,7 @@ namespace {
   constexpr auto PadMax = 4;   // ジョイパッドの接続数上限
   constexpr auto MouseMax = 1; // マウスの接続数上限
   constexpr auto Count120 = 120;
-}
+} // namespace
 
 namespace AppFrame {
   namespace Application {

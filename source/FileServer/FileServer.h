@@ -13,13 +13,16 @@
 
 /** FileWorker用名前空間 */
 namespace AppFrame {
-
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     class ApplicationBase; //!< アプリケーション
   } // namespace Application
-
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
-
     class LoadJson; //!< 前方宣言
     /**
      * @class FileServer

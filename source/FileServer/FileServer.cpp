@@ -15,7 +15,7 @@
 namespace {
   constexpr auto ServerName = "FileServer";
   constexpr auto LogText = "FileWorkerLog.txt"; // ログ用ファイル名
-}
+} // namespace
 
 namespace AppFrame {
   namespace FileServer {

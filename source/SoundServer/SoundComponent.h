@@ -9,12 +9,18 @@
 #include <string_view>
 
 /**
- * @brief フレームワーク
+ * @brief アプリケーションフレーム
  */
 namespace AppFrame {
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     class ApplicationBase;
   } // namespace Application
+  /**
+   * @brief サウンドベース
+   */
   namespace Sound {
     /**
      * @class SoundComponent

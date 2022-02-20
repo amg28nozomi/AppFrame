@@ -9,12 +9,18 @@
 #include <filesystem>
 #include <string_view>
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief ファイルサーバ
+   */
   namespace FileServer {
     /**
-   * @class  FileOutput
-   * @brief  ファイルの入出力処理クラス
-   */
+     * @class FileOutput
+     * @brief ファイルの入出力処理クラス
+     */
     class FileOutput {
     public:
       /**

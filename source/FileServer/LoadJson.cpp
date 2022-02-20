@@ -53,7 +53,7 @@ namespace {
   constexpr auto NUMS = "nums";           // 要素数取得キー
   constexpr auto KEY = "key";             // 連想配列登録用キー
   constexpr auto PATH = "path";           // ファイル名
-}
+} // namespace
 
 namespace AppFrame {
   namespace FileServer {

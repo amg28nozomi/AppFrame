@@ -7,7 +7,13 @@
  *********************************************************************/
 #include <tuple>
 #include "../FileServer/FileBase.h"
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief サウンドベース
+   */
   namespace Sound {
     /**
      * @class SoundMem

@@ -10,8 +10,13 @@
 #include <array>
 #include <utility>
 #include <DxLib.h>
-
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     constexpr auto ButtonNum = 16; //!< ボタン総数
     constexpr auto InputPress = true;    //!< 押下情報

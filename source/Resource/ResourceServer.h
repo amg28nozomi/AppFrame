@@ -1,9 +1,22 @@
+/*****************************************************************//**
+ * @file   ResourceServer.h
+ * @brief  2D素材を管理するリソースサーバクラス
+ * 
+ * @author 鈴木希海
+ * @date   February 2022
+ *********************************************************************/
 #pragma once
 #include "../Server/ServerTemplateUnordered.h"
 #include <filesystem>
 #include "../Data/DivGraph.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief リソースベース
+   */
   namespace Resource {
     /**
      * @class  ResourceServer

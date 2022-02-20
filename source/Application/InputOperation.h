@@ -12,7 +12,13 @@
 #include "JoypadState.h"
 #include "XboxState.h"
 
+/**
+ * @brief アプリケーションフレーム
+ */
 namespace AppFrame {
+  /**
+   * @brief アプリケーションベース
+   */
   namespace Application {
     // XBOXコントローラの各種ボタンに紐づける文字列
     constexpr auto PadUp = "up";       //!< 上矢印ボタン
