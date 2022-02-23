@@ -237,6 +237,11 @@ namespace AppFrame {
        */
       static float LengthSquared(const Vector4& vector);
       /**
+       * @brief  ベクトルの長さの二乗の取得(二次元)
+       * @return ベクトルの長さの二乗(二次元)
+       */
+      float LengthSquared2D() const;
+      /**
        * @brief  ベクトルの正規化
        */
       void Normalize();

@@ -57,6 +57,12 @@ namespace AppFrame {
        */
       static Matrix44 ToWorldMatrix(const Vector4& position, Vector4 rotation, const Vector4& scale , const bool angle = Radian);
       /**
+       * @brief  対象の値を正数に変換する
+       * @param  value 変換対象
+       * @return 引数を正数に変換した値
+       */
+      static float ToPlus(float value);
+      /**
        * @brief  デグリー値をラジアン値に変換する
        * @param  degree デグリー値
        * @return ラジアン値

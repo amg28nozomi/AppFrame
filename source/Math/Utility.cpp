@@ -57,6 +57,11 @@ namespace AppFrame{
       return worldMatrix;
     }
 
+    float Utility::ToPlus(float value) {
+      // ‘ÎÛ‚ª0–¢–‚Ìê‡‚Í³”‚É’¼‚µ‚½’l‚ğ•Ô‚·
+      return (value < 0.0f) ? value * -1.0 : value;
+    }
+
     Vector4 Utility::RotationToRadian(const Vector4& rotation) {
       // Šeí¬•ª‚Ìæ“¾
       auto [x, y, z] = rotation.GetVector3();

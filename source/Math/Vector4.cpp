@@ -146,7 +146,16 @@ namespace AppFrame {
       return x * x + y * y + z * z;
     }
 
+    float Vector4::LengthSquared2D() const {
+      return _x * _x + _y * _y;
+    }
+
     void Vector4::Normalize() {
+      // 全ての値が0の場合
+      if (LengthSquared() == 0.0f) {
+        Zero();
+        return;
+      }
       auto length = Length();
       _x /= length;
       _y /= length;
@@ -154,6 +163,10 @@ namespace AppFrame {
     }
 
     Vector4 Vector4::Normalize(const Vector4& vector) {
+      // 元から長さが0の場合は空のベクトルを返す
+      if (vector.LengthSquared() == 0.0f) {
+        return Vector4();
+      }
       auto length = vector.Length();
       auto x = vector._x / length;
       auto y = vector._y / length;
