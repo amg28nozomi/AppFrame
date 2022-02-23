@@ -77,6 +77,18 @@ namespace AppFrame {
        */
       void Sub(const float x, const float y, const float z);
       /**
+       * @brief ベクトル同士の各成分を乗算する
+       * @param vector 対象ベクトル
+       */
+      void Scale(const Vector4& vector);
+      /**
+       * @brief  ベクトル同士の各成分を乗算する
+       * @param  left  左辺
+       * @param  rigth 右辺
+       * @return 乗算したベクトル
+       */
+      static Vector4 Scale(const Vector4& left, const Vector4& right);
+      /**
        * @brief ベクトルの設定
        * @param vector セットするベクトル
        */

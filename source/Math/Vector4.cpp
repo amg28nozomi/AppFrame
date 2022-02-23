@@ -51,6 +51,16 @@ namespace AppFrame {
       _z += z;
     }
 
+    void Vector4::Scale(const Vector4& vector) {
+      _x *= vector._x;
+      _y *= vector._y;
+      _z *= vector._z;
+    }
+
+    Vector4 Vector4::Scale(const Vector4& left, const Vector4& right) {
+      return Vector4(left._x * right._x, left._y * right._y, left._z * right._z);
+    }
+
     Vector4 Vector4::AddVectorX(const float x) const {
       return Vector4(_x + x, _y, _z);
     }
