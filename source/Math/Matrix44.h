@@ -135,6 +135,14 @@ namespace AppFrame {
        * @return 逆行列
        */
       static Matrix44 Inverse(const Matrix44 matrix);
+      /**
+       * @brief  注視行列の生成
+       * @param  position カメラの座標
+       * @param  target   対象物の座標
+       * @param  up       空ベクトル
+       * @return 注視行列
+       */
+      static Matrix44 CreateLookAt(const Vector4 & position, const Vector4 & target, const Vector4 & up);
     private:
       MatrixArray _rowColumn; //!< 行列
     };

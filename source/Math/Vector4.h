@@ -279,6 +279,13 @@ namespace AppFrame {
        */
       static bool NearZero(const Vector4& vector);
       /**
+       * @brief  上方向ベクトルの取得
+       * @return 上方向ベクトル
+       */
+      static inline Vector4 Up() {
+        return Vector4(0.0f, 1.0f, 0.0f);
+      }
+      /**
        * @brief  対象へと向かうベクトルの取得
        * @param  vector 対象ベクトル
        * @return 向きベクトル

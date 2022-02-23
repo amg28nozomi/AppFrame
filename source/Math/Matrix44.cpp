@@ -181,5 +181,39 @@ namespace AppFrame {
 
       return inverse;
     }
+
+    Matrix44 Matrix44::CreateLookAt(const Vector4& position, const Vector4& target, const Vector4& up) {
+      auto z = position.Direction(target);
+      auto x = z.Cross(up);
+      auto y = z.Cross(x);
+      // ê≥ãKâª
+      x.Normalize();
+      y.Normalize();
+      z.Normalize();
+
+      MatrixArray matrix;
+      matrix[0][0] = x.GetX();
+      matrix[0][1] = y.GetX();
+      matrix[0][2] = z.GetX();
+      matrix[0][3] = 0.0f;
+      
+      matrix[1][0] = x.GetY();
+      matrix[1][1] = y.GetY();
+      matrix[1][2] = z.GetY();
+      matrix[1][3] = 0.0f;
+
+      matrix[2][0] = x.GetZ();
+      matrix[2][1] = y.GetZ();
+      matrix[2][2] = z.GetZ();
+      matrix[2][3] = 0.0f;
+
+      matrix[3][0] = -x.Dot(position);
+      matrix[3][1] = -y.Dot(position);
+      matrix[3][2] = -z.Dot(position);
+      matrix[3][3] = 1.0f;
+      // çÏê¨ÇµÇΩíçéãçsóÒÇï‘Ç∑
+      return Matrix44(matrix);
+    }
+
   } // namespace Math
 } // namespace AppFrame
