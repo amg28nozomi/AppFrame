@@ -65,6 +65,27 @@ namespace AppFrame {
       inline std::pair<int, int> GetTrigger() const {
         return std::make_pair(_press.LeftTrigger, _press.RightTrigger);
       }
+      /**
+       * @brief  デッドゾーンの取得処理
+       * @return デッドゾーン(左辺:最低値 右辺:最大値)
+       */
+      inline std::pair<short, short> GetDeadZone() const {
+        return _deadZone;
+      }
+      /**
+       * @brief  デッドゾーン(最低値)の取得
+       * @return デッドゾーン
+       */
+      inline short GetDeadZoneMin() const {
+        return _deadZone.first;
+      }
+      /**
+       * @brief  デッドゾーン(最大値)の取得
+       * @return デッドゾーン
+       */
+      inline short GetDeadZoneMax() const {
+        return _deadZone.second;
+      }
     private:
       XINPUT_STATE _press;   //!< 入力情報(押下入力)
       std::array<bool, ButtonNum> _triggerButtons; //!< 各種ボタンの押下情報
