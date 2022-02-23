@@ -183,13 +183,9 @@ namespace AppFrame {
     }
 
     Matrix44 Matrix44::CreateLookAt(const Vector4& position, const Vector4& target, const Vector4& up) {
-      auto z = position.Direction(target);
-      auto x = z.Cross(up);
-      auto y = z.Cross(x);
-      // ê≥ãKâª
-      x.Normalize();
-      y.Normalize();
-      z.Normalize();
+      auto z = Vector4::Normalize(position.Direction(target));
+      auto x = Vector4::Normalize(z.Cross(up));
+      auto y = Vector4::Normalize(z.Cross(x));
 
       MatrixArray matrix;
       matrix[0][0] = x.GetX();
