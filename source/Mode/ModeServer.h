@@ -15,6 +15,12 @@
  */
 namespace AppFrame {
   /**
+   * @brief アプリケーションベース
+   */
+  namespace Application {
+    class ApplicationBase; //!< 前方宣言
+  } // namespace Application
+  /**
    * @brief モードベース
    */
   namespace Mode {

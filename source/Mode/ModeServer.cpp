@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #include "ModeServer.h"
+#include "../Application/ApplicationBase.h"
 #include "ModeFadeIn.h"
 #include "ModeFadeOut.h"
 
