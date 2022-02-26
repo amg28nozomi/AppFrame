@@ -10,25 +10,44 @@
 #include "ModeFadeOut.h"
 
 namespace {
-  constexpr auto FadeIn = "FadeIn";   // フェードイン登録用のキー
-  constexpr auto FadeOut = "FadeOut"; // フェードアウト登録用のキー
+  constexpr auto FadeIn = "FadeIn";         // フェードイン登録用のキー
+  constexpr auto FadeOut = "FadeOut";       // フェードアウト登録用のキー
+  constexpr auto ServerName = "ModeServer"; // サーバ名
 } // namespace
 
 namespace AppFrame {
   namespace Mode {
 
+    ModeServer::ModeServer(Application::ApplicationBase& app) : Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>>() {
+#ifdef _DEBUGr
+      // サーバ名の設定
+      SetServerName(ServerName);
+#endif
+      // コンテナの初期化
+      _registry.clear();
+      // スタックの初期化
+      _modes.clear();
+      // フェードインの登録
+      Register(FadeIn, std::make_shared<ModeFadeIn>(app));
+      // フェードアウトの登録
+      Register(FadeOut, std::make_shared<ModeFadeOut>(app));
+    }
+
     ModeServer::ModeServer(std::string_view key, std::shared_ptr<ModeBase> mode) :
      Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>>(){
 #ifdef _DEBUG
       // サーバ名の設定
-      SetServerName("ModeServer");
+      SetServerName(ServerName);
 #endif
       // コンテナの初期化
       _registry.clear();
+      // スタックの初期化
       _modes.clear();
-      // 各種モードの登録
+      // フェードインの登録
       Register(FadeIn, std::make_shared<ModeFadeIn>(mode->GetApplication()));
+      // フェードアウトの登録
       Register(FadeOut, std::make_shared<ModeFadeOut>(mode->GetApplication()));
+      // 対象モードの登録
       Register(key.data(), mode);
     }
 
@@ -41,6 +60,7 @@ namespace AppFrame {
     }
 
     void ModeServer::AddMode(std::string_view key, std::shared_ptr<ModeBase> mode) {
+      // データベースにモードを登録する
       Register(key.data(), mode);
     }
 
@@ -64,12 +84,14 @@ namespace AppFrame {
       if (_modes.empty()) {
         return; // モードが未登録
       }
-      // 末尾のモードを削除する
+      // 終了処理呼び出し
       _modes.back()->Exit();
+      // 末尾のモードを削除する
       _modes.pop_back();
     }
 
     bool ModeServer::InsertBeforeBack(std::string_view key) {
+      // モードの取得
       auto mode = FetchMode(key.data());
       // 取得に成功したか
       if (mode == nullptr) {
@@ -128,20 +150,23 @@ namespace AppFrame {
 
     bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {
       // キーは登録しているか
-      if (!UseKey(key)) {
+      if (!Contains(key)) {
         // 重複している場合は対象を削除
         _registry.erase(key);
       }
+      // モードの初期化
       mode->Init();
+      // データベース上に登録する
       _registry.emplace(key, mode);
       return true;
     }
 
     std::shared_ptr<ModeBase> ModeServer::FetchMode(std::string_view key) {
       // モードは登録されているか
-      if (!_registry.contains(key.data())) {
+      if (!Contains(key.data())) {
         return nullptr; // 未登録
       }
+      // キーに対応したモードの取得
       auto mode = _registry.at(key.data());
       mode->Enter(); // 入口処理を実行
       return mode;

@@ -82,7 +82,7 @@ namespace AppFrame {
       // インプットオペレーションの生成
       _input = std::make_unique<InputOperation>(*this);
       // モードサーバの生成
-      _modeServer = std::make_unique<Mode::ModeServer>("base", std::make_unique<Mode::ModeFadeIn>(*this));
+      _modeServer = std::make_unique<Mode::ModeServer>(*this);
       // リソースサーバの生成
       _resourceServer = std::make_unique<Resource::ResourceServer>();
       // サウンドサーバの生成

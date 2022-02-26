@@ -18,7 +18,7 @@ namespace AppFrame {
    * @brief モードベース
    */
   namespace Mode {
-    class ModeBase;
+    class ModeBase; //!< 前方宣言
     /**
      * @class ModeServer
      * @brief モードの管理を行うサーバ
@@ -26,9 +26,14 @@ namespace AppFrame {
     class ModeServer : public Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>> {
     public:
       /**
-       * @brief コンストラクタ
-       * @param key  登録に使用する文字列
-       * @param mode 最初に登録するシーンのポインタ
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
+       */
+      ModeServer(Application::ApplicationBase& app);
+      /**
+       * @brief  コンストラクタ
+       * @param  key  登録に使用する文字列
+       * @param  mode 最初に登録するシーンのポインタ
        */
       ModeServer(std::string_view key, std::shared_ptr<ModeBase> mode);
       /**
@@ -55,26 +60,27 @@ namespace AppFrame {
       /**
        * @brief  モードの遷移処理
        * @param  key 対象モードに紐づけられた文字列
-       * @return
+       * @return true
        */
       bool TransionToMode(std::string_view key);
       /**
        * @brief  モードの更新
-       * @return 
+       * @return true:正常終了 false:問題発生
        */
       bool Process();
       /**
        * @brief  モードの描画
-       * @return 
+       * @return true:描画成功 false:問題発生
        */
       bool Draw() const;
     private:
-      std::list<std::shared_ptr<ModeBase>> _modes; //!< モードのリスト
+      //!< モードリスト
+      std::list<std::shared_ptr<ModeBase>> _modes;
       /**
        * @brief  モードの登録
        * @param  key  モードに紐づける文字列
        * @param  mode 登録するモード
-       * @return 
+       * @return true
        */
       bool Register(std::string key, std::shared_ptr<ModeBase> mode) override;
       /**
