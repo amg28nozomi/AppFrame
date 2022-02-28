@@ -113,6 +113,8 @@ namespace AppFrame {
       int _count{0};
       //!< 本モード内での経過時間(ミリ秒)
       long double _milli{0.0};
+      //!< リソースの読み込みフラグ
+      bool _isLoad{false};
       /**
        * @brief 時間経過処理
        */
