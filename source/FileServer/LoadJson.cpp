@@ -150,6 +150,11 @@ namespace AppFrame {
       return true; // 処理終了
     }
 
+    std::filesystem::path LoadJson::ToJsonName(std::string directory, std::string fileName) const {
+      // jsonファイルのパスに変換する
+      return std::filesystem::path(directory + fileName + JSON);
+    }
+
 //    std::vector<std::pair<std::string_view, std::filesystem::path>> LoadJson::LoadDivGraoh(std::filesystem::path jsonPath) {
 //      using DivGraphs = std::vector<std::pair<std::string_view, std::filesystem::path>>;
 //#ifndef _DEBUG

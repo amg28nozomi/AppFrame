@@ -84,6 +84,13 @@ namespace AppFrame {
        */
       bool LoadDivGraphData(const nlohmann::json json);
       /**
+       * @brief  Jsonファイルパスへの変換
+       * @param  directory ディレクトリパス
+       * @param  fileName  jsonファイル名
+       * @return jsonファイルのパス
+       */
+      std::filesystem::path ToJsonName(std::string directory, std::string fileName) const;
+      /**
        * @brief  jsonファイルの読み取り
        * @param  jsonFile 対象ファイルのパス
        * @return 読み取りに成功した場合は対象のjsonオブジェクトを返す
