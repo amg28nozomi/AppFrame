@@ -36,6 +36,12 @@ namespace AppFrame {
        * @return true:解放成功 false:問題発生
        */
       virtual bool Release() override;
+      /**
+       * @brief  データベースに対象のキーが登録されているかの判定
+       * @param  key キーとして使用しているデータ
+       * @return true:キーが登録されている false:キーは未登録
+       */
+      bool Contains(const Key key) const;
     protected:
       /**
        * @brief  デフォルトの登録処理
@@ -50,12 +56,6 @@ namespace AppFrame {
        * @return true:登録可能 false:使用済み
        */
       bool UseKey(Key key) const;
-      /**
-       * @brief  データベースに対象のキーが登録されているかの判定
-       * @param  key キーとして使用しているデータ
-       * @return true:キーが登録されている false:キーは未登録
-       */
-      bool Contains(const Key key) const;
     };
 
     template <typename Key, typename Value>
