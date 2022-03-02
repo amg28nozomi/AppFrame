@@ -151,7 +151,7 @@ namespace AppFrame {
 
     bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {
       // ƒL[‚Í“o˜^‚µ‚Ä‚¢‚é‚©
-      if (!Contains(key)) {
+      if (Contains(key)) {
         // d•¡‚µ‚Ä‚¢‚éê‡‚Í‘ÎÛ‚ğíœ
         _registry.erase(key);
       }
