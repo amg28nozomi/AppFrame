@@ -130,6 +130,24 @@ namespace AppFrame {
        */
       float GetValue(const int row, const int column) const;
       /**
+       * @brief  回転行列(x軸)の作成
+       * @param  angle 回転値(ラジアン)
+       * @return 回転行列(x軸)
+       */
+      static Matrix44 ToRotationX(const float angle);
+      /**
+       * @brief  回転行列(y軸)の作成
+       * @param  angle 回転値(ラジアン)
+       * @return 回転行列(y軸)
+       */
+      static Matrix44 ToRotationY(const float angle);
+      /**
+       * @brief  回転行列(z軸)の作成
+       * @param  angle 回転値(ラジアン)
+       * @return 回転行列(z軸)
+       */
+      static Matrix44 ToRotationZ(const float angle);
+      /**
        * @brief  指定した行列の逆行列を取得する
        * @param  matrix 行列
        * @return 逆行列

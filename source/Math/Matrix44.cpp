@@ -77,36 +77,18 @@ namespace AppFrame {
     }
 
     void Matrix44::RotateX(float radian) {
-      auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(radian);
-      auto sin = std::sin(radian);
-      identity._rowColumn[1][1] = cos;
-      identity._rowColumn[1][2] = sin;
-      identity._rowColumn[2][1] = -sin;
-      identity._rowColumn[2][2] = cos;
-      *this = *this * identity;
+      auto rotateX = ToRotationX(radian);
+      *this = *this * rotateX;
     }
 
     void Matrix44::RotateY(float radian) {
-      auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(radian);
-      auto sin = std::sin(radian);
-      identity._rowColumn[0][0] = cos;
-      identity._rowColumn[0][2] = sin;
-      identity._rowColumn[2][0] = -sin;
-      identity._rowColumn[2][2] = cos;
-      *this = *this * identity;
+      auto rotateY = ToRotationY(radian);
+      *this = *this * rotateY;
     }
 
     void Matrix44::RotateZ(float radian) {
-      auto identity = Identity(); // 単位行列の取得
-      auto cos = std::cos(radian);
-      auto sin = std::sin(radian);
-      identity._rowColumn[0][0] = cos;
-      identity._rowColumn[0][1] = -sin;
-      identity._rowColumn[1][0] = sin;
-      identity._rowColumn[1][1] = cos;
-      *this = *this * identity;
+      auto rotateZ = ToRotationZ(radian);
+      *this = *this * rotateZ;
     }
 
     void Matrix44::MulTranslate(const AppFrame::Math::Vector4 translate) {
@@ -145,6 +127,39 @@ namespace AppFrame {
         vector4[i] = r[i][0] * x + r[i][1] * y + r[i][2] * z + r[i][3] * w;
       }
       return Vector4(vector4.at(0), vector4.at(1), vector4.at(2), vector4.at(3));
+    }
+
+    Matrix44 Matrix44::ToRotationX(const float angle) {
+      auto matrix = Identity();
+      auto cos = std::cos(angle);
+      auto sin = std::sin(angle);
+      matrix._rowColumn[1][1] = cos;
+      matrix._rowColumn[1][2] = sin;
+      matrix._rowColumn[2][1] = -sin;
+      matrix._rowColumn[2][2] = cos;
+      return matrix;
+    }
+
+    Matrix44 Matrix44::ToRotationY(const float angle) {
+      auto matrix = Identity();
+      auto cos = std::cos(angle);
+      auto sin = std::sin(angle);
+      matrix._rowColumn[0][0] = cos;
+      matrix._rowColumn[0][2] = sin;
+      matrix._rowColumn[2][0] = -sin;
+      matrix._rowColumn[2][2] = cos;
+      return matrix;
+    }
+
+    Matrix44 Matrix44::ToRotationZ(const float angle) {
+      auto matrix = Identity();
+      auto cos = std::cos(angle);
+      auto sin = std::sin(angle);
+      matrix._rowColumn[0][0] = cos;
+      matrix._rowColumn[0][1] = -sin;
+      matrix._rowColumn[1][0] = sin;
+      matrix._rowColumn[1][1] = cos;
+      return matrix;
     }
 
     float Matrix44::GetValue(const int row, const int column) const {
