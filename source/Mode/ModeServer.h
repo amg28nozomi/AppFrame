@@ -79,6 +79,11 @@ namespace AppFrame {
        * @return true:描画成功 false:問題発生
        */
       bool Draw() const;
+      /**
+       * @brief  フェードイン・フェードアウトへの遷移
+       * @return true:設定 false:異常発生
+       */
+      bool FadeStart();
     private:
       //!< モードリスト
       std::list<std::shared_ptr<ModeBase>> _modes;

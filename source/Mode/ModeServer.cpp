@@ -149,6 +149,14 @@ namespace AppFrame {
       return flag;
     }
 
+    bool ModeServer::FadeStart() {
+      // 各種モードをセットする
+      InsertBeforeBack(FadeIn);
+      // フェードアウトの
+      PushBack(FadeOut);
+      return true;
+    }
+
     bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {
       // キーは登録しているか
       if (Contains(key)) {
