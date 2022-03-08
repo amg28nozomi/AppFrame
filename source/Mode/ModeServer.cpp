@@ -150,10 +150,16 @@ namespace AppFrame {
     }
 
     bool ModeServer::FadeStart() {
-      // 各種モードをセットする
+      // フェードフラグが立っている場合は処理を行わない
+      if (_fade) {
+        return false;
+      }
+      // 現在のモードの前にフェードインを追加
       InsertBeforeBack(FadeIn);
-      // フェードアウトの
+      // モードの先頭にフェードアウトを追加
       PushBack(FadeOut);
+      // フェードフラグをオンにする
+      _fade = true;
       return true;
     }
 

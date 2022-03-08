@@ -29,7 +29,12 @@ namespace AppFrame {
 
     bool ModeFadeOut::IsFinish() {
       // アルファ値は上限以上になっているか
-      return AlphaMax <= _alpha;
+      if (AlphaMax <= _alpha) {
+        // フェードアウト処理を終了する
+        _app.GetModeServer().FadeOutEnd();
+        return true;
+      }
+      return false;
     }
   } // namespace Mode
 } // namespace AppFrame

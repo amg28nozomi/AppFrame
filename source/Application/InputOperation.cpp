@@ -38,11 +38,6 @@ namespace AppFrame {
       // 状態に応じてた処理の実行
       switch (_state) {
       case State::Active:
-        //// 接続判定
-        //if (GetJoypadNum() == 0) {
-        //  _state = State::NonActive;
-        //  return; // 接続なし
-        //}
         // 入力デバイスの更新
         _xBox.Process();
       case State::Paused:
@@ -54,10 +49,6 @@ namespace AppFrame {
           _state = State::Active;
           return;
         }
-        //// 指定フレームに一度、再設定を試みる
-        //if (_app.GetFrameCount() % Count120 == 0) {
-        //  ReSetupJoypad();
-        //}
         return;
       }
     }

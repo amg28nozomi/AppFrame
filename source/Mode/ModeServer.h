@@ -25,11 +25,17 @@ namespace AppFrame {
    */
   namespace Mode {
     class ModeBase; //!< 前方宣言
+    class ModeFadeOut; //!< フェードアウト
     /**
      * @class ModeServer
      * @brief モードの管理を行うサーバ
      */
     class ModeServer : public Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>> {
+    private:
+      /**
+       * @brief フェードアウトのフレンド指定
+       */
+      friend class ModeFadeOut;
     public:
       /**
        * @brief  コンストラクタ
@@ -87,6 +93,10 @@ namespace AppFrame {
     private:
       //!< モードリスト
       std::list<std::shared_ptr<ModeBase>> _modes;
+      //!< フェード処理フラグ
+      bool _fade{false};
+      //!< フェードアウト完了フラグ
+      bool _fadeOut{false};
       /**
        * @brief  モードの登録
        * @param  key  モードに紐づける文字列
@@ -107,6 +117,12 @@ namespace AppFrame {
        * @return true:追加成功 false:追加失敗
        */
       bool InsertBeforeBack(std::string_view key);
+      /**
+       * @brief  フェードアウトフラグをオンにする
+       */
+      inline void FadeOutEnd() {
+        _fadeOut = true;
+      }
     };
   } // namespace Mode
 } // namespace AppFrame
