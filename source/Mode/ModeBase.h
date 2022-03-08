@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+#include <string_view>
 /**
  * @brief アプリケーションフレーム
  */
@@ -115,10 +116,19 @@ namespace AppFrame {
       long double _milli{0.0};
       //!< リソースの読み込みフラグ
       bool _isLoad{false};
+      //!< BGMの再生に使用する文字列
+      std::string _bgm;
       /**
        * @brief 時間経過処理
        */
       virtual void StepTime();
+      /**
+       * @brief  BGMの再生
+       * @param  key    再生するBGMのキー
+       * @param  volume 再生時の音量
+       * @return true:再生開始 false:再生失敗
+       */
+      virtual bool PlayBgm(std::string_view key, const int volume);
     };
   } // namespace Mode
 } // namespace AppFrame

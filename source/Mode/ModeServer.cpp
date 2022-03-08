@@ -113,7 +113,14 @@ namespace AppFrame {
       if (_modes.empty()) {
         return true; // 未登録
       }
+      // フェードアウト処理が終了している場合はフラグをオフにする
+      if (_fadeOut) {
+        _fadeOut = false;
+      }
+
 #ifndef _DEBUG
+
+
       return _modes.back()->Process();
 #else
       auto flag = true; // 処理フラグ

@@ -90,6 +90,20 @@ namespace AppFrame {
        * @return true:設定 false:異常発生
        */
       bool FadeStart();
+      /**
+       * @brief  フェード処理フラグの取得
+       * @return フェード処理フラグ
+       */
+      inline bool GetFadeFlag() const {
+        return _fade;
+      }
+      /**
+       * @brief  フェードアウトが終了したかの取得
+       * @return true:終了 false:終わっていない/または処理が行われていない
+       */
+      inline bool IsFadeOutEnd() const {
+        return _fadeOut;
+      }
     private:
       //!< モードリスト
       std::list<std::shared_ptr<ModeBase>> _modes;

@@ -7,9 +7,10 @@
  *********************************************************************/
 #include "ModeBase.h"
 #include <time.h>
-#include "../Application/ApplicationBase.h"
 #include "ModeServer.h"
+#include "../Application/ApplicationBase.h"
 #include "../FileServer/FileServer.h"
+#include "../SoundServer/SoundComponent.h"
 
 namespace AppFrame {
   namespace Mode {
@@ -63,6 +64,18 @@ namespace AppFrame {
 
     void ModeBase::StepTime() {
       ++_count; // カウンタの経過
+    }
+
+    bool ModeBase::PlayBgm(std::string_view key, const int volume) {
+      // BGMの再生に成功したか
+      if (!_app.GetSoundComponent().PlayLoop(key.data())) {
+        return false; // 再生失敗
+      }
+      // 音量を設定する
+      _app.GetSoundComponent().SetVolume(key.data(), volume);
+      // 再生した音声に紐づけた文字列をセットする
+      _bgm = key.data();
+      return true;
     }
   } // namespace Mode
 } // namespace AppFrame
