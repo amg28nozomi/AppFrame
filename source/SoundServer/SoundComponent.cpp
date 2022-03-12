@@ -8,6 +8,7 @@
 #include "SoundComponent.h"
 #include <DxLib.h>
 #include "../Application/ApplicationBase.h"
+#include "../Math/Arithmetic.h"
 
 namespace {
   constexpr auto VolumeMin = 0;
@@ -67,8 +68,16 @@ namespace AppFrame {
       if (handle == -1) {
         return false; // サウンドハンドルの取得に失敗
       }
+      /**
+       * @brief  再生音量の調整
+       * @param  soundVolume 再生音量
+       * @return クランプした値を返す
+       */
+      auto ClampVolume = [](int soundVolume) {
+        return Math::Arithmetic::Clamp(soundVolume, VolumeMin, VolumeMax);
+      };
       // サウンドの音量を設定する
-      if (ChangeVolumeSoundMem(volume, handle) == -1) {
+      if (ChangeVolumeSoundMem(ClampVolume(volume), handle) == -1) {
         return false;
       }
       return true;
