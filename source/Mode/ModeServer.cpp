@@ -113,11 +113,6 @@ namespace AppFrame {
       if (_modes.empty()) {
         return true; // 未登録
       }
-      // フェードアウト処理が終了している場合はフラグをオフにする
-      if (_fadeOut) {
-        _fadeOut = false;
-      }
-
 #ifndef _DEBUG
 
 
@@ -168,6 +163,10 @@ namespace AppFrame {
       // フェードフラグをオンにする
       _fade = true;
       return true;
+    }
+
+    const std::shared_ptr<ModeBase> ModeServer::GetMode(const std::string_view key) {
+      return FetchMode(key);
     }
 
     bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {

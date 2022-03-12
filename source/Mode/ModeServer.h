@@ -98,11 +98,24 @@ namespace AppFrame {
         return _fade;
       }
       /**
+       * @brief  指定したモードを取得
+       * @param  key モードに紐づけた文字列
+       * @return 対象のモードを返す
+       *         取得に失敗した場合はnullptrを返す
+       */
+      const std::shared_ptr<ModeBase> GetMode(const std::string_view key);
+      /**
        * @brief  フェードアウトが終了したかの取得
        * @return true:終了 false:終わっていない/または処理が行われていない
        */
       inline bool IsFadeOutEnd() const {
         return _fadeOut;
+      }
+      /**
+       * @brief  フェードアウトフラグをオフにする
+       */
+      void FadeOutReset() {
+        _fadeOut = false;
       }
     private:
       //!< モードリスト

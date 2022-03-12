@@ -258,6 +258,12 @@ namespace AppFrame {
        */
       float Dot(const Vector4& vecotr) const;
       /**
+       * @brief  ベクトル同士の内積(2次元)
+       * @param  vector ベクトル(2次元)
+       * @return 内積(2次元)
+       */
+      float Dot2D(const Vector4& vector) const;
+      /**
        * @brief  ベクトル同士の内積
        * @param  left ベクトル(左辺)
        * @param  right ベクトル(右辺)

@@ -178,6 +178,10 @@ namespace AppFrame {
       return _x * vector._x + _y * vector._y + _z * vector._z;
     }
 
+    float Vector4::Dot2D(const Vector4& vector) const {
+      return _x * vector._x + _y * vector._y;
+    }
+
     float Vector4::Dot(const Vector4& right, const Vector4& left) {
       return right.Dot(left);
     }

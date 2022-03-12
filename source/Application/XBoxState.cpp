@@ -40,11 +40,11 @@ namespace AppFrame {
       auto old = _press; // 前フレームのボタン入力情報
       // 入力状態の取得に成功したか
       if (GetJoypadXInputState(DX_INPUT_PAD1, &_press) == Error) {
-        // 失敗した場合は未接続状態に遷移
-        _state = State::NonActive;
-#ifdef _DEBUG
-        throw std::logic_error("識別IDが有効ではありません\n");
-#endif
+//        // 失敗した場合は未接続状態に遷移
+//        _state = State::NonActive;
+//#ifdef _DEBUG
+//        throw std::logic_error("識別IDが有効ではありません\n");
+//#endif
         return; // 取得失敗
       }
       // アナログスティック専用の更新
