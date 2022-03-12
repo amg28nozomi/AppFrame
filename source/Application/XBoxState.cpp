@@ -122,6 +122,17 @@ namespace AppFrame {
       return _triggerButtons[key];  // トリガ情報を返す
     }
 
+    bool XBoxState::InputAnyButton() const {
+      // 何らかのボタン入力があるかの判定
+      for (auto button : _press.Buttons) {
+        // ボタン入力がある場合はtrueを返す
+        if (button == 1) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     std::pair<int, int> XBoxState::GetStick(const bool stick) const {
       int x, y; // 縦横の入力状態
       // 左右どちらの入力状態を取得するか

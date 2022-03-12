@@ -52,6 +52,11 @@ namespace AppFrame {
        */
       bool GetButton(const int key, const bool type = InputPress) const;
       /**
+       * @brief  何らかのボタン入力があるかの判定
+       * @return true:入力あり false:入力なし
+       */
+      bool InputAnyButton() const;
+      /**
        * @brief  アナログスティックの入力状態を取得
        * @brief  stick 左右どちらのアナログスティックの入力を取得するか
        *               false:左スティック　true:右スティック
