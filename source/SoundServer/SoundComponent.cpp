@@ -21,7 +21,7 @@ namespace AppFrame {
     SoundComponent::SoundComponent(Application::ApplicationBase& app) : _app(app) {
     }
 
-    bool SoundComponent::PlayBackGround(std::string_view key, const int volume = DefaultVolume) const {
+    bool SoundComponent::PlayBackGround(std::string_view key, const int volume) const {
       // 指定した音源ファイルのバックグラウンド再生を行う
       auto flag = Play(key, DX_PLAYTYPE_BACK);
       // 再生音量をセットする
@@ -29,7 +29,7 @@ namespace AppFrame {
       return flag;
     }
 
-    bool SoundComponent::PlayLoop(std::string_view key, const int volume = DefaultVolume) const {
+    bool SoundComponent::PlayLoop(std::string_view key, const int volume) const {
       // 指定した音源ファイルのループ再生を行う
       auto flag =  Play(key, DX_PLAYTYPE_LOOP);
       // 再生音量をセットする
