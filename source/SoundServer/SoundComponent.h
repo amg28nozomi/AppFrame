@@ -24,6 +24,7 @@ namespace AppFrame {
   namespace Sound {
     constexpr auto Play = true;  //!< サウンド再生中
     constexpr auto Stop = false; //!< サウンド停止中
+    constexpr auto DefaultVolume = 100;
     /**
      * @class SoundComponent
      * @brief サウンドコンポーネント
@@ -38,15 +39,17 @@ namespace AppFrame {
       /**
        * @brief  サウンドのバックグラウンド再生
        * @param  key サウンドに紐づけられた文字列
+       * @param  volume 再生音量(デフォルトは100)
        * @return true:再生成功 false:再生失敗
        */
-      bool PlayBackGround(std::string_view key) const;
+      bool PlayBackGround(std::string_view key, const int volume = DefaultVolume) const;
       /**
        * @brief  サウンドのループ再生
        * @param  key サウンドに紐づけられた文字列
+       * @param  volume 再生音量(デフォルトは100)
        * @return true:再生成功 false:再生失敗
        */
-      bool PlayLoop(std::string_view key) const;
+      bool PlayLoop(std::string_view key, const int volume = DefaultVolume) const;
       /**
        * @brief  指定した音声の再生を停止する
        * @param  key サウンドに紐づけられた文字列

@@ -9,20 +9,31 @@
 #include <DxLib.h>
 #include "../Application/ApplicationBase.h"
 
+namespace {
+  constexpr auto VolumeMin = 0;
+  constexpr auto VolumeMax = 255;
+} // namespace 
+
 namespace AppFrame {
   namespace Sound {
 
     SoundComponent::SoundComponent(Application::ApplicationBase& app) : _app(app) {
     }
 
-    bool SoundComponent::PlayBackGround(std::string_view key) const {
+    bool SoundComponent::PlayBackGround(std::string_view key, const int volume = DefaultVolume) const {
       // 指定した音源ファイルのバックグラウンド再生を行う
-      return Play(key, DX_PLAYTYPE_BACK);
+      auto flag = Play(key, DX_PLAYTYPE_BACK);
+      // 再生音量をセットする
+      SetVolume(key, volume);
+      return flag;
     }
 
-    bool SoundComponent::PlayLoop(std::string_view key) const {
+    bool SoundComponent::PlayLoop(std::string_view key, const int volume = DefaultVolume) const {
       // 指定した音源ファイルのループ再生を行う
-      return Play(key, DX_PLAYTYPE_LOOP);
+      auto flag =  Play(key, DX_PLAYTYPE_LOOP);
+      // 再生音量をセットする
+      SetVolume(key, volume);
+      return flag;
     }
 
     bool SoundComponent::StopSound(std::string_view key) const {
