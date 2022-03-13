@@ -85,7 +85,7 @@ namespace AppFrame {
     bool ModelServer::DeleteDuplicateModels(std::string_view key, bool flag) {
       // フラグが立っている場合は全要素に処理を行う
       if (flag) {
-        for (auto [key, value] : _registry) {
+        for (auto&& [key, value] : _registry) {
           // 複製されたモデルハンドルのみを削除
           DeleteDuplicateModels(value.GetHandles());
         }
@@ -127,16 +127,19 @@ namespace AppFrame {
 
     void ModelServer::DeleteDuplicateModels(std::unordered_map<unsigned short, int>& handles) {
       // ハンドルは登録されているか
-      if (!handles.size()) {
+      if (handles.empty()) {
         return; // 未登録
       }
       // オリジナルのモデルハンドルをコピー
       auto original = handles.at(0);
-      handles.erase(0); // オリジナルハンドルをコンテナから削除
+      // オリジナルハンドルをコンテナから削除
+      handles.erase(0);
       // 複製したモデルハンドルを削除
       for (auto [key, handle] : handles) {
         MV1DeleteModel(handle);
       }
+      // コンテナを初期化
+      handles.clear();
       // オリジナルハンドルを再登録
       handles.emplace(0, original);
     }
