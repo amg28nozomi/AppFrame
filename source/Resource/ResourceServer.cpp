@@ -61,6 +61,19 @@ namespace AppFrame{
       return true; // 登録成功
     }
 
+    bool ResourceServer::LoadDivGraph(DivGraphTable divGraphTable) {
+      // 要素が空の場合は登録を行わない
+      if (divGraphTable.empty()) {
+        return false;
+      }
+      // 登録情報を全て登録する
+      for (auto&& [key, data] : divGraphTable) {
+        // 画像の読み取りを行う
+        ResourceServer::LoadDivGraph(key, data);
+      }
+      return true; // 成功
+    }
+
     void ResourceServer::DeleteGraphs(std::vector<int> handles) const {
       for (auto handle : handles) {
         // グラフィックハンドルの削除
@@ -79,7 +92,7 @@ namespace AppFrame{
 
     const int ResourceServer::GetHandle(std::string_view key, const int no) const {
       // キーは登録されているか
-      if (!UseKey(key.data())) {
+      if (!Contains(key.data())) {
         return -1; // 未登録
       }
       // 情報の取得
@@ -91,6 +104,19 @@ namespace AppFrame{
         return -1; // ハンドル番号が範囲外
       }
       return handles.at(no); // 対応するグラフィックハンドルを返す
+    }
+
+    std::vector<int> ResourceServer::GetHandles(std::string_view key) const {
+      // キーが未登録の場合
+      if (!Contains(key.data())) {
+        // ハンドルを格納するコンテナ
+        std::vector<int> handles{};
+        // 空のコンテナを返す
+        return handles;
+      }
+      // ハンドルを返す
+      auto [divGraph, handle] = _registry.at(key.data());
+      return handle;
     }
 
     bool ResourceServer::SetDirectryPath(std::filesystem::path path) {

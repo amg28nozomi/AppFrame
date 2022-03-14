@@ -155,6 +155,7 @@ namespace AppFrame {
     }
 
     void ApplicationBase::Terminate() {
+      _resourceServer->Release();
       // DXƒ‰ƒCƒuƒ‰ƒŠ‚ÌI—¹
       DxLib_End();
     }

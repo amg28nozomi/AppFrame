@@ -31,7 +31,7 @@ namespace AppFrame {
        * @param first:紐づける文字列
        * @param second:画像情報
        */
-      using DivGraphTable = std::pair<std::string, Data::DivGraph>;
+      using DivGraphTable = std::unordered_map<std::string, Data::DivGraph>;
       /**
        * @brief コンストラクタ
        * @param path ディレクトリパス
@@ -50,6 +50,12 @@ namespace AppFrame {
        */
       bool LoadDivGraph(std::string_view key, Data::DivGraph divGraph);
       /**
+       * @brief  画像の読み取り
+       * @param  divGraphTable 画像情報テーブル
+       * @return true:成功 false:失敗
+       */
+      bool LoadDivGraph(DivGraphTable divGraphTable);
+      /**
        * @brief  指定した画像情報の取得
        * @param  key 対象情報に紐づけられた文字列
        * @return first:画像情報 second:グラフィックハンドルが格納されたコンテナ
@@ -63,6 +69,12 @@ namespace AppFrame {
        *         失敗した場合は-1を返す
        */
       const int GetHandle(std::string_view key ,const int no = 0) const;
+      /**
+       * @brief  指定したグラフィックハンドルが格納されたコンテナを取得
+       * @param  key 対象に紐づけられた文字列
+       * @return 取得に成功した場合はコンテナを返す
+       */
+      std::vector<int> GetHandles(std::string_view key) const;
       /**
        * @brief  ディレクトリパスの設定(未登録の場合のみ登録可能)
        * @param  path ディレクトリパス
