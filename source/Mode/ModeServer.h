@@ -100,10 +100,11 @@ namespace AppFrame {
       /**
        * @brief  指定したモードを取得
        * @param  key モードに紐づけた文字列
+       * @param  flag Enter処理を行うか(true:行う false:行わない)
        * @return 対象のモードを返す
        *         取得に失敗した場合はnullptrを返す
        */
-      const std::shared_ptr<ModeBase> GetMode(const std::string_view key);
+      const std::shared_ptr<ModeBase> GetMode(const std::string_view key, const bool flag = true);
       /**
        * @brief  フェードアウトが終了したかの取得
        * @return true:終了 false:終わっていない/または処理が行われていない
@@ -134,10 +135,11 @@ namespace AppFrame {
       /**
        * @brief  データベースから指定したモードを取得する
        * @param  key 対象モードに紐づけられた文字列
+       * @param  flag Enter処理フラグ(true:呼び出す false:呼び出さない)
        * @return 指定したモードを返す
        *         キーが有効ではない場合、nullptrを返す
        */
-      std::shared_ptr<ModeBase> FetchMode(std::string_view key);
+      std::shared_ptr<ModeBase> FetchMode(std::string_view key, const bool flag = true);
       /**
        * @brief  リストの末尾の要素の直前に指定したモードを追加する
        * @param  key 対象モードに紐づけられた文字列

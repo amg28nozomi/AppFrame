@@ -165,8 +165,8 @@ namespace AppFrame {
       return true;
     }
 
-    const std::shared_ptr<ModeBase> ModeServer::GetMode(const std::string_view key) {
-      return FetchMode(key);
+    const std::shared_ptr<ModeBase> ModeServer::GetMode(const std::string_view key, const bool flag) {
+      return FetchMode(key, flag);
     }
 
     bool ModeServer::Register(std::string key, std::shared_ptr<ModeBase> mode) {
@@ -182,14 +182,17 @@ namespace AppFrame {
       return true;
     }
 
-    std::shared_ptr<ModeBase> ModeServer::FetchMode(std::string_view key) {
+    std::shared_ptr<ModeBase> ModeServer::FetchMode(std::string_view key, const bool flag) {
       // モードは登録されているか
       if (!Contains(key.data())) {
         return nullptr; // 未登録
       }
       // キーに対応したモードの取得
       auto mode = _registry.at(key.data());
-      mode->Enter(); // 入口処理を実行
+      // フラグが立っている場合のみ実行
+      if (flag) {
+        mode->Enter(); // 入口処理を実行
+      }
       return mode;
     }
 
