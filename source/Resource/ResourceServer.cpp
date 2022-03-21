@@ -148,7 +148,7 @@ namespace AppFrame{
         return number - 1;
       };
       // ˆø”‚ğC³
-      value = CheckNum(value);
+      num = CheckNum(num);
       // ‘ÎÛ”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©
       return 0 <= value && value <= num;
     }
