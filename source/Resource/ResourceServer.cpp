@@ -150,7 +150,7 @@ namespace AppFrame{
       // ˆø”‚ğC³
       value = CheckNum(value);
       // ‘ÎÛ”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©
-      return 0 <= value && num <= value;
+      return 0 <= value && value <= num;
     }
   } // namespace Resource
 } // namespace AppFrame
