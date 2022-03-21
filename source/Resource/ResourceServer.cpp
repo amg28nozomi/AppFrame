@@ -137,6 +137,10 @@ namespace AppFrame{
        * @return 1ˆÈã‚Ìê‡‚Í-1‚µ‚½’l‚ğ•Ô‚· 0ˆÈ‰º‚Ìê‡‚Í-1‚ğ•Ô‚·
        */
       auto CheckNum = [](int number) {
+        // 0‚Ìê‡‚Í‚»‚Ì‚Ü‚Ü•Ô‚·
+        if (number == 0) {
+          return number;
+        }
         // ˆø”‚Í0ˆÈ‰º‚©
         if (number <= 0) {
           return -1;
