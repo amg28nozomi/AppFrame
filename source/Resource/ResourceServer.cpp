@@ -97,10 +97,8 @@ namespace AppFrame{
       }
       // 情報の取得
       auto [divGraph, handles] = _registry.at(key.data());
-      // 省略
-      using MathA = Math::Arithmetic;
-      // 範囲内に収まっているか
-      if (!MathA::IsRange(no, 0, static_cast<int>(handles.size()) - 1)) {
+      // 対象範囲内に収まっているかの判定
+      if (!IsRange(static_cast<int>(handles.size()), no)) {
         return -1; // ハンドル番号が範囲外
       }
       return handles.at(no); // 対応するグラフィックハンドルを返す
@@ -130,6 +128,25 @@ namespace AppFrame{
         return true;
       }
       return false;
+    }
+
+    bool ResourceServer::IsRange(int num, int value) const {
+      /**
+       * @brief  引数の判定
+       * @param  number 対象の値
+       * @return 1以上の場合は-1した値を返す 0以下の場合は-1を返す
+       */
+      auto CheckNum = [](int number) {
+        // 引数は0以下か
+        if (number <= 0) {
+          return -1;
+        }
+        return number - 1;
+      };
+      // 引数を修正
+      value = CheckNum(value);
+      // 対象範囲内に収まっているか
+      return 0 <= value && num <= value;
     }
   } // namespace Resource
 } // namespace AppFrame

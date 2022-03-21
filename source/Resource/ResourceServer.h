@@ -96,6 +96,13 @@ namespace AppFrame {
        * @param  handles グラフィックハンドルが格納されたコンテナ
        */
       void DeleteGraphs(std::vector<int> handles) const;
+      /**
+       * @brief  要素番号が有効かの判定
+       * @param  num 対象の要素数
+       * @param  value 取得したい要素番号
+       * @return true:範囲内 false:範囲内ではない
+       */
+      bool IsRange(int num, int value) const;
     };
   } // namespace Resource
 } // namespace AppFrame
