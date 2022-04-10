@@ -214,5 +214,5 @@ namespace AppFrame {
     Vector4 Vector4::Direction(const Vector4& vector) const {
       return vector - *this;
     }
-  }
-}
+  } // namespace Math
+} // namespace AppFrame

@@ -18,5 +18,5 @@ namespace AppFrame {
     InputBase::~InputBase() {
       --_connection;
     }
-  } // Application
-} // AppFrame
+  } // namespace Application
+} // namespace AppFrame

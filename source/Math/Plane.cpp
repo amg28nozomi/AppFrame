@@ -22,5 +22,5 @@ namespace AppFrame{
     float Plane::SignedDist(const Vector4& point) const {
       return Vector4::Dot(point, _normal) - _mDistance;
     }
-  }
+  } // namespace Math
 } // namespace AppFrame

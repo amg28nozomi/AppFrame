@@ -21,5 +21,5 @@ namespace AppFrame{
       // 重力スケールを返す
       return speed + (_acceleration * mass);
     }
-  }
-}
+  } // namespace Math
+} // namespace AppFrame

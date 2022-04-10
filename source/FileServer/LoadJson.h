@@ -48,21 +48,6 @@ namespace AppFrame {
        */
       bool LoadJsonFile(std::string_view path);
       /**
-       * @brief  jsonファイルの読み取り処理(DivGraph用)
-       * @param  jsonPath
-       * @return DivGraph用のデータが格納された動的配列
-       *         first:連想配列の登録に使用するキー pair:画像ファイル情報
-       */
-      //static std::vector<std::pair<std::string_view,
-      //  std::filesystem::path>> LoadDivGraoh(std::filesystem::path jsonPath);
-      /**
-       * @brief  jsonファイルの読み取り処理
-       * @param  jsonPath jsonファイルのパス
-       * @return 取得したファイルデータを返す
-       * @throw  std::logic_error
-       */
-      //static std::vector<std::pair<std::string, Data::DivGraph>> LoadJsonFile(std::filesystem::path jsonPath);
-      /**
        * @brief  対象ファイルがjsonファイルかを判定する
        * @param  path 判定ファイルのパス
        * @return jsonファイルの場合はtrue

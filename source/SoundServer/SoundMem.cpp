@@ -15,5 +15,5 @@ namespace AppFrame {
       _playType = playType;
       _soundHandle = LoadSoundMem(filePath.string().data());
     }
-  }
-}
+  } // namespace Sound
+} // namespace AppFrame

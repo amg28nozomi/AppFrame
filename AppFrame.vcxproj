@@ -177,7 +177,6 @@
     <ClInclude Include="source\FileServer\FileBase.h" />
     <ClInclude Include="source\FileServer\FileOutput.h" />
     <ClInclude Include="source\FileServer\FileServer.h" />
-    <ClInclude Include="source\FileServer\JsonServer.h" />
     <ClInclude Include="source\FileServer\LoadJson.h" />
     <ClInclude Include="source\FileServer\WriteJson.h" />
     <ClInclude Include="source\Math\Arithmetic.h" />
@@ -217,7 +216,6 @@
     <ClCompile Include="source\FileServer\FileBase.cpp" />
     <ClCompile Include="source\FileServer\FileOutput.cpp" />
     <ClCompile Include="source\FileServer\FileServer.cpp" />
-    <ClCompile Include="source\FileServer\JsonServer.cpp" />
     <ClCompile Include="source\FileServer\LoadJson.cpp" />
     <ClCompile Include="source\FileServer\WriteJson.cpp" />
     <ClCompile Include="source\Math\Arithmetic.cpp" />
@@ -236,9 +234,6 @@
     <ClCompile Include="source\Mode\ModeFadeOut.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
     <ClCompile Include="source\Resource\ResourceServer.cpp" />
-    <ClCompile Include="source\Server\ServerBase.cpp" />
-    <ClCompile Include="source\Server\ServerTemplateUnordered.cpp" />
-    <ClCompile Include="source\Server\ServerTemplateVector.cpp" />
     <ClCompile Include="source\SoundServer\SoundComponent.cpp" />
     <ClCompile Include="source\SoundServer\SoundMem.cpp" />
     <ClCompile Include="source\SoundServer\SoundServer.cpp" />

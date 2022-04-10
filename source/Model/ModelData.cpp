@@ -62,4 +62,4 @@ namespace AppFrame {
       return _animes.at(animName.data());
     }
   } // namespace Model
-} // namespace 
+} // namespace AppFrame
