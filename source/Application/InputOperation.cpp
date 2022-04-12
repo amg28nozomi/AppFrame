@@ -9,7 +9,6 @@
 #include <array>
 #include <DxLib.h>
 #include "ApplicationBase.h"
-#include "XBoxState.h"
 
 namespace {
   constexpr auto PadMax = 4;   // ジョイパッドの接続数上限
@@ -40,6 +39,7 @@ namespace AppFrame {
       case State::Active:
         // 入力デバイスの更新
         _xBox.Process();
+        _keyboard.Process();
       case State::Paused:
         return; // 実行なし
       case State::NonActive:
@@ -69,11 +69,6 @@ namespace AppFrame {
         return false; // 接続なし
       }
       return true;    // 接続あり
-    }
-
-    int InputOperation::ToNumber(std::string_view key) const {
-      // 対象のキーを変換する
-      return 0;
     }
   } // namespace Application
 } // namespace AppFrame

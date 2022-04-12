@@ -38,6 +38,12 @@ namespace AppFrame {
        * @return 0:入力無し 1:入力有り
        */
       const int GetKey(const int keyCode) const;
+      /**
+       * @brief  Escapeキーの入力状態の取得
+       * @param  type 押下・トリガ入力のどちらを取得するか(true:押下 false:トリガ)
+       * @return 0:入力無し 1:入力有り
+       */
+      const int GetEscapeKey(const bool type) const;
     private:
       std::array<char, AllKeysNum> _press;   //!< 押下情報
       std::array<char, AllKeysNum> _trigger; //!< トリガ情報

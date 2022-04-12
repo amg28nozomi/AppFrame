@@ -26,20 +26,18 @@ namespace AppFrame {
     }
 
     void KeyboardState::Process() {
-      auto old = _press; // 前フレームの状態
+      // 前フレームの状態
+      auto old = _press;
       char keyboard[AllKeysNum];
       // 入力状態の取得に成功したか
       if (GetHitKeyStateAll(keyboard) == Error) {
-#ifdef _DEBUG
-        throw std::logic_error("KeyboardState:入力状態の更新に失敗しました\n");
-#endif
-        _state = State::NonActive;
         return; // 取得失敗
       }
       // 各種状態の更新
       for (auto number = 0; auto&& key : _press) {
         key = keyboard[number]; // 押下情報の更新
         _trigger[number] = key ^ old[number] & key; // トリガ情報の更新
+        ++number;
       }
     }
 
@@ -58,6 +56,14 @@ namespace AppFrame {
       }
 #endif
       return _press.at(keyCode);
+    }
+
+    const int KeyboardState::GetEscapeKey(const bool type) const {
+      // フラグに対応したエスケープキーの入力状態を返す
+      if (type) {
+        return static_cast<int>(_press[KEY_INPUT_ESCAPE]);
+      }
+      return static_cast<int>(_trigger[KEY_INPUT_ESCAPE]);
     }
   } // namespace Application
 } // namespace AppFrame

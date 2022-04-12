@@ -11,6 +11,7 @@
 #include <future>
 #include "JoypadState.h"
 #include "XboxState.h"
+#include "KeyboardState.h"
 
 /**
  * @brief アプリケーションフレーム
@@ -94,17 +95,19 @@ namespace AppFrame {
       inline XBoxState& GetXBoxState() {
         return _xBox;
       }
-    private:
-      ApplicationBase& _app; //!< アプリケーションの参照
-      State _state{};        //!< 状態
-      XBoxState _xBox;       //!< xボックスコントローラの入力状態
-      int _accessLimit{0};   //!< デバイスの接続上限
       /**
-       * @brief 
-       * @param  key 対象ボタンのキー
-       * @return 
+       * @brief  キーボードの入力状態の取得
+       * @return キーボードの入力状態の参照
        */
-      int ToNumber(std::string_view key) const;
+      inline KeyboardState& GetKeyboardState() {
+        return _keyboard;
+      }
+    private:
+      ApplicationBase& _app;   //!< アプリケーションの参照
+      State _state{};          //!< 状態
+      XBoxState _xBox;         //!< xボックスコントローラの入力状態
+      KeyboardState _keyboard; //!< キーボードの入力状態
+      int _accessLimit{0};     //!< デバイスの接続上限
     };
   } // namespace Application
 } // namespace AppFrame
