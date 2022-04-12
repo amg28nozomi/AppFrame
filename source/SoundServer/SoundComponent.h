@@ -78,7 +78,7 @@ namespace AppFrame {
       }
     private:
       Application::ApplicationBase& _app; //!< アプリケーションの参照
-      bool _mute{false}; //!< ミュートフラグ
+      bool _mute{false};                  //!< ミュートフラグ
       /**
        * @brief  サウンドの再生
        * @param  key サウンドに紐づけられた文字列

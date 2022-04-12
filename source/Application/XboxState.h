@@ -36,10 +36,10 @@ namespace AppFrame {
        */
       void Process() override;
       /**
-       * @brief
-       * @param min
-       * @param max
-       * @return 
+       * @brief  デッドゾーンの設定
+       * @param  min 下限
+       * @param  max 上限
+       * @return true:設定完了 false:設定失敗
        */
       bool SetDeadZone(const float min, const float max);
       /**

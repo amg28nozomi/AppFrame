@@ -31,13 +31,5 @@ namespace AppFrame {
       jsonFile.close();
       return jsonName;
     }
-
-    bool WriteJson::Save(std::string_view path) {
-      std::ofstream jsonFile;
-      // ファイルを開く
-      jsonFile.open(path.data(), std::ios::out);
-      jsonFile.close(); // ファイルを閉じる
-      return false;
-    }
   } // namespace FileServer
 } // namespace AppFrame

@@ -71,10 +71,14 @@ namespace AppFrame {
         return _active;
       }
     protected:
-      static inline int _connection{0}; //!< 総接続数
-      DeviceType _type{0}; //!< デバイスの機種
-      State _state;        //!< 状態
-      bool _active{true};  //!< 有効かどうか
+      //!< 総接続数
+      static inline int _connection{0};
+      //!< デバイスの機種
+      DeviceType _type{0};
+      //!< 状態
+      State _state;
+      //!< 有効かどうか
+      bool _active{true};
     };
   } // Application
 } // AppFrame

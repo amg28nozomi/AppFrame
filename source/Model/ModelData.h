@@ -17,9 +17,9 @@ namespace AppFrame {
    */
   namespace Model {
     class ModelServer;
-    constexpr unsigned short Original = 0; // モデルハンドルの登録で使用するキー
-    constexpr unsigned short MaxNumber = 65535; // キーの上限
-    constexpr auto AnimNull = -1; //!< アニメーション番号該当なし
+    constexpr unsigned short Original = 0;      //!< モデルハンドルの登録で使用するキー
+    constexpr unsigned short MaxNumber = 65535; //!< キーの上限
+    constexpr auto AnimNull = -1;               //!< アニメーション番号該当なし
     /**
      * @class ModelData
      * @brief モデル情報クラス

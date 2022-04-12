@@ -196,9 +196,12 @@ namespace AppFrame {
       static inline int _width{0};
       //!< ウィンドウサイズ(高さ)
       static inline int _height{0};
-      static inline int _colorBit{0};       //!< カラービット数
-      static inline bool _setInstance{false};   //!< 生成フラグ
-      static inline bool _windowMode{false};    //!< ウィンドウモード
+      //!< カラービット数
+      static inline int _colorBit{0};
+      //!< 生成フラグ
+      static inline bool _setInstance{false};
+      //!< ウィンドウモード
+      static inline bool _windowMode{false};
       //!< アプリケーションの実体
       static inline std::shared_ptr<ApplicationBase> _instance{nullptr};
       //!< ファイルサーバ
