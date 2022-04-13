@@ -81,7 +81,15 @@ namespace AppFrame {
        * @return true:設定成功 false:失敗
        */
       bool SetDirectryPath(std::filesystem::path path);
+      /**
+       * @brief  上書きフラグの変更
+       * @param  flag　上書き処理を行うか(true:行う false:行わない)
+       */
+      inline void SetOverWrite(bool flag) {
+        _overWrite = flag;
+      }
     private:
+      bool _overWrite{false};             //!< データの上書きを行うか(true:上書きする false:上書きを行わない)
       std::filesystem::path _directory{}; //!< ディレクトリパス
       /**
        * @brief  ファイルパスの結合

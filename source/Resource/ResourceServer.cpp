@@ -34,6 +34,10 @@ namespace AppFrame{
     bool ResourceServer::LoadDivGraph(std::string_view key, Data::DivGraph divGraph) {
       // キーは登録されているか
       if (_registry.contains(key.data())) {
+        // 上書き処理を行うか
+        if (!_overWrite) {
+          return true; // 行わずに終了する
+        }
         // キーが重複している場合は既存データを削除
         auto&& [graph, handles] = _registry.at(key.data());
         // グラフィックハンドルの削除
