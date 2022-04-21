@@ -48,9 +48,9 @@ namespace AppFrame {
        */
       static void Reset(MatrixArray& matrix);
       /**
-       * @brief
-       * @param matrix
-       * @return 
+       * @brief  引数の単位行列化
+       * @param  matrix 行列クラスの参照
+       * @return 単位行列
        */
       static Matrix44 Identity(const Matrix44& matrix);
       /**
@@ -74,9 +74,9 @@ namespace AppFrame {
       static Matrix44 Translate(const Vector4& vector);
       /**
        * @brief  拡大縮小行列の取得
-       * @param  x
-       * @param  y
-       * @param  z
+       * @param  x 
+       * @param  y 
+       * @param  z 
        * @return 拡大縮小行列
        */
       static Matrix44 Scaling(float x, float y, float z);

@@ -26,7 +26,6 @@ namespace {
 
 namespace AppFrame {
   namespace Application {
-
     /**
      * @brief ウィンドウ情報をキーとして、画面サイズ情報をpair型で保持する連想配列
      */
@@ -36,7 +35,9 @@ namespace AppFrame {
     };
 
     ApplicationBase::ApplicationBase() {
+      // パーティクル上限の設定
       _particleMax = 4000;
+      // ウィンドウモードの設定
 #ifndef _DEBUG
       _windowMode = false;
 #else

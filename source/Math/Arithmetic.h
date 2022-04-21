@@ -36,7 +36,7 @@ namespace AppFrame {
        */
       static int Clamp(const int value, const int low, const int height);
       /**
-       * @brief  
+       * @brief  float値のクランプ処理
        * @param  value  単精度浮動小数点実数
        * @param  low    クランプ下限
        * @param  height クランプ上限
