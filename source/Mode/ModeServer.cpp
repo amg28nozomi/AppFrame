@@ -80,7 +80,7 @@ namespace AppFrame {
       return true;
     }
 
-    void ModeServer::PopBuck() {
+    void ModeServer::PopBack() {
       // モードは登録されているか
       if (_modes.empty()) {
         return; // モードが未登録
@@ -108,14 +108,31 @@ namespace AppFrame {
       return true;
     }
 
+    bool ModeServer::DeleteMode() {
+      // 削除フラグが立っているかの判定
+      if (!_modes.back()->PopBackFlag()) {
+        return false;
+      }
+      // 終了処理呼び出し
+      _modes.back()->Exit();
+      // 末尾のモードを削除する
+      _modes.pop_back();
+    }
+
     bool ModeServer::Process() {
       // モードはスタックされているか
       if (_modes.empty()) {
         return true; // 未登録
       }
+      // モードの削除
+      if (DeleteMode()) {
+        // モードはスタックされているか
+        if (_modes.empty()) {
+          return true;
+        }
+      }
 #ifndef _DEBUG
-
-
+      // 末尾を更新する
       return _modes.back()->Process();
 #else
       auto flag = true; // 処理フラグ

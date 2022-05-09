@@ -68,7 +68,7 @@ namespace AppFrame {
       /**
        * @brief  リストの末尾に登録されているモードを削除する
        */
-      void PopBuck();
+      void PopBack();
       /**
        * @brief  モードの遷移処理
        * @param  key 対象モードに紐づけられた文字列
@@ -146,6 +146,11 @@ namespace AppFrame {
        * @return true:追加成功 false:追加失敗
        */
       bool InsertBeforeBack(std::string_view key);
+      /**
+       * @brief  末尾のモードを削除するかの判定
+       * @return true:削除 false:削除していない
+       */
+      bool DeleteMode();
       /**
        * @brief  フェードアウトフラグをオンにする
        */

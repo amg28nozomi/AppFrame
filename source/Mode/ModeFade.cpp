@@ -44,7 +44,7 @@ namespace AppFrame{
       // フェードイン処理の終了判定
       if (IsFinish()) {
         // 自身を削除する
-        _app.GetModeServer().PopBuck();
+        _app.GetModeServer().PopBack();
         return true;
       }
       return false;

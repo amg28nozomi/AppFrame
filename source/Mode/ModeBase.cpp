@@ -77,5 +77,14 @@ namespace AppFrame {
       _bgm = key.data();
       return true;
     }
+
+    bool ModeBase::PopBack() {
+        // 消去予約が行われているか
+        if (!_popBack) {
+            return false; // フラグは立っていない
+        }
+        // このモードを削除する
+        _app.GetModeServer().PopBack();
+    }
   } // namespace Mode
 } // namespace AppFrame

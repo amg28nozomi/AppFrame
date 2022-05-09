@@ -107,6 +107,13 @@ namespace AppFrame {
       long double GetMilliSecond() const {
         return _milli;
       }
+      /**
+       * @brief  消去予約フラグの取得
+       * @return true:予約あり false:予約なし
+       */
+      bool PopBackFlag() const {
+          return _popBack;
+      }
     protected:
       //!< アプリケーションの参照
       Application::ApplicationBase& _app;
@@ -115,7 +122,9 @@ namespace AppFrame {
       //!< 本モード内での経過時間(ミリ秒)
       long double _milli{0.0};
       //!< リソースの読み込みフラグ
-      bool _isLoad{false};
+      bool _isLoad{ false };
+      //!< 消去予約フラグ
+      bool _popBack{ false };
       //!< BGMの再生に使用する文字列
       std::string _bgm;
       /**
@@ -129,6 +138,11 @@ namespace AppFrame {
        * @return true:再生開始 false:再生失敗
        */
       virtual bool PlayBgm(std::string_view key, const int volume);
+      /**
+       * @brief  モードの削除予約
+       * @return true:消去予約をした false:消去予約をしていない
+       */
+      virtual bool PopBack();
     };
   } // namespace Mode
 } // namespace AppFrame
