@@ -79,12 +79,13 @@ namespace AppFrame {
     }
 
     bool ModeBase::PopBack() {
-        // 消去予約が行われているか
-        if (!_popBack) {
-            return false; // フラグは立っていない
-        }
-        // このモードを削除する
-        _app.GetModeServer().PopBack();
+      // 消去予約が行われているか
+      if (!_popBack) {
+        return false; // フラグは立っていない
+      }
+      // このモードを削除する
+      _app.GetModeServer().PopBack();
+      return true;
     }
   } // namespace Mode
 } // namespace AppFrame

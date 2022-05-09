@@ -112,7 +112,7 @@ namespace AppFrame {
        * @return true:—\–ñ‚ ‚è false:—\–ñ‚È‚µ
        */
       bool PopBackFlag() const {
-          return _popBack;
+        return _popBack;
       }
     protected:
       //!< ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌŽQÆ
@@ -139,8 +139,8 @@ namespace AppFrame {
        */
       virtual bool PlayBgm(std::string_view key, const int volume);
       /**
-       * @brief  ƒ‚[ƒh‚Ìíœ—\–ñ
-       * @return true:Á‹Ž—\–ñ‚ð‚µ‚½ false:Á‹Ž—\–ñ‚ð‚µ‚Ä‚¢‚È‚¢
+       * @brief  ƒ‚[ƒh‚ÌÁ‹Ž”»’è
+       * @return true:Á‹Ž‚µ‚½ false:Á‹Ž‚µ‚Ä‚¢‚È‚¢
        */
       virtual bool PopBack();
     };
