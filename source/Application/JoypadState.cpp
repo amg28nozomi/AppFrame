@@ -32,6 +32,7 @@ namespace AppFrame {
         _state = State::NonActive;
         return; // 更新失敗
       }
+      // アナログスティックの入力状態を取得
       GetJoypadAnalogInput(&_stickX, &_stickY, DX_INPUT_PAD1);
       // トリガ情報の算出
       _trigger = _press ^ old & _press;

@@ -9,7 +9,6 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <filesystem>
 #include "../Data/DivGraph.h"
-
 /**
  * @brief アプリケーションフレーム
  */

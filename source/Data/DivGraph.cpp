@@ -8,7 +8,6 @@
 #include "DivGraph.h"
 
 namespace AppFrame {
-
   namespace Data {
     DivGraph::DivGraph() : FileBase() {
       Clear();

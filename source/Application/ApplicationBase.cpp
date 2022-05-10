@@ -21,7 +21,7 @@
 #include "../Model/ModelServer.h"
 
 namespace {
-  constexpr auto InitError = -1;   // 初期化失敗
+  constexpr auto InitError = -1; // 初期化失敗
 } // namespace
 
 namespace AppFrame {
@@ -156,9 +156,8 @@ namespace AppFrame {
     }
 
     void ApplicationBase::Terminate() {
-      _resourceServer->Release();
-      // DXライブラリの終了
-      DxLib_End();
+      _resourceServer->Release(); // リソースの解放
+      DxLib_End();                // DXライブラリの終了
     }
 
     void ApplicationBase::RequestTerminate() {

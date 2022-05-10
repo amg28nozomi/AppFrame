@@ -17,16 +17,14 @@
 
 namespace AppFrame {
   namespace Application {
-    constexpr auto JoypadLeftStick = false; // 左スティック
-    constexpr auto JoypadRightStick = true; // 右スティック
-
-    constexpr auto Front = 0; // DeadZoneTableの先端
-    constexpr auto End = 1;   // DeadZoneTableの末尾
-
-    constexpr short DeadZoneZero = 0;    // デッドゾーン
-    constexpr short DeadZoneMax = 30000; //
-    constexpr short DefaultDeadZoneMin = 3000;
-    constexpr short DefaultDeadZoneMax = 30000;
+    constexpr auto JoypadLeftStick = false;     // 左スティック
+    constexpr auto JoypadRightStick = true;     // 右スティック
+    constexpr auto Front = 0;                   // DeadZoneTableの先端
+    constexpr auto End = 1;                     // DeadZoneTableの末尾
+    constexpr short DeadZoneZero = 0;           // デッドゾーン下限
+    constexpr short DeadZoneMax = 30000;        // デッドゾーン上限
+    constexpr short DefaultDeadZoneMin = 3000;  // デッドゾーンの下限値(デフォルト)
+    constexpr short DefaultDeadZoneMax = 30000; // デッドゾーンの上限値(デフォルト)
 
     XBoxState::XBoxState() : InputBase() {
       _press = XINPUT_STATE();

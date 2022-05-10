@@ -9,7 +9,6 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <memory>
 #include <list>
-
 /**
  * @brief アプリケーションフレーム
  */
@@ -24,7 +23,7 @@ namespace AppFrame {
    * @brief モードベース
    */
   namespace Mode {
-    class ModeBase; //!< 前方宣言
+    class ModeBase;    //!< 前方宣言
     class ModeFadeOut; //!< フェードアウト
     /**
      * @class ModeServer

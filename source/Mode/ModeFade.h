@@ -69,10 +69,10 @@ namespace AppFrame {
        */
       void SetDeltaAlpha(const float value);
     protected:
-      Data::Color _basic; //!< 標準カラー値
-      Data::Color _color; //!< フェード処理で使用するRGB値
-      int _width;         //!< フェードボックスの横幅
-      int _height;        //!< フェードボックスの縦幅
+      Data::Color _basic;      //!< 標準カラー値
+      Data::Color _color;      //!< フェード処理で使用するRGB値
+      int _width;              //!< フェードボックスの横幅
+      int _height;             //!< フェードボックスの縦幅
       float _alpha{0.0f};      //!< アルファ値
       float _deltaAlpha{0.0f}; //!< アルファ値の変化量
       /**
