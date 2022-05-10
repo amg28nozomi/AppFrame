@@ -13,6 +13,7 @@
 #include "../Mode/ModeServer.h"
 #include "../SoundServer/SoundServer.h"
 #include "../SoundServer/SoundComponent.h"
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -71,12 +72,12 @@ namespace AppFrame {
         Default //!< 1920*1080(デフォルト)
       };
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        * 
        */
       ApplicationBase();
       /**
-       * @brief デストラクタ
+       * @brief  デストラクタ
        */
       virtual ~ApplicationBase();
       /**
@@ -86,7 +87,7 @@ namespace AppFrame {
        */
       virtual bool Init();
       /**
-       * @brief アプリケーションの解放
+       * @brief  アプリケーションの解放
        */
       virtual void Release();
       /**

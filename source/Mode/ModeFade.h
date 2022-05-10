@@ -9,6 +9,7 @@
 #pragma once
 #include "ModeBase.h"
 #include "../Data/Color.h"
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -29,13 +30,13 @@ namespace AppFrame {
     class ModeFade : public ModeBase {
     public:
       /**
-       * @brief コンストラクタ
-       * @param app アプリケーションの参照
-       * @param color フェード処理で使用するRGB値
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
+       * @param  color フェード処理で使用するRGB値
        */
       ModeFade(Application::ApplicationBase& app, const Data::Color color);
       /**
-       * @brief デストラクタ
+       * @brief  デストラクタ
        */
       ~ModeFade() override;
       /**
@@ -59,13 +60,13 @@ namespace AppFrame {
        */
       virtual bool Draw() const override;
       /**
-       * @brief 標準カラーの設定
-       * @param color 設定するRGB値
+       * @brief  標準カラーの設定
+       * @param  color 設定するRGB値
        */
       void SetColor(const Data::Color color);
       /**
-       * @brief アルファ値の変化量を設定
-       * @param value 0~255までのfloat値
+       * @brief  アルファ値の変化量を設定
+       * @param  value 0~255までのfloat値
        */
       void SetDeltaAlpha(const float value);
     protected:

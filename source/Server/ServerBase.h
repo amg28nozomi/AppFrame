@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <Windows.h>
 #endif
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -26,7 +27,7 @@ namespace AppFrame {
     class ServerBase {
     public:
       /**
-       * @brief サーバの状態を表す列挙型クラス
+       * @brief  サーバの状態を表す列挙型クラス
        */
       enum class ServerState {
         Active, // 活動
@@ -34,11 +35,11 @@ namespace AppFrame {
         Error   // 異常
       };
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       ServerBase();
       /**
-       * @brief デストラクタ
+       * @brief  デストラクタ
        */
       virtual ~ServerBase() = default;
       /**
@@ -58,8 +59,8 @@ namespace AppFrame {
 #ifdef _DEBUG
       std::string _name;  //!< サーバ名
       /**
-       * @brief デバッグ処理で使用するサーバ名の設定
-       * @param name サーバ名
+       * @brief  デバッグ処理で使用するサーバ名の設定
+       * @param  name サーバ名
        */
       void SetServerName(std::string_view name);
       /**
@@ -69,21 +70,21 @@ namespace AppFrame {
        */
       virtual std::logic_error LogicError(std::string_view message) const;
       /**
-       * @brief デバッグ用メッセージの出力
-       * @param message デバッグ用の文字列
+       * @brief  デバッグ用メッセージの出力
+       * @param  message デバッグ用の文字列
        */
       virtual void DebugString(std::string_view message) const;
 #endif
     };
     /**
-     * @brief コンストラクタの定義
+     * @brief  コンストラクタの定義
      */
     template <typename T>
     ServerBase<T>::ServerBase() {
       _state = ServerState::Active;
     }
     /**
-     * @brief 初期化の定義
+     * @brief  初期化の定義
      */
     template <typename T>
     bool ServerBase<T>::Init() {

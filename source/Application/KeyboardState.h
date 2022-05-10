@@ -9,6 +9,7 @@
 #include "InputBase.h"
 #include <array>
 #include <string>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -25,11 +26,11 @@ namespace AppFrame {
     class KeyboardState : public InputBase {
     public:
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       KeyboardState();
       /**
-       * @brief 入力状態の更新
+       * @brief  入力状態の更新
        */
       void Process() override;
       /**

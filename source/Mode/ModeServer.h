@@ -9,6 +9,7 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <memory>
 #include <list>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -32,7 +33,7 @@ namespace AppFrame {
     class ModeServer : public Server::ServerTemplateUnordered<std::string, std::shared_ptr<ModeBase>> {
     private:
       /**
-       * @brief フェードアウトのフレンド指定
+       * @brief  フェードアウトのフレンド指定
        */
       friend class ModeFadeOut;
     public:

@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include <string_view>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -35,12 +36,12 @@ namespace AppFrame {
     class ModeBase {
     public:
       /**
-       * @brief モードの生成
-       * @param app アプリケーションの参照
+       * @brief  モードの生成
+       * @param  app アプリケーションの参照
        */
       ModeBase(Application::ApplicationBase &app);
       /**
-       * @brief モードの削除
+       * @brief  モードの削除
        */
       virtual ~ModeBase();
       /**
@@ -128,7 +129,7 @@ namespace AppFrame {
       //!< BGMの再生に使用する文字列
       std::string _bgm;
       /**
-       * @brief 時間経過処理
+       * @brief  時間経過処理
        */
       virtual void StepTime();
       /**

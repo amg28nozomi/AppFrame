@@ -8,6 +8,7 @@
 #pragma once
 #include "ServerBase.h"
 #include <vector>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -24,7 +25,7 @@ namespace AppFrame {
     class ServerTemplateVector : public ServerBase<std::vector<T>> {
     public:
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       ServerTemplateVector();
       /**

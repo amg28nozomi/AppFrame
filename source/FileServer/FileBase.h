@@ -24,26 +24,26 @@ namespace AppFrame {
     class FileBase {
     public:
       /**
-       * @brief 空データを生成
+       * @brief  空データを生成
        */
       FileBase();
       /**
-       * @brief ファイルデータの生成(キー情報無し)
-       * @param filePath ファイルのパス
+       * @brief  ファイルデータの生成(キー情報無し)
+       * @param  filePath ファイルのパス
        */
       FileBase(std::filesystem::path filePath);
       /**
-       * @brief ファイルデータの生成(キー情報有り)
-       * @param filrPath 
-       * @param key
+       * @brief  ファイルデータの生成(キー情報有り)
+       * @param  filrPath 
+       * @param  key
        */
       FileBase(std::filesystem::path filrPath, std::string_view key);
       /**
-       * @brief ファイルデータの破棄
+       * @brief  ファイルデータの破棄
        */
       ~FileBase();
       /**
-       * @brief ファイルデータのリセット
+       * @brief  ファイルデータのリセット
        */
       void Clear();
       /**

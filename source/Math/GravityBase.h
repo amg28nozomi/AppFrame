@@ -6,6 +6,7 @@
  * @date   December 2021
  *********************************************************************/
 #pragma once
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -14,7 +15,7 @@ namespace AppFrame {
    * @brief 算術ベース
    */
   namespace Math {
-    class Matrix44; //!< 前方宣言
+    class Matrix44;                             //!< 前方宣言
     constexpr auto DefaultAcceleration = -9.8f; //!< デフォルトの重力加速度
     /**
      * @class GravityBase

@@ -10,6 +10,7 @@
 #include <array>
 #include <utility>
 #include <DxLib.h>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -18,7 +19,7 @@ namespace AppFrame {
    * @brief アプリケーションベース
    */
   namespace Application {
-    constexpr auto ButtonNum = 16; //!< ボタン総数
+    constexpr auto ButtonNum = 16;       //!< ボタン総数
     constexpr auto InputPress = true;    //!< 押下情報
     constexpr auto InputTrigger = false; //!< トリガ入力
     /**
@@ -28,7 +29,7 @@ namespace AppFrame {
     class XBoxState : public InputBase  {
     public:
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       XBoxState();
       /**
@@ -92,9 +93,12 @@ namespace AppFrame {
         return _deadZone.second;
       }
     private:
-      XINPUT_STATE _press;   //!< 入力情報(押下入力)
-      std::array<bool, ButtonNum> _triggerButtons; //!< 各種ボタンの押下情報
-      std::pair<short, short> _deadZone;           //!< 各種スティックのデッドゾーン情報
+      //!< 入力情報(押下入力)
+      XINPUT_STATE _press;
+      //!< 各種ボタンの押下情報
+      std::array<bool, ButtonNum> _triggerButtons;
+      //!< 各種スティックのデッドゾーン情報
+      std::pair<short, short> _deadZone;
       /**
        * @brief  トリガ情報の生成
        * @param  press 対象キーの押下情報

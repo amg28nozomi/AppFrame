@@ -36,10 +36,10 @@ namespace AppFrame {
     constexpr auto PadLeftShoulder = "leftShoulder";
     //!< RBボタン
     constexpr auto PadRightShoulder = "rightShoulder";
-    constexpr auto PadButtonA = "a"; //!< Aボタン
-    constexpr auto PadButtonB = "b"; //!< Bボタン
-    constexpr auto PadButtonX = "x"; //!< Xボタン
-    constexpr auto PadButtonY = "y"; //!< Yボタン
+    constexpr auto PadButtonA = "a";   //!< Aボタン
+    constexpr auto PadButtonB = "b";   //!< Bボタン
+    constexpr auto PadButtonX = "x";   //!< Xボタン
+    constexpr auto PadButtonY = "y";   //!< Yボタン
     // デバイスタイプ(入力状態の取得で使用)
     constexpr auto DeviceKeyboard = 0; //!< キーボード
     constexpr auto DeviceMouse = 1;    //!< マウス
@@ -59,16 +59,16 @@ namespace AppFrame {
         NonActive // 接続なし
       };
       /**
-       * @brief コンストラクタ
-       * @param app アプリケーションの参照
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
        */
       InputOperation(class ApplicationBase& app);
       /**
-       * @brief デストラクタ
+       * @brief  デストラクタ
        */
       ~InputOperation();
       /**
-       * @brief 更新処理
+       * @brief  更新処理
        */
       void Process();
       /**

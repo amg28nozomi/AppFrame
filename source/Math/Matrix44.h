@@ -29,16 +29,16 @@ namespace AppFrame {
       using MatrixArray = std::array<std::array<float, MaxColumn>, MaxRow>;
     public:
       /**
-       * @brief 空の行列を生成
+       * @brief  空の行列を生成
        */
       Matrix44();
       /**
-       * @brief 行列のコピー
-       * @param values 
+       * @brief  行列のコピー
+       * @param  values 
        */
       Matrix44(const MatrixArray values);
       /**
-       * @brief 行列の削除
+       * @brief  行列の削除
        */
       ~Matrix44() = default;
       /**
@@ -87,13 +87,13 @@ namespace AppFrame {
        */
       static Matrix44 Scaling(const Vector4& vector);
       /**
-       * @brief 行列の平行移動
-       * @param translate 平行移動ベクトル
+       * @brief  行列の平行移動
+       * @param  translate 平行移動ベクトル
        */
       void MulTranslate(const AppFrame::Math::Vector4 translate);
       /**
-       * @brief 行列のスケーリング
-       * @param scale 拡縮ベクトル
+       * @brief  行列のスケーリング
+       * @param  scale 拡縮ベクトル
        */
       void MulScaling(const AppFrame::Math::Vector4 scale);
       /**

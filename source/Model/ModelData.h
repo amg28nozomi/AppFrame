@@ -8,6 +8,7 @@
 #pragma once
 #include <utility>
 #include <unordered_map>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -27,15 +28,15 @@ namespace AppFrame {
     class ModelData {
     public:
       /**
-       * @brief コンストラクタ
-       * @param filePath ファイルパス
+       * @brief  コンストラクタ
+       * @param  filePath ファイルパス
        */
       ModelData();
       /**
-       * @brief コンストラクタ
-       * @param path    ファイルパス
-       * @param handles モデルハンドルが格納されたコンテナ
-       * @param animes  アニメーション情報が格納された連想配列
+       * @brief  コンストラクタ
+       * @param  path    ファイルパス
+       * @param  handles モデルハンドルが格納されたコンテナ
+       * @param  animes  アニメーション情報が格納された連想配列
        */
       ModelData(std::string_view path, std::unordered_map<unsigned short, int> handles, std::unordered_map<std::string, int> animes);
       /**
@@ -60,7 +61,7 @@ namespace AppFrame {
         return _handles;
       }
       /**
-       * @brief アニメーション情報を削除する
+       * @brief  アニメーション情報を削除する
        */
       inline void AnimeClear() {
         _animes.clear(); // アニメーション情報を削除

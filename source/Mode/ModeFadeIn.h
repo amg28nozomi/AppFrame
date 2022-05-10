@@ -8,6 +8,7 @@
  *********************************************************************/
 #pragma once
 #include "ModeFade.h"
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -23,9 +24,9 @@ namespace AppFrame {
     class ModeFadeIn : public ModeFade {
     public:
       /**
-       * @brief コンストラクタ
-       * @param app   アプリケーションの参照
-       * @param color フェード処理で使用するRGB値
+       * @brief  コンストラクタ
+       * @param  app   アプリケーションの参照
+       * @param  color フェード処理で使用するRGB値
        */
       ModeFadeIn(Application::ApplicationBase& app, const Data::Color color = Data::Color());
       /**

@@ -15,8 +15,8 @@ namespace AppFrame {
    * @brief 算術処理ベース
    */
   namespace Math {
-    class Vector4;  // 前方宣言
-    class Matrix44; // 前方宣言
+    class Vector4;  //!< 前方宣言
+    class Matrix44; //!< 前方宣言
     constexpr auto Degree = true;  //!< デグリーフラグ
     constexpr auto Radian = false; //!< ラジアンフラグ
     /**
@@ -27,7 +27,7 @@ namespace AppFrame {
     public:
       //!< 円周率PIの定数
       static constexpr float _pi{ static_cast<float>(std::numbers::pi) };
-      //!< 
+      //!< 180度 
       static constexpr float _degrees180{ 180.0f };
       /**
        * @brief  二つの値を比較して最小値を返す

@@ -8,6 +8,7 @@
 #pragma once
 #include "../Server/ServerTemplateUnordered.h"
 #include "ModelData.h"
+
 /**
  * @アプリケーションフレーム
  */
@@ -29,7 +30,7 @@ namespace AppFrame {
        */
       using ModelDatas = std::vector<std::pair<std::string_view, std::string_view>>;
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       ModelServer();
       /**

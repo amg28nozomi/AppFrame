@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 #include <utility>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -28,7 +29,7 @@ namespace AppFrame {
     class ServerTemplateUnordered : public ServerBase<std::unordered_map<Key, Value>> {
     public:
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       ServerTemplateUnordered();
       /**

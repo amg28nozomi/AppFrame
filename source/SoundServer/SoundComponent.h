@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include <string_view>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -21,9 +22,9 @@ namespace AppFrame {
    * @brief サウンドベース
    */
   namespace Sound {
-    constexpr auto Play = true;  //!< サウンド再生中
-    constexpr auto Stop = false; //!< サウンド停止中
-    constexpr auto DefaultVolume = 100;
+    constexpr auto Play = true;         //!< サウンド再生中
+    constexpr auto Stop = false;        //!< サウンド停止中
+    constexpr auto DefaultVolume = 100; //!< デフォルトの再生音量
     /**
      * @class SoundComponent
      * @brief サウンドコンポーネント
@@ -31,8 +32,8 @@ namespace AppFrame {
     class SoundComponent {
     public:
       /**
-       * @brief コンストラクタ
-       * @param app アプリケーションの参照
+       * @brief  コンストラクタ
+       * @param  app アプリケーションの参照
        */
       SoundComponent(Application::ApplicationBase& app);
       /**

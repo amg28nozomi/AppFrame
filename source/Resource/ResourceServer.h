@@ -9,6 +9,7 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <filesystem>
 #include "../Data/DivGraph.h"
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -26,9 +27,9 @@ namespace AppFrame {
     class ResourceServer : Server::ServerTemplateUnordered<std::string, std::pair<Data::DivGraph, std::vector<int>>> {
     public:
       /**
-       * @brief 
-       * @param first:紐づける文字列
-       * @param second:画像情報
+       * @brief  文字列をキーとして画像データを管理する連想配列の別名定義
+       * @param  first:紐づける文字列
+       * @param  second:画像情報
        */
       using DivGraphTable = std::unordered_map<std::string, Data::DivGraph>;
       /**
@@ -38,7 +39,7 @@ namespace AppFrame {
       ResourceServer(std::string_view path = "");
       /**
        * @brief  グラフィック情報の解放
-       * @return 
+       * @return true
        */
       bool Release() override;
       /**

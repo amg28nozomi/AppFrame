@@ -28,7 +28,7 @@ namespace AppFrame {
         DeleteSoundMem(handle);
       }
       _registry.clear(); // レジストリを解放する
-      return true; // 正常終了
+      return true;       // 正常終了
     }
 
     bool SoundServer::AddSound(std::string_view key, const std::filesystem::path soundFile) {

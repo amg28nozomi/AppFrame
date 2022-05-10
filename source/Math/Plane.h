@@ -22,15 +22,15 @@ namespace AppFrame {
     class Plane {
     public:
       /**
-       * @brief コンストラクタ
-       * @param a 点A
-       * @param b 点B
-       * @param c 点C
+       * @brief  コンストラクタ
+       * @param  a 点A
+       * @param  b 点B
+       * @param  c 点C
        */
       Plane(const Vector4& a, const Vector4& b, const Vector4& c);
       /**
        * @brief  
-       * @param  point
+       * @param  point 点座標
        * @return 
        */
       float SignedDist(const Vector4& point) const;

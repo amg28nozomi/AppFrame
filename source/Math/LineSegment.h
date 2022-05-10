@@ -17,7 +17,7 @@ namespace AppFrame {
    * @brief 算術ベース
    */
   namespace Math {
-    class Plane; //!< 
+    class Plane; //!< 前方宣言
     /**
      * @class LineSegment
      * @brief 線分ベクトル
@@ -25,11 +25,11 @@ namespace AppFrame {
     class LineSegment {
     public:
       /**
-       * @brief 空のコンストラクタ
+       * @brief  空のコンストラクタ
        */
       LineSegment();
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       LineSegment(Vector4 first, Vector4 end);
       /**

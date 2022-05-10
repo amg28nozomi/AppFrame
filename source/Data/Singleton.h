@@ -40,20 +40,20 @@ namespace AppFrame {
   protected:
     static inline std::unique_ptr<T> _instance{nullptr}; //!< 実体
     /**
-     * @brief 外部でのインスタンス生成は禁止
+     * @brief  外部でのインスタンス生成は禁止
      */
     Singleton();
     /**
-     * @brief デストラクタ
+     * @brief  デストラクタ
      */
     virtual ~Singleton();
   private:
     /**
-     * @brief 代入演算子による作成を禁止する
+     * @brief  代入演算子による作成を禁止する
      */
     void operator=(const Singleton & singleton);
     /**
-     * @brief コピーコンストラクタを禁止する
+     * @brief  コピーコンストラクタを禁止する
      */
     Singleton(const Singleton& singleton)
   };

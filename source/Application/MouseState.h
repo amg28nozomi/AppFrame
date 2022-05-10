@@ -60,8 +60,8 @@ namespace AppFrame {
         return _move;
       }
     private:
-      int _press;   //!< ‰Ÿ‰ºî•ñ
-      int _trigger; //!< ƒgƒŠƒKî•ñ
+      int _press;                   //!< ‰Ÿ‰ºî•ñ
+      int _trigger;                 //!< ƒgƒŠƒKî•ñ
       Math::Vector4 _position{0,0}; //!< À•W
       Math::Vector4 _move{0,0};     //!< •Ï‰»—Ê
     };

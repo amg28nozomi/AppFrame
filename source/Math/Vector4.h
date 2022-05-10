@@ -25,60 +25,60 @@ namespace AppFrame {
     class Vector4 {
     public:
       /**
-       * @brief 空ベクトルの生成
+       * @brief  空ベクトルの生成
        */
       Vector4();
       /**
-       * @brief 2次元ベクトルの生成
-       * @param x x成分
-       * @param y y成分
+       * @brief  2次元ベクトルの生成
+       * @param  x x成分
+       * @param  y y成分
        */
       Vector4(float x, float y);
       /**
-       * @brief 型変換処理有り
-       * @param x x成分(整数)
-       * @param y y成分(整数)
+       * @brief  型変換処理有り
+       * @param  x x成分(整数)
+       * @param  y y成分(整数)
        */
       Vector4(int x, int y);
       /**
-       * @brief ベクトルの生成
-       * @param x x成分
-       * @param y y成分
-       * @param z z成分
-       * @param w w成分(デフォルトでは1.0)
+       * @brief  ベクトルの生成
+       * @param  x x成分
+       * @param  y y成分
+       * @param  z z成分
+       * @param  w w成分(デフォルトでは1.0)
        */
       Vector4(float x, float y, float z, float w = 1.0);
       /**
-       * @brief ゼロベクトル化
+       * @brief  ゼロベクトル化
        */
       void Zero();
       /**
-       * @brief ベクトル同士の加算
-       * @param vector ベクトル(加数)
+       * @brief  ベクトル同士の加算
+       * @param  vector ベクトル(加数)
        */
       void Add(const Vector4 vector);
       /**
-       * @brief ベクトルの加算
-       * @param x x成分
-       * @param y y成分
-       * @param z z成分
+       * @brief  ベクトルの加算
+       * @param  x x成分
+       * @param  y y成分
+       * @param  z z成分
        */
       void Add(const float x, const float y, const float z);
       /**
-       * @brief ベクトル同士の減算
-       * @param vector ベクトル(減数)
+       * @brief  ベクトル同士の減算
+       * @param  vector ベクトル(減数)
        */
       void Sub(const Vector4 vector);
       /**
-       * @brief ベクトルの減算
-       * @param x x成分
-       * @param y y成分
-       * @param z z成分
+       * @brief  ベクトルの減算
+       * @param  x x成分
+       * @param  y y成分
+       * @param  z z成分
        */
       void Sub(const float x, const float y, const float z);
       /**
-       * @brief ベクトル同士の各成分を乗算する
-       * @param vector 対象ベクトル
+       * @brief  ベクトル同士の各成分を乗算する
+       * @param  vector 対象ベクトル
        */
       void Scale(const Vector4& vector);
       /**
@@ -89,41 +89,41 @@ namespace AppFrame {
        */
       static Vector4 Scale(const Vector4& left, const Vector4& right);
       /**
-       * @brief ベクトルの設定
-       * @param vector セットするベクトル
+       * @brief  ベクトルの設定
+       * @param  vector セットするベクトル
        */
       void Set(const Vector4 vector);
       /**
-       * @brief 指定した値をベクトルにセットする
-       * @param x x成分にセットする値
-       * @param y y成分にセットする値
-       * @param z z成分にセットする値
+       * @brief  指定した値をベクトルにセットする
+       * @param  x x成分にセットする値
+       * @param  y y成分にセットする値
+       * @param  z z成分にセットする値
        */
       void Set(const float x, const float y = 0.0f, const float z = 0.0f);
       /**
-       * @brief 指定した値をx成分にセットする
-       * @param x
+       * @brief  指定した値をx成分にセットする
+       * @param  x
        */
       inline void SetX(const float x) {
         _x = x;
       }
       /**
-       * @brief 指定した値をy成分にセットする
-       * @param y セットする値
+       * @brief  指定した値をy成分にセットする
+       * @param  y セットする値
        */
       inline void SetY(const float y) {
         _y = y;
       }
       /**
-       * @brief 指定した値をz成分にセットする
-       * @param z セットする値
+       * @brief  指定した値をz成分にセットする
+       * @param  z セットする値
        */
       inline void SetZ(const float z) {
         _z = z;
       }
       /**
-       * @brief x成分の加算
-       * @param x 加数
+       * @brief  x成分の加算
+       * @param  x 加数
        */
       inline void AddX(const float x) {
         _x += x;
@@ -147,15 +147,15 @@ namespace AppFrame {
        */
       Vector4 AddVectorZ(const float z) const;
       /**
-       * @brief y成分の加算
-       * @param x 加数
+       * @brief  y成分の加算
+       * @param  x 加数
        */
       inline void AddY(const float y) {
         _y += y;
       }
       /**
-       * @brief z成分の加算
-       * @param z 加数
+       * @brief  z成分の加算
+       * @param  z 加数
        */
       inline void AddZ(const float z) {
         _z += z;

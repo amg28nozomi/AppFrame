@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include "Vector4.h"
+
 /**
  * @brief フレームワーク
  */
@@ -22,14 +23,14 @@ namespace AppFrame {
     class Circle {
     public:
       /**
-       * @brief コンストラクタ
-       * @param center 中心座標
-       * @param radius 半径
+       * @brief  コンストラクタ
+       * @param  center 中心座標
+       * @param  radius 半径
        */
       Circle(const Vector4& center, const float radius);
       /**
-       * @brief 中心座標の更新
-       * @param move 移動量
+       * @brief  中心座標の更新
+       * @param  move 移動量
        */
       void Process(const Vector4& move);
       /**

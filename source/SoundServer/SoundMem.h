@@ -7,6 +7,7 @@
  *********************************************************************/
 #include <tuple>
 #include "../FileServer/FileBase.h"
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -22,8 +23,8 @@ namespace AppFrame {
     class SoundMem : public FileServer::FileBase {
     public:
       /**
-       * @brief 音源情報の生成
-       * @param filePath 音源ファイルのパス
+       * @brief  音源情報の生成
+       * @param  filePath 音源ファイルのパス
        */
       SoundMem(std::filesystem::path filePath, const int playType);
       /**

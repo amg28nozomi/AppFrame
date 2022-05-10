@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include <tuple>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -24,52 +25,52 @@ namespace AppFrame {
     class Color {
     public:
       /**
-       * @brief RGBAカラー情報の設定
+       * @brief  RGBAカラー情報の設定
        */
       Color();
       /**
-       * @brief RGBAカラー情報の生成
-       * @param red   赤
-       * @param green 緑
-       * @param blue  愛
-       * @param alpha 透過度(デフォルトでは255)
+       * @brief  RGBAカラー情報の生成
+       * @param  red   赤
+       * @param  green 緑
+       * @param  blue  愛
+       * @param  alpha 透過度(デフォルトでは255)
        */
       Color(const int red, const int green, const int blue, const int alpha = MaxColor);
       /**
-       * @brief カラー情報の設定
-       * @param red   輝度(赤)
-       * @param green 輝度(緑)
-       * @param blue  輝度(青)
-       * @param alpha 透明度(デフォルトでは255)
+       * @brief  カラー情報の設定
+       * @param  red   輝度(赤)
+       * @param  green 輝度(緑)
+       * @param  blue  輝度(青)
+       * @param  alpha 透明度(デフォルトでは255)
        */
       void SetColor(const int red, const int green, const int blue, const int alpha = MaxColor);
       /**
-       * @brief 透明度の設定
-       * @param alpha 透明度
+       * @brief  透明度の設定
+       * @param  alpha 透明度
        */
       void SetAlpha(const int alpha);
       /**
-       * @brief 輝度の加算処理
-       * @param red   赤
-       * @param green 緑
-       * @param blue  青
+       * @brief  輝度の加算処理
+       * @param  red   赤
+       * @param  green 緑
+       * @param  blue  青
        */
       void AddColor(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
-       * @brief α値の加算
-       * @param add 加数
+       * @brief  α値の加算
+       * @param  add 加数
        */
       void AddAlpha(const int add);
       /**
-       * @brief 輝度の減算処理
-       * @param red   赤
-       * @param green 緑
-       * @param blue  青
+       * @brief  輝度の減算処理
+       * @param  red   赤
+       * @param  green 緑
+       * @param  blue  青
        */
       void SubColor(const int red = MinColor, const int green = MinColor, const int blue = MinColor);
       /**
-       * @brief 透明度の減算処理
-       * @param sub 減数
+       * @brief  透明度の減算処理
+       * @param  sub 減数
        */
       void SubAlpha(const int sub);
       /**

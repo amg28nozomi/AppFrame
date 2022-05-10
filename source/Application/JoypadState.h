@@ -8,6 +8,7 @@
 #pragma once
 #include "InputBase.h"
 #include <utility>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -23,7 +24,7 @@ namespace AppFrame {
     class JoypadState : public InputBase {
     public:
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       JoypadState();
       /**

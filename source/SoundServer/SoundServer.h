@@ -9,6 +9,7 @@
 #include "../Server/ServerTemplateUnordered.h"
 #include <filesystem>
 #include <unordered_map>
+
 /**
  * @brief アプリケーションフレーム
  */
@@ -24,12 +25,12 @@ namespace AppFrame {
     class SoundServer : Server::ServerTemplateUnordered<std::string, int> {
     public:
       /**
-       * @brief 音源情報を格納する動的配列
-       *        first:音源ファイルに紐づける文字列 second:音源ファイルのパス
+       * @brief  音源情報を格納する動的配列
+       *         first:音源ファイルに紐づける文字列 second:音源ファイルのパス
        */
       using SoundMap = std::vector<std::pair<std::string_view, std::string_view>>;
       /**
-       * @brief コンストラクタ
+       * @brief  コンストラクタ
        */
       SoundServer();
       /**

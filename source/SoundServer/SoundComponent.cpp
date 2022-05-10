@@ -92,7 +92,7 @@ namespace AppFrame {
       if (PlaySoundMem(SoundHandle(key), type, TRUE) == -1) {
         return false; // Ä¶¸”s
       }
-      return true; // Ä¶¬Œ÷
+      return true;    // Ä¶¬Œ÷
     }
 
     const int SoundComponent::SoundHandle(std::string_view key) const {
